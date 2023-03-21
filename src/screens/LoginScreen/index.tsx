@@ -7,10 +7,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import {CustomButton} from '../../component/Button/CustomButton';
-import {InputText} from '../../component/InputText/InputText';
+import CustomButton from '../../component/Button';
+import InputText from '../../component/InputText';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {style} from './LoginScreen.style';
+import {style} from './style';
 import {useLoginScreen} from './useLoginScreen';
 
 const LoginScreen = (screenProps: AuthStackProps) => {

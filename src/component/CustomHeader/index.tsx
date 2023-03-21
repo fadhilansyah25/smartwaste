@@ -3,11 +3,11 @@ import {colors} from '../../const/colors';
 import Octicons from 'react-native-vector-icons/Octicons';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 
-export function CustomHeader(props: {
+const CustomHeader = (props: {
   headerLeft?: React.ReactNode;
   HeaderProps?: NativeStackHeaderProps;
   LeftTitle?: string;
-}) {
+}) => {
   return (
     <View
       style={{
@@ -52,4 +52,6 @@ export function CustomHeader(props: {
       )}
     </View>
   );
-}
+};
+
+export default CustomHeader;

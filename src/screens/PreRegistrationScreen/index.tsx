@@ -7,14 +7,14 @@ import {
   Text,
   View,
 } from 'react-native';
-import {CustomButton} from '../../component/Button/CustomButton';
-import {InputText} from '../../component/InputText/InputText';
+import CustomButton from '../../component/Button';
+import {InputText} from '../../component/InputText';
 import {colors} from '../../const/colors';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {style} from './PreRegistrationScreen.style';
+import {style} from './style';
 import {usePreRegis} from './usePreRegis';
 
-export const PreRegistrationScreen = (ScreenProps: AuthStackProps) => {
+const PreRegistrationScreen = (ScreenProps: AuthStackProps) => {
   const {handleToVerif} = usePreRegis(ScreenProps);
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -95,3 +95,5 @@ export const PreRegistrationScreen = (ScreenProps: AuthStackProps) => {
     </SafeAreaView>
   );
 };
+
+export default PreRegistrationScreen;

@@ -12,11 +12,15 @@ interface Props extends TouchableOpacityProps {
   type: 'fill' | 'outline';
 }
 
-export const CustomButton = (props: Props) => {
+const CustomButton = (props: Props) => {
   return (
     <TouchableOpacity
       {...props}
-      style={[style.button, props.type == 'fill' ? style.fill : style.outline, props.style]}>
+      style={[
+        style.button,
+        props.type == 'fill' ? style.fill : style.outline,
+        props.style,
+      ]}>
       <Text
         style={[
           style.label,
@@ -27,6 +31,8 @@ export const CustomButton = (props: Props) => {
     </TouchableOpacity>
   );
 };
+
+export default CustomButton;
 
 export const style = StyleSheet.create({
   button: {

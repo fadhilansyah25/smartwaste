@@ -1,16 +1,16 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../const/colors';
+import { Dimensions } from 'react-native';
+
+const HEIGHT = Dimensions.get("screen").height
 
 export const style = StyleSheet.create({
   screenContainer: {
     paddingHorizontal: 20,
     backgroundColor: colors.white,
-  },
-  companyLogo: {
-    marginTop: 30,
-    height: 40,
-    width: 105,
-    resizeMode: 'contain',
+    minHeight: HEIGHT,
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   illustration: {
     height: 150,

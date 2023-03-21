@@ -3,10 +3,10 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import {PreRegistrationScreen} from '../../screens/PreRegistrationScreen/PreRegistrationScreen';
-import LoginScreen from '../../screens/LoginScreen/LoginScreen';
-import {CustomHeader} from '../../component/CustomHeader/CustomHeader';
-import {VerificationScreen} from '../../screens/VerificationScreen/VerificationScreen';
+import PreRegistrationScreen from '../../screens/PreRegistrationScreen';
+import LoginScreen from '../../screens/LoginScreen';
+import CustomHeader from '../../component/CustomHeader';
+import {VerificationScreen} from '../../screens/VerificationScreen';
 
 export type AuthStackParamaterList = {
   Login: undefined;

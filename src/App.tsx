@@ -5,7 +5,7 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 
-import SplashScreen from './screens/SplashScreen/SplashScreen';
+import SplashScreen from './screens/SplashScreen';
 import {AuthStackScreen} from './navigation/StackNavigation/AuthStackScreen';
 
 export type RootStackParamameterList = {

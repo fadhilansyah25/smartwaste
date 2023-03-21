@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {colors} from '../../const/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {style} from './InputText.style';
+import {style} from './style';
 
 interface Props extends TextInputProps {
   label?: string;
@@ -17,7 +17,7 @@ interface Props extends TextInputProps {
   containerStyle?: StyleProp<ViewStyle>;
 }
 
-export const InputText = (props: Props) => {
+const InputText = (props: Props) => {
   const [isFocus, setIsFocus] = useState(false);
   const [hidePass, setHidePass] = useState(true);
 
@@ -49,3 +49,5 @@ export const InputText = (props: Props) => {
     </View>
   );
 };
+
+export default InputText;
