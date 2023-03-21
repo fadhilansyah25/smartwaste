@@ -2,15 +2,12 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../const/colors';
 
 export const style = StyleSheet.create({
-  inputSection: {
-    marginTop: 20,
-  },
   labelInput: {
     marginBottom: 8,
   },
   textInputContainer: {
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     paddingHorizontal: 10,
     backgroundColor: colors.white,
     flexDirection: 'row',

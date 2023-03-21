@@ -32,11 +32,11 @@ export const style = StyleSheet.create({
   button: {
     paddingVertical: 10,
     alignItems: 'center',
-    borderRadius: 50,
+    borderRadius: 100,
   },
   outline: {
     backgroundColor: colors.white,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: colors.T500,
   },
   fill: {

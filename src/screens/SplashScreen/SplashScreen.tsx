@@ -9,7 +9,8 @@ const SplashScreen = ({navigation}: RootStackProps) => {
   useEffect(() => {
     setTimeout(() => {
       setAnimating(false);
-    }, 5000);
+      navigation.navigate('Auth');
+    }, 2000);
   }, []);
 
   return (

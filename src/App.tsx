@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import SplashScreen from './screens/SplashScreen/SplashScreen';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
+import {AuthStackScreen} from './navigation/StackNavigation/AuthStackScreen';
 
 export type RootStackParamameterList = {
   Splash: undefined;
@@ -23,8 +23,8 @@ const App = () => {
       <RootStack.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName={'Splash'}>
-        {/* <RootStack.Screen name="Splash" component={SplashScreen} /> */}
-        <RootStack.Screen name="Auth" component={LoginScreen} />
+        <RootStack.Screen name="Splash" component={SplashScreen} />
+        <RootStack.Screen name="Auth" component={AuthStackScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

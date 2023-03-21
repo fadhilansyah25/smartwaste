@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TextInput, View, TextInputProps} from 'react-native';
+import {
+  Text,
+  TextInput,
+  View,
+  TextInputProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {colors} from '../../const/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {style} from './InputText.style';
@@ -7,6 +14,7 @@ import {style} from './InputText.style';
 interface Props extends TextInputProps {
   label?: string;
   isPassword?: boolean;
+  containerStyle?: StyleProp<ViewStyle>;
 }
 
 export const InputText = (props: Props) => {
@@ -14,7 +22,7 @@ export const InputText = (props: Props) => {
   const [hidePass, setHidePass] = useState(true);
 
   return (
-    <View style={style.inputSection}>
+    <View style={props.containerStyle}>
       <Text style={style.labelInput}>{props.label}</Text>
       <View
         style={{
