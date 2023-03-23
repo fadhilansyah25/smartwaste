@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import SplashScreen from './screens/SplashScreen';
-import {AuthStackScreen} from './navigation/StackNavigation/AuthStackScreen';
+import AuthStackScreen from './navigation/StackNavigation/AuthStackScreen';
 
 export type RootStackParamameterList = {
   Splash: undefined;

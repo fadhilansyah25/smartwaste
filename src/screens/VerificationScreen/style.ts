@@ -1,16 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../const/colors';
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
-const HEIGHT = Dimensions.get("screen").height
+const HEIGHT = Dimensions.get('window').height;
 
 export const style = StyleSheet.create({
   screenContainer: {
     paddingHorizontal: 20,
     backgroundColor: colors.white,
-    minHeight: HEIGHT,
-    flexDirection: "column",
-    justifyContent: "space-between"
+  },
+  scrollView: {
+    height: HEIGHT - 100,
+    justifyContent: 'space-between',
+    flexDirection: "column"
   },
   illustration: {
     height: 150,
@@ -33,16 +35,5 @@ export const style = StyleSheet.create({
     color: colors.T700,
     fontFamily: 'Inter-re',
     textTransform: 'capitalize',
-  },
-  horizontalRule: {
-    marginTop: 18,
-    borderBottomColor: colors.T500,
-    borderBottomWidth: 1,
-  },
-  ctaRegsiterText: {
-    marginTop: 18,
-    textAlign: 'center',
-    fontWeight: '700',
-    color: colors.T500,
   },
 });

@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {CustomButton} from '../../component/Button';
+import CustomButton from '../../component/Button';
 import VerCodeField from '../../component/VerCodeField';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';
@@ -18,7 +18,7 @@ export const VerificationScreen = (ScreenProps: AuthStackProps) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
-        <KeyboardAvoidingView enabled>
+        <KeyboardAvoidingView enabled style={style.scrollView}>
           <View>
             <View style={{alignItems: 'center'}}>
               <Image
@@ -31,13 +31,21 @@ export const VerificationScreen = (ScreenProps: AuthStackProps) => {
               Masukan kode verifikasi yang telah dikirim ke {'\n'} email atau
               sms ke no. telepon anda
             </Text>
+            <View style={{marginTop: 56}}>
+              <VerCodeField />
+              <Text
+                style={{
+                  marginTop: 32,
+                  textAlign: 'center',
+                }}>
+                Waktu Tersisa 1:59 Menit
+              </Text>
+            </View>
           </View>
 
-          <VerCodeField />
-
-          <View style={{marginTop: 72, marginBottom: 28}}>
+          <View>
             <CustomButton
-              label="Daftar"
+              label="Submit"
               type="fill"
               style={{paddingVertical: 11}}
             />

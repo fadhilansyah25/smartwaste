@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import CustomButton from '../../component/Button';
-import {InputText} from '../../component/InputText';
+import InputText from '../../component/InputText';
 import {colors} from '../../const/colors';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';

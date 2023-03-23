@@ -18,7 +18,7 @@ export type AuthStackParamaterList = {
 export type AuthStackProps = NativeStackScreenProps<AuthStackParamaterList>;
 const AuthStack = createNativeStackNavigator<AuthStackParamaterList>();
 
-export const AuthStackScreen = () => {
+const AuthStackScreen = () => {
   return (
     <AuthStack.Navigator
       initialRouteName="Login"
@@ -49,3 +49,5 @@ export const AuthStackScreen = () => {
     </AuthStack.Navigator>
   );
 };
+
+export default AuthStackScreen;
