@@ -6,12 +6,14 @@ import {
 import PreRegistrationScreen from '../../screens/PreRegistrationScreen';
 import LoginScreen from '../../screens/LoginScreen';
 import CustomHeader from '../../component/CustomHeader';
-import {VerificationScreen} from '../../screens/VerificationScreen';
+import VerificationScreen from '../../screens/VerificationScreen';
+import PersonalDataFormScreen from '../../screens/PersonalDataFormScreen';
 
 export type AuthStackParamaterList = {
   Login: undefined;
   PreRegister: undefined;
   AccVerification: undefined;
+  PersonalDataForm: undefined;
   Main: undefined;
 };
 
@@ -43,6 +45,17 @@ const AuthStackScreen = () => {
           headerShown: true,
           header: props => (
             <CustomHeader HeaderProps={props} LeftTitle="Verifikasi Kode" />
+          ),
+        }}
+      />
+      <AuthStack.Screen
+        name="PersonalDataForm"
+        component={PersonalDataFormScreen}
+        options={{
+          animation: 'slide_from_right',
+          headerShown: true,
+          header: props => (
+            <CustomHeader HeaderProps={props} LeftTitle="Form Data Pribadi" />
           ),
         }}
       />

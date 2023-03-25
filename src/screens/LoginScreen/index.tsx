@@ -11,7 +11,7 @@ import CustomButton from '../../component/Button';
 import InputText from '../../component/InputText';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';
-import {useLoginScreen} from './useLoginScreen';
+import {useLoginScreen} from './hook';
 
 const LoginScreen = (screenProps: AuthStackProps) => {
   const {handleToRegister} = useLoginScreen(screenProps);

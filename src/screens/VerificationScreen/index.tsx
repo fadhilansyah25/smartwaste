@@ -10,15 +10,21 @@ import {
 import CustomButton from '../../component/Button';
 import VerCodeField from '../../component/VerCodeField';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+import {useVerificationScreen} from './hook';
 import {style} from './style';
 
-export const VerificationScreen = (ScreenProps: AuthStackProps) => {
+const VerificationScreen = (screenProps: AuthStackProps) => {
+  const {handleToPersonalForm} = useVerificationScreen(screenProps);
+
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled">
-        <KeyboardAvoidingView enabled style={style.scrollView}>
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{minHeight: '100%'}}>
+        <KeyboardAvoidingView
+          enabled
+          style={{flex: 1, justifyContent: 'space-between'}}>
           <View>
             <View style={{alignItems: 'center'}}>
               <Image
@@ -43,11 +49,12 @@ export const VerificationScreen = (ScreenProps: AuthStackProps) => {
             </View>
           </View>
 
-          <View>
+          <View style={{marginVertical: 20}}>
             <CustomButton
               label="Submit"
               type="fill"
               style={{paddingVertical: 11}}
+              onPress={handleToPersonalForm}
             />
           </View>
         </KeyboardAvoidingView>
@@ -55,3 +62,5 @@ export const VerificationScreen = (ScreenProps: AuthStackProps) => {
     </SafeAreaView>
   );
 };
+
+export default VerificationScreen;

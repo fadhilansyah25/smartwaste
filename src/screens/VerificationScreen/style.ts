@@ -9,11 +9,6 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
-  scrollView: {
-    height: HEIGHT - 100,
-    justifyContent: 'space-between',
-    flexDirection: "column"
-  },
   illustration: {
     height: 150,
     width: 282,

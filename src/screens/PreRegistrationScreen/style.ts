@@ -6,12 +6,6 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
-  companyLogo: {
-    marginTop: 30,
-    height: 40,
-    width: 105,
-    resizeMode: 'contain',
-  },
   illustration: {
     height: 150,
     width: 282,
@@ -34,15 +28,10 @@ export const style = StyleSheet.create({
     fontFamily: 'Inter-re',
     textTransform: 'capitalize',
   },
-  horizontalRule: {
-    marginTop: 18,
-    borderBottomColor: colors.T500,
-    borderBottomWidth: 1,
-  },
-  ctaRegsiterText: {
-    marginTop: 18,
-    textAlign: 'center',
-    fontWeight: '700',
+  discText: {
+    fontSize: 12,
     color: colors.T500,
+    marginTop: 14,
+    textAlign: 'justify',
   },
 });

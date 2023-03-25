@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 import CustomButton from '../../component/Button';
 import InputText from '../../component/InputText';
-import {colors} from '../../const/colors';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';
-import {usePreRegis} from './usePreRegis';
+import {usePreRegis} from './hook';
 
-const PreRegistrationScreen = (ScreenProps: AuthStackProps) => {
-  const {handleToVerif} = usePreRegis(ScreenProps);
+const PreRegistrationScreen = (screenProps: AuthStackProps) => {
+  const {handleToVerif} = usePreRegis(screenProps);
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
@@ -79,13 +78,7 @@ const PreRegistrationScreen = (ScreenProps: AuthStackProps) => {
               style={{paddingVertical: 11}}
               onPress={handleToVerif}
             />
-            <Text
-              style={{
-                fontSize: 12,
-                color: colors.T500,
-                marginTop: 14,
-                textAlign: 'justify',
-              }}>
+            <Text style={style.discText}>
               Dengan mendaftar, anda telah menyetujui dan akan mengikuti seluruh
               kebijakan privasi yang telah ditentukan oleh SmartWaste.
             </Text>
