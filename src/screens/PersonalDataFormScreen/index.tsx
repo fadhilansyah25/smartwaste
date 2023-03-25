@@ -10,13 +10,20 @@ import InputDate from '../../component/InputDate';
 import InputText from '../../component/InputText';
 import SelectListDropDown from '../../component/SelectList';
 import {minBirthday} from '../../utils/getInitialDate';
-import {selectProvincies, selectRegions} from '../../utils/getProvincies';
+import {
+  selectDistrict,
+  selectProvincies,
+  selectRegency,
+} from '../../utils/regionSorts';
 import {style} from './style';
 
 const PersonalDataFormScreen = () => {
-  const [provSelected, setProvSelected] = React.useState('11');
-  const [regSelected, setRegSelected] = React.useState('');
-  let region = selectRegions(provSelected);
+  const [provSelected, setProvSelected] = React.useState(11);
+  const [regcSelected, setRegcSelected] = React.useState(1101);
+  const [distSelected, setDistSelected] = React.useState(1101010);
+
+  let regionData = selectRegency(provSelected);
+  let districtData = selectDistrict(regcSelected);
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -61,12 +68,22 @@ const PersonalDataFormScreen = () => {
             />
             <SelectListDropDown
               label="Kabupaten"
-              setSelected={(val: any) => setRegSelected(val)}
-              data={region}
+              setSelected={(val: any) => setRegcSelected(val)}
+              data={regionData}
               boxStyles={{borderRadius: 5, paddingVertical: 15}}
               dropdownStyles={{borderRadius: 5}}
               containerStyle={{marginTop: 14}}
-              defaultOption={region[0]}
+              defaultOption={regionData[0]}
+              search={false}
+            />
+            <SelectListDropDown
+              label="Kecamatan"
+              setSelected={(val: any) => setDistSelected(val)}
+              data={districtData}
+              boxStyles={{borderRadius: 5, paddingVertical: 15}}
+              dropdownStyles={{borderRadius: 5}}
+              containerStyle={{marginTop: 14}}
+              defaultOption={districtData[0]}
               search={false}
             />
           </View>

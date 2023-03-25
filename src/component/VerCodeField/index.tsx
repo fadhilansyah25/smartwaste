@@ -50,8 +50,6 @@ const VerCodeField = () => {
     setValue,
   });
 
-  console.log(value);
-
   const renderCell = ({
     index,
     symbol,
