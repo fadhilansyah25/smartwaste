@@ -4,6 +4,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 
 const CustomHeader = (props: {
+  backButton?: boolean;
   headerLeft?: React.ReactNode;
   HeaderProps?: NativeStackHeaderProps;
   LeftTitle?: string;
@@ -14,8 +15,8 @@ const CustomHeader = (props: {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: colors.white,
-        paddingVertical: 10,
-        paddingHorizontal: 10,
+        paddingVertical: 16,
+        paddingHorizontal: 20,
         shadowColor: '#000',
         shadowOffset: {
           width: 0,
@@ -25,15 +26,18 @@ const CustomHeader = (props: {
         shadowRadius: 3.84,
         elevation: 5,
       }}>
-      <TouchableOpacity onPress={props.HeaderProps?.navigation.goBack}>
-        <Octicons
-          size={28}
-          name="chevron-left"
-          style={{padding: 5}}
-          color={colors.N700}></Octicons>
-      </TouchableOpacity>
+      {props.backButton ? (
+        <TouchableOpacity onPress={props.HeaderProps?.navigation.goBack}>
+          <Octicons
+            size={28}
+            name="chevron-left"
+            style={{padding: 5}}
+            color={colors.N700}
+          />
+        </TouchableOpacity>
+      ) : null}
       <Image
-        style={{height: 40, resizeMode: 'contain', width: 100, marginLeft: 18}}
+        style={{height: 40, resizeMode: 'contain', width: 100}}
         source={require('../../assets/image/companylogo-small.png')}
       />
       {props.LeftTitle ? (
@@ -43,7 +47,7 @@ const CustomHeader = (props: {
             textAlign: 'right',
             fontWeight: '600',
             color: colors.T500,
-            fontSize: 16,
+            fontSize: 14,
           }}>
           {props.LeftTitle}
         </Text>

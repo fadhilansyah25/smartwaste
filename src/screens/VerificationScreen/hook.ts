@@ -1,4 +1,3 @@
-import React from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 
 export const useVerificationScreen = ({navigation}: AuthStackProps) => {

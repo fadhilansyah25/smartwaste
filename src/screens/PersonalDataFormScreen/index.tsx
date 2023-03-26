@@ -9,15 +9,18 @@ import CustomButton from '../../component/Button';
 import InputDate from '../../component/InputDate';
 import InputText from '../../component/InputText';
 import SelectListDropDown from '../../component/SelectList';
+import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {minBirthday} from '../../utils/getInitialDate';
 import {
   selectDistrict,
   selectProvincies,
   selectRegency,
 } from '../../utils/regionSorts';
+import {usePersonalDataFromScreen} from './hook';
 import {style} from './style';
 
-const PersonalDataFormScreen = () => {
+const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
+  const {handleSubmit} = usePersonalDataFromScreen(screenProps);
   const [provSelected, setProvSelected] = React.useState(11);
   const [regcSelected, setRegcSelected] = React.useState(1101);
   const [distSelected, setDistSelected] = React.useState(1101010);
@@ -87,11 +90,12 @@ const PersonalDataFormScreen = () => {
               search={false}
             />
           </View>
-          <View style={{marginVertical: 20}}>
+          <View style={{marginTop: 32, marginBottom: 72}}>
             <CustomButton
               label="Submit"
               type="fill"
               style={{paddingVertical: 11}}
+              onPress={handleSubmit}
             />
           </View>
         </KeyboardAvoidingView>

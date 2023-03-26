@@ -8,12 +8,14 @@ import LoginScreen from '../../screens/LoginScreen';
 import CustomHeader from '../../component/CustomHeader';
 import VerificationScreen from '../../screens/VerificationScreen';
 import PersonalDataFormScreen from '../../screens/PersonalDataFormScreen';
+import SuccessRegisterScreen from '../../screens/SuccessRegisterScreen';
 
 export type AuthStackParamaterList = {
   Login: undefined;
   PreRegister: undefined;
   AccVerification: undefined;
   PersonalDataForm: undefined;
+  SuccessRegister: undefined;
   Main: undefined;
 };
 
@@ -57,6 +59,13 @@ const AuthStackScreen = () => {
           header: props => (
             <CustomHeader HeaderProps={props} LeftTitle="Form Data Pribadi" />
           ),
+        }}
+      />
+      <AuthStack.Screen
+        name="SuccessRegister"
+        component={SuccessRegisterScreen}
+        options={{
+          animation: 'slide_from_right',
         }}
       />
     </AuthStack.Navigator>

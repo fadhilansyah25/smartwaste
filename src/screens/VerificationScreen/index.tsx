@@ -45,7 +45,7 @@ const VerificationScreen = (screenProps: AuthStackProps) => {
               </View>
             </View>
 
-            <View style={{marginVertical: 20}}>
+            <View style={{marginBottom: 71}}>
               <CustomButton
                 label="Submit"
                 type="fill"

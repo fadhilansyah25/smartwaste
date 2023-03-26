@@ -71,7 +71,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               containerStyle={{marginTop: 14}}
             />
           </View>
-          <View style={{marginTop: 72, marginBottom: 28}}>
+          <View style={{marginTop: 72, marginBottom: 32}}>
             <CustomButton
               label="Daftar"
               type="fill"

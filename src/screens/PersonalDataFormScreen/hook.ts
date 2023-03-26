@@ -1,9 +1,9 @@
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 
 export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
-  const handleToPersonalForm = () => {
-    navigation.navigate('PersonalDataForm');
+  const handleSubmit = () => {
+    navigation.navigate('SuccessRegister');
   };
 
-  return {handleToPersonalForm} as const;
+  return {handleSubmit} as const;
 };
