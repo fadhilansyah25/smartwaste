@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "362727299581",
+    "project_id": "smartwaste-ed060",
+    "storage_bucket": "smartwaste-ed060.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362727299581:android:7b365c823890b56885e194",
+        "android_client_info": {
+          "package_name": "com.smartwaste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362727299581-4smddbor0kbvlbb9l8gftfmlin90pk5f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartwaste",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "362727299581-48u5vc5tfds15kl74tna7tm1l821cgt2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJXPV55qG6CQnXdTnmwV-KubESfwMqoZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362727299581-48u5vc5tfds15kl74tna7tm1l821cgt2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
