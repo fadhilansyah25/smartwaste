@@ -23,7 +23,7 @@ type Props = {
   isFocused: boolean;
 };
 
-const CELL_COUNT = 5;
+const CELL_COUNT = 6;
 
 const animationsColor = [...new Array(CELL_COUNT)].map(() => new Value(0));
 const animationsScale = [...new Array(CELL_COUNT)].map(() => new Value(1));
