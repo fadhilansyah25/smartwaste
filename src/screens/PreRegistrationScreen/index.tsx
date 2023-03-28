@@ -11,7 +11,7 @@ import CustomButton from '../../component/Button';
 import InputText from '../../component/InputText';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';
-import {formatPhoneNumber, usePreRegis} from './hook';
+import {usePreRegis} from './hook';
 import InputPhoneNumber from '../../component/InputPhoneNumber';
 
 const PreRegistrationScreen = (screenProps: AuthStackProps) => {
@@ -93,11 +93,10 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               containerStyle={{marginTop: 14}}
               value={register.phoneNumber}
               onChangeText={e => {
-                let phone = formatPhoneNumber(e);
                 updateRegister({
                   type: 'HANDLE_INPUT_TEXT',
                   field: 'phoneNumber',
-                  payload: phone,
+                  payload: e,
                 });
               }}
               ref={stringFieldRefs[posInd('phoneNumber')]}
