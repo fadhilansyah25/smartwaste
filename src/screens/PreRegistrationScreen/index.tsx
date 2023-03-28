@@ -140,22 +140,24 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               label="Ulangi Kata Sandi"
               isPassword
               containerStyle={{marginTop: 14}}
-              value={register.rePassword}
+              value={register.confirmPassword}
               onChangeText={e =>
                 updateRegister({
                   type: 'HANDLE_INPUT_TEXT',
-                  field: 'rePassword',
+                  field: 'confirmPassword',
                   payload: e,
                 })
               }
-              ref={stringFieldRefs[posInd('re-password')]}
-              blurOnSubmit={isLast('re-password')}
-              returnKeyType={isLast('re-password') ? 'done' : 'next'}
+              ref={stringFieldRefs[posInd('confirmPassword')]}
+              blurOnSubmit={isLast('confirmPassword')}
+              returnKeyType={isLast('confirmPassword') ? 'done' : 'next'}
               onSubmitEditing={
-                isLast('re-password')
+                isLast('confirmPassword')
                   ? undefined
                   : () =>
-                      stringFieldRefs[posInd('re-password') + 1].current.focus()
+                      stringFieldRefs[
+                        posInd('confirmPassword') + 1
+                      ].current.focus()
               }
             />
           </View>

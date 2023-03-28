@@ -5,7 +5,7 @@ export type RegisterForm = {
   email: string;
   phoneNumber: string;
   password: string;
-  rePassword: string;
+  confirmPassword: string;
 };
 
 export type ReducerActionType = 'HANDLE_INPUT_TEXT' | 'HANDLE_INPUT_PHONE';

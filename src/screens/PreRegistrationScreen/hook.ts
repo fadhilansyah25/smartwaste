@@ -7,7 +7,7 @@ const registerFormInitialState: RegisterForm = {
   email: '',
   phoneNumber: '',
   password: '',
-  rePassword: '',
+  confirmPassword: '',
 };
 
 const stringFieldIDs = [
@@ -15,8 +15,8 @@ const stringFieldIDs = [
   'email',
   'phoneNumber',
   'password',
-  're-password',
-];
+  'confirmPassword',
+] as const;
 
 export const usePreRegis = ({navigation}: AuthStackProps) => {
   const handleToVerif = () => {
@@ -30,8 +30,10 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
 
   const stringFieldRefs = stringFieldIDs.map(() => useRef<any>());
 
-  const posInd = (id: string) => stringFieldIDs.indexOf(id);
-  const isLast = (id: string) => posInd(id) === stringFieldIDs.length - 1;
+  const posInd = (id: (typeof stringFieldIDs)[number]) =>
+    stringFieldIDs.indexOf(id);
+  const isLast = (id: (typeof stringFieldIDs)[number]) =>
+    posInd(id) === stringFieldIDs.length - 1;
 
   return {
     handleToVerif,
