@@ -9,3 +9,7 @@ export const firebaseAuthRegister = ({
 }) => {
   return auth().createUserWithEmailAndPassword(email, password);
 };
+
+export const verifyPhoneNumber = (phoneNumber: string) => {
+  return auth().verifyPhoneNumber(phoneNumber);
+};

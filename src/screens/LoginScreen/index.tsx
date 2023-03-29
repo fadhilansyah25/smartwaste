@@ -56,7 +56,7 @@ const LoginScreen = (screenProps: AuthStackProps) => {
               label="Kata Sandi"
               returnKeyType="next"
               isPassword
-              containerStyle={{marginTop: 14}}
+              containerStyle={{marginTop: 4}}
             />
           </View>
           <View style={{marginTop: 72, marginBottom: 60}}>

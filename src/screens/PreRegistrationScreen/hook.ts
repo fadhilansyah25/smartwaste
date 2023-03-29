@@ -1,5 +1,6 @@
 import {useReducer, useRef} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+import {firebaseAuthRegister, verifyPhoneNumber} from '../../services/firebase';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {
@@ -21,14 +22,32 @@ const stringFieldIDs = [
 ] as const;
 
 export const usePreRegis = ({navigation}: AuthStackProps) => {
-  const handleRegisterSubmit = () => {
-    navigation.navigate('AccVerification');
-  };
-
   const [register, updateRegister] = useReducer(
     registerFormReducer,
     registerFormInitialState,
   );
+
+  const handleRegisterSubmit = async () => {
+    if (
+      register.confirmPasswordErrorMessage === '' &&
+      register.passwordErrorMessage === '' &&
+      register.phoneNumberErrorMessage === '' &&
+      register.emailErrorMessage === ''
+    ) {
+      await firebaseAuthRegister({
+        email: register.email,
+        password: register.password,
+      }).catch(error => {
+        console.log(error.code);
+      });
+
+      await verifyPhoneNumber('+62 ' + register.phoneNumber).catch(error => {
+        console.log(error.code);
+      });
+
+      // navigation.navigate('AccVerification');
+    }
+  };
 
   const stringFieldRefs = stringFieldIDs.map(() => useRef<any>());
 
@@ -38,7 +57,7 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
     posInd(id) === stringFieldIDs.length - 1;
 
   return {
-    handleToVerif: handleRegisterSubmit,
+    handleRegisterSubmit,
     register,
     updateRegister,
     posInd,

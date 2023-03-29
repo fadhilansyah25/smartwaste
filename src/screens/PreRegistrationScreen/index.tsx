@@ -16,7 +16,7 @@ import InputPhoneNumber from '../../component/InputPhoneNumber';
 
 const PreRegistrationScreen = (screenProps: AuthStackProps) => {
   const {
-    handleToVerif,
+    handleRegisterSubmit,
     register,
     updateRegister,
     posInd,
@@ -69,7 +69,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               placeholder="855 2342 8900"
               label="No. Telepon"
               warningText={register.phoneNumberErrorMessage}
-              containerStyle={{marginTop: 8}}
+              containerStyle={{marginTop: 4}}
               value={register.phoneNumber}
               onChangeText={e => {
                 updateRegister({
@@ -94,7 +94,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               placeholder="Masukan kata sandi"
               label="Kata Sandi"
               isPassword
-              containerStyle={{marginTop: 8}}
+              containerStyle={{marginTop: 4}}
               value={register.password}
               onChangeText={e =>
                 updateRegister({
@@ -118,7 +118,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               placeholder="Masukan ulang kata sandi"
               label="Konfirmasi Kata Sandi"
               isPassword
-              containerStyle={{marginTop: 8}}
+              containerStyle={{marginTop: 4}}
               value={register.confirmPassword}
               onChangeText={e =>
                 updateRegister({
@@ -144,7 +144,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               label="Daftar"
               type="fill"
               style={{paddingVertical: 11}}
-              onPress={handleToVerif}
+              onPress={handleRegisterSubmit}
             />
             <Text style={style.discText}>
               Dengan mendaftar, anda telah menyetujui dan akan mengikuti seluruh
