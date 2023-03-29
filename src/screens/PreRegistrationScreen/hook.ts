@@ -21,7 +21,7 @@ const stringFieldIDs = [
 ] as const;
 
 export const usePreRegis = ({navigation}: AuthStackProps) => {
-  const handleToVerif = () => {
+  const handleRegisterSubmit = () => {
     navigation.navigate('AccVerification');
   };
 
@@ -38,7 +38,7 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
     posInd(id) === stringFieldIDs.length - 1;
 
   return {
-    handleToVerif,
+    handleToVerif: handleRegisterSubmit,
     register,
     updateRegister,
     posInd,
