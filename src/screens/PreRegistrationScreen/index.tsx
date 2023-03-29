@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -46,6 +46,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
           <View style={{marginTop: 28}}>
             <InputText
               keyboardType="email-address"
+              warningText={register.emailErrorMessage}
               placeholder="Masukan email"
               label="Email"
               value={register.email}
@@ -67,6 +68,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
             <InputPhoneNumber
               placeholder="855 2342 8900"
               label="No. Telepon"
+              warningText={register.phoneNumberErrorMessage}
               containerStyle={{marginTop: 8}}
               value={register.phoneNumber}
               onChangeText={e => {
@@ -88,6 +90,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
             />
             <InputText
               keyboardType="default"
+              warningText={register.passwordErrorMessage}
               placeholder="Masukan kata sandi"
               label="Kata Sandi"
               isPassword
@@ -111,8 +114,9 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
             />
             <InputText
               keyboardType="default"
-              placeholder="Masukan kata sandi"
-              label="Ulangi Kata Sandi"
+              warningText={register.confirmPasswordErrorMessage}
+              placeholder="Masukan ulang kata sandi"
+              label="Konfirmasi Kata Sandi"
               isPassword
               containerStyle={{marginTop: 8}}
               value={register.confirmPassword}

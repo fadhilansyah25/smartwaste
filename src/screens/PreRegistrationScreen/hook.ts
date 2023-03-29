@@ -8,6 +8,7 @@ const registerFormInitialState: RegisterForm = {
   password: '',
   confirmPassword: '',
   confirmPasswordErrorMessage: '',
+  phoneNumberErrorMessage: '',
   emailErrorMessage: '',
   passwordErrorMessage: '',
 };

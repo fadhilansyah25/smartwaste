@@ -1,7 +1,6 @@
 export const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 export const passwordFormat = /^(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
-export const firstNameFormat = /([a-zA-Z]{3,30}\s*)+/;
-export const lastNameFormat = /[a-zA-Z]{3,30}/;
+export const phoneNumberFormat = /^\+62\s\d{3}-\d{4}-\d{4,5}(?:(?<=\d)2)?$/;
 
 export const formatPhoneNumber = (text: string) => {
   let formattedText = text.split('-').join('');
