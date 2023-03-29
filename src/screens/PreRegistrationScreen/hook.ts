@@ -3,15 +3,16 @@ import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {
-  username: '',
   email: '',
   phoneNumber: '',
   password: '',
   confirmPassword: '',
+  confirmPasswordErrorMessage: '',
+  emailErrorMessage: '',
+  passwordErrorMessage: '',
 };
 
 const stringFieldIDs = [
-  'username',
   'email',
   'phoneNumber',
   'password',

@@ -43,38 +43,15 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               bertanggung jawab
             </Text>
           </View>
-          <View style={{marginTop: 45}}>
-            <InputText
-              placeholder="Masukan username"
-              label="Username"
-              value={register.username}
-              onChangeText={e =>
-                updateRegister({
-                  type: 'HANDLE_INPUT_TEXT',
-                  field: 'username',
-                  payload: e,
-                })
-              }
-              ref={stringFieldRefs[posInd('username')]}
-              blurOnSubmit={isLast('username')}
-              returnKeyType={isLast('username') ? 'done' : 'next'}
-              onSubmitEditing={
-                isLast('username')
-                  ? undefined
-                  : () =>
-                      stringFieldRefs[posInd('username') + 1].current.focus()
-              }
-            />
+          <View style={{marginTop: 28}}>
             <InputText
               keyboardType="email-address"
               placeholder="Masukan email"
               label="Email"
-              containerStyle={{marginTop: 14}}
               value={register.email}
               onChangeText={e =>
                 updateRegister({
-                  type: 'HANDLE_INPUT_TEXT',
-                  field: 'email',
+                  type: 'HANDLE_INPUT_EMAIL',
                   payload: e,
                 })
               }
@@ -90,12 +67,11 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
             <InputPhoneNumber
               placeholder="855 2342 8900"
               label="No. Telepon"
-              containerStyle={{marginTop: 14}}
+              containerStyle={{marginTop: 8}}
               value={register.phoneNumber}
               onChangeText={e => {
                 updateRegister({
-                  type: 'HANDLE_INPUT_TEXT',
-                  field: 'phoneNumber',
+                  type: 'HANDLE_INPUT_PHONE',
                   payload: e,
                 });
               }}
@@ -115,12 +91,11 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               placeholder="Masukan kata sandi"
               label="Kata Sandi"
               isPassword
-              containerStyle={{marginTop: 14}}
+              containerStyle={{marginTop: 8}}
               value={register.password}
               onChangeText={e =>
                 updateRegister({
-                  type: 'HANDLE_INPUT_TEXT',
-                  field: 'password',
+                  type: 'HANDLE_INPUT_PASSWORD',
                   payload: e,
                 })
               }
@@ -139,12 +114,11 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
               placeholder="Masukan kata sandi"
               label="Ulangi Kata Sandi"
               isPassword
-              containerStyle={{marginTop: 14}}
+              containerStyle={{marginTop: 8}}
               value={register.confirmPassword}
               onChangeText={e =>
                 updateRegister({
-                  type: 'HANDLE_INPUT_TEXT',
-                  field: 'confirmPassword',
+                  type: 'HANDLE_INPUT_CONFIRM_PASSWORD',
                   payload: e,
                 })
               }

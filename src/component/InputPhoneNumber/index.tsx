@@ -12,6 +12,7 @@ import {style} from './style';
 
 interface Props extends TextInputProps {
   label?: string;
+  warningText?: string;
   containerStyle?: StyleProp<ViewStyle>;
 }
 
@@ -38,6 +39,7 @@ const InputPhoneNumber = React.forwardRef(
             ref={ref}
           />
         </View>
+        <Text style={style.textWarning}>{props.warningText}</Text>
       </View>
     );
   },

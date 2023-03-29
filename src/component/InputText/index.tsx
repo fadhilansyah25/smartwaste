@@ -14,6 +14,7 @@ import {style} from './style';
 interface Props extends TextInputProps {
   label?: string;
   isPassword?: boolean;
+  warningText?: string;
   containerStyle?: StyleProp<ViewStyle>;
 }
 
@@ -48,6 +49,7 @@ const InputText = React.forwardRef(
             />
           ) : null}
         </View>
+        <Text style={style.textWarning}>{props.warningText}</Text>
       </View>
     );
   },

@@ -1,18 +1,23 @@
 import {formatPhoneNumber} from '../../utils/regexFormat';
 
 export type RegisterForm = {
-  username: string;
   email: string;
   phoneNumber: string;
   password: string;
   confirmPassword: string;
+  emailErrorMessage: string;
+  passwordErrorMessage: string;
+  confirmPasswordErrorMessage: string;
 };
 
-export type ReducerActionType = 'HANDLE_INPUT_TEXT' | 'HANDLE_INPUT_PHONE';
+export type ReducerActionType =
+  | 'HANDLE_INPUT_EMAIL'
+  | 'HANDLE_INPUT_PHONE'
+  | 'HANDLE_INPUT_PASSWORD'
+  | 'HANDLE_INPUT_CONFIRM_PASSWORD';
 
 type ReducerAction = {
   type: ReducerActionType;
-  field: keyof RegisterForm;
   payload: string;
 };
 
@@ -21,13 +26,17 @@ export const registerFormReducer = (
   action: ReducerAction,
 ) => {
   switch (action.type) {
-    case 'HANDLE_INPUT_TEXT':
+    case 'HANDLE_INPUT_EMAIL':
       return {
         ...state,
-        [action.field]: action.payload,
+        ['email']: action.payload,
       };
     case 'HANDLE_INPUT_PHONE':
-      state.phoneNumber = formatPhoneNumber(action.payload);
+      const formatedNumber = formatPhoneNumber(action.payload);
+      return {
+        ...state,
+        ['phoneNumber']: formatedNumber,
+      };
     default:
       return state;
   }

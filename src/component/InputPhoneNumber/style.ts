@@ -22,4 +22,9 @@ export const style = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
   },
+  textWarning: {
+    color: 'red',
+    marginVertical: 2,
+    fontSize: 10,
+  },
 });
