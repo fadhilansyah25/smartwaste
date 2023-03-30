@@ -9,6 +9,7 @@ import CustomHeader from '../../component/CustomHeader';
 import VerificationScreen from '../../screens/VerificationScreen';
 import PersonalDataFormScreen from '../../screens/PersonalDataFormScreen';
 import SuccessRegisterScreen from '../../screens/SuccessRegisterScreen';
+import {AppProvider} from '../../store/context';
 
 export type AuthStackParamaterList = {
   Login: undefined;
@@ -24,51 +25,53 @@ const AuthStack = createNativeStackNavigator<AuthStackParamaterList>();
 
 const AuthStackScreen = () => {
   return (
-    <AuthStack.Navigator
-      initialRouteName="Login"
-      screenOptions={{headerShown: false}}>
-      <AuthStack.Screen name="Login" component={LoginScreen} />
-      <AuthStack.Screen
-        name="PreRegister"
-        component={PreRegistrationScreen}
-        options={{
-          animation: 'slide_from_right',
-          headerShown: true,
-          header: props => (
-            <CustomHeader HeaderProps={props} LeftTitle="Pendaftaran" />
-          ),
-        }}
-      />
-      <AuthStack.Screen
-        name="AccVerification"
-        component={VerificationScreen}
-        options={{
-          animation: 'slide_from_right',
-          headerShown: true,
-          header: props => (
-            <CustomHeader HeaderProps={props} LeftTitle="Verifikasi Kode" />
-          ),
-        }}
-      />
-      <AuthStack.Screen
-        name="PersonalDataForm"
-        component={PersonalDataFormScreen}
-        options={{
-          animation: 'slide_from_right',
-          headerShown: true,
-          header: props => (
-            <CustomHeader HeaderProps={props} LeftTitle="Form Data Pribadi" />
-          ),
-        }}
-      />
-      <AuthStack.Screen
-        name="SuccessRegister"
-        component={SuccessRegisterScreen}
-        options={{
-          animation: 'slide_from_right',
-        }}
-      />
-    </AuthStack.Navigator>
+    <AppProvider>
+      <AuthStack.Navigator
+        initialRouteName="Login"
+        screenOptions={{headerShown: false}}>
+        <AuthStack.Screen name="Login" component={LoginScreen} />
+        <AuthStack.Screen
+          name="PreRegister"
+          component={PreRegistrationScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader HeaderProps={props} LeftTitle="Pendaftaran" />
+            ),
+          }}
+        />
+        <AuthStack.Screen
+          name="AccVerification"
+          component={VerificationScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader HeaderProps={props} LeftTitle="Verifikasi Kode" />
+            ),
+          }}
+        />
+        <AuthStack.Screen
+          name="PersonalDataForm"
+          component={PersonalDataFormScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader HeaderProps={props} LeftTitle="Form Data Pribadi" />
+            ),
+          }}
+        />
+        <AuthStack.Screen
+          name="SuccessRegister"
+          component={SuccessRegisterScreen}
+          options={{
+            animation: 'slide_from_right',
+          }}
+        />
+      </AuthStack.Navigator>
+    </AppProvider>
   );
 };
 

@@ -1,6 +1,8 @@
-import {useReducer, useRef} from 'react';
+import {useContext, useReducer, useRef} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {firebaseAuthRegister, verifyPhoneNumber} from '../../services/firebase';
+import {AppContext} from '../../store/context';
+import {Types} from '../../store/reducer';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {
@@ -22,6 +24,7 @@ const stringFieldIDs = [
 ] as const;
 
 export const usePreRegis = ({navigation}: AuthStackProps) => {
+  const {dispatch} = useContext(AppContext);
   const [register, updateRegister] = useReducer(
     registerFormReducer,
     registerFormInitialState,
@@ -37,15 +40,31 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
       await firebaseAuthRegister({
         email: register.email,
         password: register.password,
-      }).catch(error => {
-        console.log(error.code);
-      });
-
-      await verifyPhoneNumber('+62 ' + register.phoneNumber).catch(error => {
-        console.log(error.code);
-      });
-
-      // navigation.navigate('AccVerification');
+      })
+        .then(credential => {
+          dispatch({
+            type: Types.SetCredit,
+            payload: {
+              userCredential: credential,
+            },
+          });
+        })
+        .catch(error => {
+          console.log(error.code);
+        });
+      await verifyPhoneNumber('+62 ' + register.phoneNumber)
+        .then(confirmation => {
+          dispatch({
+            type: Types.SetConfirm,
+            payload: {
+              confirmation: confirmation,
+            },
+          });
+        })
+        .catch(error => {
+          console.log(error.code);
+        });
+      navigation.navigate('AccVerification');
     }
   };
 
