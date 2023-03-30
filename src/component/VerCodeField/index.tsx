@@ -42,8 +42,14 @@ const animateCell = ({hasValue, index, isFocused}: Props) => {
   ]).start();
 };
 
-const VerCodeField = () => {
-  const [value, setValue] = useState('');
+const VerCodeField = ({
+  value,
+  setValue,
+}: {
+  value: string;
+  setValue: (text: string) => void;
+}) => {
+  // const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,

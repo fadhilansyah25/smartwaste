@@ -1,4 +1,4 @@
-import auth from '@react-native-firebase/auth';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
 export const firebaseAuthRegister = ({
   email,
@@ -12,4 +12,11 @@ export const firebaseAuthRegister = ({
 
 export const verifyPhoneNumber = (phoneNumber: string) => {
   return auth().verifyPhoneNumber(phoneNumber);
+};
+
+export const confirmCode = (
+  confirm: FirebaseAuthTypes.PhoneAuthSnapshot,
+  code: string,
+) => {
+  return auth.PhoneAuthProvider.credential(confirm.verificationId, code);
 };

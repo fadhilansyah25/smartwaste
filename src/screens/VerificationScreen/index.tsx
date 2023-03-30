@@ -3,18 +3,21 @@ import {
   Image,
   KeyboardAvoidingView,
   SafeAreaView,
-  ScrollView,
   Text,
   View,
 } from 'react-native';
 import CustomButton from '../../component/Button';
 import VerCodeField from '../../component/VerCodeField';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+import {AppContext} from '../../store/context';
 import {useVerificationScreen} from './hook';
 import {style} from './style';
 
 const VerificationScreen = (screenProps: AuthStackProps) => {
-  const {handleToPersonalForm} = useVerificationScreen(screenProps);
+  const {handleConfirmCode, code, setCode} = useVerificationScreen(screenProps);
+  const {state} = React.useContext(AppContext);
+
+  console.log(code);
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -34,7 +37,7 @@ const VerificationScreen = (screenProps: AuthStackProps) => {
                 sms ke no. telepon anda
               </Text>
               <View style={{marginTop: 56}}>
-                <VerCodeField />
+                <VerCodeField value={code} setValue={setCode} />
                 <Text
                   style={{
                     marginTop: 32,
@@ -50,7 +53,7 @@ const VerificationScreen = (screenProps: AuthStackProps) => {
                 label="Submit"
                 type="fill"
                 style={{paddingVertical: 11}}
-                onPress={handleToPersonalForm}
+                onPress={handleConfirmCode}
               />
             </View>
           </View>
