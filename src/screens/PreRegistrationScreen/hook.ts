@@ -31,41 +31,41 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
   );
 
   const handleRegisterSubmit = async () => {
-    if (
-      register.confirmPasswordErrorMessage === '' &&
-      register.passwordErrorMessage === '' &&
-      register.phoneNumberErrorMessage === '' &&
-      register.emailErrorMessage === ''
-    ) {
-      await firebaseAuthRegister({
-        email: register.email,
-        password: register.password,
-      })
-        .then(credential => {
-          dispatch({
-            type: Types.SetCredit,
-            payload: {
-              userCredential: credential,
-            },
-          });
-        })
-        .catch(error => {
-          console.log(error.code);
-        });
-      await verifyPhoneNumber('+62 ' + register.phoneNumber)
-        .then(confirmation => {
-          dispatch({
-            type: Types.SetConfirm,
-            payload: {
-              confirmation: confirmation,
-            },
-          });
-        })
-        .catch(error => {
-          console.log(error.code);
-        });
-      navigation.navigate('AccVerification');
-    }
+    // if (
+    //   register.confirmPasswordErrorMessage === '' &&
+    //   register.passwordErrorMessage === '' &&
+    //   register.phoneNumberErrorMessage === '' &&
+    //   register.emailErrorMessage === ''
+    // ) {
+    //   await verifyPhoneNumber('+62 ' + register.phoneNumber)
+    //     .then(async confirmation => {
+    //       dispatch({
+    //         type: Types.SetConfirm,
+    //         payload: {
+    //           confirmation: confirmation,
+    //         },
+    //       });
+    //       await firebaseAuthRegister({
+    //         email: register.email,
+    //         password: register.password,
+    //       })
+    //         .then(credential => {
+    //           dispatch({
+    //             type: Types.SetCredit,
+    //             payload: {
+    //               userCredential: credential,
+    //             },
+    //           });
+    //         })
+    //         .catch(error => {
+    //           console.log(error.code);
+    //         });
+    //     })
+    //     .catch(error => {
+    //       console.log(error.code);
+    //     });
+    // }
+    navigation.navigate('AccVerification');
   };
 
   const stringFieldRefs = stringFieldIDs.map(() => useRef<any>());

@@ -9,15 +9,11 @@ import {
 import CustomButton from '../../component/Button';
 import VerCodeField from '../../component/VerCodeField';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {AppContext} from '../../store/context';
 import {useVerificationScreen} from './hook';
 import {style} from './style';
 
 const VerificationScreen = (screenProps: AuthStackProps) => {
   const {handleConfirmCode, code, setCode} = useVerificationScreen(screenProps);
-  const {state} = React.useContext(AppContext);
-
-  console.log(code);
 
   return (
     <SafeAreaView style={style.screenContainer}>
