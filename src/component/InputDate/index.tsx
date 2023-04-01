@@ -35,6 +35,9 @@ const InputDate = (props: Props) => {
       mode: 'date',
       onChange(_, date) {
         setInitialDate(date as Date);
+        if (props.onChangeDate) {
+          props.onChangeDate(_, date);
+        }
       },
       maximumDate: initialDate,
     });

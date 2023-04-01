@@ -10,7 +10,6 @@ import InputDate from '../../component/InputDate';
 import InputText from '../../component/InputText';
 import SelectListDropDown from '../../component/SelectList';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {minBirthday} from '../../utils/getInitialDate';
 import {
   selectDistrict,
   selectProvincies,
@@ -20,13 +19,11 @@ import {usePersonalDataFromScreen} from './hook';
 import {style} from './style';
 
 const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
-  const {handleSubmit} = usePersonalDataFromScreen(screenProps);
-  const [provSelected, setProvSelected] = React.useState(11);
-  const [regcSelected, setRegcSelected] = React.useState(1101);
-  const [distSelected, setDistSelected] = React.useState(1101010);
+  const {handleSubmit, state, dispatch} =
+    usePersonalDataFromScreen(screenProps);
 
-  let regionData = selectRegency(provSelected);
-  let districtData = selectDistrict(regcSelected);
+  let regionData = selectRegency(state.provincesID);
+  let districtData = selectDistrict(state.regencyID);
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -41,10 +38,25 @@ const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
             <InputText
               placeholder="Nama sesuai KTP"
               label="Nama"
-              returnKeyType="next"
+              onChangeText={text =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    fullName: text,
+                  },
+                })
+              }
             />
             <InputDate
-              initialDate={minBirthday}
+              initialDate={state.birthDate}
+              onChangeDate={(_, date) =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    birthDate: date,
+                  },
+                })
+              }
               placeholder="DD/MM/YYYY"
               label="Tanggal Lahir"
               keyboardType="numeric"
@@ -58,10 +70,25 @@ const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
               containerStyle={{marginTop: 14}}
               multiline={true}
               numberOfLines={3}
+              onChangeText={text =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    address: text,
+                  },
+                })
+              }
             />
             <SelectListDropDown
               label="Provinsi"
-              setSelected={(val: any) => setProvSelected(val)}
+              setSelected={(val: any) =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    provincesID: val,
+                  },
+                })
+              }
               data={selectProvincies}
               boxStyles={{borderRadius: 5, paddingVertical: 15}}
               dropdownStyles={{borderRadius: 5}}
@@ -71,7 +98,14 @@ const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
             />
             <SelectListDropDown
               label="Kabupaten"
-              setSelected={(val: any) => setRegcSelected(val)}
+              setSelected={(val: any) =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    regencyID: val,
+                  },
+                })
+              }
               data={regionData}
               boxStyles={{borderRadius: 5, paddingVertical: 15}}
               dropdownStyles={{borderRadius: 5}}
@@ -81,7 +115,14 @@ const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
             />
             <SelectListDropDown
               label="Kecamatan"
-              setSelected={(val: any) => setDistSelected(val)}
+              setSelected={(val: any) =>
+                dispatch({
+                  type: 'Handle_Input',
+                  payload: {
+                    districtID: val,
+                  },
+                })
+              }
               data={districtData}
               boxStyles={{borderRadius: 5, paddingVertical: 15}}
               dropdownStyles={{borderRadius: 5}}

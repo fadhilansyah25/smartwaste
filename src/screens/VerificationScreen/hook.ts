@@ -9,22 +9,23 @@ export const useVerificationScreen = ({navigation}: AuthStackProps) => {
   const {state} = useContext(AppContext);
 
   const handleConfirmCode = async () => {
-    // try {
-    //   const credential = confirmCode(
-    //     state.confirmation as FirebaseAuthTypes.PhoneAuthSnapshot,
-    //     code,
-    //   );
-    //   let userData = await auth().currentUser!.linkWithCredential(credential);
-    //   console.log(userData);
-    // } catch (error: any) {
-    //   if (error.code == 'auth/invalid-verification-code') {
-    //     console.log('Invalid code.');
-    //   } else {
-    //     console.log('Account linking error');
-    //   }
-    // }
+    try {
+      const credential = confirmCode(
+        state.confirmation as FirebaseAuthTypes.PhoneAuthSnapshot,
+        code,
+      );
+      let userData = await auth().currentUser!.linkWithCredential(credential);
+      console.log(userData);
 
-    navigation.navigate('PersonalDataForm');
+      //
+      navigation.navigate('PersonalDataForm');
+    } catch (error: any) {
+      if (error.code == 'auth/invalid-verification-code') {
+        console.log('Invalid code.');
+      } else {
+        console.log('Account linking error');
+      }
+    }
   };
 
   return {handleConfirmCode, code, setCode} as const;

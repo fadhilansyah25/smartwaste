@@ -31,41 +31,50 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
   );
 
   const handleRegisterSubmit = async () => {
-    // if (
-    //   register.confirmPasswordErrorMessage === '' &&
-    //   register.passwordErrorMessage === '' &&
-    //   register.phoneNumberErrorMessage === '' &&
-    //   register.emailErrorMessage === ''
-    // ) {
-    //   await verifyPhoneNumber('+62 ' + register.phoneNumber)
-    //     .then(async confirmation => {
-    //       dispatch({
-    //         type: Types.SetConfirm,
-    //         payload: {
-    //           confirmation: confirmation,
-    //         },
-    //       });
-    //       await firebaseAuthRegister({
-    //         email: register.email,
-    //         password: register.password,
-    //       })
-    //         .then(credential => {
-    //           dispatch({
-    //             type: Types.SetCredit,
-    //             payload: {
-    //               userCredential: credential,
-    //             },
-    //           });
-    //         })
-    //         .catch(error => {
-    //           console.log(error.code);
-    //         });
-    //     })
-    //     .catch(error => {
-    //       console.log(error.code);
-    //     });
-    // }
-    navigation.navigate('AccVerification');
+    if (
+      register.confirmPasswordErrorMessage === '' &&
+      register.passwordErrorMessage === '' &&
+      register.phoneNumberErrorMessage === '' &&
+      register.emailErrorMessage === ''
+    ) {
+      // verify phone number
+      await verifyPhoneNumber('+62 ' + register.phoneNumber)
+        .then(async confirmation => {
+          dispatch({
+            type: Types.SetConfirm,
+            payload: {
+              confirmation: confirmation,
+            },
+          });
+
+          // create an account
+          await firebaseAuthRegister({
+            email: register.email,
+            password: register.password,
+          })
+            .then(credential => {
+              dispatch({
+                type: Types.SetCredit,
+                payload: {
+                  userCredential: credential,
+                },
+              });
+
+              // nvaigate to verfication phone code screen
+              navigation.navigate('AccVerification');
+            })
+            // catch error from create account
+            .catch(error => {
+              console.log(error.code);
+            });
+          // end of create an account function
+        })
+        // catch error from verify phone number
+        .catch(error => {
+          console.log(error.code);
+        });
+      // end of verify phone number function
+    }
   };
 
   const stringFieldRefs = stringFieldIDs.map(() => useRef<any>());
