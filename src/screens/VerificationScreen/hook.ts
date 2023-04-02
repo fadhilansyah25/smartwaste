@@ -14,8 +14,7 @@ export const useVerificationScreen = ({navigation}: AuthStackProps) => {
         state.confirmation as FirebaseAuthTypes.PhoneAuthSnapshot,
         code,
       );
-      let userData = await auth().currentUser!.linkWithCredential(credential);
-      console.log(userData);
+      const _ = await auth().currentUser!.linkWithCredential(credential);
 
       //
       navigation.navigate('PersonalDataForm');
