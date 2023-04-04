@@ -14,7 +14,8 @@ import {style} from './style';
 import {useLoginScreen} from './hook';
 
 const LoginScreen = (screenProps: AuthStackProps) => {
-  const {handleToRegister} = useLoginScreen(screenProps);
+  const {handleToRegister, state, dispatch, handleLogin} =
+    useLoginScreen(screenProps);
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -48,15 +49,31 @@ const LoginScreen = (screenProps: AuthStackProps) => {
               keyboardType="email-address"
               placeholder="Masukan email atau No. telepon"
               label="Email / No. Telepon"
-              returnKeyType="next"
+              value={state.email}
+              returnKeyType="done"
+              warningText={state.emailErrorMessage}
+              onChangeText={e =>
+                dispatch({
+                  type: 'HANDLE_INPUT_EMAIL',
+                  payload: e,
+                })
+              }
             />
             <InputText
               keyboardType="default"
               placeholder="Masukan kata sandi"
               label="Kata Sandi"
-              returnKeyType="next"
+              value={state.password}
               isPassword
+              returnKeyType="done"
+              warningText={state.passwordErrorMessage}
               containerStyle={{marginTop: 4}}
+              onChangeText={e =>
+                dispatch({
+                  type: 'HANDLE_INPUT_PASSWORD',
+                  payload: e,
+                })
+              }
             />
           </View>
           <View style={{marginTop: 72, marginBottom: 60}}>
@@ -64,6 +81,7 @@ const LoginScreen = (screenProps: AuthStackProps) => {
               label="Masuk"
               type="fill"
               style={{paddingVertical: 11}}
+              onPress={handleLogin}
             />
             <View style={style.horizontalRule} />
             <Text style={style.ctaRegsiterText}>Belum Terdaftar?</Text>

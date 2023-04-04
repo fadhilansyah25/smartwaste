@@ -32,3 +32,13 @@ export const firebaseCreateUser = (UserData: {
 }) => {
   return firestore().collection('User').add(UserData);
 };
+
+export const fireBaseAuthLogin = ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
+  return auth().signInWithEmailAndPassword(email, password);
+};
