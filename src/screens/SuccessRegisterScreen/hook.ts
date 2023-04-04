@@ -1,8 +1,8 @@
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+import {RootStackProps} from '../../App';
 
-export const useSuccesRegisterScreen = ({navigation}: AuthStackProps) => {
+export const useSuccesRegisterScreen = ({navigation}: RootStackProps) => {
   const handleToLogin = () => {
-    navigation.navigate('Login');
+    navigation.navigate('Main');
   };
 
   return {handleToLogin} as const;

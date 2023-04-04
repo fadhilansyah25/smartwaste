@@ -5,15 +5,30 @@ import {
   SafeAreaView,
   Text,
   View,
+  BackHandler,
 } from 'react-native';
 import CustomButton from '../../component/Button';
 import VerCodeField from '../../component/VerCodeField';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {useVerificationScreen} from './hook';
 import {style} from './style';
+import {useFocusEffect} from '@react-navigation/native';
 
 const VerificationScreen = (screenProps: AuthStackProps) => {
   const {handleConfirmCode, code, setCode} = useVerificationScreen(screenProps);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, []),
+  );
 
   return (
     <SafeAreaView style={style.screenContainer}>

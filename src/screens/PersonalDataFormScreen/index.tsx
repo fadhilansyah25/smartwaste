@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   ScrollView,
   View,
+  BackHandler,
 } from 'react-native';
 import CustomButton from '../../component/Button';
 import InputDate from '../../component/InputDate';
@@ -17,6 +18,7 @@ import {
 } from '../../utils/regionSorts';
 import {usePersonalDataFromScreen} from './hook';
 import {style} from './style';
+import {useFocusEffect} from '@react-navigation/native';
 
 const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
   const {handleSubmit, state, dispatch} =
@@ -24,6 +26,19 @@ const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
 
   let regionData = selectRegency(state.provincesID);
   let districtData = selectDistrict(state.regencyID);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, []),
+  );
 
   return (
     <SafeAreaView style={style.screenContainer}>

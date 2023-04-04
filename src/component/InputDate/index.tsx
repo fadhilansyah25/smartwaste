@@ -39,7 +39,7 @@ const InputDate = (props: Props) => {
           props.onChangeDate(_, date);
         }
       },
-      maximumDate: initialDate,
+      maximumDate: props.initialDate,
     });
   };
 

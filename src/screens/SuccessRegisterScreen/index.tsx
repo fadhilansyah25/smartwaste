@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, SafeAreaView, Text, View} from 'react-native';
 import CustomButton from '../../component/Button';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {useSuccesRegisterScreen} from './hook';
 import {style} from './style';
+import {RootStackProps} from '../../App';
 
-const SuccessRegisterScreen = (ScreenProps: AuthStackProps) => {
+const SuccessRegisterScreen = (ScreenProps: RootStackProps) => {
   const {handleToLogin} = useSuccesRegisterScreen(ScreenProps);
 
   return (

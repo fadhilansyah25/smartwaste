@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, View, StyleSheet, Image, Text} from 'react-native';
 import {RootStackProps} from '../../App';
 import {colors} from '../../const/colors';
+import auth from '@react-native-firebase/auth';
 
 const SplashScreen = ({navigation}: RootStackProps) => {
   const [animating, setAnimating] = useState(true);
@@ -9,7 +10,9 @@ const SplashScreen = ({navigation}: RootStackProps) => {
   useEffect(() => {
     setTimeout(() => {
       setAnimating(false);
-      navigation.navigate('Auth');
+      const user = auth().currentUser;
+
+      navigation.replace(!user ? 'Auth' : 'Main');
     }, 2000);
   }, []);
 
