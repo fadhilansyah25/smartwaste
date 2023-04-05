@@ -23,6 +23,7 @@ export const confirmCode = (
 };
 
 export const firebaseCreateUser = (UserData: {
+  uid: string
   fullName: string;
   birthDate: Date;
   address: string;

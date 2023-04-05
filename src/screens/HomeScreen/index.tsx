@@ -13,6 +13,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
+        <Text>{auth().currentUser?.displayName}</Text>
         <TouchableOpacity onPress={handleSignOut}>
           <Text>Log Out</Text>
         </TouchableOpacity>

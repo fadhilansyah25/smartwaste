@@ -24,6 +24,12 @@ export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
       state.address !== '' &&
       context.state.userCredential?.user.uid
     ) {
+      await context.state.userCredential?.user
+        .updateProfile({displayName: state.fullName})
+        .catch(error => {
+          console.log(error.code);
+        });
+
       await firebaseCreateUser({
         uid: context.state.userCredential?.user.uid,
         ...state,
