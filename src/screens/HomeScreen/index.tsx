@@ -1,7 +1,14 @@
-import {SafeAreaView, ScrollView, TouchableOpacity, Text} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+  View,
+} from 'react-native';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
 import {RootStackProps} from '../../App';
+import {colors} from '../../const/colors';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   const handleSignOut = () => {
@@ -13,7 +20,12 @@ const HomeScreen = ({navigation}: RootStackProps) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
-        <Text>{auth().currentUser?.displayName}</Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={{color: colors.T600, fontWeight: '600', fontSize: 16}}>
+            Selamat Datang!
+          </Text>
+          <Text>{auth().currentUser?.displayName}</Text>
+        </View>
         <TouchableOpacity onPress={handleSignOut}>
           <Text>Log Out</Text>
         </TouchableOpacity>
