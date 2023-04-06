@@ -37,7 +37,7 @@ const AuthStackScreen = () => {
             animation: 'slide_from_right',
             headerShown: true,
             header: props => (
-              <CustomHeader HeaderProps={props} LeftTitle="Pendaftaran" />
+              <CustomHeader headerProps={props} rightTitle="Pendaftaran" />
             ),
           }}
         />
@@ -48,7 +48,7 @@ const AuthStackScreen = () => {
             animation: 'slide_from_right',
             headerShown: true,
             header: props => (
-              <CustomHeader HeaderProps={props} LeftTitle="Verifikasi Kode" />
+              <CustomHeader headerProps={props} rightTitle="Verifikasi Kode" />
             ),
           }}
         />
@@ -59,7 +59,7 @@ const AuthStackScreen = () => {
             animation: 'slide_from_right',
             headerShown: true,
             header: props => (
-              <CustomHeader HeaderProps={props} LeftTitle="Form Data Pribadi" />
+              <CustomHeader headerProps={props} rightTitle="Form Data Pribadi" />
             ),
           }}
         />

@@ -5,9 +5,9 @@ import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 
 const CustomHeader = (props: {
   backButton?: boolean;
-  headerLeft?: React.ReactNode;
-  HeaderProps?: NativeStackHeaderProps;
-  LeftTitle?: string;
+  headerRight?: React.ReactNode;
+  headerProps?: NativeStackHeaderProps;
+  rightTitle?: string;
 }) => {
   return (
     <View
@@ -27,7 +27,7 @@ const CustomHeader = (props: {
         elevation: 5,
       }}>
       {props.backButton ? (
-        <TouchableOpacity onPress={props.HeaderProps?.navigation.goBack}>
+        <TouchableOpacity onPress={props.headerProps?.navigation.goBack}>
           <Octicons
             size={28}
             name="chevron-left"
@@ -40,7 +40,7 @@ const CustomHeader = (props: {
         style={{height: 40, resizeMode: 'contain', width: 100}}
         source={require('../../assets/image/companylogo-small.png')}
       />
-      {props.LeftTitle ? (
+      {props.rightTitle ? (
         <Text
           style={{
             flex: 1,
@@ -49,10 +49,10 @@ const CustomHeader = (props: {
             color: colors.T500,
             fontSize: 14,
           }}>
-          {props.LeftTitle}
+          {props.rightTitle}
         </Text>
       ) : (
-        props.headerLeft
+        props.headerRight
       )}
     </View>
   );

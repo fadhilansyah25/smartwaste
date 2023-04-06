@@ -4,6 +4,9 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/HomeScreen';
+import CustomHeader from '../../component/CustomHeader';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {colors} from '../../const/colors';
 
 export type HomeStackParamaterList = {
   Home: undefined;
@@ -18,8 +21,30 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator
       initialRouteName="Home"
       screenOptions={{headerShown: false}}>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: true,
+          header: props => (
+            <CustomHeader
+              headerProps={props}
+              headerRight={<RightHeaderIcon />}
+            />
+          ),
+        }}
+      />
     </HomeStack.Navigator>
+  );
+};
+
+const RightHeaderIcon = () => {
+  return (
+    <MaterialIcons
+      style={{flex: 1, textAlign: 'right'}}
+      name="headset-mic"
+      color={colors.T600}
+      size={24}></MaterialIcons>
   );
 };
 
