@@ -20,6 +20,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
+        {/* Greetings bar and avatar */}
         <View
           style={{
             flexDirection: 'row',
@@ -55,6 +56,10 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             </View>
           </View>
         </View>
+
+        {/* Main Banner */}
+        <View></View>
+
         <TouchableOpacity onPress={handleSignOut}>
           <Text>Log Out</Text>
         </TouchableOpacity>
