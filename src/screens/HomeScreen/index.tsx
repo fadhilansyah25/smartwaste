@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  Dimensions,
 } from 'react-native';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
@@ -12,6 +13,8 @@ import {RootStackProps} from '../../App';
 import {colors} from '../../const/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomButton from '../../component/Button';
+
+const minHeight = Dimensions.get('screen').height;
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   const handleSignOut = () => {
@@ -22,7 +25,8 @@ const HomeScreen = ({navigation}: RootStackProps) => {
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled">
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{minHeight: minHeight}}>
         {/* Greetings bar and avatar */}
         <View style={style.greetingsBarContainer}>
           <Text style={{color: colors.T600, fontWeight: '600', fontSize: 16}}>
@@ -55,6 +59,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
                 alignItems: 'center',
                 paddingVertical: 14,
                 paddingHorizontal: 16,
+                gap: 10,
               }}>
               <View style={{flex: 1}}>
                 <Text
@@ -90,10 +95,6 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             />
           </LinearGradient>
         </View>
-
-        <TouchableOpacity onPress={handleSignOut}>
-          <Text>Log Out</Text>
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

@@ -3,7 +3,6 @@ import {colors} from '../../const/colors';
 
 export const style = StyleSheet.create({
   screenContainer: {
-    paddingHorizontal: 20,
     backgroundColor: colors.white,
   },
   greetingsBarContainer: {
@@ -11,6 +10,7 @@ export const style = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 14,
+    marginHorizontal: 20,
   },
   avatarBagde: {
     height: 40,
@@ -26,7 +26,19 @@ export const style = StyleSheet.create({
     color: colors.T600,
   },
   mainBannerContainer: {
+    marginHorizontal: 20,
     marginTop: 20,
+    borderRadius: 10,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+
+    elevation: 4,
   },
   mainBannerGradient: {
     borderRadius: 10,
