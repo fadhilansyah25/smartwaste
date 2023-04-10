@@ -29,22 +29,19 @@ export const style = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
     borderRadius: 10,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-
     elevation: 4,
   },
   mainBannerGradient: {
-    borderRadius: 10,
+    borderRadius: 11,
     width: '100%',
   },
   illustration: {
     resizeMode: 'contain',
+  },
+  linearCardContainer: {
+    flex: 1,
+    borderRadius: 11,
+    padding: 12,
+    justifyContent: 'space-between',
   },
 });
