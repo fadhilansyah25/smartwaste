@@ -13,6 +13,9 @@ import {colors} from '../../const/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomButton from '../../component/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import VespaSvg from '../../assets/svg/vespa.svg';
+import BoxSvg from '../../assets/svg/box.svg';
+import GiftSvg from '../../assets/svg/gift.svg';
 
 const minHeight = Dimensions.get('screen').height;
 
@@ -28,13 +31,16 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           <Text style={{color: colors.T600, fontWeight: '600', fontSize: 16}}>
             Selamat Datang!
           </Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            {/* display name */}
             <View style={{marginRight: 10}}>
               <Text style={style.displayName}>
                 {auth().currentUser?.displayName}
               </Text>
               <Text style={{fontSize: 12, lineHeight: 12}}>volunter</Text>
             </View>
+
+            {/* Avatar Badge */}
             <View style={style.avatarBagde}>
               <Text style={{textAlign: 'center'}}>FA</Text>
             </View>
@@ -182,6 +188,62 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           </View>
         </View>
 
+        {/* Menu Button Container */}
+        <View>
+          <View style={style.menuButtonContainer}>
+            {/* Button Jemput Sampah */}
+            <View style={{alignItems: 'center', gap: 8}}>
+              <View
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 56,
+                  backgroundColor: '#C3E2A4',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <VespaSvg />
+              </View>
+              <Text style={{fontSize: 12, fontWeight: '700'}}>
+                Jemput Sampah
+              </Text>
+            </View>
+
+            {/* Button Kirim Sampah */}
+            <View style={{alignItems: 'center', gap: 8}}>
+              <View
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 56,
+                  backgroundColor: 'rgba(189, 0, 255, 0.19)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <BoxSvg />
+              </View>
+              <Text style={{fontSize: 12, fontWeight: '700'}}>
+                Kirim Sampah
+              </Text>
+            </View>
+
+            {/* Button Poin Sampah */}
+            <View style={{alignItems: 'center', gap: 8}}>
+              <View
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 56,
+                  backgroundColor: 'rgba(44, 90, 252, 0.27)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <GiftSvg />
+              </View>
+              <Text style={{fontSize: 12, fontWeight: '700'}}>Redeem Poin</Text>
+            </View>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
