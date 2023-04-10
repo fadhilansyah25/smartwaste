@@ -5,6 +5,8 @@ import {
   View,
   Image,
   Dimensions,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
@@ -16,6 +18,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import VespaSvg from '../../assets/svg/vespa.svg';
 import BoxSvg from '../../assets/svg/box.svg';
 import GiftSvg from '../../assets/svg/gift.svg';
+import {tutorData} from '../../const/const-data';
 
 const minHeight = Dimensions.get('screen').height;
 
@@ -106,7 +109,8 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             gap: 10,
             marginTop: 20,
           }}>
-          <View style={{flex: 1, height: 140}}>
+          {/* Card Sampah Terkirim  */}
+          <View style={{flex: 1, height: 132}}>
             <LinearGradient
               colors={['#4CB8C4', '#3CD3AD']}
               style={style.linearCardContainer}
@@ -147,7 +151,9 @@ const HomeScreen = ({navigation}: RootStackProps) => {
               </Text>
             </LinearGradient>
           </View>
-          <View style={{flex: 1, height: 140}}>
+
+          {/* Card Poin Tercapai */}
+          <View style={{flex: 1, height: 132}}>
             <LinearGradient
               colors={['#EABA3D', '#FEB47B']}
               style={style.linearCardContainer}
@@ -244,6 +250,61 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             </View>
           </View>
         </View>
+
+        {/* List Tutotrial */}
+        <View
+          style={{
+            marginVertical: 18,
+            borderBottomColor: colors.T500,
+            borderBottomWidth: 1,
+            marginHorizontal: 20,
+          }}
+        />
+        <Text style={{marginHorizontal: 20, fontSize: 16, fontWeight: '700'}}>
+          Tata Cara
+        </Text>
+        <FlatList
+          horizontal
+          data={tutorData}
+          contentContainerStyle={{marginTop: 20, paddingLeft: 20}}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <TouchableOpacity activeOpacity={0.5}>
+              <View
+                style={{
+                  width: 225,
+                  alignItems: 'center',
+                  borderColor: 'black',
+                  borderWidth: 2.5,
+                  marginRight: 20,
+                  borderRadius: 11,
+                  paddingHorizontal: 10,
+                  flex: 1,
+                  paddingVertical: 12
+                }}>
+                <Image
+                  source={item.imageUrl}
+                  resizeMethod={'resize'}
+                  resizeMode={'contain'}
+                />
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: 18,
+                    fontWeight: '600',
+                    textTransform: 'uppercase',
+                    marginTop: 8,
+                  }}>
+                  {item.title}
+                </Text>
+                <Text
+                  style={{textAlign: 'center', marginTop: 12, fontSize: 12}}>
+                  {item.description}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
       </ScrollView>
     </SafeAreaView>
   );
