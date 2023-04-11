@@ -4,8 +4,8 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
   FlatList,
+  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import {style} from './style';
@@ -18,17 +18,14 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import VespaSvg from '../../assets/svg/vespa.svg';
 import BoxSvg from '../../assets/svg/box.svg';
 import GiftSvg from '../../assets/svg/gift.svg';
-import {tutorData} from '../../const/const-data';
-
-const minHeight = Dimensions.get('screen').height;
+import {tutorData, tutorBannerData} from '../../const/const-data';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{minHeight: minHeight}}>
+        keyboardShouldPersistTaps="handled">
         {/* Greetings bar and avatar */}
         <View style={style.greetingsBarContainer}>
           <Text style={{color: colors.T600, fontWeight: '600', fontSize: 16}}>
@@ -251,7 +248,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           </View>
         </View>
 
-        {/* List Tutotrial */}
+        {/* List Tata Cara Pengiriman  */}
         <View
           style={{
             marginVertical: 18,
@@ -266,42 +263,98 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         <FlatList
           horizontal
           data={tutorData}
-          contentContainerStyle={{marginTop: 20, paddingLeft: 20}}
+          decelerationRate="fast"
+          contentContainerStyle={{
+            marginTop: 20,
+            paddingLeft: 20,
+            paddingVertical: 20,
+          }}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
-            <TouchableOpacity activeOpacity={0.5}>
-              <View
+            <View
+              style={{
+                width: 225,
+                alignItems: 'center',
+                borderColor: 'black',
+                borderWidth: 2.5,
+                marginRight: 20,
+                borderRadius: 11,
+                paddingHorizontal: 10,
+                backgroundColor: colors.white,
+                paddingBottom: 20,
+                elevation: 6,
+              }}>
+              <Image
+                source={item.imageUrl}
+                resizeMethod={'resize'}
+                resizeMode={'contain'}
+              />
+              <Text
                 style={{
-                  width: 225,
-                  alignItems: 'center',
-                  borderColor: 'black',
-                  borderWidth: 2.5,
-                  marginRight: 20,
-                  borderRadius: 11,
-                  paddingHorizontal: 10,
-                  flex: 1,
-                  paddingVertical: 12
+                  color: 'black',
+                  fontSize: 18,
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  textAlign: 'center',
+                  marginTop: 8,
                 }}>
-                <Image
-                  source={item.imageUrl}
-                  resizeMethod={'resize'}
-                  resizeMode={'contain'}
-                />
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 18,
-                    fontWeight: '600',
-                    textTransform: 'uppercase',
-                    marginTop: 8,
-                  }}>
-                  {item.title}
-                </Text>
-                <Text
-                  style={{textAlign: 'center', marginTop: 12, fontSize: 12}}>
-                  {item.description}
-                </Text>
-              </View>
+                {item.title}
+              </Text>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  marginTop: 12,
+                  fontSize: 12,
+                }}>
+                {item.description}
+              </Text>
+            </View>
+          )}
+        />
+
+        {/* List Tutorial */}
+        <View
+          style={{
+            marginVertical: 18,
+            borderBottomColor: colors.T500,
+            borderBottomWidth: 1,
+            marginHorizontal: 20,
+          }}
+        />
+        <Text style={{marginHorizontal: 20, fontSize: 16, fontWeight: '700'}}>
+          Panduan
+        </Text>
+        <FlatList
+          horizontal
+          data={tutorBannerData}
+          contentContainerStyle={{
+            marginTop: 12,
+            paddingLeft: 20,
+            marginBottom: 20,
+            paddingBottom: 20,
+          }}
+          decelerationRate="fast"
+          snapToInterval={Dimensions.get('window').width - 20}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{
+                marginRight: 20,
+                width: Dimensions.get('window').width - 40,
+                height: 190,
+                borderRadius: 25,
+                elevation: 4,
+              }}>
+              <Image
+                source={item.imageUrl}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  flex: 1,
+                  resizeMode: 'cover',
+                }}
+              />
             </TouchableOpacity>
           )}
         />

@@ -53,6 +53,6 @@ export const style = StyleSheet.create({
     paddingVertical: 18,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 28
+    paddingHorizontal: 28,
   },
 });

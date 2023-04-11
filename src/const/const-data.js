@@ -35,3 +35,26 @@ export const tutorData = [
       'Sampah yang Anda kirim akan kami terima dan catat untuk kemudian kami daur ulang secara optimal',
   },
 ];
+
+export const tutorBannerData = [
+  {
+    key: 1,
+    imageUrl: require('../assets/image/banner-tutorial-1.jpg'),
+  },
+  {
+    key: 2,
+    imageUrl: require('../assets/image/banner-tutorial-2.jpg'),
+  },
+  {
+    key: 3,
+    imageUrl: require('../assets/image/banner-tutorial-3.jpg'),
+  },
+  {
+    key: 4,
+    imageUrl: require('../assets/image/banner-tutorial-4.jpg'),
+  },
+  {
+    key: 5,
+    imageUrl: require('../assets/image/banner-tutorial-5.jpg'),
+  },
+];
