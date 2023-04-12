@@ -19,7 +19,7 @@ import VespaSvg from '../../assets/svg/vespa.svg';
 import BoxSvg from '../../assets/svg/box.svg';
 import GiftSvg from '../../assets/svg/gift.svg';
 import {tutorData, tutorBannerData} from '../../const/const-data';
-import AvatarBadge from '../../component/AvatarBadge';
+import GreetingsBar from '../../component/GreetingsBar';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -28,23 +28,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
         {/* Greetings bar and avatar */}
-        <View style={style.greetingsBarContainer}>
-          <Text style={{color: colors.T600, fontWeight: '600', fontSize: 16}}>
-            Selamat Datang!
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            {/* display name */}
-            <View style={{marginRight: 10}}>
-              <Text style={style.displayName}>
-                {auth().currentUser?.displayName}
-              </Text>
-              <Text style={{fontSize: 12, lineHeight: 12}}>volunter</Text>
-            </View>
-
-            {/* Avatar Badge */}
-            <AvatarBadge label={auth().currentUser?.displayName as string} />
-          </View>
-        </View>
+        <GreetingsBar displayName={auth().currentUser?.displayName as string} />
 
         {/* Main Banner */}
         <View style={style.mainBannerContainer}>
