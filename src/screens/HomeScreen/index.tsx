@@ -19,6 +19,7 @@ import VespaSvg from '../../assets/svg/vespa.svg';
 import BoxSvg from '../../assets/svg/box.svg';
 import GiftSvg from '../../assets/svg/gift.svg';
 import {tutorData, tutorBannerData} from '../../const/const-data';
+import AvatarBadge from '../../component/AvatarBadge';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -41,9 +42,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             </View>
 
             {/* Avatar Badge */}
-            <View style={style.avatarBagde}>
-              <Text style={{textAlign: 'center'}}>FA</Text>
-            </View>
+            <AvatarBadge label={auth().currentUser?.displayName as string} />
           </View>
         </View>
 
