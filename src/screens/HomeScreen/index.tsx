@@ -12,14 +12,14 @@ import {style} from './style';
 import auth from '@react-native-firebase/auth';
 import {RootStackProps} from '../../App';
 import {colors} from '../../const/colors';
-import LinearGradient from 'react-native-linear-gradient';
-import CustomButton from '../../component/Button';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import VespaSvg from '../../assets/svg/vespa.svg';
 import BoxSvg from '../../assets/svg/box.svg';
 import GiftSvg from '../../assets/svg/gift.svg';
 import {tutorData, tutorBannerData} from '../../const/const-data';
 import GreetingsBar from '../../component/GreetingsBar';
+import MainBanner from '../../component/MainBanner';
+import DataCard from '../DataCard';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -31,55 +31,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         <GreetingsBar displayName={auth().currentUser?.displayName as string} />
 
         {/* Main Banner */}
-        <View style={style.mainBannerContainer}>
-          <LinearGradient
-            colors={['#4CB8C4', '#3CD3AD']}
-            style={style.mainBannerGradient}
-            start={{x: 0, y: 0}}
-            end={{x: 0.7, y: 0}}>
-            {/* Banner text copy */}
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingVertical: 14,
-                paddingHorizontal: 16,
-                gap: 10,
-              }}>
-              <View style={{flex: 1}}>
-                <Text
-                  style={{
-                    color: colors.white,
-                    fontSize: 18,
-                    fontWeight: '700',
-                  }}>
-                  Send Your Waste
-                </Text>
-                <Text style={{color: colors.white, fontSize: 12}}>
-                  Yuk buat transaksi pertamamu! Packing kemasan bekas Anda dan
-                  kirim ke mitra Smart Waste
-                </Text>
-              </View>
-              <View style={{alignItems: 'center'}}>
-                <Image
-                  source={require('../../assets/image/illustration-5.png')}
-                  style={style.illustration}
-                />
-              </View>
-            </View>
-
-            {/* Banner Button */}
-            <CustomButton
-              style={{
-                backgroundColor: colors.O800,
-                marginVertical: 14,
-                marginHorizontal: 16,
-              }}
-              label="Kirim Sekarang"
-              type="fill"
-            />
-          </LinearGradient>
-        </View>
+        <MainBanner />
 
         {/* Data Card */}
         <View
@@ -90,88 +42,38 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             marginTop: 20,
           }}>
           {/* Card Sampah Terkirim  */}
-          <View style={{flex: 1, height: 132}}>
-            <LinearGradient
-              colors={['#4CB8C4', '#3CD3AD']}
-              style={style.linearCardContainer}
-              start={{x: 0, y: 0}}
-              end={{x: 0.7, y: 0}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}>
-                <View
-                  style={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: 24,
-                    backgroundColor: '#EABA3D',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Icon
-                    name="trash"
-                    size={12}
-                    color={colors.white}
-                    style={{top: -0.5, left: -0.5}}
-                  />
-                </View>
-                <Text style={{fontWeight: '700', color: colors.white}}>
-                  Sampah Terkirim
-                </Text>
-              </View>
-              <Text
-                style={{fontSize: 22, fontWeight: '700', color: colors.white}}>
-                10,75
-              </Text>
-              <Text style={{color: colors.white, fontWeight: '600'}}>
-                Kilogram
-              </Text>
-            </LinearGradient>
-          </View>
+          <DataCard
+            backgroundColor={['#4CB8C4', '#3CD3AD']}
+            data={10.75}
+            title="Sampah Terkirim"
+            units="Kilogram"
+            iconContainerColor="#EABA3D"
+            icon={
+              <Icon
+                name="trash"
+                size={12}
+                color={colors.white}
+                style={{top: -0.5, left: -0.5}}
+              />
+            }
+          />
 
           {/* Card Poin Tercapai */}
-          <View style={{flex: 1, height: 132}}>
-            <LinearGradient
-              colors={['#EABA3D', '#FEB47B']}
-              style={style.linearCardContainer}
-              start={{x: 0, y: 0}}
-              end={{x: 0.7, y: 0}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}>
-                <View
-                  style={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: 24,
-                    backgroundColor: '#4CB8C4',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Icon
-                    name="coins"
-                    size={12}
-                    color={colors.white}
-                    style={{top: -0.5, left: -0.5}}
-                  />
-                </View>
-                <Text style={{fontWeight: '700', color: colors.white}}>
-                  Poin Tercapai
-                </Text>
-              </View>
-              <Text
-                style={{fontSize: 22, fontWeight: '700', color: colors.white}}>
-                1.200
-              </Text>
-              <Text style={{color: colors.white, fontWeight: '600'}}>Poin</Text>
-            </LinearGradient>
-          </View>
+          <DataCard
+            backgroundColor={['#EABA3D', '#FEB47B']}
+            data={1200}
+            title="Jumlah Poin"
+            units="Poin"
+            iconContainerColor="#4CB8C4"
+            icon={
+              <Icon
+                name="coins"
+                size={12}
+                color={colors.white}
+                style={{top: -0.5, left: -0.5}}
+              />
+            }
+          />
         </View>
 
         {/* Menu Button Container */}
@@ -248,9 +150,8 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           data={tutorData}
           decelerationRate="fast"
           contentContainerStyle={{
-            marginTop: 20,
             paddingLeft: 20,
-            paddingVertical: 20,
+            marginTop: 20,
           }}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (

@@ -5,19 +5,6 @@ export const style = StyleSheet.create({
   screenContainer: {
     backgroundColor: colors.white,
   },
-  mainBannerContainer: {
-    marginHorizontal: 20,
-    marginTop: 20,
-    borderRadius: 10,
-    elevation: 4,
-  },
-  mainBannerGradient: {
-    borderRadius: 11,
-    width: '100%',
-  },
-  illustration: {
-    resizeMode: 'contain',
-  },
   linearCardContainer: {
     flex: 1,
     borderRadius: 11,
