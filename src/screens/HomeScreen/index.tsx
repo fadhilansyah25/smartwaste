@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {tutorData, tutorBannerData} from '../../const/const-data';
 import GreetingsBar from '../../component/GreetingsBar';
 import MainBanner from '../../component/MainBanner';
-import DataCard from '../DataCard';
+import DataCard from '../../component/DataCard';
 import MenuButtonContainer from '../../component/MenuButtonContainer';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
