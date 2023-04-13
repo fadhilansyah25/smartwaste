@@ -6,19 +6,22 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
+import {
+  GreetingsBar,
+  MainBanner,
+  AchivementCard,
+  MenuButtonContainer,
+  HorizontalRule,
+  GuideCard,
+  TutorialCard,
+} from '@src/component/common-component';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
-import {RootStackProps} from '../../App';
-import {colors} from '../../const/colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {tutorData, tutorBannerData} from '../../const/const-data';
-import GreetingsBar from '../../component/GreetingsBar';
-import MainBanner from '../../component/MainBanner';
-import AchivementCard from '../../component/Card/AchivementCard';
-import MenuButtonContainer from '../../component/MenuButtonContainer';
-import GuideCard from '../../component/Card/GuideCard';
-import TutorialCard from '../../component/Card/TutorialCard';
-import HorizontalRule from '../../component/HorizontalRule';
+import {RootStackProps} from '@src/App';
+import {colors} from '@src/const/colors';
+
+import {tutorBannerData, tutorData} from '@src/const/const-data';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
