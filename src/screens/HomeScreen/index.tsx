@@ -3,10 +3,8 @@ import {
   ScrollView,
   Text,
   View,
-  Image,
   FlatList,
   Dimensions,
-  TouchableOpacity,
 } from 'react-native';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
@@ -19,6 +17,8 @@ import MainBanner from '../../component/MainBanner';
 import AchivementCard from '../../component/Card/AchivementCard';
 import MenuButtonContainer from '../../component/MenuButtonContainer';
 import GuideCard from '../../component/Card/GuideCard';
+import TutorialCard from '../../component/Card/TutorialCard';
+import HorizontalRule from '../../component/HorizontalRule';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -33,13 +33,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         <MainBanner />
 
         {/* Data Card */}
-        <View
-          style={{
-            marginHorizontal: 20,
-            flexDirection: 'row',
-            gap: 10,
-            marginTop: 20,
-          }}>
+        <View style={style.dataCardSection}>
           {/* Card Sampah Terkirim  */}
           <AchivementCard
             backgroundColor={['#4CB8C4', '#3CD3AD']}
@@ -79,17 +73,12 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         <MenuButtonContainer />
 
         {/* List Tata Cara Pengiriman  */}
-        <View
-          style={{
-            marginVertical: 18,
-            borderBottomColor: colors.T500,
-            borderBottomWidth: 1,
-            marginHorizontal: 20,
-          }}
+        <HorizontalRule
+          borderWidth={1}
+          borderColor={colors.T500}
+          style={{marginHorizontal: 20, marginVertical: 18}}
         />
-        <Text style={{marginHorizontal: 20, fontSize: 16, fontWeight: '700'}}>
-          Tata Cara
-        </Text>
+        <Text style={style.subtitleText}>Tata Cara</Text>
         <FlatList
           horizontal
           data={tutorData}
@@ -109,51 +98,20 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         />
 
         {/* List Tutorial */}
-        <View
-          style={{
-            marginVertical: 18,
-            borderBottomColor: colors.T500,
-            borderBottomWidth: 1,
-            marginHorizontal: 20,
-          }}
+        <HorizontalRule
+          borderWidth={1}
+          borderColor={colors.T500}
+          style={{marginHorizontal: 20, marginVertical: 18}}
         />
-        <Text style={{marginHorizontal: 20, fontSize: 16, fontWeight: '700'}}>
-          Panduan
-        </Text>
+        <Text style={style.subtitleText}>Panduan</Text>
         <FlatList
           horizontal
           data={tutorBannerData}
-          contentContainerStyle={{
-            marginTop: 12,
-            paddingLeft: 20,
-            marginBottom: 20,
-            paddingBottom: 20,
-          }}
+          contentContainerStyle={style.listTutorialContainer}
           decelerationRate="fast"
           snapToInterval={Dimensions.get('window').width - 20}
           showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              activeOpacity={0.9}
-              style={{
-                marginRight: 20,
-                width: Dimensions.get('window').width - 40,
-                height: 190,
-                elevation: 4,
-                borderRadius: 20
-              }}>
-              <Image
-                source={item.imageUrl}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  flex: 1,
-                  resizeMode: 'contain',
-                  backgroundColor: colors.white,
-                }}
-              />
-            </TouchableOpacity>
-          )}
+          renderItem={({item}) => <TutorialCard imageUrl={item.imageUrl} />}
         />
       </ScrollView>
     </SafeAreaView>
