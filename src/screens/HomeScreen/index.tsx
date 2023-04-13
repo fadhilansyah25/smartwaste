@@ -13,13 +13,11 @@ import auth from '@react-native-firebase/auth';
 import {RootStackProps} from '../../App';
 import {colors} from '../../const/colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import VespaSvg from '../../assets/svg/vespa.svg';
-import BoxSvg from '../../assets/svg/box.svg';
-import GiftSvg from '../../assets/svg/gift.svg';
 import {tutorData, tutorBannerData} from '../../const/const-data';
 import GreetingsBar from '../../component/GreetingsBar';
 import MainBanner from '../../component/MainBanner';
 import DataCard from '../DataCard';
+import MenuButtonContainer from '../../component/MenuButtonContainer';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -77,61 +75,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
         </View>
 
         {/* Menu Button Container */}
-        <View>
-          <View style={style.menuButtonContainer}>
-            {/* Button Jemput Sampah */}
-            <View style={{alignItems: 'center', gap: 8}}>
-              <View
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 56,
-                  backgroundColor: '#C3E2A4',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <VespaSvg />
-              </View>
-              <Text style={{fontSize: 12, fontWeight: '700'}}>
-                Jemput Sampah
-              </Text>
-            </View>
-
-            {/* Button Kirim Sampah */}
-            <View style={{alignItems: 'center', gap: 8}}>
-              <View
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 56,
-                  backgroundColor: 'rgba(189, 0, 255, 0.19)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <BoxSvg />
-              </View>
-              <Text style={{fontSize: 12, fontWeight: '700'}}>
-                Kirim Sampah
-              </Text>
-            </View>
-
-            {/* Button Poin Sampah */}
-            <View style={{alignItems: 'center', gap: 8}}>
-              <View
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 56,
-                  backgroundColor: 'rgba(44, 90, 252, 0.27)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <GiftSvg />
-              </View>
-              <Text style={{fontSize: 12, fontWeight: '700'}}>Redeem Poin</Text>
-            </View>
-          </View>
-        </View>
+        <MenuButtonContainer />
 
         {/* List Tata Cara Pengiriman  */}
         <View
@@ -166,7 +110,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
                 paddingHorizontal: 10,
                 backgroundColor: colors.white,
                 paddingBottom: 20,
-                elevation: 6,
+                elevation: 4,
               }}>
               <Image
                 source={item.imageUrl}
@@ -222,7 +166,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <TouchableOpacity
-              activeOpacity={0.8}
+              activeOpacity={0.9}
               style={{
                 marginRight: 20,
                 width: Dimensions.get('window').width - 40,

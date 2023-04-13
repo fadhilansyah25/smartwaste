@@ -11,15 +11,4 @@ export const style = StyleSheet.create({
     padding: 12,
     justifyContent: 'space-between',
   },
-  menuButtonContainer: {
-    marginHorizontal: 20,
-    backgroundColor: colors.white,
-    marginTop: 20,
-    borderRadius: 11,
-    elevation: 4,
-    paddingVertical: 18,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 28,
-  },
 });
