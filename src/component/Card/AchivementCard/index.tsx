@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {colors} from '../../const/colors';
+import {colors} from '../../../const/colors';
 
 interface Props {
   backgroundColor: string[];
@@ -12,7 +12,7 @@ interface Props {
   iconContainerColor?: string;
 }
 
-const DataCard = ({
+const AchivementCard = ({
   backgroundColor,
   title,
   data,
@@ -70,4 +70,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default DataCard;
+export default AchivementCard;

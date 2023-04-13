@@ -16,8 +16,9 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {tutorData, tutorBannerData} from '../../const/const-data';
 import GreetingsBar from '../../component/GreetingsBar';
 import MainBanner from '../../component/MainBanner';
-import DataCard from '../../component/DataCard';
+import AchivementCard from '../../component/Card/AchivementCard';
 import MenuButtonContainer from '../../component/MenuButtonContainer';
+import GuideCard from '../../component/Card/GuideCard';
 
 const HomeScreen = ({navigation}: RootStackProps) => {
   return (
@@ -40,7 +41,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
             marginTop: 20,
           }}>
           {/* Card Sampah Terkirim  */}
-          <DataCard
+          <AchivementCard
             backgroundColor={['#4CB8C4', '#3CD3AD']}
             data={10.75}
             title="Sampah Terkirim"
@@ -57,7 +58,7 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           />
 
           {/* Card Poin Tercapai */}
-          <DataCard
+          <AchivementCard
             backgroundColor={['#EABA3D', '#FEB47B']}
             data={1200}
             title="Jumlah Poin"
@@ -99,44 +100,11 @@ const HomeScreen = ({navigation}: RootStackProps) => {
           }}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
-            <View
-              style={{
-                width: 225,
-                alignItems: 'center',
-                borderColor: 'black',
-                borderWidth: 2.5,
-                marginRight: 20,
-                borderRadius: 11,
-                paddingHorizontal: 10,
-                backgroundColor: colors.white,
-                paddingBottom: 20,
-                elevation: 4,
-              }}>
-              <Image
-                source={item.imageUrl}
-                resizeMethod={'resize'}
-                resizeMode={'contain'}
-              />
-              <Text
-                style={{
-                  color: 'black',
-                  fontSize: 18,
-                  fontWeight: '600',
-                  textTransform: 'uppercase',
-                  textAlign: 'center',
-                  marginTop: 8,
-                }}>
-                {item.title}
-              </Text>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  marginTop: 12,
-                  fontSize: 12,
-                }}>
-                {item.description}
-              </Text>
-            </View>
+            <GuideCard
+              imageUrl={item.imageUrl}
+              title={item.title}
+              desc={item.description}
+            />
           )}
         />
 
@@ -171,8 +139,8 @@ const HomeScreen = ({navigation}: RootStackProps) => {
                 marginRight: 20,
                 width: Dimensions.get('window').width - 40,
                 height: 190,
-                borderRadius: 25,
                 elevation: 4,
+                borderRadius: 20
               }}>
               <Image
                 source={item.imageUrl}
@@ -180,7 +148,8 @@ const HomeScreen = ({navigation}: RootStackProps) => {
                   width: '100%',
                   height: '100%',
                   flex: 1,
-                  resizeMode: 'cover',
+                  resizeMode: 'contain',
+                  backgroundColor: colors.white,
                 }}
               />
             </TouchableOpacity>
