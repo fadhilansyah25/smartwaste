@@ -21,5 +21,5 @@ export const style = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 20,
     paddingBottom: 20,
-  }
+  },
 });
