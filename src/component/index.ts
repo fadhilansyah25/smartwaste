@@ -27,5 +27,5 @@ export {
   MainBanner,
   MenuButtonContainer,
   SelectListDropDown,
-  VerCodeField
+  VerCodeField,
 };

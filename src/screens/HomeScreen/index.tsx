@@ -14,7 +14,7 @@ import {
   HorizontalRule,
   GuideCard,
   TutorialCard,
-} from '@src/component/common-component';
+} from '@src/component';
 import {style} from './style';
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome5';
