@@ -1,11 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../../const/colors';
+import {colors} from '@src/const/colors';
 import HomeStackScreen from '../StackNavigation/HomeStackScreen';
+import TransactionsStackScreen from '../StackNavigation/TransactionsStackScreen';
 
 export type RootParamaterList = {
   HomeStack: undefined;
+  TransactionsStack: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootParamaterList>();
@@ -44,7 +46,11 @@ const MainTab = () => {
         headerShown: false,
         tabBarShowLabel: false,
       })}>
-      <Tab.Screen name="HomeStack" component={HomeStackScreen}></Tab.Screen>
+      <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+      <Tab.Screen
+        name="TransactionsStack"
+        component={TransactionsStackScreen}
+      />
     </Tab.Navigator>
   );
 };

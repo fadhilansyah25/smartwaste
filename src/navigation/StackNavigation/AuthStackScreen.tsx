@@ -3,13 +3,13 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import PreRegistrationScreen from '../../screens/PreRegistrationScreen';
-import LoginScreen from '../../screens/LoginScreen';
-import CustomHeader from '../../component/CustomHeader';
-import VerificationScreen from '../../screens/VerificationScreen';
-import PersonalDataFormScreen from '../../screens/PersonalDataFormScreen';
-import SuccessRegisterScreen from '../../screens/SuccessRegisterScreen';
-import {AppProvider} from '../../store/context';
+import PreRegistrationScreen from '@src/screens/PreRegistrationScreen';
+import LoginScreen from '@src/screens/LoginScreen';
+import CustomHeader from '@src/component/CustomHeader';
+import VerificationScreen from '@src/screens/VerificationScreen';
+import PersonalDataFormScreen from '@src/screens/PersonalDataFormScreen';
+import SuccessRegisterScreen from '@src/screens/SuccessRegisterScreen';
+import {AppProvider} from '@src/store/context';
 
 export type AuthStackParamaterList = {
   Login: undefined;

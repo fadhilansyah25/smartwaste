@@ -3,10 +3,10 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import HomeScreen from '../../screens/HomeScreen';
-import CustomHeader from '../../component/CustomHeader';
+import HomeScreen from '@src/screens/HomeScreen';
+import CustomHeader from '@src/component/CustomHeader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {colors} from '../../const/colors';
+import {colors} from '@src/const/colors';
 
 export type HomeStackParamaterList = {
   Home: undefined;
