@@ -3,12 +3,21 @@ import {colors} from '../../const/colors';
 import Octicons from 'react-native-vector-icons/Octicons';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 
-const CustomHeader = (props: {
+interface Props {
   backButton?: boolean;
   headerRight?: React.ReactNode;
   headerProps?: NativeStackHeaderProps;
   rightTitle?: string;
-}) => {
+  elevation?: number
+}
+
+const CustomHeader = ({
+  headerProps,
+  backButton,
+  headerRight,
+  rightTitle,
+  elevation = 5
+}: Props) => {
   return (
     <View
       style={{
@@ -24,10 +33,10 @@ const CustomHeader = (props: {
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5,
+        elevation: elevation,
       }}>
-      {props.backButton ? (
-        <TouchableOpacity onPress={props.headerProps?.navigation.goBack}>
+      {backButton ? (
+        <TouchableOpacity onPress={headerProps?.navigation.goBack}>
           <Octicons
             size={28}
             name="chevron-left"
@@ -40,7 +49,7 @@ const CustomHeader = (props: {
         style={{height: 40, resizeMode: 'contain', width: 100}}
         source={require('../../assets/image/companylogo-small.png')}
       />
-      {props.rightTitle ? (
+      {rightTitle ? (
         <Text
           style={{
             flex: 1,
@@ -49,10 +58,10 @@ const CustomHeader = (props: {
             color: colors.T500,
             fontSize: 14,
           }}>
-          {props.rightTitle}
+          {rightTitle}
         </Text>
       ) : (
-        props.headerRight
+        headerRight
       )}
     </View>
   );
