@@ -1,12 +1,13 @@
 import React from 'react';
+import {Text, View} from 'react-native';
 import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 import {CustomHeader} from '@src/component';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '@src/const/colors';
 import SearchMitraScreen from '@src/screens/SearchMitraScreen';
+import auth from '@react-native-firebase/auth';
 
 export type HomeStackParamaterList = {
   Home: undefined;
@@ -29,7 +30,10 @@ const TransactionsStackScreen = () => {
           header: props => (
             <CustomHeader
               headerProps={props}
-              headerRight={<RightHeaderIcon />}
+              backButton
+              logo={false}
+              headerRight={<RightHeader />}
+              headerCenter={<CenterHeader />}
               elevation={0}
             />
           ),
@@ -39,13 +43,29 @@ const TransactionsStackScreen = () => {
   );
 };
 
-const RightHeaderIcon = () => {
+const RightHeader = () => {
   return (
-    <MaterialIcons
-      style={{flex: 1, textAlign: 'right'}}
-      name="headset-mic"
-      color={colors.T600}
-      size={24}></MaterialIcons>
+    <Text
+      style={{
+        flex: 1,
+        textAlign: 'right',
+        fontWeight: '700',
+        color: colors.T500,
+      }}>
+      Ganti
+    </Text>
+  );
+};
+
+const CenterHeader = () => {
+  return (
+    <View style={{marginLeft: 20}}>
+      <Text style={{fontSize: 12, fontWeight: '600', color: colors.T500}}>
+        <Text style={{color: colors.N400}}>Lokasi Anda</Text>{'  '}
+        {auth().currentUser?.displayName}
+      </Text>
+      <Text style={{fontSize: 12}}>{auth().currentUser?.displayName}</Text>
+    </View>
   );
 };
 

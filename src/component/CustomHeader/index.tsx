@@ -6,9 +6,11 @@ import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 interface Props {
   backButton?: boolean;
   headerRight?: React.ReactNode;
+  headerCenter?: React.ReactNode;
   headerProps?: NativeStackHeaderProps;
   rightTitle?: string;
-  elevation?: number
+  elevation?: number;
+  logo?: boolean;
 }
 
 const CustomHeader = ({
@@ -16,7 +18,9 @@ const CustomHeader = ({
   backButton,
   headerRight,
   rightTitle,
-  elevation = 5
+  elevation = 5,
+  logo = true,
+  headerCenter,
 }: Props) => {
   return (
     <View
@@ -45,10 +49,13 @@ const CustomHeader = ({
           />
         </TouchableOpacity>
       ) : null}
-      <Image
-        style={{height: 40, resizeMode: 'contain', width: 100}}
-        source={require('../../assets/image/companylogo-small.png')}
-      />
+      {logo ? (
+        <Image
+          style={{height: 40, resizeMode: 'contain', width: 100}}
+          source={require('../../assets/image/companylogo-small.png')}
+        />
+      ) : null}
+      {headerCenter ? headerCenter : null}
       {rightTitle ? (
         <Text
           style={{
