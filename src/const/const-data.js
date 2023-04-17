@@ -73,4 +73,69 @@ export const mitra = [
     },
     phoneNumber: '087774502637',
   },
+  {
+    key: 2,
+    name: 'Bank Sampah Bumi Lestari',
+    address:
+      'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
+    closeHour: '08:00',
+    openHour: '16:00',
+    coordinate: {
+      lat: -6.2019779,
+      long: 106.7619407,
+    },
+    phoneNumber: '087774502637',
+  },
+  {
+    key: 3,
+    name: 'Bank Sampah Bumi Lestari',
+    address:
+      'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
+    closeHour: '08:00',
+    openHour: '16:00',
+    coordinate: {
+      lat: -6.2019779,
+      long: 106.7619407,
+    },
+    phoneNumber: '087774502637',
+  },
+  {
+    key: 4,
+    name: 'Bank Sampah Bumi Lestari',
+    address:
+      'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
+    closeHour: '08:00',
+    openHour: '16:00',
+    coordinate: {
+      lat: -6.2019779,
+      long: 106.7619407,
+    },
+    phoneNumber: '087774502637',
+  },
+  {
+    key: 5,
+    name: 'Bank Sampah Bumi Lestari',
+    address:
+      'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
+    closeHour: '08:00',
+    openHour: '16:00',
+    coordinate: {
+      lat: -6.2019779,
+      long: 106.7619407,
+    },
+    phoneNumber: '087774502637',
+  },
+  {
+    key: 6,
+    name: 'Bank Sampah Bumi Lestari',
+    address:
+      'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
+    closeHour: '08:00',
+    openHour: '16:00',
+    coordinate: {
+      lat: -6.2019779,
+      long: 106.7619407,
+    },
+    phoneNumber: '087774502637',
+  },
 ];

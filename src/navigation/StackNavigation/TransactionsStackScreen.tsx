@@ -30,6 +30,7 @@ const TransactionsStackScreen = () => {
             <CustomHeader
               headerProps={props}
               headerRight={<RightHeaderIcon />}
+              elevation={0}
             />
           ),
         }}

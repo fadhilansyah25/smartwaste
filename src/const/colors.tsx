@@ -8,15 +8,26 @@ export const colors = {
   yellow: '#FFFF00',
   orange: '#dde327',
   dark: '#222426',
+
+  // Smartwaste Color Pallete
+  // Tosca
   T900: '#062D51',
+  T800: '#0B3F62',
   T700: '#12587A',
   T500: '#2493AA',
   T600: '#1A7492',
   T100: '#E3F5F9',
+
+  // Neutral
+  N900: '#303030',
   N700: '#5E5E5E',
   N500: '#8C8C8C',
   N300: '#D1D1D1',
   N100: '#FCFCFC',
+
+  // Blue
   B800: '#2CA8EF',
+
+  // Orange
   O800: '#E5B63A',
 };
