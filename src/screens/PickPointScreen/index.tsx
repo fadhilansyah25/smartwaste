@@ -1,10 +1,9 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import {style} from './style';
 import Mapbox from '@rnmapbox/maps';
+import {MAP_BOX_TOKEN_ACCESS} from '@env';
 
-Mapbox.setAccessToken(
-  'pk.eyJ1IjoiZmFkaGlsYW5zeWFoMjUiLCJhIjoiY2t6MTJkdXU4MGZ4bjJ2cWZyYmxpcjRkeiJ9.M7A_UY3v9F8yFvyknwU5_g',
-);
+Mapbox.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
 function PickPointScreen() {
   return (
