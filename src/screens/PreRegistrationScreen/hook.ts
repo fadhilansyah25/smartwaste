@@ -1,8 +1,8 @@
 import {useContext, useReducer, useRef} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {firebaseAuthRegister, verifyPhoneNumber} from '../../services/firebase';
-import {AppContext} from '../../store/context';
-import {Types} from '../../store/reducer';
+import {RegisterContext} from '../../store/context/RegisterContext';
+import {Types} from '../../store/reducer/RegsiterReducer';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {
@@ -24,7 +24,7 @@ const stringFieldIDs = [
 ] as const;
 
 export const usePreRegis = ({navigation}: AuthStackProps) => {
-  const {dispatch} = useContext(AppContext);
+  const {dispatch} = useContext(RegisterContext);
   const [register, updateRegister] = useReducer(
     registerFormReducer,
     registerFormInitialState,

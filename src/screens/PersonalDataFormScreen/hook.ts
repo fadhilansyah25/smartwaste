@@ -3,7 +3,7 @@ import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {PersonalDataType, reducer} from './reducer';
 import {minBirthday} from '../../utils/getInitialDate';
 import {firebaseCreateUser} from '../../services/firebase';
-import {AppContext} from '../../store/context';
+import {RegisterContext} from '../../store/context/RegisterContext';
 
 const PersonalDataForm: PersonalDataType = {
   fullName: '',
@@ -16,7 +16,7 @@ const PersonalDataForm: PersonalDataType = {
 
 export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
   const [state, dispatch] = React.useReducer(reducer, PersonalDataForm);
-  const context = React.useContext(AppContext);
+  const context = React.useContext(RegisterContext);
 
   const handleSubmit = async () => {
     if (

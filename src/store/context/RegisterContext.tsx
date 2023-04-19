@@ -5,7 +5,7 @@ import {
   confirmationReducer,
   credentialReducer,
   UserCredentialActions,
-} from './reducer';
+} from '../reducer/RegsiterReducer';
 
 type InitialStateType = {
   confirmation: FirebaseAuthTypes.PhoneAuthSnapshot | null;
@@ -17,7 +17,7 @@ const initialState: InitialStateType = {
   userCredential: null,
 };
 
-const AppContext = React.createContext<{
+const RegisterContext = React.createContext<{
   state: InitialStateType;
   dispatch: React.Dispatch<ConfirmationActions | UserCredentialActions>;
 }>({
@@ -33,14 +33,14 @@ const mainReducer = (
   userCredential: credentialReducer(userCredential, action),
 });
 
-const AppProvider = ({children}: {children: React.ReactNode}) => {
+const RegisterProvider = ({children}: {children: React.ReactNode}) => {
   const [state, dispatch] = React.useReducer(mainReducer, initialState);
 
   return (
-    <AppContext.Provider value={{state, dispatch}}>
+    <RegisterContext.Provider value={{state, dispatch}}>
       {children}
-    </AppContext.Provider>
+    </RegisterContext.Provider>
   );
 };
 
-export {AppContext, AppProvider};
+export {RegisterContext, RegisterProvider};

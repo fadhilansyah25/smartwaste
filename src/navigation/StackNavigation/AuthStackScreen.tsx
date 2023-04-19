@@ -9,7 +9,7 @@ import CustomHeader from '@src/component/CustomHeader';
 import VerificationScreen from '@src/screens/VerificationScreen';
 import PersonalDataFormScreen from '@src/screens/PersonalDataFormScreen';
 import SuccessRegisterScreen from '@src/screens/SuccessRegisterScreen';
-import {AppProvider} from '@src/store/context';
+import {RegisterProvider} from '@src/store/context/RegisterContext';
 
 export type AuthStackParamaterList = {
   Login: undefined;
@@ -25,7 +25,7 @@ const AuthStack = createNativeStackNavigator<AuthStackParamaterList>();
 
 const AuthStackScreen = () => {
   return (
-    <AppProvider>
+    <RegisterProvider>
       <AuthStack.Navigator
         initialRouteName="Login"
         screenOptions={{headerShown: false}}>
@@ -71,7 +71,7 @@ const AuthStackScreen = () => {
           }}
         />
       </AuthStack.Navigator>
-    </AppProvider>
+    </RegisterProvider>
   );
 };
 

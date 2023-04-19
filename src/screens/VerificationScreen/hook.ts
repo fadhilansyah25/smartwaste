@@ -2,11 +2,11 @@ import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {useContext, useState} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {confirmCode} from '../../services/firebase';
-import {AppContext} from '../../store/context';
+import {RegisterContext} from '../../store/context/RegisterContext';
 
 export const useVerificationScreen = ({navigation}: AuthStackProps) => {
   const [code, setCode] = useState('');
-  const {state} = useContext(AppContext);
+  const {state} = useContext(RegisterContext);
 
   const handleConfirmCode = async () => {
     try {
