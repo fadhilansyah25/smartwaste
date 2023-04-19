@@ -10,6 +10,6 @@ export const style = StyleSheet.create({
     flex: 1,
   },
   map: {
-    flex: 1,
+    flex:1
   },
 });
