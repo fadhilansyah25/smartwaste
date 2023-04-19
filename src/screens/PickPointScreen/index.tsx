@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  PermissionsAndroid,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {PermissionsAndroid, SafeAreaView, View} from 'react-native';
 import {style} from './style';
 import MapboxGL, {UserLocation} from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
@@ -35,15 +29,15 @@ function PickPointScreen() {
   };
 
   React.useEffect(() => {
-    getLocation();
+    const delay = setTimeout(() => {
+      getLocation();
+    }, 1000);
+
+    return () => clearTimeout(delay);
   }, []);
 
   return (
     <SafeAreaView style={style.screenContainer}>
-      <Text>Pick Point</Text>
-      <TouchableOpacity onPress={() => getLocation()}>
-        <Text>Check Position</Text>
-      </TouchableOpacity>
       <View style={style.container}>
         {location ? (
           <MapboxGL.MapView

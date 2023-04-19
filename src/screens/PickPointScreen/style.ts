@@ -8,8 +8,10 @@ export const style = StyleSheet.create({
   },
   container: {
     flex: 1,
+    marginHorizontal: 20,
+    marginVertical: 20,
   },
   map: {
-    flex:1
+    flex: 1,
   },
 });

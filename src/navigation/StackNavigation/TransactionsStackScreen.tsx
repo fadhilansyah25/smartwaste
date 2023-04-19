@@ -48,6 +48,7 @@ const TransactionsStackScreen = () => {
         name="PickPoint"
         component={PickPointScreen}
         options={{
+          animation: 'slide_from_right',
           headerShown: true,
           header: props => (
             <CustomHeader
@@ -55,7 +56,7 @@ const TransactionsStackScreen = () => {
               backButton
               logo={false}
               headerCenter={<CenterHeader />}
-              elevation={0}
+              elevation={5}
             />
           ),
         }}
