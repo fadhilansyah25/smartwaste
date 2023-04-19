@@ -2,7 +2,7 @@ import {useContext, useReducer, useRef} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {firebaseAuthRegister, verifyPhoneNumber} from '../../services/firebase';
 import {RegisterContext} from '../../store/context/RegisterContext';
-import {Types} from '../../store/reducer/RegsiterReducer';
+import {Types} from '../../store/reducer/RegitserReducer';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {

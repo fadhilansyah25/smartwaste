@@ -5,7 +5,7 @@ import {
   confirmationReducer,
   credentialReducer,
   UserCredentialActions,
-} from '../reducer/RegsiterReducer';
+} from '../reducer/RegitserReducer';
 
 type InitialStateType = {
   confirmation: FirebaseAuthTypes.PhoneAuthSnapshot | null;

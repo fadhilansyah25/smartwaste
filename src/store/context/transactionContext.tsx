@@ -1,5 +1,5 @@
 import React from 'react';
-import {CoordinateActions, coordinateReducer} from '../reducer/transactionReducer';
+import { CoordinateActions, coordinateReducer } from '../reducer/TransactionReducer';
 
 export type InitialStateType = {
   coordinate: {
@@ -36,3 +36,5 @@ const TransactionProvider = ({children}: {children: React.ReactNode}) => {
     </TransactionContext.Provider>
   );
 };
+
+export {TransactionContext, TransactionProvider};

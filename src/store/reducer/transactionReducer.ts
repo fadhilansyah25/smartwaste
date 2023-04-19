@@ -1,4 +1,4 @@
-import {InitialStateType} from '../context/transactionContext';
+import {InitialStateType} from '../context/TransactionContext';
 
 type ActionMap<M extends {[index: string]: any}> = {
   [Key in keyof M]: M[Key] extends undefined
