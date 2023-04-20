@@ -1,9 +1,10 @@
 import React from 'react';
 import {PermissionsAndroid, SafeAreaView, View} from 'react-native';
 import {style} from './style';
-import MapboxGL, {UserLocation} from '@rnmapbox/maps';
+import MapboxGL from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 import Geolocation from 'react-native-geolocation-service';
+import MarkerSvg from '@src/assets/svg/map-marker.svg';
 
 MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
@@ -44,7 +45,8 @@ function PickPointScreen() {
             style={style.map}
             compassEnabled
             zoomEnabled
-            styleURL="mapbox://styles/mapbox/streets-v12">
+            styleURL="mapbox://styles/mapbox/streets-v12"
+            onPress={feat => console.log(feat)}>
             <MapboxGL.Camera
               // followUserLocation
               // followZoomLevel={15}
@@ -56,6 +58,16 @@ function PickPointScreen() {
             <MapboxGL.UserLocation
               androidRenderMode="normal"
               animated={false}
+            />
+            <MapboxGL.PointAnnotation
+              key="pointAnnotation"
+              id="pointAnnotation"
+              children={
+                <View>
+                  <MarkerSvg />
+                </View>
+              }
+              coordinate={location}
             />
           </MapboxGL.MapView>
         ) : null}
