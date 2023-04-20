@@ -1,15 +1,18 @@
 import React from 'react';
 import {PermissionsAndroid, SafeAreaView, View} from 'react-native';
 import {style} from './style';
-import MapboxGL from '@rnmapbox/maps';
+import MapboxGL, {MapView} from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 import Geolocation from 'react-native-geolocation-service';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
+import {Position} from '@rnmapbox/maps/lib/typescript/types/Position';
 
 MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
 function PickPointScreen() {
   const [location, setLocation] = React.useState<number[]>();
+  const [centerLoc, setCenterLoc] = React.useState<number[]>();
+  const mapRef = React.useRef<any | null>(null);
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -18,6 +21,7 @@ function PickPointScreen() {
         Geolocation.getCurrentPosition(
           position => {
             setLocation([position.coords.longitude, position.coords.latitude]);
+            setCenterLoc([position.coords.longitude, position.coords.latitude]);
           },
           error => {
             // See error code charts below.
@@ -43,13 +47,15 @@ function PickPointScreen() {
         {location ? (
           <MapboxGL.MapView
             style={style.map}
+            ref={mapRef}
             compassEnabled
             zoomEnabled
             styleURL="mapbox://styles/mapbox/streets-v12"
-            onPress={feat => console.log(feat)}>
+            onPress={feat => console.log(feat)}
+            onCameraChanged={mapState =>
+              setCenterLoc(mapState.properties.center)
+            }>
             <MapboxGL.Camera
-              // followUserLocation
-              // followZoomLevel={15}
               allowUpdates
               zoomLevel={15}
               animationMode="none"
@@ -64,10 +70,10 @@ function PickPointScreen() {
               id="pointAnnotation"
               children={
                 <View>
-                  <MarkerSvg />
+                  <MarkerSvg height={45} width={45} />
                 </View>
               }
-              coordinate={location}
+              coordinate={centerLoc as Position}
             />
           </MapboxGL.MapView>
         ) : null}
