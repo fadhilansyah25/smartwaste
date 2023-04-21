@@ -5,14 +5,18 @@ import MapboxGL, {MapView} from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 import Geolocation from 'react-native-geolocation-service';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
-import {Position} from '@rnmapbox/maps/lib/typescript/types/Position';
 
 MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
 function PickPointScreen() {
   const [location, setLocation] = React.useState<number[]>();
   const [centerLoc, setCenterLoc] = React.useState<number[]>();
-  const mapRef = React.useRef<any | null>(null);
+  const mapRef = React.useRef<MapboxGL.MapView | null>(null);
+
+  mapRef.current
+    ?.getCenter()
+    .then(val => setCenterLoc(val))
+    .catch(err => console.log(err));
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -45,37 +49,37 @@ function PickPointScreen() {
     <SafeAreaView style={style.screenContainer}>
       <View style={style.container}>
         {location ? (
-          <MapboxGL.MapView
-            style={style.map}
-            ref={mapRef}
-            compassEnabled
-            zoomEnabled
-            styleURL="mapbox://styles/mapbox/streets-v12"
-            onPress={feat => console.log(feat)}
-            onCameraChanged={mapState =>
-              setCenterLoc(mapState.properties.center)
-            }>
-            <MapboxGL.Camera
-              allowUpdates
-              zoomLevel={15}
-              animationMode="none"
-              centerCoordinate={location}
+          <View style={{flex: 1, position: 'relative'}}>
+            <MarkerSvg
+              style={{
+                position: 'absolute',
+                zIndex: 10,
+                right: '44%',
+                top: '46.2%',
+              }}
+              height={40}
+              width={40}
             />
-            <MapboxGL.UserLocation
-              androidRenderMode="normal"
-              animated={false}
-            />
-            <MapboxGL.PointAnnotation
-              key="pointAnnotation"
-              id="pointAnnotation"
-              children={
-                <View>
-                  <MarkerSvg height={45} width={45} />
-                </View>
-              }
-              coordinate={centerLoc as Position}
-            />
-          </MapboxGL.MapView>
+            <MapboxGL.MapView
+              style={style.map}
+              ref={mapRef}
+              compassEnabled
+              zoomEnabled
+              styleURL="mapbox://styles/mapbox/streets-v12"
+              onPress={feat => console.log(feat)}
+              scaleBarEnabled={false}>
+              <MapboxGL.Camera
+                allowUpdates
+                zoomLevel={15}
+                animationMode="none"
+                centerCoordinate={location}
+              />
+              <MapboxGL.UserLocation
+                androidRenderMode="normal"
+                animated={false}
+              />
+            </MapboxGL.MapView>
+          </View>
         ) : null}
       </View>
     </SafeAreaView>

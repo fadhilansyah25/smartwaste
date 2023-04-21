@@ -10,6 +10,7 @@ export const style = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
     marginVertical: 20,
+    position: 'relative',
   },
   map: {
     flex: 1,
