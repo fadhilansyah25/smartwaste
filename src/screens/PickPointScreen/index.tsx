@@ -1,7 +1,7 @@
 import React from 'react';
 import {PermissionsAndroid, SafeAreaView, View} from 'react-native';
 import {style} from './style';
-import MapboxGL, {MapView} from '@rnmapbox/maps';
+import MapboxGL from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 import Geolocation from 'react-native-geolocation-service';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
@@ -10,13 +10,10 @@ MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
 function PickPointScreen() {
   const [location, setLocation] = React.useState<number[]>();
-  const [centerLoc, setCenterLoc] = React.useState<number[]>();
-  const mapRef = React.useRef<MapboxGL.MapView | null>(null);
+  let mapRef = React.useRef<MapboxGL.MapView | null>(null);
 
-  mapRef.current
-    ?.getCenter()
-    .then(val => setCenterLoc(val))
-    .catch(err => console.log(err));
+  // Temporary Disable Center Loc
+  const [centerLoc, setCenterLoc] = React.useState<number[]>();
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -66,8 +63,10 @@ function PickPointScreen() {
               compassEnabled
               zoomEnabled
               styleURL="mapbox://styles/mapbox/streets-v12"
-              onPress={feat => console.log(feat)}
-              scaleBarEnabled={false}>
+              scaleBarEnabled={false}
+              onRegionDidChange={feat => {
+                setCenterLoc(feat.geometry.coordinates);
+              }}>
               <MapboxGL.Camera
                 allowUpdates
                 zoomLevel={15}
