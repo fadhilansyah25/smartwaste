@@ -34,6 +34,14 @@ function PickPointScreen() {
     });
   };
 
+  const reverseGeocoding = async (longitude: number, latitude: number) => {
+    let response = await fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${MAP_BOX_TOKEN_ACCESS}`,
+    );
+    let data = await response.json();
+    console.log('onPressInterestSite', data);
+  };
+
   React.useEffect(() => {
     const delay = setTimeout(() => {
       getLocation();
@@ -66,6 +74,10 @@ function PickPointScreen() {
               scaleBarEnabled={false}
               onRegionDidChange={feat => {
                 setCenterLoc(feat.geometry.coordinates);
+                reverseGeocoding(
+                  feat.geometry.coordinates[0],
+                  feat.geometry.coordinates[1],
+                );
               }}>
               <MapboxGL.Camera
                 allowUpdates
