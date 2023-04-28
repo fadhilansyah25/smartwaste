@@ -10,10 +10,7 @@ MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
 
 function PickPointScreen() {
   const [location, setLocation] = React.useState<number[]>();
-  let mapRef = React.useRef<MapboxGL.MapView | null>(null);
-
-  // Temporary Disable Center Loc
-  const [centerLoc, setCenterLoc] = React.useState<number[]>();
+  const [addrLocation, setAddrLocation] = React.useState<any>(null);
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -22,7 +19,6 @@ function PickPointScreen() {
         Geolocation.getCurrentPosition(
           position => {
             setLocation([position.coords.longitude, position.coords.latitude]);
-            setCenterLoc([position.coords.longitude, position.coords.latitude]);
           },
           error => {
             // See error code charts below.
@@ -34,12 +30,14 @@ function PickPointScreen() {
     });
   };
 
-  const reverseGeocoding = async (longitude: number, latitude: number) => {
-    let response = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${MAP_BOX_TOKEN_ACCESS}`,
+  const reverseGeocoding = async (
+    position: MapboxGL.MapState['properties']['center'],
+  ) => {
+    const response = await fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${position[0]},${position[1]}.json?access_token=${MAP_BOX_TOKEN_ACCESS}`,
     );
-    let data = await response.json();
-    console.log('onPressInterestSite', data);
+    const data = await response.json();
+    setAddrLocation(data);
   };
 
   React.useEffect(() => {
@@ -49,6 +47,10 @@ function PickPointScreen() {
 
     return () => clearTimeout(delay);
   }, []);
+
+  const handleMapIdle = (state: MapboxGL.MapState) => {
+    reverseGeocoding(state.properties.center);
+  };
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -67,18 +69,11 @@ function PickPointScreen() {
             />
             <MapboxGL.MapView
               style={style.map}
-              ref={mapRef}
               compassEnabled
               zoomEnabled
               styleURL="mapbox://styles/mapbox/streets-v12"
               scaleBarEnabled={false}
-              onRegionDidChange={feat => {
-                setCenterLoc(feat.geometry.coordinates);
-                reverseGeocoding(
-                  feat.geometry.coordinates[0],
-                  feat.geometry.coordinates[1],
-                );
-              }}>
+              onMapIdle={handleMapIdle}>
               <MapboxGL.Camera
                 allowUpdates
                 zoomLevel={15}

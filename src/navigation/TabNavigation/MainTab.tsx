@@ -51,14 +51,11 @@ const MainTab = () => {
       <Tab.Screen
         name="TransactionsStack"
         component={TransactionsStackScreen}
-        options={({ route }) => ({
-          tabBarStyle: ((route) => {
-            const routeName = getFocusedRouteNameFromRoute(route) ?? ""
-            console.log(routeName)
-            if (routeName === 'PickPoint') {
-              return { display: "none" }
-            }
-            return
+        options={({route}) => ({
+          tabBarStyle: (route => {
+            const routeName = getFocusedRouteNameFromRoute(route);
+            if (routeName === 'PickPoint') return {display: 'none'};
+            return;
           })(route),
         })}
       />
