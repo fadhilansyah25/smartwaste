@@ -1,4 +1,5 @@
 import React from 'react';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
@@ -50,6 +51,16 @@ const MainTab = () => {
       <Tab.Screen
         name="TransactionsStack"
         component={TransactionsStackScreen}
+        options={({ route }) => ({
+          tabBarStyle: ((route) => {
+            const routeName = getFocusedRouteNameFromRoute(route) ?? ""
+            console.log(routeName)
+            if (routeName === 'PickPoint') {
+              return { display: "none" }
+            }
+            return
+          })(route),
+        })}
       />
     </Tab.Navigator>
   );
