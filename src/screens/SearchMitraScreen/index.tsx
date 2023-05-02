@@ -4,46 +4,62 @@ import {style} from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import FilterSvg from '@src/assets/svg/filter.svg';
-import {mitra} from '@src/const/const-data';
+import {mitra as mitraData} from '@src/const/const-data';
 import {getDistanceFromLatLonInKm} from '@src/utils/regionSorts';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
+import Geolocation from 'react-native-geolocation-service';
+import {TransactionContext} from '@src/store/context/TransactionContext';
+import {Types} from '@src/store/reducer/TransactionReducer';
+import {requestLocationPermission} from '@src/utils/permissions';
 
 const SearchMitraScreen = () => {
-  // -6.266091, 106.613069
-  const newMitra = mitra.map(item => ({
-    ...item,
-    distance: getDistanceFromLatLonInKm(
-      -6.266091,
-      106.613069,
-      item.coordinate.lat,
-      item.coordinate.long,
-    ),
-  }));
+  const [mitra, setMitra] = React.useState<any>();
+  const {state, dispatch} = React.useContext(TransactionContext);
+
+  const getLocation = () => {
+    const result = requestLocationPermission();
+    result.then(res => {
+      if (res) {
+        Geolocation.getCurrentPosition(
+          position => {
+            dispatch({
+              type: Types.SetCoordinate,
+              payload: {
+                lat: position.coords.latitude,
+                long: position.coords.longitude,
+              },
+            });
+          },
+          error => {
+            // See error code charts below.
+            console.log(error.code, error.message);
+          },
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      }
+    });
+  };
+
+  React.useEffect(() => {
+    if (state.coordinate === null) getLocation();
+
+    const data = mitraData.map(item => ({
+      ...item,
+      distance: getDistanceFromLatLonInKm(
+        state.coordinate?.lat as number,
+        state.coordinate?.long as number,
+        item.coordinate.lat,
+        item.coordinate.long,
+      ),
+    }));
+    setMitra(data);
+  }, [state.coordinate]);
 
   return (
     <SafeAreaView style={style.screenContainer}>
       {/* Search Bar */}
-      <View
-        style={{
-          paddingHorizontal: 20,
-          paddingVertical: 12,
-          backgroundColor: colors.T100,
-          flexDirection: 'row',
-          alignItems: 'center',
-          elevation: 5,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            padding: 8,
-            columnGap: 10,
-            borderColor: colors.T500,
-            borderWidth: 1,
-            borderRadius: 4,
-            backgroundColor: colors.N100,
-            flex: 1,
-          }}>
+      <View style={style.searchBarContainer}>
+        <View style={style.searchBarContent}>
           <Icon name="ios-search" size={24} />
           <TextInput placeholder="Cari Mitra" style={{padding: 0, flex: 1}} />
         </View>
@@ -55,15 +71,8 @@ const SearchMitraScreen = () => {
       {/* Mitra List Card Data */}
       <View>
         <FlatList
-          data={newMitra}
-          contentContainerStyle={{
-            backgroundColor: colors.white,
-            paddingTop: 12,
-            paddingHorizontal: 20,
-            marginBottom: 20,
-            paddingBottom: 160,
-            minHeight: '100%',
-          }}
+          data={mitra}
+          contentContainerStyle={style.mitraListContainer}
           ItemSeparatorComponent={() => <View style={{height: 10}} />}
           renderItem={({item}) => (
             <View
