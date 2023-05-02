@@ -10,6 +10,7 @@ import {colors} from '@src/const/colors';
 import SearchMitraScreen from '@src/screens/SearchMitraScreen';
 import PickPointScreen from '@src/screens/PickPointScreen';
 import auth from '@react-native-firebase/auth';
+import {TransactionProvider} from '@src/store/context/TransactionContext';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
@@ -24,44 +25,46 @@ const TransactionStack =
 
 const TransactionsStackScreen = () => {
   return (
-    <TransactionStack.Navigator
-      initialRouteName="SearchMitra"
-      screenOptions={{headerShown: false}}>
-      <TransactionStack.Screen
-        name="SearchMitra"
-        component={SearchMitraScreen}
-        options={{
-          headerShown: true,
-          header: props => (
-            <CustomHeader
-              headerProps={props}
-              backButton
-              logo={false}
-              headerRight={<RightHeader />}
-              headerCenter={<CenterHeader />}
-              elevation={0}
-            />
-          ),
-        }}
-      />
-      <TransactionStack.Screen
-        name="PickPoint"
-        component={PickPointScreen}
-        options={{
-          animation: 'slide_from_right',
-          headerShown: true,
-          header: props => (
-            <CustomHeader
-              headerProps={props}
-              backButton
-              logo={false}
-              headerCenter={<CenterHeader />}
-              elevation={5}
-            />
-          ),
-        }}
-      />
-    </TransactionStack.Navigator>
+    <TransactionProvider>
+      <TransactionStack.Navigator
+        initialRouteName="SearchMitra"
+        screenOptions={{headerShown: false}}>
+        <TransactionStack.Screen
+          name="SearchMitra"
+          component={SearchMitraScreen}
+          options={{
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerRight={<RightHeader />}
+                headerCenter={<CenterHeader />}
+                elevation={0}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="PickPoint"
+          component={PickPointScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={<CenterHeader />}
+                elevation={5}
+              />
+            ),
+          }}
+        />
+      </TransactionStack.Navigator>
+    </TransactionProvider>
   );
 };
 

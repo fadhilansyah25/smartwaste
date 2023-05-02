@@ -1,5 +1,8 @@
 import React from 'react';
-import { CoordinateActions, coordinateReducer } from '../reducer/TransactionReducer';
+import {
+  CoordinateActions,
+  coordinateReducer,
+} from '../reducer/TransactionReducer';
 
 export type InitialStateType = {
   coordinate: {
