@@ -8,14 +8,11 @@ export type InitialStateType = {
   coordinate: {
     lat: number;
     long: number;
-  };
+  } | null;
 };
 
 const initialState: InitialStateType = {
-  coordinate: {
-    lat: 0,
-    long: 0,
-  },
+  coordinate: null
 };
 
 const TransactionContext = React.createContext<{
