@@ -47,13 +47,10 @@ function PickPointScreen() {
   >();
   const [location, setLocation] = useState<number[] | undefined>();
 
-  const handleMapIdle = useCallback(
-    async (state: MapboxGL.MapState) => {
-      const data = await reverseGeocoding(state.properties.center);
-      setAddrLocation(data);
-    },
-    [addrLocation],
-  );
+  const handleMapIdle = useCallback(async (state: MapboxGL.MapState) => {
+    const data = await reverseGeocoding(state.properties.center);
+    setAddrLocation(data);
+  }, []);
 
   const handlePickCoordinate = useCallback(async () => {
     const center = await mapRef.current?.getCenter();
@@ -86,11 +83,15 @@ function PickPointScreen() {
   };
 
   React.useEffect(() => {
-    if (!route.params && state.coordinate) {
-      setLocation([state.coordinate.long, state.coordinate.lat]);
-    } else if (route.params) {
-      setLocation([route.params.long, route.params.lat]);
-    }
+    const timeout = setTimeout(() => {
+      if (!route.params && state.coordinate) {
+        setLocation([state.coordinate.long, state.coordinate.lat]);
+      } else if (route.params) {
+        setLocation([route.params.long, route.params.lat]);
+      }
+    }, 200);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -123,18 +124,22 @@ function PickPointScreen() {
           </View>
         ) : null}
         {/* Search Location Input */}
-        <View>
-          <View style={style.searchBarContainer}>
-            <View style={style.searchBarContent}>
-              <Icon name="ios-search" size={24} />
-              <TextInput
-                editable={false}
-                placeholder="Cari Lokasi"
-                style={{padding: 0, flex: 1}}
-              />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('SearchLocation')}>
+          <View>
+            <View style={style.searchBarContainer}>
+              <View style={style.searchBarContent}>
+                <Icon name="ios-search" size={24} />
+                <TextInput
+                  editable={false}
+                  placeholder="Cari Lokasi"
+                  style={{padding: 0, flex: 1}}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={{marginBottom: 8}}
