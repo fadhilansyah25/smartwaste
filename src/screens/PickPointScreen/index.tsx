@@ -47,12 +47,15 @@ function PickPointScreen() {
   >();
   const [location, setLocation] = useState<number[] | undefined>();
 
-  const handleMapIdle = useCallback(async (state: MapboxGL.MapState) => {
-    const data = await reverseGeocoding(state.properties.center);
-    setAddrLocation(data);
-  }, []);
+  const handleMapIdle = useCallback(
+    async (state: MapboxGL.MapState) => {
+      const data = await reverseGeocoding(state.properties.center);
+      setAddrLocation(data);
+    },
+    [addrLocation],
+  );
 
-  const handlePickCoordinate = async () => {
+  const handlePickCoordinate = useCallback(async () => {
     const center = await mapRef.current?.getCenter();
     if (center) {
       dispatch({
@@ -64,7 +67,7 @@ function PickPointScreen() {
       });
     }
     navigation.navigate('SearchMitra');
-  };
+  }, []);
 
   const handleFlyToCurrentLocation = () => {
     Geolocation.getCurrentPosition(

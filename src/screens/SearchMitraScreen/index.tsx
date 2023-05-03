@@ -43,16 +43,18 @@ const SearchMitraScreen = () => {
   React.useEffect(() => {
     if (state.coordinate === null) getLocation();
 
-    const data = mitraData.map(item => ({
-      ...item,
-      distance: getDistanceFromLatLonInKm(
-        state.coordinate?.lat as number,
-        state.coordinate?.long as number,
-        item.coordinate.lat,
-        item.coordinate.long,
-      ),
-    }));
-    setMitra(data);
+    if (state.coordinate) {
+      const data = mitraData.map(item => ({
+        ...item,
+        distance: getDistanceFromLatLonInKm(
+          state.coordinate?.lat as number,
+          state.coordinate?.long as number,
+          item.coordinate.lat,
+          item.coordinate.long,
+        ),
+      }));
+      setMitra(data);
+    }
   }, [state.coordinate]);
 
   return (
