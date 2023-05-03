@@ -54,7 +54,8 @@ const MainTab = () => {
         options={({route}) => ({
           tabBarStyle: (route => {
             const routeName = getFocusedRouteNameFromRoute(route);
-            if (routeName === 'PickPoint') return {display: 'none'};
+            if (routeName === 'PickPoint' || routeName === 'SearchLocation')
+              return {display: 'none'};
             return;
           })(route),
         })}

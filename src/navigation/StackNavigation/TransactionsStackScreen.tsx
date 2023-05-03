@@ -7,14 +7,16 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {CustomHeader} from '@src/component';
 import {colors} from '@src/const/colors';
+import {TransactionProvider} from '@src/store/context/TransactionContext';
+import auth from '@react-native-firebase/auth';
 import SearchMitraScreen from '@src/screens/SearchMitraScreen';
 import PickPointScreen from '@src/screens/PickPointScreen';
-import auth from '@react-native-firebase/auth';
-import {TransactionProvider} from '@src/store/context/TransactionContext';
+import SearchLocationScreen from '@src/screens/SearchLocationScreen';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
   PickPoint: Coordinate | undefined;
+  SearchLocation: undefined;
 };
 
 type Coordinate = {
@@ -67,6 +69,14 @@ const TransactionsStackScreen = () => {
                 elevation={5}
               />
             ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="SearchLocation"
+          component={SearchLocationScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
           }}
         />
       </TransactionStack.Navigator>
