@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   SafeAreaView,
   View,
@@ -15,8 +15,11 @@ import {LocationAddress} from '@src/types/location';
 import {CustomButton} from '@src/component';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
-import {useNavigation} from '@react-navigation/native';
-import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  TransactionStackParamaterList,
+  TransactionStackProps,
+} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import {colors} from '@src/const/colors';
 import Geolocation from 'react-native-geolocation-service';
 
@@ -37,14 +40,17 @@ function PickPointScreen() {
   const mapRef = React.useRef<MapboxGL.MapView>(null);
   const cameraRef = React.useRef<MapboxGL.Camera>(null);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
+  const route =
+    useRoute<RouteProp<TransactionStackParamaterList, 'PickPoint'>>();
   const [addrLocation, setAddrLocation] = React.useState<
     LocationAddress | undefined
   >();
+  const [location, setLocation] = useState<number[] | undefined>();
 
-  const handleMapIdle = async (state: MapboxGL.MapState) => {
+  const handleMapIdle = useCallback(async (state: MapboxGL.MapState) => {
     const data = await reverseGeocoding(state.properties.center);
     setAddrLocation(data);
-  };
+  }, []);
 
   const handlePickCoordinate = async () => {
     const center = await mapRef.current?.getCenter();
@@ -76,11 +82,19 @@ function PickPointScreen() {
     );
   };
 
+  React.useEffect(() => {
+    if (!route.params && state.coordinate) {
+      setLocation([state.coordinate.long, state.coordinate.lat]);
+    } else if (route.params) {
+      setLocation([route.params.long, route.params.lat]);
+    }
+  }, []);
+
   return (
     <SafeAreaView style={style.screenContainer}>
       {/* MapView */}
       <View style={style.container}>
-        {state.coordinate ? (
+        {location ? (
           <View style={style.mapContainer}>
             <MarkerSvg style={style.mapMarker} height={36} width={36} />
             <MapboxGL.MapView
@@ -96,7 +110,7 @@ function PickPointScreen() {
                 allowUpdates
                 zoomLevel={15}
                 animationMode="none"
-                centerCoordinate={[state.coordinate.long, state.coordinate.lat]}
+                centerCoordinate={location}
               />
               <MapboxGL.UserLocation
                 androidRenderMode="normal"
