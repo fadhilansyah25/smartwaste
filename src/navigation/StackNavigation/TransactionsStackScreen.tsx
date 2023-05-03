@@ -14,7 +14,12 @@ import {TransactionProvider} from '@src/store/context/TransactionContext';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
-  PickPoint: undefined;
+  PickPoint: Coordinate | undefined;
+};
+
+type Coordinate = {
+  lat: number;
+  long: number;
 };
 
 export type TransactionStackProps =
@@ -49,6 +54,7 @@ const TransactionsStackScreen = () => {
         <TransactionStack.Screen
           name="PickPoint"
           component={PickPointScreen}
+          initialParams={undefined}
           options={{
             animation: 'slide_from_right',
             headerShown: true,
