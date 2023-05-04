@@ -27,4 +27,9 @@ export const style = StyleSheet.create({
     backgroundColor: colors.N100,
     flex: 1,
   },
+  searchResultCard: {
+    paddingVertical: 10,
+    borderBottomColor: colors.N500,
+    borderBottomWidth: 1
+  }
 });

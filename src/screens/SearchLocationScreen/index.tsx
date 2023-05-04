@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, SafeAreaView, TextInput, TouchableOpacity} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  FlatList,
+} from 'react-native';
 import {style} from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
@@ -15,10 +22,10 @@ const SearchLocationScreen = () => {
   const searchLocation = React.useCallback(async () => {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${searchText}&format=json`,
+        `https://nominatim.openstreetmap.org/search?q=${searchText}&format=json&countrycodes=ID&addressdetails=1`,
       );
       const json = await response.json();
-      console.log(json);
+      setSearchResults(json);
     } catch (error) {
       console.error(error);
     }
@@ -50,6 +57,24 @@ const SearchLocationScreen = () => {
           <Icon name="ios-search" size={24} />
         </View>
       </View>
+
+      <FlatList
+        contentContainerStyle={{paddingHorizontal: 20, marginTop: 12}}
+        data={searchResults}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('PickPoint', {
+                lat: Number(item.lat),
+                long: Number(item.lon),
+              });
+            }}>
+            <View style={style.searchResultCard}>
+              <Text>{item.display_name}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
     </SafeAreaView>
   );
 };
