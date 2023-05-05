@@ -63,7 +63,7 @@ function PickPointScreen() {
         },
       });
     }
-    navigation.navigate('SearchMitra');
+    navigation.goBack();
   }, []);
 
   const handleFlyToCurrentLocation = () => {
