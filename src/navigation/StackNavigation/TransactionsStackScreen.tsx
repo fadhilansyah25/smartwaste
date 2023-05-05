@@ -12,16 +12,14 @@ import auth from '@react-native-firebase/auth';
 import SearchMitraScreen from '@src/screens/SearchMitraScreen';
 import PickPointScreen from '@src/screens/PickPointScreen';
 import SearchLocationScreen from '@src/screens/SearchLocationScreen';
+import {Coordinate, MitraData} from '@src/types/mitra';
+import MitraDetailScreen from '@src/screens/MitraDetailScreen';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
   PickPoint: Coordinate | undefined;
   SearchLocation: undefined;
-};
-
-type Coordinate = {
-  lat: number;
-  long: number;
+  MitraDetail: {mitra: MitraData} | undefined;
 };
 
 export type TransactionStackProps =
@@ -77,6 +75,24 @@ const TransactionsStackScreen = () => {
           options={{
             animation: 'slide_from_right',
             headerShown: false,
+          }}
+        />
+        <TransactionStack.Screen
+          name="MitraDetail"
+          component={MitraDetailScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerRight={<RightHeader />}
+                headerCenter={<CenterHeader />}
+                elevation={5}
+              />
+            ),
           }}
         />
       </TransactionStack.Navigator>
