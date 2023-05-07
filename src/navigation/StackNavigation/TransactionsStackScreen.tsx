@@ -19,7 +19,7 @@ export type TransactionStackParamaterList = {
   SearchMitra: undefined;
   PickPoint: Coordinate | undefined;
   SearchLocation: undefined;
-  MitraDetail: {mitra: MitraData} | undefined;
+  MitraDetail: {mitra: MitraData};
 };
 
 export type TransactionStackProps =
