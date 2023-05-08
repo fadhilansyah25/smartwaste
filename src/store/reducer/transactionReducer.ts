@@ -1,3 +1,4 @@
+import {MitraData} from '@src/types/mitra';
 import {InitialStateType} from '../context/TransactionContext';
 
 type ActionMap<M extends {[index: string]: any}> = {
@@ -13,13 +14,15 @@ type ActionMap<M extends {[index: string]: any}> = {
 
 export enum Types {
   SetCoordinate = 'SET_COORDINATE',
-  DeletCoordinate = 'DELETE_COORINATE',
+  DeleteCoordinate = 'DELETE_COORINATE',
+  SetMitra = 'SET_MITRA',
+  DeleteMitra = 'DELETE_MITRA',
 }
 
 // Coordinate Recuder
 type CoordinatePayload = {
   [Types.SetCoordinate]: InitialStateType['coordinate'];
-  [Types.DeletCoordinate]: undefined;
+  [Types.DeleteCoordinate]: undefined;
 };
 
 export type CoordinateActions =
@@ -27,13 +30,36 @@ export type CoordinateActions =
 
 export const coordinateReducer = (
   state: InitialStateType['coordinate'],
-  action: CoordinateActions,
+  action: CoordinateActions | MitraActions,
 ) => {
   switch (action.type) {
     case 'SET_COORDINATE':
       return action.payload;
     case 'DELETE_COORINATE':
-      return {lat: 0, long: 0};
+      return null;
+    default:
+      return state;
+  }
+};
+
+// Transaction Reducer
+type MitraPayload = {
+  [Types.SetMitra]: InitialStateType['mitra'];
+  [Types.DeleteMitra]: undefined;
+};
+
+export type MitraActions =
+  ActionMap<MitraPayload>[keyof ActionMap<MitraPayload>];
+
+export const MitraReducer = (
+  state: InitialStateType['mitra'],
+  action: CoordinateActions | MitraActions,
+) => {
+  switch (action.type) {
+    case 'SET_MITRA':
+      return action.payload;
+    case 'DELETE_MITRA':
+      return null;
     default:
       return state;
   }
