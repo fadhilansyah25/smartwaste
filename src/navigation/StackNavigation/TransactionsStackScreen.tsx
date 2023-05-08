@@ -14,12 +14,14 @@ import PickPointScreen from '@src/screens/PickPointScreen';
 import SearchLocationScreen from '@src/screens/SearchLocationScreen';
 import {Coordinate, MitraData} from '@src/types/mitra';
 import MitraDetailScreen from '@src/screens/MitraDetailScreen';
+import SelectWasteScreen from '@src/screens/SelectWasteScreen';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
   PickPoint: Coordinate | undefined;
   SearchLocation: undefined;
   MitraDetail: {mitra: MitraData};
+  SelectWaste: undefined;
 };
 
 export type TransactionStackProps =
@@ -95,6 +97,23 @@ const TransactionsStackScreen = () => {
             ),
           }}
         />
+        <TransactionStack.Screen
+          name="SelectWaste"
+          component={SelectWasteScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={<CenterHeaderSelectWaste />}
+                elevation={5}
+              />
+            ),
+          }}
+        />
       </TransactionStack.Navigator>
     </TransactionProvider>
   );
@@ -129,6 +148,22 @@ const CenterHeader = () => {
         {auth().currentUser?.displayName}
       </Text>
       <Text style={{fontSize: 12}}>{auth().currentUser?.displayName}</Text>
+    </View>
+  );
+};
+
+const CenterHeaderSelectWaste = () => {
+  return (
+    <View style={{flex: 1}}>
+      <Text
+        style={{
+          fontSize: 12,
+          fontWeight: '600',
+          color: colors.T500,
+          textAlign: 'center',
+        }}>
+        Pilih Jenis Material Sampah
+      </Text>
     </View>
   );
 };

@@ -33,7 +33,7 @@ const MitraDetailScreen = () => {
 
   const handlePickMitra = () => {
     dispatch({type: Types.SetMitra, payload: data});
-    // navigation.navigate('')
+    // navigation.navigate('SelectWaste')
   };
 
   return (
