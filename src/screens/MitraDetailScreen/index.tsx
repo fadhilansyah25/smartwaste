@@ -2,29 +2,39 @@ import React from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import {style} from './style';
 import {colors} from '@src/const/colors';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {TransactionStackParamaterList} from '@src/navigation/StackNavigation/TransactionsStackScreen';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {
+  TransactionStackParamaterList,
+  TransactionStackProps,
+} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
 import {getDistanceFromLatLonInKm} from '@src/utils/regionSorts';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import MapboxGL from '@rnmapbox/maps';
 import {CustomButton} from '@src/component';
+import {Types} from '@src/store/reducer/TransactionReducer';
 
 const MitraDetailScreen = () => {
   const route =
     useRoute<RouteProp<TransactionStackParamaterList, 'MitraDetail'>>();
   const data = route.params.mitra;
+  const navigation = useNavigation<TransactionStackProps['navigation']>();
   const {state, dispatch} = React.useContext(TransactionContext);
 
   const [showElement, setShowElement] = React.useState(false);
 
   React.useEffect(() => {
-    // Mengatur nilai state "showElement" menjadi true setelah 2 detik
+    // Mengatur nilai state "showElement" menjadi true setelah beberapa detik
     const timer = setTimeout(() => setShowElement(true), 1000);
 
     // Membersihkan timeout saat komponen di-unmount
     return () => clearTimeout(timer);
   }, []);
+
+  const handlePickMitra = () => {
+    dispatch({type: Types.SetMitra, payload: data});
+    // navigation.navigate('')
+  };
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -50,23 +60,13 @@ const MitraDetailScreen = () => {
       </View>
 
       {/* Mitra Distance Location Info */}
-      <View
-        style={{
-          marginTop: 20,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
+      <View style={style.distanceLocationContainer}>
         <Text style={{fontWeight: '600', color: colors.T800}}>
           Lokasi Mitra
         </Text>
         <View style={{flexDirection: 'row', columnGap: 4}}>
           <MarkerSvg />
-          <Text
-            style={{
-              fontSize: 12,
-              fontWeight: '600',
-              color: colors.T800,
-            }}>
+          <Text style={style.distanceText}>
             {getDistanceFromLatLonInKm(
               state.coordinate?.lat as number,
               state.coordinate?.long as number,
@@ -103,9 +103,19 @@ const MitraDetailScreen = () => {
         ) : null}
       </View>
 
-      <View style={{flexDirection: 'row', marginBottom: 14, marginTop: 24, columnGap: 14}}>
-        <CustomButton label="Batalkan" type="outline" style={{flex: 1}} />
-        <CustomButton label="Kirim" type="fill" style={{flex: 1}} />
+      <View style={style.buttonContainer}>
+        <CustomButton
+          label="Batalkan"
+          type="outline"
+          style={{flex: 1}}
+          onPress={() => navigation.goBack()}
+        />
+        <CustomButton
+          label="Kirim"
+          type="fill"
+          style={{flex: 1}}
+          onPress={handlePickMitra}
+        />
       </View>
     </SafeAreaView>
   );

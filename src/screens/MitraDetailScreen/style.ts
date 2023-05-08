@@ -52,4 +52,20 @@ export const style = StyleSheet.create({
   map: {
     flex: 1,
   },
+  distanceLocationContainer: {
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  distanceText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.T800,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginBottom: 14,
+    marginTop: 24,
+    columnGap: 14,
+  }
 });
