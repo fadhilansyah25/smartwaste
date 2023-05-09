@@ -1,15 +1,20 @@
 import React from 'react';
 import {
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
+  ViewStyle,
 } from 'react-native';
 import {colors} from '../../const/colors';
 
 interface Props extends TouchableOpacityProps {
   label: string;
   type: 'fill' | 'outline';
+  buttonStyle?: StyleProp<ViewStyle> | any;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 const CustomButton = (props: Props) => {
@@ -20,11 +25,13 @@ const CustomButton = (props: Props) => {
         style.button,
         props.type == 'fill' ? style.fill : style.outline,
         props.style,
+        props.buttonStyle,
       ]}>
       <Text
         style={[
           style.label,
           {color: props.type == 'fill' ? colors.white : colors.T500},
+          props.textStyle,
         ]}>
         {props.label}
       </Text>
