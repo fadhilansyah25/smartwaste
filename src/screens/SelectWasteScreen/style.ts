@@ -5,7 +5,6 @@ export const style = StyleSheet.create({
   screenContainer: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingHorizontal: 20,
   },
   checkBoxContainer: {
     flexDirection: 'row',
@@ -19,18 +18,29 @@ export const style = StyleSheet.create({
   },
   titleScreen: {
     color: colors.T500,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
     marginTop: 24,
-    marginBottom: 12,
+    marginBottom: 24,
+  },
+  cardContainer: {
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: colors.O200,
+    borderRadius: 5,
+    rowGap: 12,
+  },
+  cardHeaderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
+  },
+  cardTextContent: {
+    color: colors.O900,
+    fontSize: 12,
+    marginBottom: 8,
   },
   textInfo: {
-    color: colors.T500,
-    fontSize: 12,
-    marginTop: 24,
-    marginBottom: 12,
-  },
-  textInfo2: {
     color: colors.T500,
     fontSize: 12,
     marginTop: 24,

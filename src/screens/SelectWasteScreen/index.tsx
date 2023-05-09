@@ -1,8 +1,11 @@
 import React from 'react';
-import {FlatList, SafeAreaView, Text, View} from 'react-native';
+import {SafeAreaView, Text, View, ScrollView, Animated} from 'react-native';
 import {style} from './style';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import CheckBox from '@react-native-community/checkbox';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {colors} from '@src/const/colors';
+import {CustomButton} from '@src/component';
 
 const data = [
   {id: 1, name: 'Plastik'},
@@ -16,7 +19,7 @@ const data = [
 
 const SelectWasteScreen = () => {
   const {state, dispatch} = React.useContext(TransactionContext);
-  const [checkedItems, setCheckedItems] = React.useState<any>([]);
+  const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
 
   const handleCheckedItems = (id: number) => {
     const isChecked = checkedItems.includes(id);
@@ -41,21 +44,60 @@ const SelectWasteScreen = () => {
 
   return (
     <SafeAreaView style={style.screenContainer}>
-      <Text style={style.titleScreen}>
-        Berikut adalah material yang bisa Anda kirimkan ke Bank Sampah Bumi
-        Lestari
-      </Text>
-      <View style={{paddingHorizontal: 12, paddingVertical: 8}}>
-        <Text style={style.textInfo}>
-          Harap untuk tidak mengirim jenis sampah selain yang tertera pada
-          daftar ini karena material tersebut tidak diterima oleh Drop Point
-          Bank Sampah Bumi Lestari.
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 20,
+          backgroundColor: colors.white,
+          paddingBottom: 28 + 40 + 20,
+        }}
+        showsVerticalScrollIndicator={false}>
+        {/* Title */}
+        <Text style={style.titleScreen}>
+          Berikut adalah material yang bisa Anda kirimkan ke {state.mitra?.name}
         </Text>
+
+        {/* Card Warning Info */}
+        <View style={style.cardContainer}>
+          <View style={style.cardHeaderContainer}>
+            <Icon name="ios-warning" size={24} color={colors.O900} />
+            <Text style={{color: colors.O900, fontWeight: '600'}}>
+              PERHATIAN
+            </Text>
+          </View>
+          <Text style={style.cardTextContent}>
+            Harap untuk tidak mengirim jenis sampah selain yang tertera pada
+            daftar ini karena material tersebut tidak diterima oleh Drop Point{' '}
+            {state.mitra?.name}.
+          </Text>
+        </View>
+
+        {/* Copywrite text */}
+        <Text style={style.textInfo}>
+          Pilih opsi berikut sesuai dengan jenis sampah yang akan Anda kirimkan!
+        </Text>
+
+        {/* CheckBox Render */}
+        <View style={{rowGap: 12}}>{renderCheckboxes()}</View>
+      </ScrollView>
+      <View
+        style={{
+          position: 'absolute',
+          width: '100%',
+          backgroundColor: colors.white,
+          bottom: 0,
+          paddingHorizontal: 20,
+          paddingVertical: 14,
+          elevation: 10,
+        }}>
+        <CustomButton
+          label="Selanjutnya"
+          type="fill"
+          disabled={checkedItems.length === 0}
+          buttonStyle={
+            checkedItems.length === 0 ? {backgroundColor: colors.N300} : {}
+          }
+        />
       </View>
-      <Text style={style.textInfo2}>
-        Pilih opsi berikut sesuai dengan jenis sampah yang akan Anda kirimkan!
-      </Text>
-      <View style={{rowGap: 12}}>{renderCheckboxes()}</View>
     </SafeAreaView>
   );
 };

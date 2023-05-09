@@ -157,7 +157,7 @@ const CenterHeaderSelectWaste = () => {
     <View style={{flex: 1}}>
       <Text
         style={{
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: '600',
           color: colors.T500,
           textAlign: 'center',
