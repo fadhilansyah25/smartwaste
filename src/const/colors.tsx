@@ -30,5 +30,7 @@ export const colors = {
   B800: '#2CA8EF',
 
   // Orange
+  O900: '#D3AD49',
   O800: '#E5B63A',
+  O200: '#F9EFD3',
 };
