@@ -54,7 +54,12 @@ const MainTab = () => {
         options={({route}) => ({
           tabBarStyle: (route => {
             const routeName = getFocusedRouteNameFromRoute(route);
-            const validScreen = ['PickPoint', 'SearchLocation', 'MitraDetail'];
+            const validScreen = [
+              'PickPoint',
+              'SearchLocation',
+              'MitraDetail',
+              'SelectWaste',
+            ];
             if (validScreen.includes(routeName as string))
               return {display: 'none'};
             return;
