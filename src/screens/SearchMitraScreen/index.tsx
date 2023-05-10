@@ -23,9 +23,8 @@ import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 
 const SearchMitraScreen = () => {
-  const [mitra, setMitra] = React.useState<
-    MitraData[] & {distance: number}[]
-  >();
+  const [mitra, setMitra] =
+    React.useState<(MitraData & {distance: number})[]>();
   const {state, dispatch} = React.useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
 
