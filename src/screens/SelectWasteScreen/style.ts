@@ -6,6 +6,11 @@ export const style = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
+  scrollViewStyle: {
+    paddingHorizontal: 20,
+    backgroundColor: colors.white,
+    paddingBottom: 28 + 40 + 20,
+  },
   checkBoxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -45,5 +50,14 @@ export const style = StyleSheet.create({
     fontSize: 12,
     marginTop: 24,
     marginBottom: 12,
+  },
+  bottomNavContainer: {
+    position: 'absolute',
+    width: '100%',
+    backgroundColor: colors.white,
+    bottom: 0,
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    elevation: 10,
   },
 });

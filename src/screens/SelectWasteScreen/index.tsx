@@ -45,11 +45,7 @@ const SelectWasteScreen = () => {
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
-        contentContainerStyle={{
-          paddingHorizontal: 20,
-          backgroundColor: colors.white,
-          paddingBottom: 28 + 40 + 20,
-        }}
+        contentContainerStyle={style.scrollViewStyle}
         showsVerticalScrollIndicator={false}>
         {/* Title */}
         <Text style={style.titleScreen}>
@@ -79,19 +75,11 @@ const SelectWasteScreen = () => {
         {/* CheckBox Render */}
         <View style={{rowGap: 12}}>{renderCheckboxes()}</View>
       </ScrollView>
-      <View
-        style={{
-          position: 'absolute',
-          width: '100%',
-          backgroundColor: colors.white,
-          bottom: 0,
-          paddingHorizontal: 20,
-          paddingVertical: 14,
-          elevation: 10,
-        }}>
+      <View style={style.bottomNavContainer}>
         <CustomButton
           label="Selanjutnya"
           type="fill"
+          activeOpacity={0.8}
           disabled={checkedItems.length === 0}
           buttonStyle={
             checkedItems.length === 0 ? {backgroundColor: colors.N300} : {}
