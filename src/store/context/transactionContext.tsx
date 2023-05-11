@@ -27,7 +27,9 @@ const initialState: InitialStateType = {
 
 const TransactionContext = React.createContext<{
   state: InitialStateType;
-  dispatch: React.Dispatch<CoordinateActions | MitraActions>;
+  dispatch: React.Dispatch<
+    CoordinateActions | MitraActions | TransactionActions
+  >;
 }>({state: initialState, dispatch: () => null});
 
 const mainReducer = (
