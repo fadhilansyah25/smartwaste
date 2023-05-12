@@ -1,11 +1,11 @@
 import React from 'react';
 import {AuthStackProps} from '@src/navigation/StackNavigation/AuthStackScreen';
-import {PersonalDataType, reducer} from './reducer';
+import {reducer} from './reducer';
 import {minBirthday} from '@src/utils/getInitialDate';
 import FirebaseServices from '@src/services/firebaseServices';
 import {RegisterContext} from '@src/store/context/RegisterContext';
 
-const PersonalDataForm: PersonalDataType = {
+const PersonalDataForm = {
   fullName: '',
   birthDate: minBirthday,
   address: '',

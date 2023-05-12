@@ -5,7 +5,7 @@ import {
   phoneNumberFormat,
 } from '../../utils/regexFormat';
 
-export type RegisterForm = {
+type RegisterForm = {
   email: string;
   phoneNumber: string;
   password: string;

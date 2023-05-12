@@ -1,4 +1,4 @@
-export type PersonalDataType = {
+type PersonalDataType = {
   fullName: string;
   birthDate: Date;
   address: string;

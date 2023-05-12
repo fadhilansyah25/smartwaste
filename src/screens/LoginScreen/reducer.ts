@@ -1,6 +1,6 @@
 import {emailFormat, passwordFormat} from '../../utils/regexFormat';
 
-export type SignInForm = {
+type SignInForm = {
   email: string;
   password: string;
   emailErrorMessage: string;
@@ -14,10 +14,7 @@ type ReducerAction = {
   payload: string;
 };
 
-export const signInFormReducer = (
-  state: SignInForm,
-  action: ReducerAction,
-) => {
+export const signInFormReducer = (state: SignInForm, action: ReducerAction) => {
   switch (action.type) {
     case 'HANDLE_INPUT_EMAIL':
       if (!action.payload.match(emailFormat)) {

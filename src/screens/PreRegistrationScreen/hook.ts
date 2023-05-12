@@ -3,9 +3,9 @@ import {AuthStackProps} from '@src/navigation/StackNavigation/AuthStackScreen';
 import FirebaseServices from '@src/services/firebaseServices';
 import {RegisterContext} from '@src/store/context/RegisterContext';
 import {Types} from '@src/store/reducer/RegitserReducer';
-import {RegisterForm, registerFormReducer} from './reducer';
+import {registerFormReducer} from './reducer';
 
-const registerFormInitialState: RegisterForm = {
+const registerFormInitialState = {
   email: '',
   phoneNumber: '',
   password: '',
