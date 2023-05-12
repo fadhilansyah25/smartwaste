@@ -1,7 +1,7 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {useContext, useState} from 'react';
 import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {confirmCode} from '../../services/firebase';
+import FirebaseServices from '@src/services/firebaseServices';
 import {RegisterContext} from '../../store/context/RegisterContext';
 
 export const useVerificationScreen = ({navigation}: AuthStackProps) => {
@@ -10,10 +10,10 @@ export const useVerificationScreen = ({navigation}: AuthStackProps) => {
 
   const handleConfirmCode = async () => {
     try {
-      const credential = confirmCode(
-        state.confirmation as FirebaseAuthTypes.PhoneAuthSnapshot,
+      const credential = FirebaseServices.confirmCode({
+        confirm: state.confirmation as FirebaseAuthTypes.PhoneAuthSnapshot,
         code,
-      );
+      });
       const _ = await auth().currentUser!.linkWithCredential(credential);
 
       //

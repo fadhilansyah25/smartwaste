@@ -1,9 +1,9 @@
 import React from 'react';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+import {AuthStackProps} from '@src/navigation/StackNavigation/AuthStackScreen';
 import {PersonalDataType, reducer} from './reducer';
-import {minBirthday} from '../../utils/getInitialDate';
-import {firebaseCreateUser} from '../../services/firebase';
-import {RegisterContext} from '../../store/context/RegisterContext';
+import {minBirthday} from '@src/utils/getInitialDate';
+import FirebaseServices from '@src/services/firebaseServices';
+import {RegisterContext} from '@src/store/context/RegisterContext';
 
 const PersonalDataForm: PersonalDataType = {
   fullName: '',
@@ -30,7 +30,7 @@ export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
           console.log(error.code);
         });
 
-      await firebaseCreateUser({
+      await FirebaseServices.firebaseCreateUser({
         uid: context.state.userCredential?.user.uid,
         ...state,
       })

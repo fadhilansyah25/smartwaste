@@ -1,8 +1,8 @@
 import {useContext, useReducer, useRef} from 'react';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
-import {firebaseAuthRegister, verifyPhoneNumber} from '../../services/firebase';
-import {RegisterContext} from '../../store/context/RegisterContext';
-import {Types} from '../../store/reducer/RegitserReducer';
+import {AuthStackProps} from '@src/navigation/StackNavigation/AuthStackScreen';
+import FirebaseServices from '@src/services/firebaseServices';
+import {RegisterContext} from '@src/store/context/RegisterContext';
+import {Types} from '@src/store/reducer/RegitserReducer';
 import {RegisterForm, registerFormReducer} from './reducer';
 
 const registerFormInitialState: RegisterForm = {
@@ -38,7 +38,7 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
       register.emailErrorMessage === ''
     ) {
       // verify phone number
-      await verifyPhoneNumber('+62 ' + register.phoneNumber)
+      await FirebaseServices.verifyPhoneNumber('+62 ' + register.phoneNumber)
         .then(async confirmation => {
           dispatch({
             type: Types.SetConfirm,
@@ -48,7 +48,7 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
           });
 
           // create an account
-          await firebaseAuthRegister({
+          await FirebaseServices.firebaseAuthRegister({
             email: register.email,
             password: register.password,
           })
@@ -60,7 +60,7 @@ export const usePreRegis = ({navigation}: AuthStackProps) => {
                 },
               });
 
-              // nvaigate to verfication phone code screen
+              // navigate to verfication phone code screen
               navigation.navigate('AccVerification');
             })
             // catch error from create account
