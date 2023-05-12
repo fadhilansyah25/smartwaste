@@ -53,6 +53,8 @@ const SearchMitraScreen = () => {
   };
 
   React.useEffect(() => {
+    let isMounted = true;
+
     if (state.coordinate === null) getLocation();
 
     if (state.coordinate) {
@@ -65,8 +67,13 @@ const SearchMitraScreen = () => {
           item.coordinate.long,
         ),
       }));
-      setMitra(data);
+      if (isMounted) {
+        setMitra(data);
+      }
     }
+    return () => {
+      isMounted = false;
+    };
   }, [state.coordinate]);
 
   return (

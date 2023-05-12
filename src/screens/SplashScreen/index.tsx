@@ -8,12 +8,16 @@ const SplashScreen = ({navigation}: RootStackProps) => {
   const [animating, setAnimating] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    let timeOut = setTimeout(() => {
       setAnimating(false);
       const user = auth().currentUser;
 
       navigation.replace(!user ? 'Auth' : 'Main');
     }, 2000);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
   }, []);
 
   return (

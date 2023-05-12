@@ -24,11 +24,20 @@ const MitraDetailScreen = () => {
   const [showElement, setShowElement] = React.useState(false);
 
   React.useEffect(() => {
+    let isMounted = true;
+
     // Mengatur nilai state "showElement" menjadi true setelah beberapa detik
-    const timer = setTimeout(() => setShowElement(true), 1000);
+    const timer = setTimeout(() => {
+      if (isMounted) {
+        setShowElement(true);
+      }
+    }, 1000);
 
     // Membersihkan timeout saat komponen di-unmount
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      isMounted = false;
+    };
   }, []);
 
   const handlePickMitra = () => {
