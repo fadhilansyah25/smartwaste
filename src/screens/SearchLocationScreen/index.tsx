@@ -12,19 +12,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
-import {SearchLOC} from '@src/types/searchLoc';
+import GeocodingServices from '@src/services/geocodingServices';
+import {GeocodeTypes} from '@src/services/geocodingServices/domain';
 
 const SearchLocationScreen = () => {
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const [searchText, setSearchText] = React.useState('');
-  const [searchResults, setSearchResults] = React.useState<SearchLOC[]>([]);
+  const [searchResults, setSearchResults] = React.useState<
+    GeocodeTypes.SearchLoc[]
+  >([]);
 
   const searchLocation = React.useCallback(async () => {
     try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${searchText}&format=json&countrycodes=ID&addressdetails=1`,
-      );
-      const json = await response.json();
+      const json = await GeocodingServices.searchLocationByQuery(searchText);
       setSearchResults(json);
     } catch (error) {
       console.error(error);

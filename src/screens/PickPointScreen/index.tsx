@@ -11,7 +11,6 @@ import MapboxGL from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {LocationAddress} from '@src/types/location';
 import {CustomButton} from '@src/component';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
@@ -22,18 +21,10 @@ import {
 } from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import {colors} from '@src/const/colors';
 import Geolocation from 'react-native-geolocation-service';
+import GeocodingService from '@src/services/geocodingServices';
+import {GeocodeTypes} from '@src/services/geocodingServices/domain';
 
 MapboxGL.setAccessToken(MAP_BOX_TOKEN_ACCESS);
-
-const reverseGeocoding = async (
-  position: MapboxGL.MapState['properties']['center'],
-) => {
-  const response = await fetch(
-    `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${position[1]}&lon=${position[0]}&addressdetails=1&limit=1`,
-  );
-  const data = await response.json();
-  return data;
-};
 
 function PickPointScreen() {
   const {state, dispatch} = React.useContext(TransactionContext);
@@ -43,12 +34,14 @@ function PickPointScreen() {
   const route =
     useRoute<RouteProp<TransactionStackParamaterList, 'PickPoint'>>();
   const [addrLocation, setAddrLocation] = React.useState<
-    LocationAddress | undefined
+    GeocodeTypes.LocationAddress | undefined
   >();
   const [location, setLocation] = useState<number[] | undefined>();
 
   const handleMapIdle = useCallback(async (state: MapboxGL.MapState) => {
-    const data = await reverseGeocoding(state.properties.center);
+    const data = await GeocodingService.reverseGeocoding(
+      state.properties.center,
+    );
     setAddrLocation(data);
   }, []);
 
