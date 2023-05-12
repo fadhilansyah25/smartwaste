@@ -62,10 +62,10 @@ function PickPointScreen() {
   const handleFlyToCurrentLocation = () => {
     Geolocation.getCurrentPosition(
       position => {
-        cameraRef.current?.flyTo([
-          position.coords.longitude,
-          position.coords.latitude,
-        ]);
+        cameraRef.current?.flyTo(
+          [position.coords.longitude, position.coords.latitude],
+          0,
+        );
       },
       error => {
         // See error code charts below.
@@ -76,15 +76,22 @@ function PickPointScreen() {
   };
 
   React.useEffect(() => {
+    let isMounted = true;
+
     const timeout = setTimeout(() => {
-      if (route.params === undefined && state.coordinate) {
-        setLocation([state.coordinate.long, state.coordinate.lat]);
-      } else if (route.params !== undefined) {
-        setLocation([route.params.long, route.params.lat]);
+      if (isMounted) {
+        if (route.params === undefined && state.coordinate) {
+          setLocation([state.coordinate.long, state.coordinate.lat]);
+        } else if (route.params !== undefined) {
+          setLocation([route.params.long, route.params.lat]);
+        }
       }
     }, 200);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+      isMounted = false;
+    };
   }, [route.params]);
 
   return (
