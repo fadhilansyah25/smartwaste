@@ -33,4 +33,30 @@ export const style = StyleSheet.create({
     paddingBottom: 160,
     minHeight: '100%',
   },
+  mitraCardContainer: {
+    padding: 12,
+    backgroundColor: colors.white,
+    elevation: 4,
+    borderRadius: 5,
+  },
+  mitraCardTextAddrees: {
+    color: colors.N500,
+    fontSize: 12,
+    fontWeight: '400',
+  },
+  mitraCardTextHour: {
+    color: colors.T600,
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  mitraCardTextPhone: {
+    color: colors.T800,
+    fontSize: 12,
+    fontWeight: '400',
+  },
+  mitraCardTextDistance: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.T800,
+  },
 });
