@@ -59,6 +59,7 @@ const MainTab = () => {
               'SearchLocation',
               'MitraDetail',
               'SelectWaste',
+              'DetailPreTransac',
             ];
             if (validScreen.includes(routeName as string))
               return {display: 'none'};

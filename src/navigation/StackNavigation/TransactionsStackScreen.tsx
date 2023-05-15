@@ -15,6 +15,7 @@ import SearchLocationScreen from '@src/screens/SearchLocationScreen';
 import {Coordinate, MitraData} from '@src/types/mitra';
 import MitraDetailScreen from '@src/screens/MitraDetailScreen';
 import SelectWasteScreen from '@src/screens/SelectWasteScreen';
+import DetailsPreTransacScreen from '@src/screens/DetailsPreTransacScreen';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
@@ -22,6 +23,7 @@ export type TransactionStackParamaterList = {
   SearchLocation: undefined;
   MitraDetail: {mitra: MitraData};
   SelectWaste: undefined;
+  DetailPreTransac: undefined;
 };
 
 export type TransactionStackProps =
@@ -108,7 +110,28 @@ const TransactionsStackScreen = () => {
                 headerProps={props}
                 backButton
                 logo={false}
-                headerCenter={<CenterHeaderSelectWaste />}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Pilih Jenis Material Sampah" />
+                }
+                elevation={5}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="DetailPreTransac"
+          component={DetailsPreTransacScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Detail Pengiriman" />
+                }
                 elevation={5}
               />
             ),
@@ -152,7 +175,7 @@ const CenterHeader = () => {
   );
 };
 
-const CenterHeaderSelectWaste = () => {
+const CenterHeaderTitleCustom = ({title}: {title: string}) => {
   return (
     <View style={{flex: 1}}>
       <Text
@@ -162,7 +185,7 @@ const CenterHeaderSelectWaste = () => {
           color: colors.T500,
           textAlign: 'center',
         }}>
-        Pilih Jenis Material Sampah
+        {title}
       </Text>
     </View>
   );
