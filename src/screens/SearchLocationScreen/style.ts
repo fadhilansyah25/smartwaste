@@ -27,9 +27,14 @@ export const style = StyleSheet.create({
     backgroundColor: colors.N100,
     flex: 1,
   },
+  searchBarTextField: {
+    padding: 0,
+    paddingLeft: 10,
+    flex: 1,
+  },
   searchResultCard: {
     paddingVertical: 10,
     borderBottomColor: colors.N500,
-    borderBottomWidth: 1
-  }
+    borderBottomWidth: 1,
+  },
 });
