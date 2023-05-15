@@ -1,12 +1,11 @@
-import React from 'react';
-import {SafeAreaView, Text, View, ScrollView, Animated} from 'react-native';
+import {SafeAreaView, Text, View, ScrollView} from 'react-native';
 import {style} from './style';
-import {TransactionContext} from '@src/store/context/TransactionContext';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import {CustomButton} from '@src/component';
 import {Types} from '@src/store/reducer/TransactionReducer';
+import {useSelectWaste} from './hook';
 
 const data = [
   {id: 1, name: 'Plastik'},
@@ -19,18 +18,7 @@ const data = [
 ];
 
 const SelectWasteScreen = () => {
-  const {state, dispatch} = React.useContext(TransactionContext);
-  const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
-
-  const handleCheckedItems = (id: number) => {
-    const isChecked = checkedItems.includes(id);
-    if (isChecked) {
-      const filteredItems = checkedItems.filter((itemId: any) => itemId !== id);
-      setCheckedItems(filteredItems);
-    } else {
-      setCheckedItems([...checkedItems, id]);
-    }
-  };
+  const {state, checkedItems, dispatch, handleCheckedItems} = useSelectWaste();
 
   const renderCheckboxes = () =>
     data.map(item => (
