@@ -16,21 +16,22 @@ import {
   TutorialCard,
 } from '@src/component';
 import {style} from './style';
-import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {RootStackProps} from '@src/App';
 import {colors} from '@src/const/colors';
 
 import {tutorBannerData, tutorData} from '@src/const/const-data';
+import firebaseServices from '@src/services/firebaseServices';
 
-const HomeScreen = ({navigation}: RootStackProps) => {
+const user = firebaseServices.firebaseCheckCurrentUser;
+
+const HomeScreen = () => {
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
         {/* Greetings bar and avatar */}
-        <GreetingsBar displayName={auth().currentUser?.displayName as string} />
+        <GreetingsBar displayName={user()?.displayName as string} />
 
         {/* Main Banner */}
         <MainBanner />
