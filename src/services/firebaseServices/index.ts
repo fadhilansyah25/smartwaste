@@ -3,6 +3,10 @@ import firestore from '@react-native-firebase/firestore';
 import {ConfirmCode, AuthParams, FirestoreTypes} from './domain';
 
 class FirebaseServices {
+  firebaseCheckCurrentUser() {
+    return auth().currentUser;
+  }
+
   firebaseAuthRegister(registerParams: AuthParams) {
     return auth().createUserWithEmailAndPassword(
       registerParams.email,
