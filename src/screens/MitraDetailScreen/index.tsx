@@ -2,48 +2,15 @@ import React from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import {style} from './style';
 import {colors} from '@src/const/colors';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {
-  TransactionStackParamaterList,
-  TransactionStackProps,
-} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
 import {getDistanceFromLatLonInKm} from '@src/utils/regionSorts';
-import {TransactionContext} from '@src/store/context/TransactionContext';
 import MapboxGL from '@rnmapbox/maps';
 import {CustomButton} from '@src/component';
-import {Types} from '@src/store/reducer/TransactionReducer';
+import {useMitraDetail} from './hook';
 
 const MitraDetailScreen = () => {
-  const route =
-    useRoute<RouteProp<TransactionStackParamaterList, 'MitraDetail'>>();
-  const data = route.params.mitra;
-  const navigation = useNavigation<TransactionStackProps['navigation']>();
-  const {state, dispatch} = React.useContext(TransactionContext);
-
-  const [showElement, setShowElement] = React.useState(false);
-
-  React.useEffect(() => {
-    let isMounted = true;
-
-    // Mengatur nilai state "showElement" menjadi true setelah beberapa detik
-    const timer = setTimeout(() => {
-      if (isMounted) {
-        setShowElement(true);
-      }
-    }, 1000);
-
-    // Membersihkan timeout saat komponen di-unmount
-    return () => {
-      clearTimeout(timer);
-      isMounted = false;
-    };
-  }, []);
-
-  const handlePickMitra = () => {
-    dispatch({type: Types.SetMitra, payload: data});
-    navigation.navigate('SelectWaste');
-  };
+  const {dataMitra, showElement, state, navigation, handlePickMitra} =
+    useMitraDetail();
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -56,14 +23,14 @@ const MitraDetailScreen = () => {
           <View style={{rowGap: 10, flex: 1}}>
             <View style={{rowGap: 8}}>
               <Text style={{color: colors.N900, fontWeight: '500'}}>
-                {data.name}
+                {dataMitra.name}
               </Text>
-              <Text style={style.cardAdreesInfoText}>{data.address}</Text>
+              <Text style={style.cardAdreesInfoText}>{dataMitra.address}</Text>
             </View>
             <Text style={style.cardHourInfoText}>
-              Buka Sampai Jam {data.closeHour} WIB
+              Buka Sampai Jam {dataMitra.closeHour} WIB
             </Text>
-            <Text style={style.cardPhoneInfoText}>{data.phoneNumber}</Text>
+            <Text style={style.cardPhoneInfoText}>{dataMitra.phoneNumber}</Text>
           </View>
         </View>
       </View>
@@ -79,8 +46,8 @@ const MitraDetailScreen = () => {
             {getDistanceFromLatLonInKm(
               state.coordinate?.lat as number,
               state.coordinate?.long as number,
-              data.coordinate.lat,
-              data.coordinate.long,
+              dataMitra.coordinate.lat,
+              dataMitra.coordinate.long,
             ).toFixed(0)}{' '}
             Km
           </Text>
@@ -99,11 +66,14 @@ const MitraDetailScreen = () => {
             <MapboxGL.Camera
               zoomLevel={15}
               animationMode="none"
-              centerCoordinate={[data.coordinate.long, data.coordinate.lat]}
+              centerCoordinate={[
+                dataMitra.coordinate.long,
+                dataMitra.coordinate.lat,
+              ]}
             />
             <MapboxGL.PointAnnotation
-              id={data.name}
-              coordinate={[data.coordinate.long, data.coordinate.lat]}
+              id={dataMitra.name}
+              coordinate={[dataMitra.coordinate.long, dataMitra.coordinate.lat]}
               children={
                 <MarkerSvg style={style.mapMarker} height={36} width={36} />
               }
