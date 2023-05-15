@@ -18,7 +18,8 @@ const data = [
 ];
 
 const SelectWasteScreen = () => {
-  const {state, checkedItems, dispatch, handleCheckedItems} = useSelectWaste();
+  const {state, checkedItems, navigation, dispatch, handleCheckedItems} =
+    useSelectWaste();
 
   const renderCheckboxes = () =>
     data.map(item => (
@@ -80,6 +81,7 @@ const SelectWasteScreen = () => {
                 wasteType: checkedItems,
               },
             });
+            navigation.navigate('DetailPreTransac');
           }}
         />
       </View>
