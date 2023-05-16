@@ -31,6 +31,10 @@ export const colors = {
 
   // Orange
   O900: '#D3AD49',
+  O700: '#EBC666',
   O800: '#E5B63A',
   O200: '#F9EFD3',
+
+  // Green
+  G900: '#7A9921',
 };
