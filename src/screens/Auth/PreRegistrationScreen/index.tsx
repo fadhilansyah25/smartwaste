@@ -7,14 +7,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import CustomButton from '../../component/Button';
-import InputText from '../../component/InputText';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {style} from './style';
 import {usePreRegis} from './hook';
-import InputPhoneNumber from '../../component/InputPhoneNumber';
+import {CustomButton, InputPhoneNumber, InputText} from '@src/component';
 
-const PreRegistrationScreen = (screenProps: AuthStackProps) => {
+const PreRegistrationScreen = () => {
   const {
     handleRegisterSubmit,
     register,
@@ -22,7 +19,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
     posInd,
     isLast,
     stringFieldRefs,
-  } = usePreRegis(screenProps);
+  } = usePreRegis();
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -33,7 +30,7 @@ const PreRegistrationScreen = (screenProps: AuthStackProps) => {
           <View>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../../assets/image/illustration-2.png')}
+                source={require('@src/assets/image/illustration-2.png')}
                 style={style.illustration}
               />
             </View>

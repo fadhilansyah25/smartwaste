@@ -4,6 +4,8 @@ import {reducer} from './reducer';
 import {minBirthday} from '@src/utils/getInitialDate';
 import FirebaseServices from '@src/services/firebaseServices';
 import {RegisterContext} from '@src/store/context/RegisterContext';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
+import {BackHandler} from 'react-native';
 
 const PersonalDataForm = {
   fullName: '',
@@ -14,9 +16,10 @@ const PersonalDataForm = {
   districtID: 1101010,
 };
 
-export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
+export const usePersonalDataFormScreen = () => {
   const [state, dispatch] = React.useReducer(reducer, PersonalDataForm);
   const context = React.useContext(RegisterContext);
+  const navigation = useNavigation<AuthStackProps['navigation']>();
 
   const handleSubmit = async () => {
     if (
@@ -40,6 +43,19 @@ export const usePersonalDataFromScreen = ({navigation}: AuthStackProps) => {
         .catch(error => console.log(error.code));
     }
   };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, []),
+  );
 
   return {handleSubmit, state, dispatch} as const;
 };

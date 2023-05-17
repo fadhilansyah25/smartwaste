@@ -4,41 +4,26 @@ import {
   SafeAreaView,
   ScrollView,
   View,
-  BackHandler,
 } from 'react-native';
-import CustomButton from '../../component/Button';
-import InputDate from '../../component/InputDate';
-import InputText from '../../component/InputText';
-import SelectListDropDown from '../../component/SelectList';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {
   selectDistrict,
   selectProvincies,
   selectRegency,
-} from '../../utils/regionSorts';
-import {usePersonalDataFromScreen} from './hook';
+} from '@src/utils/regionSorts';
+import {usePersonalDataFormScreen} from './hook';
 import {style} from './style';
-import {useFocusEffect} from '@react-navigation/native';
+import {
+  CustomButton,
+  InputDate,
+  InputText,
+  SelectListDropDown,
+} from '@src/component';
 
-const PersonalDataFormScreen = (screenProps: AuthStackProps) => {
-  const {handleSubmit, state, dispatch} =
-    usePersonalDataFromScreen(screenProps);
+const PersonalDataFormScreen = () => {
+  const {handleSubmit, state, dispatch} = usePersonalDataFormScreen();
 
   let regionData = selectRegency(state.provincesID);
   let districtData = selectDistrict(state.regencyID);
-
-  useFocusEffect(
-    React.useCallback(() => {
-      const onBackPress = () => {
-        return true;
-      };
-
-      BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-      return () =>
-        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-    }, []),
-  );
 
   return (
     <SafeAreaView style={style.screenContainer}>

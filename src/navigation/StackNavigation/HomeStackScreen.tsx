@@ -3,7 +3,7 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import HomeScreen from '@src/screens/HomeScreen';
+import HomeScreen from '@src/screens/Main/HomeScreen';
 import CustomHeader from '@src/component/CustomHeader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {colors} from '@src/const/colors';

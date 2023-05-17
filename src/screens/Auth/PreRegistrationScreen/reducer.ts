@@ -3,7 +3,7 @@ import {
   formatPhoneNumber,
   passwordFormat,
   phoneNumberFormat,
-} from '../../utils/regexFormat';
+} from '@src/utils/regexFormat';
 
 type RegisterForm = {
   email: string;

@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, View, Image, Text} from 'react-native';
-import {RootStackProps} from '../../App';
-import {colors} from '../../const/colors';
+import {RootStackProps} from '@src/App';
+import {colors} from '@src/const/colors';
 import {styles} from './style';
 import firebaseServices from '@src/services/firebaseServices';
+import {useNavigation} from '@react-navigation/native';
 
-const SplashScreen = ({navigation}: RootStackProps) => {
+const SplashScreen = () => {
   const [animating, setAnimating] = useState(true);
+  const navigation = useNavigation<RootStackProps['navigation']>();
 
   useEffect(() => {
     let isMounted = true;
@@ -25,7 +27,7 @@ const SplashScreen = ({navigation}: RootStackProps) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/image/companylogo.png')}
+        source={require('@src/assets/image/companylogo.png')}
         style={styles.imageStyle}
       />
       <Text style={styles.companyName}>Smart Waste</Text>

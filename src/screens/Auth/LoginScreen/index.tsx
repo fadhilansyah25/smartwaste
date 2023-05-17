@@ -7,15 +7,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import CustomButton from '../../component/Button';
-import InputText from '../../component/InputText';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
+
 import {style} from './style';
 import {useLoginScreen} from './hook';
+import {CustomButton, InputText} from '@src/component';
 
-const LoginScreen = (screenProps: AuthStackProps) => {
-  const {handleToRegister, state, dispatch, handleLogin} =
-    useLoginScreen(screenProps);
+const LoginScreen = () => {
+  const {handleToRegister, state, dispatch, handleLogin} = useLoginScreen();
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -26,14 +24,14 @@ const LoginScreen = (screenProps: AuthStackProps) => {
           <View>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../../assets/image/companylogo-small.png')}
+                source={require('@src/assets/image/companylogo-small.png')}
                 style={style.companyLogo}
               />
             </View>
             <View>
               <View style={{alignItems: 'center'}}>
                 <Image
-                  source={require('../../assets/image/illustration-1.png')}
+                  source={require('@src/assets/image/illustration-1.png')}
                   style={style.illustration}
                 />
               </View>

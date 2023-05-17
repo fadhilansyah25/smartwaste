@@ -13,7 +13,7 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {colors} from '@src/const/colors';
 import {CustomButton} from '@src/component';
 
-const DetailsPreTransacScreen = () => {
+const DeliveryDetailsScreen = () => {
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
@@ -135,6 +135,6 @@ const DetailsPreTransacScreen = () => {
   );
 };
 
-export default DetailsPreTransacScreen;
+export default DeliveryDetailsScreen;
 
 const styles = StyleSheet.create({});

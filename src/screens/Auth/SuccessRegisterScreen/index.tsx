@@ -1,19 +1,18 @@
 import React from 'react';
 import {Image, SafeAreaView, Text, View} from 'react-native';
-import CustomButton from '../../component/Button';
 import {useSuccesRegisterScreen} from './hook';
 import {style} from './style';
-import {RootStackProps} from '../../App';
+import {CustomButton} from '@src/component';
 
-const SuccessRegisterScreen = (ScreenProps: RootStackProps) => {
-  const {handleToLogin} = useSuccesRegisterScreen(ScreenProps);
+const SuccessRegisterScreen = () => {
+  const {handleToLogin} = useSuccesRegisterScreen();
 
   return (
     <SafeAreaView style={style.screenContainer}>
       <View style={{height: '100%', justifyContent: 'space-between'}}>
         <View style={{alignItems: 'center'}}>
           <Image
-            source={require('../../assets/image/companylogo-small.png')}
+            source={require('@src/assets/image/companylogo-small.png')}
             style={style.companyLogo}
           />
         </View>
@@ -21,7 +20,7 @@ const SuccessRegisterScreen = (ScreenProps: RootStackProps) => {
           <View style={{alignItems: 'center'}}>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../../assets/image/illustration-4.png')}
+                source={require('@src/assets/image/illustration-4.png')}
                 style={style.illustration}
               />
             </View>

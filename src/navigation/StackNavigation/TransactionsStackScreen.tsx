@@ -9,13 +9,15 @@ import {CustomHeader} from '@src/component';
 import {colors} from '@src/const/colors';
 import {TransactionProvider} from '@src/store/context/TransactionContext';
 import auth from '@react-native-firebase/auth';
-import SearchMitraScreen from '@src/screens/SearchMitraScreen';
-import PickPointScreen from '@src/screens/PickPointScreen';
-import SearchLocationScreen from '@src/screens/SearchLocationScreen';
 import {Coordinate, MitraData} from '@src/types/mitra';
-import MitraDetailScreen from '@src/screens/MitraDetailScreen';
-import SelectWasteScreen from '@src/screens/SelectWasteScreen';
-import DetailsPreTransacScreen from '@src/screens/DetailsPreTransacScreen';
+import {
+  DeliveryDetailsScreen,
+  MitraDetailScreen,
+  PickPointScreen,
+  SearchLocationScreen,
+  SearchMitraScreen,
+  SelectWasteScreen,
+} from '@src/screens/Transaction';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
@@ -120,7 +122,7 @@ const TransactionsStackScreen = () => {
         />
         <TransactionStack.Screen
           name="DetailPreTransac"
-          component={DetailsPreTransacScreen}
+          component={DeliveryDetailsScreen}
           options={{
             animation: 'slide_from_right',
             headerShown: true,

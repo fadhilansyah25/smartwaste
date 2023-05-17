@@ -3,13 +3,15 @@ import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import PreRegistrationScreen from '@src/screens/PreRegistrationScreen';
-import LoginScreen from '@src/screens/LoginScreen';
 import CustomHeader from '@src/component/CustomHeader';
-import VerificationScreen from '@src/screens/VerificationScreen';
-import PersonalDataFormScreen from '@src/screens/PersonalDataFormScreen';
-import SuccessRegisterScreen from '@src/screens/SuccessRegisterScreen';
 import {RegisterProvider} from '@src/store/context/RegisterContext';
+import {
+  LoginScreen,
+  PersonalDataFormScreen,
+  PreRegistrationScreen,
+  SuccessRegisterScreen,
+  VerificationScreen,
+} from '@src/screens/Auth';
 
 export type AuthStackParamaterList = {
   Login: undefined;
@@ -59,7 +61,10 @@ const AuthStackScreen = () => {
             animation: 'slide_from_right',
             headerShown: true,
             header: props => (
-              <CustomHeader headerProps={props} rightTitle="Form Data Pribadi" />
+              <CustomHeader
+                headerProps={props}
+                rightTitle="Form Data Pribadi"
+              />
             ),
           }}
         />

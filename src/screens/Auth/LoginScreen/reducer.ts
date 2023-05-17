@@ -1,4 +1,4 @@
-import {emailFormat, passwordFormat} from '../../utils/regexFormat';
+import {emailFormat, passwordFormat} from '@src/utils/regexFormat';
 
 type SignInForm = {
   email: string;

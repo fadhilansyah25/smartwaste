@@ -7,15 +7,13 @@ import {
   View,
   BackHandler,
 } from 'react-native';
-import CustomButton from '../../component/Button';
-import VerCodeField from '../../component/VerCodeField';
-import {AuthStackProps} from '../../navigation/StackNavigation/AuthStackScreen';
 import {useVerificationScreen} from './hook';
 import {style} from './style';
 import {useFocusEffect} from '@react-navigation/native';
+import { CustomButton, VerCodeField } from '@src/component';
 
-const VerificationScreen = (screenProps: AuthStackProps) => {
-  const {handleConfirmCode, code, setCode} = useVerificationScreen(screenProps);
+const VerificationScreen = () => {
+  const {handleConfirmCode, code, setCode} = useVerificationScreen();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -38,7 +36,7 @@ const VerificationScreen = (screenProps: AuthStackProps) => {
             <View>
               <View style={{alignItems: 'center'}}>
                 <Image
-                  source={require('../../assets/image/illustration-3.png')}
+                  source={require('@src/assets/image/illustration-3.png')}
                   style={style.illustration}
                 />
               </View>

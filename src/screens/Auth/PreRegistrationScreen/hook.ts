@@ -4,6 +4,7 @@ import FirebaseServices from '@src/services/firebaseServices';
 import {RegisterContext} from '@src/store/context/RegisterContext';
 import {Types} from '@src/store/reducer/RegitserReducer';
 import {registerFormReducer} from './reducer';
+import {useNavigation} from '@react-navigation/native';
 
 const registerFormInitialState = {
   email: '',
@@ -23,12 +24,13 @@ const stringFieldIDs = [
   'confirmPassword',
 ] as const;
 
-export const usePreRegis = ({navigation}: AuthStackProps) => {
+export const usePreRegis = () => {
   const {dispatch} = useContext(RegisterContext);
   const [register, updateRegister] = useReducer(
     registerFormReducer,
     registerFormInitialState,
   );
+  const navigation = useNavigation<AuthStackProps['navigation']>();
 
   const handleRegisterSubmit = async () => {
     if (

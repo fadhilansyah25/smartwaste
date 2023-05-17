@@ -15,6 +15,8 @@ import TutorialCard from './Card/TutorialCard';
 import VerCodeField from './VerCodeField';
 
 export {
+  InputPhoneNumber,
+  InputText,
   AvatarBadge,
   CustomButton,
   AchivementCard,
@@ -23,8 +25,6 @@ export {
   TutorialCard,
   HorizontalRule,
   InputDate,
-  InputPhoneNumber,
-  InputText,
   MainBanner,
   MenuButtonContainer,
   SelectListDropDown,
