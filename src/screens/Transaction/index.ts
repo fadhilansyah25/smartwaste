@@ -4,6 +4,7 @@ import PickPointScreen from './PickPointScreen';
 import SearchLocationScreen from './SearchLocationScreen';
 import SearchMitraScreen from './SearchMitraScreen';
 import SelectWasteScreen from './SelectWasteScreen';
+import SelectDeliveryServiceScreen from './SelectDeliveryServiceScreen';
 
 export {
   DeliveryDetailsScreen,
@@ -12,4 +13,5 @@ export {
   SearchLocationScreen,
   SearchMitraScreen,
   SelectWasteScreen,
+  SelectDeliveryServiceScreen,
 };

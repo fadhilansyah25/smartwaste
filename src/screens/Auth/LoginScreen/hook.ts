@@ -1,8 +1,8 @@
 import React from 'react';
 import {signInFormReducer} from './reducer';
 import FirebaseServices from '@src/services/firebaseServices';
-import {useNavigation} from '@react-navigation/native'
-import { AuthStackProps } from '@src/navigation/StackNavigation/AuthStackScreen';
+import {useNavigation} from '@react-navigation/native';
+import {AuthStackProps} from '@src/navigation/StackNavigation/AuthStackScreen';
 
 const signInFormInitialState = {
   email: '',
@@ -16,7 +16,7 @@ export const useLoginScreen = () => {
     signInFormReducer,
     signInFormInitialState,
   );
-  const navigation = useNavigation<AuthStackProps['navigation']>()
+  const navigation = useNavigation<AuthStackProps['navigation']>();
 
   const handleLogin = () => {
     if (state.emailErrorMessage === '' && state.passwordErrorMessage === '') {

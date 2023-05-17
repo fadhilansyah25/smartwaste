@@ -16,6 +16,7 @@ import {
   PickPointScreen,
   SearchLocationScreen,
   SearchMitraScreen,
+  SelectDeliveryServiceScreen,
   SelectWasteScreen,
 } from '@src/screens/Transaction';
 
@@ -25,7 +26,8 @@ export type TransactionStackParamaterList = {
   SearchLocation: undefined;
   MitraDetail: {mitra: MitraData};
   SelectWaste: undefined;
-  DetailPreTransac: undefined;
+  DeliveryDetails: undefined;
+  SelectDeliveryServices: undefined;
 };
 
 export type TransactionStackProps =
@@ -121,7 +123,7 @@ const TransactionsStackScreen = () => {
           }}
         />
         <TransactionStack.Screen
-          name="DetailPreTransac"
+          name="DeliveryDetails"
           component={DeliveryDetailsScreen}
           options={{
             animation: 'slide_from_right',
@@ -133,6 +135,25 @@ const TransactionsStackScreen = () => {
                 logo={false}
                 headerCenter={
                   <CenterHeaderTitleCustom title="Detail Pengiriman" />
+                }
+                elevation={5}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="SelectDeliveryServices"
+          component={SelectDeliveryServiceScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Pilih Jasa Pengiriman" />
                 }
                 elevation={5}
               />

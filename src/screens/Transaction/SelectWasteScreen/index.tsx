@@ -81,7 +81,7 @@ const SelectWasteScreen = () => {
                 wasteType: checkedItems,
               },
             });
-            navigation.navigate('DetailPreTransac');
+            navigation.navigate('DeliveryDetails');
           }}
         />
       </View>

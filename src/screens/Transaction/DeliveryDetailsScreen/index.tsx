@@ -12,8 +12,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {colors} from '@src/const/colors';
 import {CustomButton} from '@src/component';
+import {useNavigation} from '@react-navigation/native';
+import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 
 const DeliveryDetailsScreen = () => {
+  const navigation = useNavigation<TransactionStackProps['navigation']>();
+
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
@@ -129,6 +133,9 @@ const DeliveryDetailsScreen = () => {
           label="Selanjutnya"
           type="fill"
           activeOpacity={0.8}
+          onPress={() => {
+            navigation.navigate('SelectDeliveryServices');
+          }}
         />
       </View>
     </SafeAreaView>
