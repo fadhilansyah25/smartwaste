@@ -37,4 +37,5 @@ export const colors = {
 
   // Green
   G900: '#7A9921',
+  G700: '#A8D230',
 };
