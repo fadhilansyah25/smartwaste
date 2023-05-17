@@ -15,16 +15,16 @@ import TutorialCard from './Card/TutorialCard';
 import VerCodeField from './VerCodeField';
 
 export {
-  InputPhoneNumber,
-  InputText,
   AvatarBadge,
   CustomButton,
   AchivementCard,
-  GreetingsBar,
   GuideCard,
   TutorialCard,
+  GreetingsBar,
   HorizontalRule,
   InputDate,
+  InputPhoneNumber,
+  InputText,
   MainBanner,
   MenuButtonContainer,
   SelectListDropDown,
