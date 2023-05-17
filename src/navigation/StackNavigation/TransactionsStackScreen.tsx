@@ -12,6 +12,7 @@ import auth from '@react-native-firebase/auth';
 import {Coordinate, MitraData} from '@src/types/mitra';
 import {
   DeliveryDetailsScreen,
+  DetailsDeliveryServiceScreen,
   MitraDetailScreen,
   PickPointScreen,
   SearchLocationScreen,
@@ -28,6 +29,7 @@ export type TransactionStackParamaterList = {
   SelectWaste: undefined;
   DeliveryDetails: undefined;
   SelectDeliveryServices: undefined;
+  DetailsDeliveryService: undefined;
 };
 
 export type TransactionStackProps =
@@ -154,6 +156,25 @@ const TransactionsStackScreen = () => {
                 logo={false}
                 headerCenter={
                   <CenterHeaderTitleCustom title="Pilih Jasa Pengiriman" />
+                }
+                elevation={5}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="DetailsDeliveryService"
+          component={DetailsDeliveryServiceScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Detail Jasa Pengiriman" />
                 }
                 elevation={5}
               />

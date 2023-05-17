@@ -61,6 +61,7 @@ const MainTab = () => {
               'SelectWaste',
               'DeliveryDetails',
               'SelectDeliveryServices',
+              'DetailsDeliveryService'
             ];
             if (validScreen.includes(routeName as string))
               return {display: 'none'};

@@ -1,10 +1,24 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import {style} from './style';
 import CurrencySvg from '@src/assets/svg/currency.svg';
 import {colors} from '@src/const/colors';
+import {useNavigation} from '@react-navigation/native';
+import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 
 const SelectDeliveryServiceScreen = () => {
+  const navigation = useNavigation<TransactionStackProps['navigation']>();
+
+  const handlePressCardDeliveryService = () => {
+    navigation.navigate('DetailsDeliveryService');
+  };
+
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView
@@ -27,23 +41,23 @@ const SelectDeliveryServiceScreen = () => {
             leftTitle="PENGIRIMAN INSTAN"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList
             leftTitle="PENGIRIMAN TERJADWAL"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard />
-          <DeliveryServiceCard />
-          <DeliveryServiceCard />
-          <DeliveryServiceCard />
-          <DeliveryServiceCard />
-          <DeliveryServiceCard />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList leftTitle="JEMPUT LANGSUNG" RightTitle="Minimal 5 Kg" />
-          <DeliveryServiceCard />
+          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -72,25 +86,27 @@ const HeaderList = ({
   );
 };
 
-const DeliveryServiceCard = () => {
+const DeliveryServiceCard = ({handlePress}: {handlePress?: () => void}) => {
   return (
-    <View
-      style={{
-        paddingHorizontal: 20,
-        paddingVertical: 14,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        borderColor: colors.N300,
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: colors.N100,
-      }}>
-      <Text>Gojek</Text>
-      <Text style={{fontSize: 10}}>
-        Mulai dari{' '}
-        <Text style={{fontSize: 12, fontWeight: '600'}}>Rp11,000</Text>
-      </Text>
-    </View>
+    <TouchableOpacity>
+      <View
+        style={{
+          paddingHorizontal: 20,
+          paddingVertical: 14,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          borderColor: colors.N300,
+          borderWidth: 1,
+          borderRadius: 5,
+          backgroundColor: colors.N100,
+        }}>
+        <Text>Gojek</Text>
+        <Text style={{fontSize: 10}}>
+          Mulai dari{' '}
+          <Text style={{fontSize: 12, fontWeight: '600'}}>Rp11,000</Text>
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
