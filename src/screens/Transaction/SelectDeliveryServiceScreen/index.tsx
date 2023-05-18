@@ -1,16 +1,11 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {style} from './style';
 import CurrencySvg from '@src/assets/svg/currency.svg';
 import {colors} from '@src/const/colors';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
+import {DeliveryServiceCard} from '@src/component';
 
 const SelectDeliveryServiceScreen = () => {
   const navigation = useNavigation<TransactionStackProps['navigation']>();
@@ -41,23 +36,55 @@ const SelectDeliveryServiceScreen = () => {
             leftTitle="PENGIRIMAN INSTAN"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList
             leftTitle="PENGIRIMAN TERJADWAL"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList leftTitle="JEMPUT LANGSUNG" RightTitle="Minimal 5 Kg" />
-          <DeliveryServiceCard handlePress={handlePressCardDeliveryService} />
+          <DeliveryServiceCard
+            startingPrice="Rp 10.000"
+            serviceName="Gojek"
+            handlePress={handlePressCardDeliveryService}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -83,30 +110,6 @@ const HeaderList = ({
       </Text>
       <Text style={{fontSize: 10, color: colors.T500}}>{RightTitle} </Text>
     </View>
-  );
-};
-
-const DeliveryServiceCard = ({handlePress}: {handlePress?: () => void}) => {
-  return (
-    <TouchableOpacity>
-      <View
-        style={{
-          paddingHorizontal: 20,
-          paddingVertical: 14,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderColor: colors.N300,
-          borderWidth: 1,
-          borderRadius: 5,
-          backgroundColor: colors.N100,
-        }}>
-        <Text>Gojek</Text>
-        <Text style={{fontSize: 10}}>
-          Mulai dari{' '}
-          <Text style={{fontSize: 12, fontWeight: '600'}}>Rp11,000</Text>
-        </Text>
-      </View>
-    </TouchableOpacity>
   );
 };
 

@@ -5,7 +5,7 @@ import SearchLocationScreen from './SearchLocationScreen';
 import SearchMitraScreen from './SearchMitraScreen';
 import SelectWasteScreen from './SelectWasteScreen';
 import SelectDeliveryServiceScreen from './SelectDeliveryServiceScreen';
-import DetailsDeliveryServiceScreen from './DeliveryDetailsScreen';
+import DetailsDeliveryServiceScreen from './DetailsDeliveryServiceScreen';
 
 export {
   DeliveryDetailsScreen,
