@@ -13,11 +13,14 @@ import MenuButtonContainer from './MenuButtonContainer';
 import SelectListDropDown from './SelectList';
 import TutorialCard from './Card/TutorialCard';
 import VerCodeField from './VerCodeField';
+import DeliveryServiceCard from './Card/DeliveryServiceProviderCard';
 
 export {
   AvatarBadge,
   CustomButton,
+  CustomHeader,
   AchivementCard,
+  DeliveryServiceCard,
   GuideCard,
   TutorialCard,
   GreetingsBar,
@@ -29,5 +32,4 @@ export {
   MenuButtonContainer,
   SelectListDropDown,
   VerCodeField,
-  CustomHeader,
 };

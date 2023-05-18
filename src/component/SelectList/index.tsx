@@ -10,7 +10,9 @@ interface Props extends SelectListProps {
 const SelectListDropDown = (props: Props) => {
   return (
     <View style={props.containerStyle}>
-      <Text style={{marginBottom: 8}}>{props.label}</Text>
+      {props.label ? (
+        <Text style={{marginBottom: 8}}>{props.label}</Text>
+      ) : null}
       <SelectList {...props} />
     </View>
   );
