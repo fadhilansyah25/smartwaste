@@ -10,6 +10,10 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: colors.white,
     paddingBottom: 28 + 40 + 20,
-    marginTop: 24
+    marginTop: 24,
+  },
+  titleText: {
+    color: colors.T500,
+    fontWeight: '600',
   },
 });
