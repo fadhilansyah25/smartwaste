@@ -14,6 +14,7 @@ import SelectListDropDown from './SelectList';
 import TutorialCard from './Card/TutorialCard';
 import VerCodeField from './VerCodeField';
 import DeliveryServiceCard from './Card/DeliveryServiceProviderCard';
+import InputNumber from './InputNumber';
 
 export {
   AvatarBadge,
@@ -26,6 +27,7 @@ export {
   GreetingsBar,
   HorizontalRule,
   InputDate,
+  InputNumber,
   InputPhoneNumber,
   InputText,
   MainBanner,
