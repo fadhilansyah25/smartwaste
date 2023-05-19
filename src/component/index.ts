@@ -15,6 +15,7 @@ import TutorialCard from './Card/TutorialCard';
 import VerCodeField from './VerCodeField';
 import DeliveryServiceCard from './Card/DeliveryServiceProviderCard';
 import InputNumber from './InputNumber';
+import DeliveryTypeCard from './Card/DeliveryTypeCard';
 
 export {
   AvatarBadge,
@@ -22,6 +23,7 @@ export {
   CustomHeader,
   AchivementCard,
   DeliveryServiceCard,
+  DeliveryTypeCard,
   GuideCard,
   TutorialCard,
   GreetingsBar,

@@ -1,8 +1,9 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View, TextInput} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {style} from './style';
 import {
   DeliveryServiceCard,
+  DeliveryTypeCard,
   InputNumber,
   SelectListDropDown,
 } from '@src/component';
@@ -139,47 +140,3 @@ const DetailsDeliveryServiceScreen = () => {
 };
 
 export default DetailsDeliveryServiceScreen;
-
-const DeliveryTypeCard = ({
-  icon,
-  type,
-  desc,
-}: {
-  icon: JSX.Element;
-  type: string;
-  desc: string;
-}) => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        borderWidth: 1,
-        borderColor: colors.N500,
-        borderRadius: 5,
-        gap: 8,
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 10,
-        }}>
-        <View
-          style={{
-            backgroundColor: colors.T500,
-            width: 28,
-            height: 28,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 5,
-          }}>
-          {icon}
-        </View>
-        <Text style={{fontWeight: '600', color: colors.N700}}>{type}</Text>
-      </View>
-      <Text style={{fontSize: 12}}>{desc}</Text>
-    </View>
-  );
-};
