@@ -1,7 +1,11 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Text, View, TextInput} from 'react-native';
 import {style} from './style';
-import {DeliveryServiceCard, SelectListDropDown} from '@src/component';
+import {
+  DeliveryServiceCard,
+  InputNumber,
+  SelectListDropDown,
+} from '@src/component';
 import {colors} from '@src/const/colors';
 import VespaSvg from '@src/assets/svg/vespa-white.svg';
 import DropSvg from '@src/assets/svg/drop-point.svg';
@@ -13,25 +17,6 @@ const DetailsDeliveryServiceScreen = () => {
     {key: '1', value: 'Regular'},
     {key: '2', value: 'Express'},
   ];
-
-  const handleInputChange = (text: string) => {
-    // Menghapus karakter non-angka dan non-desimal
-    // Menghapus karakter non-angka dan non-desimal
-    const numericValue = text.replace(/[^0-9.]/g, '');
-
-    // Memastikan hanya ada satu titik desimal yang diperbolehkan
-    const decimalCount = (numericValue.match(/\./g) || []).length;
-    const cleanedValue =
-      decimalCount <= 1 ? numericValue : numericValue.slice(0, -1);
-
-    // Memastikan nilai minimal 1
-    const number = parseFloat(cleanedValue);
-    const minValue = 1;
-    const validatedValue =
-      isNaN(number) || number < minValue ? 1 : cleanedValue;
-
-    setWeight(Number(validatedValue));
-  };
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -73,10 +58,10 @@ const DetailsDeliveryServiceScreen = () => {
               alignItems: 'center',
               borderColor: colors.N500,
             }}>
-            <TextInput
-              keyboardType="numeric"
-              value={weight.toString()}
-              style={{
+            <InputNumber
+              minimumValue={1}
+              maximumValue={15}
+              inputStyle={{
                 flex: 1,
                 paddingHorizontal: 10,
                 backgroundColor: colors.white,
@@ -85,7 +70,6 @@ const DetailsDeliveryServiceScreen = () => {
                 fontWeight: '500',
                 paddingVertical: 0,
               }}
-              onChangeText={handleInputChange}
             />
             <View
               style={{
