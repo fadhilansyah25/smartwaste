@@ -1,21 +1,39 @@
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {colors} from '@src/const/colors';
-import {StyleSheet, Text, View} from 'react-native';
 
 type Props = {
   icon: JSX.Element;
   type: string;
   desc: string;
+  onPress?: () => void;
+  containerStyle?: StyleProp<ViewStyle>;
 };
 
-const DeliveryTypeCard = ({icon, type, desc}: Props) => {
+const DeliveryTypeCard = ({
+  icon,
+  type,
+  desc,
+  onPress,
+  containerStyle,
+}: Props) => {
   return (
-    <View style={style.containerCard}>
+    <TouchableOpacity
+      style={[style.containerCard, containerStyle]}
+      activeOpacity={0.9}
+      onPress={onPress}>
       <View style={style.headerContainer}>
         <View style={style.iconContainer}>{icon}</View>
         <Text style={{fontWeight: '600', color: colors.N700}}>{type}</Text>
       </View>
       <Text style={{fontSize: 12}}>{desc}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -30,6 +48,8 @@ const style = StyleSheet.create({
     borderColor: colors.N500,
     borderRadius: 5,
     gap: 8,
+    backgroundColor: colors.white,
+    elevation: 2,
   },
   headerContainer: {
     flexDirection: 'row',
