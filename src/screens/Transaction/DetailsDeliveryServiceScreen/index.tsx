@@ -12,6 +12,8 @@ import {colors} from '@src/const/colors';
 import VespaSvg from '@src/assets/svg/vespa-white.svg';
 import DropSvg from '@src/assets/svg/drop-point.svg';
 import {useDetailsDeliveryServiceScreen} from './hook';
+import {InputDate} from '@src/component';
+import {maximumPickupDate, today} from '@src/utils/getInitialDate';
 
 const data = [
   {key: '1', value: 'Regular'},
@@ -19,7 +21,7 @@ const data = [
 ];
 
 const DetailsDeliveryServiceScreen = () => {
-  const {navigation, selected, setSelected, setWeight, weight} =
+  const {navigation, selected, setSelected, deliveryType, setDeliveryType} =
     useDetailsDeliveryServiceScreen();
 
   return (
@@ -32,12 +34,26 @@ const DetailsDeliveryServiceScreen = () => {
           <Text style={style.titleText}>Pilih Tipe Pengiriman</Text>
           <View style={{flexDirection: 'row', gap: 10}}>
             <DeliveryTypeCard
+              onPress={() => setDeliveryType(0)}
+              containerStyle={
+                deliveryType === 0 && {
+                  borderColor: colors.T500,
+                  backgroundColor: colors.T100,
+                }
+              }
               icon={<VespaSvg height={14} />}
               type={'Pickup'}
               desc="Paket akan dijemput kurir dalam waktu yang telah Anda tetapkan. (Bayar
                 Langsung Ke Kurir)"
             />
             <DeliveryTypeCard
+              containerStyle={
+                deliveryType === 1 && {
+                  borderColor: colors.T500,
+                  backgroundColor: colors.T100,
+                }
+              }
+              onPress={() => setDeliveryType(1)}
               icon={<DropSvg height={16} />}
               type={'Drop Off'}
               desc="Anda perlu mengantar paket ke Cabang/Agen/Gerai terdekat. (Bayar Langsung Ke Agen)"
@@ -47,6 +63,14 @@ const DetailsDeliveryServiceScreen = () => {
 
         {/* Desc */}
         <View style={{marginTop: 12, gap: 12}}>
+          <InputDate
+            label="Tanggal Jemput"
+            labelStyle={{fontSize: 12}}
+            initialDate={new Date()}
+            minimumDate={today}
+            maximumDate={maximumPickupDate}
+            inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
+          />
           <View>
             <Text style={style.titleText}>Masukan Berat Paket (Kg)</Text>
             <Text style={{fontSize: 12}}>

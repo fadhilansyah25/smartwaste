@@ -9,8 +9,8 @@ export const style = StyleSheet.create({
   scrollViewStyle: {
     paddingHorizontal: 20,
     backgroundColor: colors.white,
-    paddingBottom: 28 + 40 + 20,
-    marginTop: 24,
+    paddingBottom: 28 + 100,
+    marginTop: 20,
   },
   titleText: {
     color: colors.T500,
