@@ -16,4 +16,13 @@ export const style = StyleSheet.create({
     color: colors.T500,
     fontWeight: '600',
   },
+  bottomNavContainer: {
+    position: 'absolute',
+    width: '100%',
+    backgroundColor: colors.white,
+    bottom: 0,
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    elevation: 10,
+  },
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {style} from './style';
 import {
+  CustomButton,
   DeliveryServiceCard,
   DeliveryTypeCard,
   InputNumber,
@@ -10,14 +11,16 @@ import {
 import {colors} from '@src/const/colors';
 import VespaSvg from '@src/assets/svg/vespa-white.svg';
 import DropSvg from '@src/assets/svg/drop-point.svg';
+import {useDetailsDeliveryServiceScreen} from './hook';
+
+const data = [
+  {key: '1', value: 'Regular'},
+  {key: '2', value: 'Express'},
+];
 
 const DetailsDeliveryServiceScreen = () => {
-  const [selected, setSelected] = React.useState('');
-  const [weight, setWeight] = React.useState<number>(1);
-  const data = [
-    {key: '1', value: 'Regular'},
-    {key: '2', value: 'Express'},
-  ];
+  const {navigation, selected, setSelected, setWeight, weight} =
+    useDetailsDeliveryServiceScreen();
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -135,6 +138,18 @@ const DetailsDeliveryServiceScreen = () => {
           </View>
         </View>
       </ScrollView>
+
+      {/* Bottom Navbar */}
+      <View style={style.bottomNavContainer}>
+        <CustomButton
+          label="Selanjutnya"
+          type="fill"
+          activeOpacity={0.8}
+          onPress={() => {
+            navigation.navigate('SelectDeliveryServices');
+          }}
+        />
+      </View>
     </SafeAreaView>
   );
 };
