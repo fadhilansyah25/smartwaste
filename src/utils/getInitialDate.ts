@@ -26,3 +26,12 @@ export const minBirthday = new Date(
   0,
   0,
 );
+
+export const maximumPickupDate = new Date(
+  date.getFullYear(),
+  date.getMonth(),
+  date.getDate() + 4,
+  12,
+  0,
+  0,
+);
