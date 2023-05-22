@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   ViewStyle,
+  TextStyle,
 } from 'react-native';
 import {colors} from '../../const/colors';
 import {style} from './style';
@@ -21,8 +22,12 @@ interface Props extends TextInputProps {
   label?: string;
   isPassword?: boolean;
   initialDate: Date;
+  minimumDate?: Date;
+  maximumDate?: Date;
   onChangeDate?: (event: DateTimePickerEvent, date?: Date | undefined) => void;
   containerStyle?: StyleProp<ViewStyle>;
+  inputStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
 }
 
 const InputDate = (props: Props) => {
@@ -39,26 +44,30 @@ const InputDate = (props: Props) => {
           props.onChangeDate(_, date);
         }
       },
-      maximumDate: props.initialDate,
+      minimumDate: props.minimumDate,
+      maximumDate: props.maximumDate,
     });
   };
 
   return (
     <View style={props.containerStyle}>
-      <Text style={style.labelInput}>{props.label}</Text>
+      {props.label && (
+        <Text style={[style.labelInput, props.labelStyle]}>{props.label}</Text>
+      )}
       <TouchableOpacity activeOpacity={1} onPress={showMode}>
         <View
-          style={{
-            ...style.textInputContainer,
-            borderColor: isFocus ? colors.B800 : colors.N500,
-          }}>
+          style={[
+            style.textInputContainer,
+            {borderColor: isFocus ? colors.B800 : colors.N500},
+          ]}>
           <TextInput
-            style={style.input}
+            style={[style.input, props.inputStyle]}
             {...props}
             onFocus={() => {
               setIsFocus(!isFocus);
               showMode();
             }}
+            editable={false}
             onBlur={() => setIsFocus(!isFocus)}
             underlineColorAndroid="transparent"
             value={dayjs(initialDate).format('DD/MM/YYYY')}
