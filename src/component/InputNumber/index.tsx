@@ -25,7 +25,7 @@ const InputNumber: React.FC<NumberInputProps> = ({
     <TextInput
       style={inputStyle}
       keyboardType="numeric"
-      value={value}
+      value={value || '0'}
       onChangeText={handleInputChange}
     />
   );
