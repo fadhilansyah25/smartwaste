@@ -12,8 +12,13 @@ import {colors} from '@src/const/colors';
 import VespaSvg from '@src/assets/svg/vespa-white.svg';
 import DropSvg from '@src/assets/svg/drop-point.svg';
 import {useDetailsDeliveryServiceScreen} from './hook';
-import {InputDate} from '@src/component';
-import {maximumPickupDate, today} from '@src/utils/getInitialDate';
+import {InputDate, InputTime} from '@src/component';
+import {
+  initialTime,
+  maximumPickupDate,
+  maximumTime,
+  today,
+} from '@src/utils/getInitialDate';
 
 const data = [
   {key: '1', value: 'Regular'},
@@ -63,14 +68,28 @@ const DetailsDeliveryServiceScreen = () => {
 
         {/* Desc */}
         <View style={{marginTop: 12, gap: 12}}>
-          <InputDate
-            label="Tanggal Jemput"
-            labelStyle={{fontSize: 12}}
-            initialDate={new Date()}
-            minimumDate={today}
-            maximumDate={maximumPickupDate}
-            inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
-          />
+          {deliveryType === 0 && (
+            <View style={{flexDirection: 'row', gap: 12}}>
+              <InputDate
+                label="Tanggal Jemput"
+                labelStyle={{fontSize: 12}}
+                initialDate={new Date()}
+                minimumDate={today}
+                maximumDate={maximumPickupDate}
+                inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
+                containerStyle={{flex: 1}}
+              />
+              <InputTime
+                label="Jam Jemput"
+                labelStyle={{fontSize: 12}}
+                inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
+                initialTime={initialTime}
+                minimumDate={initialTime}
+                maximumDate={maximumTime}
+                containerStyle={{flex: 1}}
+              />
+            </View>
+          )}
           <View>
             <Text style={style.titleText}>Masukan Berat Paket (Kg)</Text>
             <Text style={{fontSize: 12}}>
