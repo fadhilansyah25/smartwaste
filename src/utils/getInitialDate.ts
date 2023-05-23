@@ -35,3 +35,21 @@ export const maximumPickupDate = new Date(
   0,
   0,
 );
+
+export const initialTime = new Date(
+  date.getFullYear(),
+  date.getMonth(),
+  date.getDate(),
+  8,
+  0,
+  0,
+);
+
+export const maximumTime = new Date(
+  date.getFullYear(),
+  date.getMonth(),
+  date.getDate(),
+  16,
+  0,
+  0,
+);
