@@ -16,6 +16,7 @@ import VerCodeField from './VerCodeField';
 import DeliveryServiceCard from './Card/DeliveryServiceProviderCard';
 import InputNumber from './InputNumber';
 import DeliveryTypeCard from './Card/DeliveryTypeCard';
+import InputTime from './InputTime';
 
 export {
   AvatarBadge,
@@ -32,6 +33,7 @@ export {
   InputNumber,
   InputPhoneNumber,
   InputText,
+  InputTime,
   MainBanner,
   MenuButtonContainer,
   SelectListDropDown,
