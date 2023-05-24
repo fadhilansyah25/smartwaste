@@ -11,6 +11,7 @@ import {TransactionProvider} from '@src/store/context/TransactionContext';
 import auth from '@react-native-firebase/auth';
 import {Coordinate, MitraData} from '@src/types/mitra';
 import {
+  DeliveryConfirmScreen,
   DeliveryDetailsScreen,
   DetailsDeliveryServiceScreen,
   MitraDetailScreen,
@@ -30,6 +31,7 @@ export type TransactionStackParamaterList = {
   DeliveryDetails: undefined;
   SelectDeliveryServices: undefined;
   DetailsDeliveryService: undefined;
+  DeliveryConfirm: undefined;
 };
 
 export type TransactionStackProps =
@@ -175,6 +177,25 @@ const TransactionsStackScreen = () => {
                 logo={false}
                 headerCenter={
                   <CenterHeaderTitleCustom title="Detail Jasa Pengiriman" />
+                }
+                elevation={5}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="DeliveryConfirm"
+          component={DeliveryConfirmScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Konfirmasi Pengiriman" />
                 }
                 elevation={5}
               />

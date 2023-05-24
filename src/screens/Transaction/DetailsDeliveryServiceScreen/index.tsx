@@ -189,7 +189,7 @@ const DetailsDeliveryServiceScreen = () => {
           type="fill"
           activeOpacity={0.8}
           onPress={() => {
-            navigation.navigate('SelectDeliveryServices');
+            navigation.navigate('DeliveryConfirm');
           }}
         />
       </View>
