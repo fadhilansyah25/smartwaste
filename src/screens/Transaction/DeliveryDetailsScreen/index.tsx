@@ -45,7 +45,7 @@ const DeliveryDetailsScreen = () => {
                   <Text style={{color: colors.T500, fontWeight: '600'}}>
                     Muhammad Fadil Ardiansyah
                   </Text>
-                  <Text style={{color: colors.N500}}>
+                  <Text style={{color: colors.N500, fontSize: 12}}>
                     Jl. Nn Blok D4D No.13, RT.3/RW.3, Medang, Kec. Pagedangan,
                     Kabupaten Tangerang, Banten 15334, Indonesia
                   </Text>
@@ -88,7 +88,7 @@ const DeliveryDetailsScreen = () => {
               Bank Sampah Bumi Lestari
             </Text>
             <Text style={{color: colors.T600}}>087774502637</Text>
-            <Text style={{color: colors.N500}}>
+            <Text style={{color: colors.N500, fontSize: 12}}>
               Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec.
               Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630
             </Text>

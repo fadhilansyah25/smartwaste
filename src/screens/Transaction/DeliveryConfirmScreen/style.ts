@@ -35,6 +35,10 @@ export const style = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
   },
+  titleText: {
+    color: colors.T500,
+    fontWeight: '600',
+  },
   bottomNavContainer: {
     position: 'absolute',
     width: '100%',
