@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.14",
     "@react-native-community/checkbox": "^0.5.15",
     "@react-native-community/datetimepicker": "^7.0.0",
     "@react-native-firebase/app": "^17.4.0",
@@ -21,6 +22,7 @@
     "@react-navigation/stack": "^6.3.16",
     "@rnmapbox/maps": "github:rnmapbox/maps",
     "dayjs": "^1.11.7",
+    "graphql": "^16.6.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
     "react-native-confirmation-code-field": "^7.3.1",
