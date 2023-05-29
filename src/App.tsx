@@ -7,7 +7,7 @@ import {
 
 import AuthStackScreen from './navigation/StackNavigation/AuthStackScreen';
 import MainTab from './navigation/TabNavigation/MainTab';
-import { SplashScreen } from './screens/Auth';
+import {SplashScreen} from './screens/Auth';
 
 export type RootStackParamameterList = {
   Splash: undefined;
@@ -26,7 +26,7 @@ const App = () => {
         initialRouteName={'Splash'}>
         <RootStack.Screen name="Splash" component={SplashScreen} />
         <RootStack.Screen name="Auth" component={AuthStackScreen} />
-        <RootStack.Screen name='Main' component={MainTab}/>
+        <RootStack.Screen name="Main" component={MainTab} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
