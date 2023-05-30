@@ -61,12 +61,12 @@ export const tutorBannerData = [
 
 export const mitra = [
   {
-    id: 1,
+    id: '1',
     name: 'Bank Sampah Bumi Lestari',
     address:
       'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2019779,
       long: 106.7619407,
@@ -74,12 +74,12 @@ export const mitra = [
     phoneNumber: '087774502637',
   },
   {
-    id: 2,
+    id: '2',
     name: 'Depo Pelestarian Lingkungan Tzu Chi Legok',
     address:
       'depo pelestarian lingkungan tzu chi, Jl. Raya Legok - Karawaci No.17, Legok, Kec. Pagedangan, Kabupaten Tangerang, Banten 15820',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2715434,
       long: 106.5984335,
@@ -87,12 +87,12 @@ export const mitra = [
     phoneNumber: '087774502637',
   },
   {
-    id: 3,
+    id: '3',
     name: 'Bank Sampah Bumi Lestari',
     address:
       'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2019779,
       long: 106.7619407,
@@ -100,12 +100,12 @@ export const mitra = [
     phoneNumber: '087774502637',
   },
   {
-    id: 4,
+    id: '4',
     name: 'Bank Sampah Bumi Lestari',
     address:
       'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2019779,
       long: 106.7619407,
@@ -113,12 +113,12 @@ export const mitra = [
     phoneNumber: '087774502637',
   },
   {
-    id: 5,
+    id: '5',
     name: 'Bank Sampah Bumi Lestari',
     address:
       'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2019779,
       long: 106.7619407,
@@ -126,12 +126,12 @@ export const mitra = [
     phoneNumber: '087774502637',
   },
   {
-    id: 6,
+    id: '6',
     name: 'Bank Sampah Bumi Lestari',
     address:
       'Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630',
-    openHour: '08:00',
-    closeHour: '16:00',
+    openTime: '08:00',
+    closeTime: '16:00',
     coordinate: {
       lat: -6.2019779,
       long: 106.7619407,
