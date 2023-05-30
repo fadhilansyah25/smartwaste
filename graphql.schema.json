@@ -6382,7 +6382,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "args": [],
             "type": {
@@ -6624,7 +6624,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "args": [],
             "type": {
@@ -6640,7 +6640,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "args": [],
             "type": {
@@ -6863,7 +6863,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -6923,7 +6923,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -6935,7 +6935,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -6961,7 +6961,7 @@
         "enumValues": [
           {
             "name": "mitra_phone_key",
-            "description": "unique or primary key constraint on columns \"phone\"",
+            "description": "unique or primary key constraint on columns \"phoneNumber\"",
             "isDeprecated": false,
             "deprecationReason": null
           },
@@ -6993,7 +6993,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7041,7 +7041,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7053,7 +7053,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7087,7 +7087,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "args": [],
             "type": {
@@ -7123,7 +7123,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "args": [],
             "type": {
@@ -7135,7 +7135,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "args": [],
             "type": {
@@ -7170,7 +7170,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "args": [],
             "type": {
@@ -7206,7 +7206,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "args": [],
             "type": {
@@ -7218,7 +7218,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "args": [],
             "type": {
@@ -7407,7 +7407,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -7455,7 +7455,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -7467,7 +7467,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -7525,7 +7525,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -7543,13 +7543,13 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -7576,7 +7576,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7612,7 +7612,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7624,7 +7624,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7698,7 +7698,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7734,7 +7734,7 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7746,7 +7746,7 @@
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7777,7 +7777,7 @@
             "deprecationReason": null
           },
           {
-            "name": "close_time",
+            "name": "closeTime",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -7795,13 +7795,13 @@
             "deprecationReason": null
           },
           {
-            "name": "open_time",
+            "name": "openTime",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "phone",
+            "name": "phoneNumber",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null

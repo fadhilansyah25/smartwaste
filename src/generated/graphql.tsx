@@ -859,15 +859,15 @@ export type Smart_Waste_Coordinate_Variance_Order_By = {
 export type Smart_Waste_Mitra = {
   __typename?: 'smart_waste_mitra';
   address: Scalars['String']['output'];
-  close_time: Scalars['timetz']['output'];
+  closeTime: Scalars['timetz']['output'];
   id: Scalars['uuid']['output'];
   /** An array relationship */
   mitra_coordinate: Array<Smart_Waste_Coordinate>;
   /** An aggregate relationship */
   mitra_coordinate_aggregate: Smart_Waste_Coordinate_Aggregate;
   name: Scalars['String']['output'];
-  open_time: Scalars['timetz']['output'];
-  phone: Scalars['String']['output'];
+  openTime: Scalars['timetz']['output'];
+  phoneNumber: Scalars['String']['output'];
 };
 
 /** columns and relationships of "smart_waste.mitra" */
@@ -915,18 +915,18 @@ export type Smart_Waste_Mitra_Bool_Exp = {
   _not?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
   _or?: InputMaybe<Array<Smart_Waste_Mitra_Bool_Exp>>;
   address?: InputMaybe<String_Comparison_Exp>;
-  close_time?: InputMaybe<Timetz_Comparison_Exp>;
+  closeTime?: InputMaybe<Timetz_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   mitra_coordinate?: InputMaybe<Smart_Waste_Coordinate_Bool_Exp>;
   mitra_coordinate_aggregate?: InputMaybe<Smart_Waste_Coordinate_Aggregate_Bool_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
-  open_time?: InputMaybe<Timetz_Comparison_Exp>;
-  phone?: InputMaybe<String_Comparison_Exp>;
+  openTime?: InputMaybe<Timetz_Comparison_Exp>;
+  phoneNumber?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "smart_waste.mitra" */
 export enum Smart_Waste_Mitra_Constraint {
-  /** unique or primary key constraint on columns "phone" */
+  /** unique or primary key constraint on columns "phoneNumber" */
   MitraPhoneKey = 'mitra_phone_key',
   /** unique or primary key constraint on columns "id" */
   MitraPkey = 'mitra_pkey',
@@ -935,34 +935,34 @@ export enum Smart_Waste_Mitra_Constraint {
 /** input type for inserting data into table "smart_waste.mitra" */
 export type Smart_Waste_Mitra_Insert_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
-  close_time?: InputMaybe<Scalars['timetz']['input']>;
+  closeTime?: InputMaybe<Scalars['timetz']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   mitra_coordinate?: InputMaybe<Smart_Waste_Coordinate_Arr_Rel_Insert_Input>;
   name?: InputMaybe<Scalars['String']['input']>;
-  open_time?: InputMaybe<Scalars['timetz']['input']>;
-  phone?: InputMaybe<Scalars['String']['input']>;
+  openTime?: InputMaybe<Scalars['timetz']['input']>;
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type Smart_Waste_Mitra_Max_Fields = {
   __typename?: 'smart_waste_mitra_max_fields';
   address?: Maybe<Scalars['String']['output']>;
-  close_time?: Maybe<Scalars['timetz']['output']>;
+  closeTime?: Maybe<Scalars['timetz']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  open_time?: Maybe<Scalars['timetz']['output']>;
-  phone?: Maybe<Scalars['String']['output']>;
+  openTime?: Maybe<Scalars['timetz']['output']>;
+  phoneNumber?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
 export type Smart_Waste_Mitra_Min_Fields = {
   __typename?: 'smart_waste_mitra_min_fields';
   address?: Maybe<Scalars['String']['output']>;
-  close_time?: Maybe<Scalars['timetz']['output']>;
+  closeTime?: Maybe<Scalars['timetz']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  open_time?: Maybe<Scalars['timetz']['output']>;
-  phone?: Maybe<Scalars['String']['output']>;
+  openTime?: Maybe<Scalars['timetz']['output']>;
+  phoneNumber?: Maybe<Scalars['String']['output']>;
 };
 
 /** response of any mutation on the table "smart_waste.mitra" */
@@ -991,12 +991,12 @@ export type Smart_Waste_Mitra_On_Conflict = {
 /** Ordering options when selecting data from "smart_waste.mitra". */
 export type Smart_Waste_Mitra_Order_By = {
   address?: InputMaybe<Order_By>;
-  close_time?: InputMaybe<Order_By>;
+  closeTime?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   mitra_coordinate_aggregate?: InputMaybe<Smart_Waste_Coordinate_Aggregate_Order_By>;
   name?: InputMaybe<Order_By>;
-  open_time?: InputMaybe<Order_By>;
-  phone?: InputMaybe<Order_By>;
+  openTime?: InputMaybe<Order_By>;
+  phoneNumber?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: smart_waste.mitra */
@@ -1009,25 +1009,25 @@ export enum Smart_Waste_Mitra_Select_Column {
   /** column name */
   Address = 'address',
   /** column name */
-  CloseTime = 'close_time',
+  CloseTime = 'closeTime',
   /** column name */
   Id = 'id',
   /** column name */
   Name = 'name',
   /** column name */
-  OpenTime = 'open_time',
+  OpenTime = 'openTime',
   /** column name */
-  Phone = 'phone',
+  PhoneNumber = 'phoneNumber',
 }
 
 /** input type for updating data in table "smart_waste.mitra" */
 export type Smart_Waste_Mitra_Set_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
-  close_time?: InputMaybe<Scalars['timetz']['input']>;
+  closeTime?: InputMaybe<Scalars['timetz']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  open_time?: InputMaybe<Scalars['timetz']['input']>;
-  phone?: InputMaybe<Scalars['String']['input']>;
+  openTime?: InputMaybe<Scalars['timetz']['input']>;
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Streaming cursor of the table "smart_waste_mitra" */
@@ -1041,11 +1041,11 @@ export type Smart_Waste_Mitra_Stream_Cursor_Input = {
 /** Initial value of the column from where the streaming should start */
 export type Smart_Waste_Mitra_Stream_Cursor_Value_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
-  close_time?: InputMaybe<Scalars['timetz']['input']>;
+  closeTime?: InputMaybe<Scalars['timetz']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  open_time?: InputMaybe<Scalars['timetz']['input']>;
-  phone?: InputMaybe<Scalars['String']['input']>;
+  openTime?: InputMaybe<Scalars['timetz']['input']>;
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "smart_waste.mitra" */
@@ -1053,15 +1053,15 @@ export enum Smart_Waste_Mitra_Update_Column {
   /** column name */
   Address = 'address',
   /** column name */
-  CloseTime = 'close_time',
+  CloseTime = 'closeTime',
   /** column name */
   Id = 'id',
   /** column name */
   Name = 'name',
   /** column name */
-  OpenTime = 'open_time',
+  OpenTime = 'openTime',
   /** column name */
-  Phone = 'phone',
+  PhoneNumber = 'phoneNumber',
 }
 
 export type Smart_Waste_Mitra_Updates = {
@@ -1399,18 +1399,18 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
-export type GetAllMitraQueryQueryVariables = Exact<{[key: string]: never}>;
+export type GetAllMitraQueryVariables = Exact<{[key: string]: never}>;
 
-export type GetAllMitraQueryQuery = {
+export type GetAllMitraQuery = {
   __typename?: 'query_root';
   smart_waste_mitra: Array<{
     __typename?: 'smart_waste_mitra';
-    address: string;
-    close_time: any;
     id: any;
     name: string;
-    open_time: any;
-    phone: string;
+    address: string;
+    closeTime: any;
+    openTime: any;
+    phoneNumber: string;
     mitra_coordinate: Array<{
       __typename?: 'smart_waste_coordinate';
       lat: any;
@@ -1419,15 +1419,15 @@ export type GetAllMitraQueryQuery = {
   }>;
 };
 
-export const GetAllMitraQueryDocument = gql`
-  query getAllMitraQuery {
+export const GetAllMitraDocument = gql`
+  query getAllMitra {
     smart_waste_mitra {
-      address
-      close_time
       id
       name
-      open_time
-      phone
+      address
+      closeTime
+      openTime
+      phoneNumber
       mitra_coordinate {
         lat
         long
@@ -1437,51 +1437,49 @@ export const GetAllMitraQueryDocument = gql`
 `;
 
 /**
- * __useGetAllMitraQueryQuery__
+ * __useGetAllMitraQuery__
  *
- * To run a query within a React component, call `useGetAllMitraQueryQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllMitraQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAllMitraQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllMitraQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetAllMitraQueryQuery({
+ * const { data, loading, error } = useGetAllMitraQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetAllMitraQueryQuery(
+export function useGetAllMitraQuery(
   baseOptions?: Apollo.QueryHookOptions<
-    GetAllMitraQueryQuery,
-    GetAllMitraQueryQueryVariables
+    GetAllMitraQuery,
+    GetAllMitraQueryVariables
   >,
 ) {
   const options = {...defaultOptions, ...baseOptions};
-  return Apollo.useQuery<GetAllMitraQueryQuery, GetAllMitraQueryQueryVariables>(
-    GetAllMitraQueryDocument,
+  return Apollo.useQuery<GetAllMitraQuery, GetAllMitraQueryVariables>(
+    GetAllMitraDocument,
     options,
   );
 }
-export function useGetAllMitraQueryLazyQuery(
+export function useGetAllMitraLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllMitraQueryQuery,
-    GetAllMitraQueryQueryVariables
+    GetAllMitraQuery,
+    GetAllMitraQueryVariables
   >,
 ) {
   const options = {...defaultOptions, ...baseOptions};
-  return Apollo.useLazyQuery<
-    GetAllMitraQueryQuery,
-    GetAllMitraQueryQueryVariables
-  >(GetAllMitraQueryDocument, options);
+  return Apollo.useLazyQuery<GetAllMitraQuery, GetAllMitraQueryVariables>(
+    GetAllMitraDocument,
+    options,
+  );
 }
-export type GetAllMitraQueryQueryHookResult = ReturnType<
-  typeof useGetAllMitraQueryQuery
+export type GetAllMitraQueryHookResult = ReturnType<typeof useGetAllMitraQuery>;
+export type GetAllMitraLazyQueryHookResult = ReturnType<
+  typeof useGetAllMitraLazyQuery
 >;
-export type GetAllMitraQueryLazyQueryHookResult = ReturnType<
-  typeof useGetAllMitraQueryLazyQuery
->;
-export type GetAllMitraQueryQueryResult = Apollo.QueryResult<
-  GetAllMitraQueryQuery,
-  GetAllMitraQueryQueryVariables
+export type GetAllMitraQueryResult = Apollo.QueryResult<
+  GetAllMitraQuery,
+  GetAllMitraQueryVariables
 >;
