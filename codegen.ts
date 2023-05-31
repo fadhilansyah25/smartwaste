@@ -1,10 +1,16 @@
-module.exports = {
+import {CodegenConfig} from '@graphql-codegen/cli';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const config: CodegenConfig = {
   schema: [
     {
-      'https://champion-piranha-28.hasura.app/v1/graphql': {
+      [process.env.HASURA_URI as string]: {
         headers: {
-          'x-hasura-admin-secret':
-            'l1m3nwk3760ZUuiHSU4QAEqz50EsRD4vWb7A7oo9ncqA7UnFb94LQ8O9iU34mMZI',
+          ['content-type']: 'application/json',
+          ['x-hasura-admin-secret']: `${
+            process.env.HASURA_ADMIN_SECRET as string
+          }`,
         },
       },
     },
@@ -30,3 +36,5 @@ module.exports = {
     },
   },
 };
+
+export default config;
