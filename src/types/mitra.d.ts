@@ -6,8 +6,10 @@ export interface MitraData {
   address: string;
   closeTime: string;
   openTime: string;
-  coordinate: Coordinate;
+  lat: number;
+  long: number;
   phoneNumber: string;
+  distance: number;
 }
 
 export interface Coordinate {
