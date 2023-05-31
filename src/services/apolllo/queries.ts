@@ -5,7 +5,7 @@ export const FETCH_MITRA = gql`
     $distance_kms: Int!
     $latitude: float8!
     $longitude: float8!
-  ) @cached {
+  ) {
     search_mitra_near_user(
       args: {
         distance_kms: $distance_kms

@@ -1365,7 +1365,7 @@ export type GetAllMitraQuery = { __typename?: 'query_root', search_mitra_near_us
 
 
 export const GetAllMitraDocument = gql`
-    query getAllMitra($distance_kms: Int!, $latitude: float8!, $longitude: float8!) @cached {
+    query getAllMitra($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
   search_mitra_near_user(
     args: {distance_kms: $distance_kms, latitude: $latitude, longitude: $longitude}
   ) {

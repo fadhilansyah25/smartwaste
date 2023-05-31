@@ -16,9 +16,8 @@ const config: CodegenConfig = {
     },
   ],
   documents: ['./src/**/*.tsx', './src/**/*.ts'],
-  overwrite: true,
   generates: {
-    './src/generated/graphql.tsx': {
+    './src/generated/graphql.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
