@@ -9,7 +9,6 @@ import {CustomHeader} from '@src/component';
 import {colors} from '@src/const/colors';
 import {TransactionProvider} from '@src/store/context/TransactionContext';
 import auth from '@react-native-firebase/auth';
-import {Coordinate, MitraData} from '@src/types/mitra';
 import {
   DeliveryConfirmScreen,
   DeliveryDetailsScreen,
@@ -24,9 +23,9 @@ import {
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
-  PickPoint: Coordinate | undefined;
+  PickPoint: {lat: number; long: number} | undefined;
   SearchLocation: undefined;
-  MitraDetail: {mitra: MitraData};
+  MitraDetail: {mitra: MitraModels.MitraWithDistance};
   SelectWaste: undefined;
   DeliveryDetails: undefined;
   SelectDeliveryServices: undefined;

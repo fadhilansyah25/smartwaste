@@ -28,7 +28,7 @@ const MitraDetailScreen = () => {
               <Text style={style.cardAdreesInfoText}>{dataMitra.address}</Text>
             </View>
             <Text style={style.cardHourInfoText}>
-              Buka Sampai Jam {dataMitra.closeHour} WIB
+              Buka Sampai Jam {dataMitra.closeTime} WIB
             </Text>
             <Text style={style.cardPhoneInfoText}>{dataMitra.phoneNumber}</Text>
           </View>
@@ -46,8 +46,8 @@ const MitraDetailScreen = () => {
             {getDistanceFromLatLonInKm(
               state.coordinate?.lat as number,
               state.coordinate?.long as number,
-              dataMitra.coordinate.lat,
-              dataMitra.coordinate.long,
+              dataMitra.lat,
+              dataMitra.long,
             ).toFixed(0)}{' '}
             Km
           </Text>
@@ -66,14 +66,11 @@ const MitraDetailScreen = () => {
             <MapboxGL.Camera
               zoomLevel={15}
               animationMode="none"
-              centerCoordinate={[
-                dataMitra.coordinate.long,
-                dataMitra.coordinate.lat,
-              ]}
+              centerCoordinate={[dataMitra.long, dataMitra.lat]}
             />
             <MapboxGL.PointAnnotation
               id={dataMitra.name}
-              coordinate={[dataMitra.coordinate.long, dataMitra.coordinate.lat]}
+              coordinate={[dataMitra.long, dataMitra.lat]}
               children={
                 <MarkerSvg style={style.mapMarker} height={36} width={36} />
               }

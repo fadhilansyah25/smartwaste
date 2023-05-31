@@ -1,19 +1,17 @@
 import React from 'react';
-import {mitra as mitraData} from '@src/const/const-data';
-import {getDistanceFromLatLonInKm} from '@src/utils/regionSorts';
 import Geolocation from 'react-native-geolocation-service';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
 import {requestLocationPermission} from '@src/utils/permissions';
-import {MitraData} from '@src/types/mitra';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
+import MitraUseCase from '@src/services/bussines/mitra_usecase';
 
 export const useSearchMitra = () => {
-  const [mitra, setMitra] =
-    React.useState<(MitraData & {distance: number})[]>();
+  const [mitra, setMitra] = React.useState<MitraModels.MitraWithDistance[]>();
   const {state, dispatch} = React.useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
+  const mitraUsecase = new MitraUseCase();
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -46,18 +44,19 @@ export const useSearchMitra = () => {
     if (state.coordinate === null) getLocation();
 
     if (state.coordinate) {
-      const data = mitraData.map(item => ({
-        ...item,
-        distance: getDistanceFromLatLonInKm(
-          state.coordinate?.lat as number,
-          state.coordinate?.long as number,
-          item.coordinate.lat,
-          item.coordinate.long,
-        ),
-      }));
-      if (isMounted) {
-        setMitra(data);
-      }
+      (async () => {
+        try {
+          const item = await mitraUsecase.getAllMitraWithDistance({
+            lat: state.coordinate.lat,
+            long: state.coordinate.long,
+          });
+          if (isMounted) {
+            setMitra(item as MitraModels.MitraWithDistance[]);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      })();
     }
 
     return () => {

@@ -13,6 +13,7 @@ import {colors} from '@src/const/colors';
 import FilterSvg from '@src/assets/svg/filter.svg';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
 import {useSearchMitra} from './hook';
+import dayjs from 'dayjs';
 
 const SearchMitraScreen = () => {
   const {navigation, mitra} = useSearchMitra();
@@ -52,7 +53,7 @@ const SearchMitraScreen = () => {
                       </Text>
                     </View>
                     <Text style={style.mitraCardTextHour}>
-                      Buka Sampai Jam {item.closeHour} WIB
+                      Buka Sampai Jam {item.closeTime} WIB
                     </Text>
                     <Text style={style.mitraCardTextPhone}>
                       {item.phoneNumber}
@@ -61,7 +62,7 @@ const SearchMitraScreen = () => {
                   <View style={{flexDirection: 'row', columnGap: 4}}>
                     <MarkerSvg />
                     <Text style={style.mitraCardTextDistance}>
-                      {item.distance.toFixed(0)} Km
+                      {item.distance} Km
                     </Text>
                   </View>
                 </View>
