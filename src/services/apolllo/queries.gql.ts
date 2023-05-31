@@ -12,16 +12,17 @@ export const FETCH_MITRA = gql`
         latitude: $latitude
         longitude: $longitude
       }
+      order_by: {distance: asc}
     ) {
       id
       name
       address
-      lat
-      long
-      distance
-      closeTime
-      openTime
       phoneNumber
+      openTime
+      closeTime
+      long
+      lat
+      distance
     }
   }
 `;
