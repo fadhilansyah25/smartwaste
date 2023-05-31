@@ -493,7 +493,7 @@ export type Smart_Waste_Mitra_Distance = {
   __typename?: 'smart_waste_mitra_distance';
   address: Scalars['String']['output'];
   closeTime: Scalars['String']['output'];
-  distance: Scalars['float8']['output'];
+  distance: Scalars['Int']['output'];
   id: Scalars['String']['output'];
   lat: Scalars['float8']['output'];
   long: Scalars['float8']['output'];
@@ -546,7 +546,7 @@ export type Smart_Waste_Mitra_Distance_Bool_Exp = {
   _or?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Bool_Exp>>;
   address?: InputMaybe<String_Comparison_Exp>;
   closeTime?: InputMaybe<String_Comparison_Exp>;
-  distance?: InputMaybe<Float8_Comparison_Exp>;
+  distance?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   lat?: InputMaybe<Float8_Comparison_Exp>;
   long?: InputMaybe<Float8_Comparison_Exp>;
@@ -563,7 +563,7 @@ export enum Smart_Waste_Mitra_Distance_Constraint {
 
 /** input type for incrementing numeric columns in table "smart_waste.mitra_distance" */
 export type Smart_Waste_Mitra_Distance_Inc_Input = {
-  distance?: InputMaybe<Scalars['float8']['input']>;
+  distance?: InputMaybe<Scalars['Int']['input']>;
   lat?: InputMaybe<Scalars['float8']['input']>;
   long?: InputMaybe<Scalars['float8']['input']>;
 };
@@ -572,7 +572,7 @@ export type Smart_Waste_Mitra_Distance_Inc_Input = {
 export type Smart_Waste_Mitra_Distance_Insert_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
   closeTime?: InputMaybe<Scalars['String']['input']>;
-  distance?: InputMaybe<Scalars['float8']['input']>;
+  distance?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   lat?: InputMaybe<Scalars['float8']['input']>;
   long?: InputMaybe<Scalars['float8']['input']>;
@@ -586,7 +586,7 @@ export type Smart_Waste_Mitra_Distance_Max_Fields = {
   __typename?: 'smart_waste_mitra_distance_max_fields';
   address?: Maybe<Scalars['String']['output']>;
   closeTime?: Maybe<Scalars['String']['output']>;
-  distance?: Maybe<Scalars['float8']['output']>;
+  distance?: Maybe<Scalars['Int']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   lat?: Maybe<Scalars['float8']['output']>;
   long?: Maybe<Scalars['float8']['output']>;
@@ -600,7 +600,7 @@ export type Smart_Waste_Mitra_Distance_Min_Fields = {
   __typename?: 'smart_waste_mitra_distance_min_fields';
   address?: Maybe<Scalars['String']['output']>;
   closeTime?: Maybe<Scalars['String']['output']>;
-  distance?: Maybe<Scalars['float8']['output']>;
+  distance?: Maybe<Scalars['Int']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   lat?: Maybe<Scalars['float8']['output']>;
   long?: Maybe<Scalars['float8']['output']>;
@@ -669,7 +669,7 @@ export enum Smart_Waste_Mitra_Distance_Select_Column {
 export type Smart_Waste_Mitra_Distance_Set_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
   closeTime?: InputMaybe<Scalars['String']['input']>;
-  distance?: InputMaybe<Scalars['float8']['input']>;
+  distance?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   lat?: InputMaybe<Scalars['float8']['input']>;
   long?: InputMaybe<Scalars['float8']['input']>;
@@ -714,7 +714,7 @@ export type Smart_Waste_Mitra_Distance_Stream_Cursor_Input = {
 export type Smart_Waste_Mitra_Distance_Stream_Cursor_Value_Input = {
   address?: InputMaybe<Scalars['String']['input']>;
   closeTime?: InputMaybe<Scalars['String']['input']>;
-  distance?: InputMaybe<Scalars['float8']['input']>;
+  distance?: InputMaybe<Scalars['Int']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   lat?: InputMaybe<Scalars['float8']['input']>;
   long?: InputMaybe<Scalars['float8']['input']>;
@@ -726,7 +726,7 @@ export type Smart_Waste_Mitra_Distance_Stream_Cursor_Value_Input = {
 /** aggregate sum on columns */
 export type Smart_Waste_Mitra_Distance_Sum_Fields = {
   __typename?: 'smart_waste_mitra_distance_sum_fields';
-  distance?: Maybe<Scalars['float8']['output']>;
+  distance?: Maybe<Scalars['Int']['output']>;
   lat?: Maybe<Scalars['float8']['output']>;
   long?: Maybe<Scalars['float8']['output']>;
 };
@@ -1361,23 +1361,24 @@ export type GetAllMitraQueryVariables = Exact<{
 }>;
 
 
-export type GetAllMitraQuery = { __typename?: 'query_root', search_mitra_near_user: Array<{ __typename?: 'smart_waste_mitra_distance', id: string, name: string, address: string, lat: any, long: any, distance: any, closeTime: string, openTime: string, phoneNumber: string }> };
+export type GetAllMitraQuery = { __typename?: 'query_root', search_mitra_near_user: Array<{ __typename?: 'smart_waste_mitra_distance', id: string, name: string, address: string, phoneNumber: string, openTime: string, closeTime: string, long: any, lat: any, distance: number }> };
 
 
 export const GetAllMitraDocument = gql`
     query getAllMitra($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
   search_mitra_near_user(
     args: {distance_kms: $distance_kms, latitude: $latitude, longitude: $longitude}
+    order_by: {distance: asc}
   ) {
     id
     name
     address
-    lat
-    long
-    distance
-    closeTime
-    openTime
     phoneNumber
+    openTime
+    closeTime
+    long
+    lat
+    distance
   }
 }
     `;

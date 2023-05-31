@@ -4040,7 +4040,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "float8",
+                "name": "Int",
                 "ofType": null
               }
             },
@@ -4510,7 +4510,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "float8_comparison_exp",
+              "name": "Int_comparison_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -4622,7 +4622,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -4693,7 +4693,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -4812,7 +4812,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -4931,7 +4931,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
@@ -5375,7 +5375,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -5674,7 +5674,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "defaultValue": null,
@@ -5769,7 +5769,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "Int",
               "ofType": null
             },
             "isDeprecated": false,
