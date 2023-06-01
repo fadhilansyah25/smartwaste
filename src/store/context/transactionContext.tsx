@@ -7,7 +7,6 @@ import {
   TransactionReducer,
   coordinateReducer,
 } from '../reducer/TransactionReducer';
-import {Coordinate, MitraData} from '@src/types/mitra';
 
 export interface InitialStateType {
   coordinate: Coordinate | null | undefined;

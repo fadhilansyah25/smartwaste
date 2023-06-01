@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client';
 
 export const FETCH_MITRA = gql`
-  query getAllMitra(
+  query getAllMitraWithDistance(
     $distance_kms: Int!
     $latitude: float8!
     $longitude: float8!
