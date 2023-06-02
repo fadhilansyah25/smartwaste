@@ -36,7 +36,7 @@ declare namespace MitraModels {
     // ): Promise<MitraWithDistance>;
   }
 
-  export interface MitraUseCase {
+  export interface MitraUsecase {
     getAllMitraWithDistance(
       params: MitraWithDistanceParams,
     ): Promise<MitraWithDistance[]>;

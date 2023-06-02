@@ -5,13 +5,13 @@ import {Types} from '@src/store/reducer/TransactionReducer';
 import {requestLocationPermission} from '@src/utils/permissions';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
-import MitraUseCase from '@src/services/bussines/mitra_usecase';
+import MitraUsecase from '@src/services/bussines/mitraUsecase';
 
 export const useSearchMitra = () => {
   const [mitra, setMitra] = React.useState<MitraModels.MitraWithDistance[]>();
   const {state, dispatch} = React.useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
-  const mitraUsecase = new MitraUseCase();
+  const mitraUsecase = new MitraUsecase();
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -43,9 +43,9 @@ export const useSearchMitra = () => {
 
     if (state.coordinate === null) getLocation();
 
-    if (state.coordinate) {
-      (async () => {
-        try {
+    (async () => {
+      try {
+        if (state.coordinate) {
           const item = await mitraUsecase.getAllMitraWithDistance({
             lat: state.coordinate.lat,
             long: state.coordinate.long,
@@ -53,11 +53,11 @@ export const useSearchMitra = () => {
           if (isMounted) {
             setMitra(item as MitraModels.MitraWithDistance[]);
           }
-        } catch (err) {
-          console.log(err);
         }
-      })();
-    }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
 
     return () => {
       isMounted = false;

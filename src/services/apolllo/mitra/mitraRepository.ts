@@ -1,10 +1,10 @@
-import createApolloClient from '@src/services/apolllo/apollo';
-import {ensureError} from '@src/services/utils/serviceUtils';
+import createApolloClient from '../apollo';
+import {GetAllMitraWithDistance} from './mitra.graphql';
 import {
   GetAllMitraWithDistanceQuery,
   GetAllMitraWithDistanceQueryVariables,
 } from '@src/services/generated/graphql';
-import {GetAllMitraWithDistance} from './mitra.graphql';
+import {ensureError} from '../../utils/serviceUtils';
 
 class HasuraMitra implements MitraModels.MitraRepository {
   #apolloClient = createApolloClient();
@@ -28,9 +28,9 @@ class HasuraMitra implements MitraModels.MitraRepository {
       });
       return result.data
         .search_mitra_near_user as MitraModels.MitraWithDistance[];
-    } catch (err) {
-      const error = ensureError(err);
-      throw error;
+    } catch (error) {
+      const err = ensureError(error);
+      throw err;
     }
   }
 }

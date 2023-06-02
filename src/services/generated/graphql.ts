@@ -1,23 +1,31 @@
 /* eslint-disable */
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import {TypedDocumentNode as DocumentNode} from '@graphql-typed-document-node/core';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends {[key: string]: unknown}> = {[K in keyof T]: T[K]};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<T extends {[key: string]: unknown}, K extends keyof T> = {
+  [_ in K]?: never;
+};
+export type Incremental<T> =
+  | T
+  | {[P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string | number; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  float8: { input: any; output: any; }
-  time: { input: any; output: any; }
-  uuid: { input: any; output: any; }
+  ID: {input: string | number; output: string};
+  String: {input: string; output: string};
+  Boolean: {input: boolean; output: boolean};
+  Int: {input: number; output: number};
+  Float: {input: number; output: number};
+  float8: {input: any; output: any};
+  time: {input: any; output: any};
+  uuid: {input: any; output: any};
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -71,7 +79,7 @@ export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
   Asc = 'ASC',
   /** descending ordering of the cursor */
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
@@ -123,53 +131,52 @@ export type Mutation_Root = {
   /** update single row of the table: "smart_waste.mitra_distance" */
   update_smart_waste_mitra_distance_by_pk?: Maybe<Smart_Waste_Mitra_Distance>;
   /** update multiples rows of table: "smart_waste.mitra_distance" */
-  update_smart_waste_mitra_distance_many?: Maybe<Array<Maybe<Smart_Waste_Mitra_Distance_Mutation_Response>>>;
+  update_smart_waste_mitra_distance_many?: Maybe<
+    Array<Maybe<Smart_Waste_Mitra_Distance_Mutation_Response>>
+  >;
   /** update multiples rows of table: "smart_waste.mitra" */
-  update_smart_waste_mitra_many?: Maybe<Array<Maybe<Smart_Waste_Mitra_Mutation_Response>>>;
+  update_smart_waste_mitra_many?: Maybe<
+    Array<Maybe<Smart_Waste_Mitra_Mutation_Response>>
+  >;
   /** update data of the table: "smart_waste.waste_type" */
   update_smart_waste_waste_type?: Maybe<Smart_Waste_Waste_Type_Mutation_Response>;
   /** update single row of the table: "smart_waste.waste_type" */
   update_smart_waste_waste_type_by_pk?: Maybe<Smart_Waste_Waste_Type>;
   /** update multiples rows of table: "smart_waste.waste_type" */
-  update_smart_waste_waste_type_many?: Maybe<Array<Maybe<Smart_Waste_Waste_Type_Mutation_Response>>>;
+  update_smart_waste_waste_type_many?: Maybe<
+    Array<Maybe<Smart_Waste_Waste_Type_Mutation_Response>>
+  >;
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_MitraArgs = {
   where: Smart_Waste_Mitra_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Mitra_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Mitra_DistanceArgs = {
   where: Smart_Waste_Mitra_Distance_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Mitra_Distance_By_PkArgs = {
   id: Scalars['String']['input'];
 };
-
 
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Waste_TypeArgs = {
   where: Smart_Waste_Waste_Type_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Waste_Type_By_PkArgs = {
   id: Scalars['Int']['input'];
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_MitraArgs = {
@@ -177,13 +184,11 @@ export type Mutation_RootInsert_Smart_Waste_MitraArgs = {
   on_conflict?: InputMaybe<Smart_Waste_Mitra_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_Mitra_DistanceArgs = {
   objects: Array<Smart_Waste_Mitra_Distance_Insert_Input>;
   on_conflict?: InputMaybe<Smart_Waste_Mitra_Distance_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_Mitra_Distance_OneArgs = {
@@ -191,13 +196,11 @@ export type Mutation_RootInsert_Smart_Waste_Mitra_Distance_OneArgs = {
   on_conflict?: InputMaybe<Smart_Waste_Mitra_Distance_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_Mitra_OneArgs = {
   object: Smart_Waste_Mitra_Insert_Input;
   on_conflict?: InputMaybe<Smart_Waste_Mitra_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_Waste_TypeArgs = {
@@ -205,13 +208,11 @@ export type Mutation_RootInsert_Smart_Waste_Waste_TypeArgs = {
   on_conflict?: InputMaybe<Smart_Waste_Waste_Type_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsert_Smart_Waste_Waste_Type_OneArgs = {
   object: Smart_Waste_Waste_Type_Insert_Input;
   on_conflict?: InputMaybe<Smart_Waste_Waste_Type_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_MitraArgs = {
@@ -220,14 +221,12 @@ export type Mutation_RootUpdate_Smart_Waste_MitraArgs = {
   where: Smart_Waste_Mitra_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_By_PkArgs = {
   _inc?: InputMaybe<Smart_Waste_Mitra_Inc_Input>;
   _set?: InputMaybe<Smart_Waste_Mitra_Set_Input>;
   pk_columns: Smart_Waste_Mitra_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_DistanceArgs = {
@@ -236,7 +235,6 @@ export type Mutation_RootUpdate_Smart_Waste_Mitra_DistanceArgs = {
   where: Smart_Waste_Mitra_Distance_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_Distance_By_PkArgs = {
   _inc?: InputMaybe<Smart_Waste_Mitra_Distance_Inc_Input>;
@@ -244,18 +242,15 @@ export type Mutation_RootUpdate_Smart_Waste_Mitra_Distance_By_PkArgs = {
   pk_columns: Smart_Waste_Mitra_Distance_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_Distance_ManyArgs = {
   updates: Array<Smart_Waste_Mitra_Distance_Updates>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_ManyArgs = {
   updates: Array<Smart_Waste_Mitra_Updates>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Waste_TypeArgs = {
@@ -264,14 +259,12 @@ export type Mutation_RootUpdate_Smart_Waste_Waste_TypeArgs = {
   where: Smart_Waste_Waste_Type_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Waste_Type_By_PkArgs = {
   _inc?: InputMaybe<Smart_Waste_Waste_Type_Inc_Input>;
   _set?: InputMaybe<Smart_Waste_Waste_Type_Set_Input>;
   pk_columns: Smart_Waste_Waste_Type_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Waste_Type_ManyArgs = {
@@ -291,7 +284,7 @@ export enum Order_By {
   /** in descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 export type Query_Root = {
@@ -320,7 +313,6 @@ export type Query_Root = {
   smart_waste_waste_type_by_pk?: Maybe<Smart_Waste_Waste_Type>;
 };
 
-
 export type Query_RootSearch_Mitra_Near_UserArgs = {
   args: Search_Mitra_Near_User_Args;
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
@@ -329,7 +321,6 @@ export type Query_RootSearch_Mitra_Near_UserArgs = {
   order_by?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Order_By>>;
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
-
 
 export type Query_RootSearch_Mitra_Near_User_AggregateArgs = {
   args: Search_Mitra_Near_User_Args;
@@ -340,7 +331,6 @@ export type Query_RootSearch_Mitra_Near_User_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Query_RootSmart_Waste_MitraArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -348,7 +338,6 @@ export type Query_RootSmart_Waste_MitraArgs = {
   order_by?: InputMaybe<Array<Smart_Waste_Mitra_Order_By>>;
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
 };
-
 
 export type Query_RootSmart_Waste_Mitra_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
@@ -358,11 +347,9 @@ export type Query_RootSmart_Waste_Mitra_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
 };
 
-
 export type Query_RootSmart_Waste_Mitra_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
-
 
 export type Query_RootSmart_Waste_Mitra_DistanceArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
@@ -372,7 +359,6 @@ export type Query_RootSmart_Waste_Mitra_DistanceArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Query_RootSmart_Waste_Mitra_Distance_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -381,11 +367,9 @@ export type Query_RootSmart_Waste_Mitra_Distance_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Query_RootSmart_Waste_Mitra_Distance_By_PkArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type Query_RootSmart_Waste_Waste_TypeArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Waste_Type_Select_Column>>;
@@ -395,7 +379,6 @@ export type Query_RootSmart_Waste_Waste_TypeArgs = {
   where?: InputMaybe<Smart_Waste_Waste_Type_Bool_Exp>;
 };
 
-
 export type Query_RootSmart_Waste_Waste_Type_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Waste_Type_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -403,7 +386,6 @@ export type Query_RootSmart_Waste_Waste_Type_AggregateArgs = {
   order_by?: InputMaybe<Array<Smart_Waste_Waste_Type_Order_By>>;
   where?: InputMaybe<Smart_Waste_Waste_Type_Bool_Exp>;
 };
-
 
 export type Query_RootSmart_Waste_Waste_Type_By_PkArgs = {
   id: Scalars['Int']['input'];
@@ -451,7 +433,6 @@ export type Smart_Waste_Mitra_Aggregate_Fields = {
   variance?: Maybe<Smart_Waste_Mitra_Variance_Fields>;
 };
 
-
 /** aggregate fields of "smart_waste.mitra" */
 export type Smart_Waste_Mitra_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
@@ -485,7 +466,7 @@ export enum Smart_Waste_Mitra_Constraint {
   /** unique or primary key constraint on columns "phone_number" */
   MitraPhoneKey = 'mitra_phone_key',
   /** unique or primary key constraint on columns "id" */
-  MitraPkey = 'mitra_pkey'
+  MitraPkey = 'mitra_pkey',
 }
 
 /** columns and relationships of "smart_waste.mitra_distance" */
@@ -524,7 +505,6 @@ export type Smart_Waste_Mitra_Distance_Aggregate_Fields = {
   variance?: Maybe<Smart_Waste_Mitra_Distance_Variance_Fields>;
 };
 
-
 /** aggregate fields of "smart_waste.mitra_distance" */
 export type Smart_Waste_Mitra_Distance_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
@@ -558,7 +538,7 @@ export type Smart_Waste_Mitra_Distance_Bool_Exp = {
 /** unique or primary key constraints on table "smart_waste.mitra_distance" */
 export enum Smart_Waste_Mitra_Distance_Constraint {
   /** unique or primary key constraint on columns "id" */
-  MitraDistancePkey = 'mitra_distance_pkey'
+  MitraDistancePkey = 'mitra_distance_pkey',
 }
 
 /** input type for incrementing numeric columns in table "smart_waste.mitra_distance" */
@@ -662,7 +642,7 @@ export enum Smart_Waste_Mitra_Distance_Select_Column {
   /** column name */
   OpenTime = 'openTime',
   /** column name */
-  PhoneNumber = 'phoneNumber'
+  PhoneNumber = 'phoneNumber',
 }
 
 /** input type for updating data in table "smart_waste.mitra_distance" */
@@ -750,7 +730,7 @@ export enum Smart_Waste_Mitra_Distance_Update_Column {
   /** column name */
   OpenTime = 'openTime',
   /** column name */
-  PhoneNumber = 'phoneNumber'
+  PhoneNumber = 'phoneNumber',
 }
 
 export type Smart_Waste_Mitra_Distance_Updates = {
@@ -876,7 +856,7 @@ export enum Smart_Waste_Mitra_Select_Column {
   /** column name */
   OpenTime = 'openTime',
   /** column name */
-  PhoneNumber = 'phoneNumber'
+  PhoneNumber = 'phoneNumber',
 }
 
 /** input type for updating data in table "smart_waste.mitra" */
@@ -956,7 +936,7 @@ export enum Smart_Waste_Mitra_Update_Column {
   /** column name */
   OpenTime = 'openTime',
   /** column name */
-  PhoneNumber = 'phoneNumber'
+  PhoneNumber = 'phoneNumber',
 }
 
 export type Smart_Waste_Mitra_Updates = {
@@ -1019,7 +999,6 @@ export type Smart_Waste_Waste_Type_Aggregate_Fields = {
   variance?: Maybe<Smart_Waste_Waste_Type_Variance_Fields>;
 };
 
-
 /** aggregate fields of "smart_waste.waste_type" */
 export type Smart_Waste_Waste_Type_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Smart_Waste_Waste_Type_Select_Column>>;
@@ -1044,7 +1023,7 @@ export type Smart_Waste_Waste_Type_Bool_Exp = {
 /** unique or primary key constraints on table "smart_waste.waste_type" */
 export enum Smart_Waste_Waste_Type_Constraint {
   /** unique or primary key constraint on columns "id" */
-  WasteTypePkey = 'waste_type_pkey'
+  WasteTypePkey = 'waste_type_pkey',
 }
 
 /** input type for incrementing numeric columns in table "smart_waste.waste_type" */
@@ -1104,7 +1083,7 @@ export enum Smart_Waste_Waste_Type_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
 }
 
 /** input type for updating data in table "smart_waste.waste_type" */
@@ -1156,7 +1135,7 @@ export enum Smart_Waste_Waste_Type_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Name = 'name'
+  Name = 'name',
 }
 
 export type Smart_Waste_Waste_Type_Updates = {
@@ -1218,7 +1197,6 @@ export type Subscription_Root = {
   smart_waste_waste_type_stream: Array<Smart_Waste_Waste_Type>;
 };
 
-
 export type Subscription_RootSearch_Mitra_Near_UserArgs = {
   args: Search_Mitra_Near_User_Args;
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
@@ -1227,7 +1205,6 @@ export type Subscription_RootSearch_Mitra_Near_UserArgs = {
   order_by?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Order_By>>;
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
-
 
 export type Subscription_RootSearch_Mitra_Near_User_AggregateArgs = {
   args: Search_Mitra_Near_User_Args;
@@ -1238,7 +1215,6 @@ export type Subscription_RootSearch_Mitra_Near_User_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_MitraArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1246,7 +1222,6 @@ export type Subscription_RootSmart_Waste_MitraArgs = {
   order_by?: InputMaybe<Array<Smart_Waste_Mitra_Order_By>>;
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
 };
-
 
 export type Subscription_RootSmart_Waste_Mitra_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
@@ -1256,11 +1231,9 @@ export type Subscription_RootSmart_Waste_Mitra_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Mitra_By_PkArgs = {
   id: Scalars['uuid']['input'];
 };
-
 
 export type Subscription_RootSmart_Waste_Mitra_DistanceArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
@@ -1270,7 +1243,6 @@ export type Subscription_RootSmart_Waste_Mitra_DistanceArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Mitra_Distance_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Distance_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1279,11 +1251,9 @@ export type Subscription_RootSmart_Waste_Mitra_Distance_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Mitra_Distance_By_PkArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type Subscription_RootSmart_Waste_Mitra_Distance_StreamArgs = {
   batch_size: Scalars['Int']['input'];
@@ -1291,13 +1261,11 @@ export type Subscription_RootSmart_Waste_Mitra_Distance_StreamArgs = {
   where?: InputMaybe<Smart_Waste_Mitra_Distance_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Mitra_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Smart_Waste_Mitra_Stream_Cursor_Input>>;
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
 };
-
 
 export type Subscription_RootSmart_Waste_Waste_TypeArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Waste_Type_Select_Column>>;
@@ -1307,7 +1275,6 @@ export type Subscription_RootSmart_Waste_Waste_TypeArgs = {
   where?: InputMaybe<Smart_Waste_Waste_Type_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Waste_Type_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Waste_Type_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1316,11 +1283,9 @@ export type Subscription_RootSmart_Waste_Waste_Type_AggregateArgs = {
   where?: InputMaybe<Smart_Waste_Waste_Type_Bool_Exp>;
 };
 
-
 export type Subscription_RootSmart_Waste_Waste_Type_By_PkArgs = {
   id: Scalars['Int']['input'];
 };
-
 
 export type Subscription_RootSmart_Waste_Waste_Type_StreamArgs = {
   batch_size: Scalars['Int']['input'];
@@ -1360,59 +1325,103 @@ export type GetAllMitraWithDistanceQueryVariables = Exact<{
   longitude: Scalars['float8']['input'];
 }>;
 
-
-export type GetAllMitraWithDistanceQuery = { __typename?: 'query_root', search_mitra_near_user: Array<{ __typename?: 'smart_waste_mitra_distance', id: string, name: string, address: string, phoneNumber: string, openTime: string, closeTime: string, long: any, lat: any, distance: number }> };
+export type GetAllMitraWithDistanceQuery = {
+  __typename?: 'query_root';
+  search_mitra_near_user: Array<{
+    __typename?: 'smart_waste_mitra_distance';
+    id: string;
+    name: string;
+    address: string;
+    phoneNumber: string;
+    openTime: string;
+    closeTime: string;
+    long: any;
+    lat: any;
+    distance: number;
+  }>;
+};
 
 export type GetMitraByIdQueryVariables = Exact<{
   id: Scalars['uuid']['input'];
 }>;
 
+export type GetMitraByIdQuery = {
+  __typename?: 'query_root';
+  smart_waste_mitra: Array<{
+    __typename?: 'smart_waste_mitra';
+    id: any;
+    lat: any;
+    long: any;
+    name: string;
+    openTime: any;
+    phoneNumber: string;
+    closeTime: any;
+    address: string;
+  }>;
+};
 
-export type GetMitraByIdQuery = { __typename?: 'query_root', smart_waste_mitra: Array<{ __typename?: 'smart_waste_mitra', id: any, lat: any, long: any, name: string, openTime: any, phoneNumber: string, closeTime: any, address: string }> };
+export type GetAllWastetypeQueryVariables = Exact<{[key: string]: never}>;
 
-export type GetAllWastetypeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllWastetypeQuery = { __typename?: 'query_root', smart_waste_waste_type: Array<{ __typename?: 'smart_waste_waste_type', id: number, name: string }> };
-
+export type GetAllWastetypeQuery = {
+  __typename?: 'query_root';
+  smart_waste_waste_type: Array<{
+    __typename?: 'smart_waste_waste_type';
+    id: number;
+    name: string;
+  }>;
+};
 
 export const GetAllMitraWithDistanceDocument = gql`
-    query GetAllMitraWithDistance($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
-  search_mitra_near_user(
-    args: {distance_kms: $distance_kms, latitude: $latitude, longitude: $longitude}
-    order_by: {distance: asc}
+  query GetAllMitraWithDistance(
+    $distance_kms: Int!
+    $latitude: float8!
+    $longitude: float8!
   ) {
-    id
-    name
-    address
-    phoneNumber
-    openTime
-    closeTime
-    long
-    lat
-    distance
+    search_mitra_near_user(
+      args: {
+        distance_kms: $distance_kms
+        latitude: $latitude
+        longitude: $longitude
+      }
+      order_by: {distance: asc}
+    ) {
+      id
+      name
+      address
+      phoneNumber
+      openTime
+      closeTime
+      long
+      lat
+      distance
+    }
   }
-}
-    ` as unknown as DocumentNode<GetAllMitraWithDistanceQuery, GetAllMitraWithDistanceQueryVariables>;
+` as unknown as DocumentNode<
+  GetAllMitraWithDistanceQuery,
+  GetAllMitraWithDistanceQueryVariables
+>;
 export const GetMitraByIdDocument = gql`
-    query GetMitraById($id: uuid!) {
-  smart_waste_mitra(where: {id: {_eq: $id}}) {
-    id
-    lat
-    long
-    name
-    openTime
-    phoneNumber
-    closeTime
-    address
+  query GetMitraById($id: uuid!) {
+    smart_waste_mitra(where: {id: {_eq: $id}}) {
+      id
+      lat
+      long
+      name
+      openTime
+      phoneNumber
+      closeTime
+      address
+    }
   }
-}
-    ` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
+` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
 export const GetAllWastetypeDocument = gql`
-    query GetAllWastetype {
-  smart_waste_waste_type {
-    id
-    name
+  query GetAllWastetype {
+    smart_waste_waste_type {
+      id
+      name
+    }
   }
-}
-    ` as unknown as DocumentNode<GetAllWastetypeQuery, GetAllWastetypeQueryVariables>;
+` as unknown as DocumentNode<
+  GetAllWastetypeQuery,
+  GetAllWastetypeQueryVariables
+>;
