@@ -1,5 +1,6 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+/* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -7,7 +8,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
-const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string | number; output: string; }
@@ -1354,18 +1354,30 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
-export type GetAllMitraQueryVariables = Exact<{
+export type GetAllMitraWithDistanceQueryVariables = Exact<{
   distance_kms: Scalars['Int']['input'];
   latitude: Scalars['float8']['input'];
   longitude: Scalars['float8']['input'];
 }>;
 
 
-export type GetAllMitraQuery = { __typename?: 'query_root', search_mitra_near_user: Array<{ __typename?: 'smart_waste_mitra_distance', id: string, name: string, address: string, phoneNumber: string, openTime: string, closeTime: string, long: any, lat: any, distance: number }> };
+export type GetAllMitraWithDistanceQuery = { __typename?: 'query_root', search_mitra_near_user: Array<{ __typename?: 'smart_waste_mitra_distance', id: string, name: string, address: string, phoneNumber: string, openTime: string, closeTime: string, long: any, lat: any, distance: number }> };
+
+export type GetMitraByIdQueryVariables = Exact<{
+  id: Scalars['uuid']['input'];
+}>;
 
 
-export const GetAllMitraDocument = gql`
-    query getAllMitra($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
+export type GetMitraByIdQuery = { __typename?: 'query_root', smart_waste_mitra: Array<{ __typename?: 'smart_waste_mitra', id: any, lat: any, long: any, name: string, openTime: any, phoneNumber: string, closeTime: any, address: string }> };
+
+export type GetAllWastetypeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllWastetypeQuery = { __typename?: 'query_root', smart_waste_waste_type: Array<{ __typename?: 'smart_waste_waste_type', id: number, name: string }> };
+
+
+export const GetAllMitraWithDistanceDocument = gql`
+    query GetAllMitraWithDistance($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
   search_mitra_near_user(
     args: {distance_kms: $distance_kms, latitude: $latitude, longitude: $longitude}
     order_by: {distance: asc}
@@ -1381,34 +1393,26 @@ export const GetAllMitraDocument = gql`
     distance
   }
 }
-    `;
-
-/**
- * __useGetAllMitraQuery__
- *
- * To run a query within a React component, call `useGetAllMitraQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllMitraQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllMitraQuery({
- *   variables: {
- *      distance_kms: // value for 'distance_kms'
- *      latitude: // value for 'latitude'
- *      longitude: // value for 'longitude'
- *   },
- * });
- */
-export function useGetAllMitraQuery(baseOptions: Apollo.QueryHookOptions<GetAllMitraQuery, GetAllMitraQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllMitraQuery, GetAllMitraQueryVariables>(GetAllMitraDocument, options);
-      }
-export function useGetAllMitraLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllMitraQuery, GetAllMitraQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllMitraQuery, GetAllMitraQueryVariables>(GetAllMitraDocument, options);
-        }
-export type GetAllMitraQueryHookResult = ReturnType<typeof useGetAllMitraQuery>;
-export type GetAllMitraLazyQueryHookResult = ReturnType<typeof useGetAllMitraLazyQuery>;
-export type GetAllMitraQueryResult = Apollo.QueryResult<GetAllMitraQuery, GetAllMitraQueryVariables>;
+    ` as unknown as DocumentNode<GetAllMitraWithDistanceQuery, GetAllMitraWithDistanceQueryVariables>;
+export const GetMitraByIdDocument = gql`
+    query GetMitraById($id: uuid!) {
+  smart_waste_mitra(where: {id: {_eq: $id}}) {
+    id
+    lat
+    long
+    name
+    openTime
+    phoneNumber
+    closeTime
+    address
+  }
+}
+    ` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
+export const GetAllWastetypeDocument = gql`
+    query GetAllWastetype {
+  smart_waste_waste_type {
+    id
+    name
+  }
+}
+    ` as unknown as DocumentNode<GetAllWastetypeQuery, GetAllWastetypeQueryVariables>;

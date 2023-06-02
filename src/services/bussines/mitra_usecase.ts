@@ -1,6 +1,6 @@
-import Hasura_Mitra from '../apolllo/mitra_repository';
+import HasuraMitra from '@src/services/apolllo/mitra/mitraRepository';
 
-const hasura_mitra = new Hasura_Mitra();
+const hasura_mitra = new HasuraMitra();
 
 class MitraUseCase implements MitraModels.MitraUseCase {
   async getAllMitraWithDistance({

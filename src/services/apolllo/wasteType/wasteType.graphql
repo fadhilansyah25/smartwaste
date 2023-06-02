@@ -1,0 +1,6 @@
+query GetAllWastetype {
+  smart_waste_waste_type {
+    id
+    name
+  }
+}

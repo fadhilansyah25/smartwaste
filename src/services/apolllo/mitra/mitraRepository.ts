@@ -1,12 +1,12 @@
+import createApolloClient from '@src/services/apolllo/apollo';
+import {ensureError} from '@src/services/utils/serviceUtils';
 import {
-  GetAllMitraQuery,
-  GetAllMitraQueryVariables,
-} from '@src/generated/graphql';
-import createApolloClient from './apollo';
-import {FETCH_MITRA} from './queries.gql';
-import {ensureError} from '../utils/serviceUtils';
+  GetAllMitraWithDistanceQuery,
+  GetAllMitraWithDistanceQueryVariables,
+} from '@src/services/generated/graphql';
+import {GetAllMitraWithDistance} from './mitra.graphql';
 
-class Hasura_Mitra implements MitraModels.MitraRepository {
+class HasuraMitra implements MitraModels.MitraRepository {
   #apolloClient = createApolloClient();
 
   async fetchMitraWithDistance({
@@ -16,10 +16,10 @@ class Hasura_Mitra implements MitraModels.MitraRepository {
   }: MitraModels.MitraWithDistanceParams) {
     try {
       const result = await this.#apolloClient.query<
-        GetAllMitraQuery,
-        GetAllMitraQueryVariables
+        GetAllMitraWithDistanceQuery,
+        GetAllMitraWithDistanceQueryVariables
       >({
-        query: FETCH_MITRA,
+        query: GetAllMitraWithDistance,
         variables: {
           distance_kms: minDistance,
           latitude: lat,
@@ -35,4 +35,4 @@ class Hasura_Mitra implements MitraModels.MitraRepository {
   }
 }
 
-export default Hasura_Mitra;
+export default HasuraMitra;

@@ -2,13 +2,6 @@ import {CodegenConfig} from '@graphql-codegen/cli';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const generateQueryTypeDef = {
-  './src/services/generated/mitra_query.d.ts': {
-    documents: './src/services/apollo/mitra_query.graphql',
-    plugins: ['typescript-graphql-files-modules'],
-  },
-};
-
 const config: CodegenConfig = {
   schema: [
     {
@@ -54,10 +47,13 @@ const config: CodegenConfig = {
       //   withComponent: false,
       // },
     },
+    './src/types/graphql.d.ts': {
+      documents: './src/**/*.graphql',
+      plugins: ['typescript-graphql-files-modules'],
+    },
     // './graphql.schema.json': {
     //   plugins: ['introspection'],
     // },
-    ...generateQueryTypeDef,
   },
 };
 
