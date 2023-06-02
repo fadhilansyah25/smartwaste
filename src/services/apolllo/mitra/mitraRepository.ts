@@ -6,7 +6,7 @@ import {
 } from '@src/services/generated/graphql';
 import {ensureError} from '../../utils/serviceUtils';
 
-class HasuraMitra implements MitraModels.MitraRepository {
+export default class HasuraMitra implements MitraModels.MitraRepository {
   #apolloClient = createApolloClient();
 
   async fetchMitraWithDistance({
@@ -34,5 +34,3 @@ class HasuraMitra implements MitraModels.MitraRepository {
     }
   }
 }
-
-export default HasuraMitra;

@@ -3,7 +3,9 @@ import createApolloClient from '../apollo';
 import {GetAllWastetype} from './wasteType.graphql';
 import {ensureError} from '@src/services/utils/serviceUtils';
 
-class HasuraWasteType implements WasteTypeModels.WasteTypeRepository {
+export default class HasuraWasteType
+  implements WasteTypeModels.WasteTypeRepository
+{
   #apolloClient = createApolloClient();
 
   async fetchAllWasteType() {
@@ -19,5 +21,3 @@ class HasuraWasteType implements WasteTypeModels.WasteTypeRepository {
     }
   }
 }
-
-export default HasuraWasteType;

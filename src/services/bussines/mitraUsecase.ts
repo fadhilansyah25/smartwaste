@@ -2,7 +2,7 @@ import HasuraMitra from '@src/services/apolllo/mitra/mitraRepository';
 
 const hasura_mitra = new HasuraMitra();
 
-class MitraUsecase implements MitraModels.MitraUsecase {
+export default class MitraUsecase implements MitraModels.MitraUsecase {
   async getAllMitraWithDistance({
     lat,
     long,
@@ -20,5 +20,3 @@ class MitraUsecase implements MitraModels.MitraUsecase {
     }
   }
 }
-
-export default MitraUsecase;

@@ -7,22 +7,18 @@ import {CustomButton} from '@src/component';
 import {Types} from '@src/store/reducer/TransactionReducer';
 import {useSelectWaste} from './hook';
 
-const data = [
-  {id: 1, name: 'Plastik'},
-  {id: 2, name: 'Jelantah'},
-  {id: 3, name: 'Kaca'},
-  {id: 4, name: 'Metal'},
-  {id: 5, name: 'Kertas'},
-  {id: 6, name: 'UBC'},
-  {id: 7, name: 'Styrofoam'},
-];
-
 const SelectWasteScreen = () => {
-  const {state, checkedItems, navigation, dispatch, handleCheckedItems} =
-    useSelectWaste();
+  const {
+    state,
+    checkedItems,
+    navigation,
+    wasteType,
+    dispatch,
+    handleCheckedItems,
+  } = useSelectWaste();
 
   const renderCheckboxes = () =>
-    data.map(item => (
+    wasteType.map(item => (
       <View key={item.id} style={style.checkBoxContainer}>
         <CheckBox
           value={checkedItems.includes(item.id)}
