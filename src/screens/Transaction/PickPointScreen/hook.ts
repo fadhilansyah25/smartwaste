@@ -8,7 +8,6 @@ import {
 } from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import Geolocation from 'react-native-geolocation-service';
 import GeocodingService from '@src/services/geocodingServices';
-import {GeocodeTypes} from '@src/services/geocodingServices/domain';
 import MapboxGL from '@rnmapbox/maps';
 import {MAP_BOX_TOKEN_ACCESS} from '@env';
 

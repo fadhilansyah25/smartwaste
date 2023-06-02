@@ -2,7 +2,6 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import GeocodingServices from '@src/services/geocodingServices';
-import {GeocodeTypes} from '@src/services/geocodingServices/domain';
 
 export const useSearchLocation = () => {
   const navigation = useNavigation<TransactionStackProps['navigation']>();

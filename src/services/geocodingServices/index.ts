@@ -1,5 +1,3 @@
-import {GeocodeTypes} from './domain';
-
 class GeocodingService {
   async reverseGeocoding(
     position: GeocodeTypes.Position,

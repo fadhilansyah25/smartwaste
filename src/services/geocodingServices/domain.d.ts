@@ -1,4 +1,4 @@
-export declare namespace GeocodeTypes {
+declare namespace GeocodeTypes {
   type Position = Array<Number>;
 
   type LocationAddress = {
