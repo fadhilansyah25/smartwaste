@@ -26,6 +26,7 @@ const CustomButton = (props: Props) => {
         props.type == 'fill' ? style.fill : style.outline,
         props.style,
         props.buttonStyle,
+        props.disabled? {backgroundColor: colors.N300} : {}
       ]}>
       <Text
         style={[
