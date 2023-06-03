@@ -4,17 +4,15 @@ import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import {CustomButton} from '@src/component';
-import {Types} from '@src/store/reducer/TransactionReducer';
 import {useSelectWaste} from './hook';
 
 const SelectWasteScreen = () => {
   const {
     state,
     checkedItems,
-    navigation,
     wasteType,
-    dispatch,
     handleCheckedItems,
+    handleConfirmWasteType,
   } = useSelectWaste();
 
   const renderCheckboxes = () =>
@@ -67,18 +65,7 @@ const SelectWasteScreen = () => {
           type="fill"
           activeOpacity={0.8}
           disabled={checkedItems.length === 0}
-          buttonStyle={
-            checkedItems.length === 0 ? {backgroundColor: colors.N300} : {}
-          }
-          onPress={() => {
-            dispatch({
-              type: Types.SetTransac,
-              payload: {
-                wasteType: checkedItems,
-              },
-            });
-            navigation.navigate('DeliveryDetails');
-          }}
+          onPress={handleConfirmWasteType}
         />
       </View>
     </SafeAreaView>

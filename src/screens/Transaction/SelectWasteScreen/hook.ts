@@ -3,13 +3,15 @@ import {TransactionContext} from '@src/store/context/TransactionContext';
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import WasteTypeUsecase from '@src/services/bussines/wasteTypeUsecase';
+import {Types} from '@src/store/reducer/TransactionReducer';
 
 export const useSelectWaste = () => {
   const {state, dispatch} = React.useContext(TransactionContext);
   const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
-  const [wasteType, setWasteType] =
-    React.useState<WasteTypeModels.WasteType[]>([]);
+  const [wasteType, setWasteType] = React.useState<WasteTypeModels.WasteType[]>(
+    [],
+  );
   const wasteTypeUsecase = new WasteTypeUsecase();
 
   const handleCheckedItems = (id: number) => {
@@ -20,6 +22,16 @@ export const useSelectWaste = () => {
     } else {
       setCheckedItems([...checkedItems, id]);
     }
+  };
+
+  const handleConfirmWasteType = () => {
+    dispatch({
+      type: Types.SetTransac,
+      payload: {
+        wasteType: checkedItems,
+      },
+    });
+    navigation.navigate('DeliveryDetails');
   };
 
   React.useEffect(() => {
@@ -42,10 +54,9 @@ export const useSelectWaste = () => {
   return {
     state,
     checkedItems,
-    navigation,
     wasteType,
-    dispatch,
     setCheckedItems,
     handleCheckedItems,
+    handleConfirmWasteType,
   } as const;
 };
