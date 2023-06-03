@@ -12,6 +12,7 @@ export const useSearchMitra = () => {
   const {state, dispatch} = React.useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const mitraUsecase = new MitraUsecase();
+  const [loading, setLoading] = React.useState(true)
 
   const getLocation = () => {
     const result = requestLocationPermission();
@@ -52,6 +53,7 @@ export const useSearchMitra = () => {
           });
           if (isMounted) {
             setMitra(item as MitraModels.MitraWithDistance[]);
+            setLoading(false)
           }
         }
       } catch (err) {
@@ -67,5 +69,6 @@ export const useSearchMitra = () => {
   return {
     navigation,
     mitra,
+    loading
   } as const;
 };

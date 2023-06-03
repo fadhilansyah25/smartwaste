@@ -6,6 +6,7 @@ import {
   FlatList,
   Text,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import {style} from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -13,10 +14,9 @@ import {colors} from '@src/const/colors';
 import FilterSvg from '@src/assets/svg/filter.svg';
 import MarkerSvg from '@src/assets/svg/map-marker.svg';
 import {useSearchMitra} from './hook';
-import dayjs from 'dayjs';
 
 const SearchMitraScreen = () => {
-  const {navigation, mitra} = useSearchMitra();
+  const {navigation, mitra, loading} = useSearchMitra();
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -33,6 +33,12 @@ const SearchMitraScreen = () => {
 
       {/* Mitra List Card Data */}
       <View>
+        {loading ? (
+          <ActivityIndicator
+            style={{marginTop: 50, justifyContent: 'center'}}
+            size={'large'}
+          />
+        ) : null}
         <FlatList
           data={mitra}
           contentContainerStyle={style.mitraListContainer}
