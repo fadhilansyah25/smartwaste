@@ -23,7 +23,6 @@ export const style = StyleSheet.create({
     backgroundColor: colors.N100,
     color: colors.T900,
     fontSize: 14,
-    fontWeight: '500',
     borderColor: colors.T500,
     borderWidth: 1,
     borderRadius: 5,
