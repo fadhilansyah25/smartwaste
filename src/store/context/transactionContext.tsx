@@ -13,6 +13,8 @@ export interface InitialStateType {
   mitra: MitraData | null | undefined;
   transactionData: {
     wasteType: number[] | null;
+    detailAdrees: string;
+    detailWaste: string;
   };
 }
 
@@ -21,6 +23,8 @@ const initialState: InitialStateType = {
   mitra: null,
   transactionData: {
     wasteType: null,
+    detailAdrees: '',
+    detailWaste: '',
   },
 };
 
