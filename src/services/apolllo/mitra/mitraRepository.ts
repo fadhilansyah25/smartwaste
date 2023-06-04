@@ -6,14 +6,14 @@ import {
 } from '@src/services/generated/graphql';
 import {ensureError} from '../../utils/serviceUtils';
 
-export default class HasuraMitra implements MitraModels.MitraRepository {
+export default class HasuraMitra implements Mitra.Repository {
   #apolloClient = createApolloClient();
 
   async fetchMitraWithDistance({
     lat,
     long,
     minDistance = 20,
-  }: MitraModels.MitraWithDistanceParams) {
+  }: Mitra.MitraWithDistanceParams) {
     try {
       const result = await this.#apolloClient.query<
         GetAllMitraWithDistanceQuery,
@@ -27,7 +27,7 @@ export default class HasuraMitra implements MitraModels.MitraRepository {
         },
       });
       return result.data
-        .search_mitra_near_user as MitraModels.MitraWithDistance[];
+        .search_mitra_near_user as Mitra.MitraWithDistance[];
     } catch (error) {
       const err = ensureError(error);
       throw err;

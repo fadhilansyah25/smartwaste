@@ -4,7 +4,7 @@ import {GetAllWastetype} from './wasteType.graphql';
 import {ensureError} from '@src/services/utils/serviceUtils';
 
 export default class HasuraWasteType
-  implements WasteTypeModels.WasteTypeRepository
+  implements WasteType.Repository
 {
   #apolloClient = createApolloClient();
 
@@ -14,7 +14,7 @@ export default class HasuraWasteType
         query: GetAllWastetype,
       });
 
-      return result.data.smart_waste_waste_type as WasteTypeModels.WasteType[];
+      return result.data.smart_waste_waste_type as WasteType.WasteType[];
     } catch (error) {
       const err = ensureError(error);
       throw err;

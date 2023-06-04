@@ -119,15 +119,9 @@ const DeliveryDetailsScreen = () => {
             <View style={{flexDirection: 'row', columnGap: 10}}>
               <Icon name="information-outline" size={18} color={colors.O900} />
               <Text style={{color: colors.O900, fontSize: 12}}>
-                Pastikan alamat Anda sudah sesuai
+                Berikan detail sampah yang akan anda akan kirim
               </Text>
             </View>
-            {/* <TextInput
-              placeholder="Jumlah Paket"
-              multiline={true}
-              numberOfLines={2}
-              style={[{verticalAlign: 'top'}, style.inputText]}
-            /> */}
             <TextInput
               placeholder="Contoh: Botol plastik bekas minuman 1Kg, kertas bekas 2Kg, kemasan bekas kosmetik 3Kg"
               multiline={true}
@@ -145,7 +139,7 @@ const DeliveryDetailsScreen = () => {
           label="Selanjutnya"
           type="fill"
           activeOpacity={0.8}
-          disabled={detailAddress.length === 0 && detailWaste.length === 0}
+          disabled={detailAddress.length === 0 || detailWaste.length === 0}
           onPress={handleconfirm}
         />
       </View>

@@ -9,7 +9,7 @@ export const useSelectWaste = () => {
   const {state, dispatch} = React.useContext(TransactionContext);
   const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
-  const [wasteType, setWasteType] = React.useState<WasteTypeModels.WasteType[]>(
+  const [wasteType, setWasteType] = React.useState<WasteType.WasteType[]>(
     [],
   );
   const wasteTypeUsecase = new WasteTypeUsecase();

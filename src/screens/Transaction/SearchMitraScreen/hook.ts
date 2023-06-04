@@ -8,7 +8,7 @@ import {TransactionStackProps} from '@src/navigation/StackNavigation/Transaction
 import MitraUsecase from '@src/services/bussines/mitraUsecase';
 
 export const useSearchMitra = () => {
-  const [mitra, setMitra] = React.useState<MitraModels.MitraWithDistance[]>();
+  const [mitra, setMitra] = React.useState<Mitra.MitraWithDistance[]>();
   const {state, dispatch} = React.useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const mitraUsecase = new MitraUsecase();
@@ -52,7 +52,7 @@ export const useSearchMitra = () => {
             long: state.coordinate.long,
           });
           if (isMounted) {
-            setMitra(item as MitraModels.MitraWithDistance[]);
+            setMitra(item as Mitra.MitraWithDistance[]);
             setLoading(false)
           }
         }

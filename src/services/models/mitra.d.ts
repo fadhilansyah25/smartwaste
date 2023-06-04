@@ -1,4 +1,4 @@
-declare namespace MitraModels {
+declare namespace Mitra {
   export type Mitra = {
     id: string;
     name: string;
@@ -26,7 +26,7 @@ declare namespace MitraModels {
     long: number;
   };
 
-  export interface MitraRepository {
+  export interface Repository {
     fetchMitraWithDistance(
       params: MitraWithDistanceParams,
     ): Promise<MitraWithDistance[]>;
@@ -36,7 +36,7 @@ declare namespace MitraModels {
     // ): Promise<MitraWithDistance>;
   }
 
-  export interface MitraUsecase {
+  export interface Usecase {
     getAllMitraWithDistance(
       params: MitraWithDistanceParams,
     ): Promise<MitraWithDistance[]>;

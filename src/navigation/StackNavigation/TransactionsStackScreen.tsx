@@ -25,7 +25,7 @@ export type TransactionStackParamaterList = {
   SearchMitra: undefined;
   PickPoint: {lat: number; long: number} | undefined;
   SearchLocation: undefined;
-  MitraDetail: {mitra: MitraModels.MitraWithDistance};
+  MitraDetail: {mitra: Mitra.MitraWithDistance};
   SelectWaste: undefined;
   DeliveryDetails: undefined;
   SelectDeliveryServices: undefined;
