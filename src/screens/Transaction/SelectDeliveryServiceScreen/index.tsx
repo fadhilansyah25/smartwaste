@@ -3,16 +3,14 @@ import React from 'react';
 import {style} from './style';
 import CurrencySvg from '@src/assets/svg/currency.svg';
 import {colors} from '@src/const/colors';
-import {useNavigation} from '@react-navigation/native';
-import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import {DeliveryServiceCard} from '@src/component';
+import {useSelectDeliveryServiceScreen} from './hook';
 
 const SelectDeliveryServiceScreen = () => {
-  const navigation = useNavigation<TransactionStackProps['navigation']>();
+  const {deliveryServiceData, handlePressCardDeliveryService} =
+    useSelectDeliveryServiceScreen();
 
-  const handlePressCardDeliveryService = () => {
-    navigation.navigate('DetailsDeliveryService');
-  };
+  console.log(deliveryServiceData);
 
   return (
     <SafeAreaView style={style.screenContainer}>
@@ -36,55 +34,48 @@ const SelectDeliveryServiceScreen = () => {
             leftTitle="PENGIRIMAN INSTAN"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
+          {deliveryServiceData.map(item => {
+            if (item.delivery_service_delivery_type.id === 1) {
+              return (
+                <DeliveryServiceCard
+                  key={item.id}
+                  serviceName={item.delivery_name}
+                  handlePress={() => handlePressCardDeliveryService(item.id)}
+                />
+              );
+            }
+          })}
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList
             leftTitle="PENGIRIMAN TERJADWAL"
             RightTitle="Bayar Langsung Disini"
           />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
+          {deliveryServiceData.map(item => {
+            if (item.delivery_service_delivery_type.id === 2) {
+              return (
+                <DeliveryServiceCard
+                  key={item.id}
+                  serviceName={item.delivery_name}
+                  handlePress={() => handlePressCardDeliveryService(item.id)}
+                />
+              );
+            }
+          })}
         </View>
         <View style={{rowGap: 12, marginBottom: 14}}>
           <HeaderList leftTitle="JEMPUT LANGSUNG" RightTitle="Minimal 5 Kg" />
-          <DeliveryServiceCard
-            startingPrice="Rp 10.000"
-            serviceName="Gojek"
-            handlePress={handlePressCardDeliveryService}
-          />
+          {deliveryServiceData.map(item => {
+            if (item.delivery_service_delivery_type.id === 3) {
+              return (
+                <DeliveryServiceCard
+                  key={item.id}
+                  serviceName={item.delivery_name}
+                  handlePress={() => handlePressCardDeliveryService(item.id)}
+                />
+              );
+            }
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>

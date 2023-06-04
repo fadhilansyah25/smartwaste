@@ -29,7 +29,7 @@ export type TransactionStackParamaterList = {
   SelectWaste: undefined;
   DeliveryDetails: undefined;
   SelectDeliveryServices: undefined;
-  DetailsDeliveryService: undefined;
+  DetailsDeliveryService: {deliver_id: string};
   DeliveryConfirm: undefined;
 };
 
