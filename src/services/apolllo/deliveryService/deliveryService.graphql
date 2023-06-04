@@ -1,0 +1,11 @@
+query GetAllDeliveryService {
+  smart_waste_delivery_service {
+    delivery_name
+    id
+    logo_uri
+    delivery_service_delivery_type {
+      id
+      type_name
+    }
+  }
+}
