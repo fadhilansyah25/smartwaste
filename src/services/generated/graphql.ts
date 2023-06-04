@@ -2930,6 +2930,13 @@ export type GetAllDeliveryServiceQueryVariables = Exact<{ [key: string]: never; 
 
 export type GetAllDeliveryServiceQuery = { __typename?: 'query_root', smart_waste_delivery_service: Array<{ __typename?: 'smart_waste_delivery_service', delivery_name: string, id: any, logo_uri?: string | null, delivery_service_delivery_type: { __typename?: 'smart_waste_delivery_type', id: number, type_name: string } }> };
 
+export type GetDeliveryServiceByIdQueryVariables = Exact<{
+  id: Scalars['uuid']['input'];
+}>;
+
+
+export type GetDeliveryServiceByIdQuery = { __typename?: 'query_root', smart_waste_delivery_service: Array<{ __typename?: 'smart_waste_delivery_service', id: any, logo_uri?: string | null, delivery_name: string, delivery_type_id: number, delivery_service_delivery_service_products: Array<{ __typename?: 'smart_waste_delivery_service_product', id: any, service_name: string, price_perkilo: number, estimate_day: string }> }> };
+
 export type GetAllMitraWithDistanceQueryVariables = Exact<{
   distance_kms: Scalars['Int']['input'];
   latitude: Scalars['float8']['input'];
@@ -2965,6 +2972,22 @@ export const GetAllDeliveryServiceDocument = gql`
   }
 }
     ` as unknown as DocumentNode<GetAllDeliveryServiceQuery, GetAllDeliveryServiceQueryVariables>;
+export const GetDeliveryServiceByIdDocument = gql`
+    query GetDeliveryServiceById($id: uuid!) {
+  smart_waste_delivery_service(where: {id: {_eq: $id}}) {
+    id
+    logo_uri
+    delivery_name
+    delivery_type_id
+    delivery_service_delivery_service_products(order_by: {price_perkilo: asc}) {
+      id
+      service_name
+      price_perkilo
+      estimate_day
+    }
+  }
+}
+    ` as unknown as DocumentNode<GetDeliveryServiceByIdQuery, GetDeliveryServiceByIdQueryVariables>;
 export const GetAllMitraWithDistanceDocument = gql`
     query GetAllMitraWithDistance($distance_kms: Int!, $latitude: float8!, $longitude: float8!) {
   search_mitra_near_user(

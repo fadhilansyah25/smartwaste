@@ -9,3 +9,18 @@ query GetAllDeliveryService {
     }
   }
 }
+
+query GetDeliveryServiceById($id: uuid!) {
+  smart_waste_delivery_service(where: {id: {_eq: $id}}) {
+    id
+    logo_uri
+    delivery_name
+    delivery_type_id
+    delivery_service_delivery_service_products(order_by: {price_perkilo: asc}) {
+      id
+      service_name
+      price_perkilo
+      estimate_day
+    }
+  }
+}

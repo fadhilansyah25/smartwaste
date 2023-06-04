@@ -3,6 +3,7 @@ declare module '*/deliveryService.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const GetAllDeliveryService: DocumentNode;
+export const GetDeliveryServiceById: DocumentNode;
 
   export default defaultDocument;
 }
