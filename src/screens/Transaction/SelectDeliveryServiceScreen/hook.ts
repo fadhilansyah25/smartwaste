@@ -11,7 +11,7 @@ export const useSelectDeliveryServiceScreen = () => {
   >([]);
 
   const handlePressCardDeliveryService = (id: string) => {
-    navigation.navigate('DetailsDeliveryService', {deliver_id: id});
+    navigation.navigate('DetailsDeliveryService', {delivery_id: id});
   };
 
   React.useEffect(() => {

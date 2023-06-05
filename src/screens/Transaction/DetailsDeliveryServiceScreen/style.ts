@@ -25,4 +25,33 @@ export const style = StyleSheet.create({
     paddingVertical: 14,
     elevation: 10,
   },
+  inputWeightContainer: {
+    borderRadius: 5,
+    borderWidth: 1,
+    backgroundColor: colors.white,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: colors.N500,
+  },
+  inputWeight: {
+    flex: 1,
+    paddingHorizontal: 10,
+    backgroundColor: colors.white,
+    color: colors.T900,
+    fontSize: 14,
+    fontWeight: '500',
+    paddingVertical: 0,
+  },
+  inputWeightLogo: {
+    backgroundColor: colors.T500,
+    height: 40,
+    width: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textDetailDelivery: {
+    fontWeight: '600',
+    color: colors.T500,
+    fontSize: 12,
+  },
 });
