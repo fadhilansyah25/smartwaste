@@ -9,7 +9,7 @@ export const DeliveryServiceCard = ({
 }: {
   handlePress?: () => void;
   serviceName?: string;
-  startingPrice?: string;
+  startingPrice?: string | number;
   serviceLogo?: string | ImageProps['source'];
 }) => {
   return (

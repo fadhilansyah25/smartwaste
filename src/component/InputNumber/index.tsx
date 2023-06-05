@@ -9,12 +9,12 @@ interface NumberInputProps {
   inputStyle?: StyleProp<TextStyle>;
 }
 
-const InputNumber: React.FC<NumberInputProps> = ({
+const InputNumber = ({
   minimumValue,
   maximumValue,
   onChange,
   inputStyle,
-}) => {
+}: NumberInputProps) => {
   const {value, handleInputChange} = useInputNumber({
     minimumValue,
     maximumValue,
