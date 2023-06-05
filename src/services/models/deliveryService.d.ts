@@ -1,6 +1,6 @@
 declare namespace DeliveryService {
   export type DeliveryService = {
-    id: '70325cfb-f204-435b-a94d-4775249c79f4';
+    id: string;
     delivery_name: string;
     logo_uri: null;
     delivery_service_delivery_type: {
@@ -9,11 +9,28 @@ declare namespace DeliveryService {
     };
   };
 
+  export type DeliveryServiceByID = Omit<
+    DeliveryService,
+    'delivery_service_delivery_type'
+  > & {
+    delivery_type_id: number;
+    delivery_service_delivery_service_products: delivery_service_products[];
+  };
+
+  type delivery_service_products = {
+    id: string;
+    service_name: string;
+    price_perkilo: number;
+    estimate_day: string;
+  };
+
   export interface Repository {
     fetchAllDeliveryService(): Promise<DeliverService[]>;
+    fetchDeliveryServiceById(id: string) : Promise<DeliveryServiceByID>
   }
 
   export interface Usecase {
     getAllDeliveryService(): Promise<DeliverService[]>;
+    getDeliveryServiceById(id: string): fetchDeliveryServiceById<DeliveryServiceByID>
   }
 }

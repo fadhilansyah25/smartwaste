@@ -9,12 +9,12 @@ export default class MitraUsecase implements Mitra.Usecase {
     minDistance = 20,
   }: Mitra.MitraWithDistanceParams) {
     try {
-      const dataMitra = await hasura_mitra.fetchMitraWithDistance({
+      const data = await hasura_mitra.fetchMitraWithDistance({
         lat,
         long,
         minDistance,
       });
-      return dataMitra as Mitra.MitraWithDistance[];
+      return data
     } catch (err) {
       return [];
     }
