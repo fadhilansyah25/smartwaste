@@ -17,16 +17,20 @@ import DeliveryServiceCard from './Card/DeliveryServiceProviderCard';
 import InputNumber from './InputNumber';
 import DeliveryTypeCard from './Card/DeliveryTypeCard';
 import InputTime from './InputTime';
+import UniqueCodeCard from './Card/UniqueCodeCard';
+import AddressCard from './Card/AddressCard';
 
 export {
   AvatarBadge,
   CustomButton,
   CustomHeader,
+  AddressCard,
   AchivementCard,
   DeliveryServiceCard,
   DeliveryTypeCard,
   GuideCard,
   TutorialCard,
+  UniqueCodeCard,
   GreetingsBar,
   HorizontalRule,
   InputDate,
