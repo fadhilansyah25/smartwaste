@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  TextInput,
-  ScrollView,
-} from 'react-native';
+import {Text, View, SafeAreaView, TextInput, ScrollView} from 'react-native';
 import React from 'react';
 import {style} from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,6 +11,9 @@ const DeliveryDetailsScreen = () => {
   const {
     detailAddress,
     detailWaste,
+    state,
+    userAddress,
+    user,
     handleChangeDetailAddress,
     handleChaneDetailWaste,
     handleconfirm,
@@ -48,11 +44,10 @@ const DeliveryDetailsScreen = () => {
                     </Text>
                   </View>
                   <Text style={{color: colors.T500, fontWeight: '600'}}>
-                    Muhammad Fadil Ardiansyah
+                    {user()?.displayName}
                   </Text>
                   <Text style={{color: colors.N500, fontSize: 12}}>
-                    Jl. Nn Blok D4D No.13, RT.3/RW.3, Medang, Kec. Pagedangan,
-                    Kabupaten Tangerang, Banten 15334, Indonesia
+                    {userAddress?.display_name}
                   </Text>
                 </View>
 
@@ -95,13 +90,12 @@ const DeliveryDetailsScreen = () => {
 
           <View style={{marginLeft: 24 + 10, rowGap: 8, marginTop: 3}}>
             <Text style={{color: colors.T500, fontWeight: '600'}}>
-              Bank Sampah Bumi Lestari
+              {state.mitra?.name}
             </Text>
             <Text style={{color: colors.N500, fontSize: 12}}>
-              Kebon Jeruk Indah Utama 6 No.8, RT.8/RW.7, Srengseng, Kec.
-              Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11630
+              {state.mitra?.address}
             </Text>
-            <Text style={{color: colors.T600}}>087774502637</Text>
+            <Text style={{color: colors.T600}}>{state.mitra?.phoneNumber}</Text>
           </View>
         </View>
 

@@ -15,6 +15,17 @@ export interface InitialStateType {
     wasteType: number[] | null;
     detailAdrees: string;
     detailWaste: string;
+    userId: string;
+    userName: string;
+    userAddress: string;
+    userLatitude: number | undefined;
+    userLongitude: number | undefined;
+    deliveryProviderID: string;
+    deliveryServiceProductID: string;
+    deliveryCost: number | undefined;
+    weight: number | undefined;
+    pickUpDate: Date;
+    pickUpTime: string;
   };
 }
 
@@ -25,6 +36,17 @@ const initialState: InitialStateType = {
     wasteType: null,
     detailAdrees: '',
     detailWaste: '',
+    userId: '',
+    userName: '',
+    userAddress: '',
+    userLatitude: undefined,
+    userLongitude: undefined,
+    deliveryProviderID: '',
+    deliveryServiceProductID: '',
+    deliveryCost: undefined,
+    weight: undefined,
+    pickUpDate: new Date(),
+    pickUpTime: '',
   },
 };
 

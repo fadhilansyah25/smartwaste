@@ -3,10 +3,16 @@ import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
+import firebaseServices from '@src/services/firebaseServices';
+import GeocodingService from '@src/services/geocodingServices';
+const user = firebaseServices.firebaseCheckCurrentUser;
 
 export const useDetailsDeliveryScreen = () => {
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const {state, dispatch} = React.useContext(TransactionContext);
+  const [userAddress, setUserAddress] = React.useState<
+    GeocodeTypes.LocationAddress | undefined
+  >();
   const [detailAddress, setDetailAddress] = React.useState('');
   const [detailWaste, setDetailWaste] = React.useState('');
 
@@ -29,11 +35,33 @@ export const useDetailsDeliveryScreen = () => {
     navigation.navigate('SelectDeliveryServices');
   };
 
+  React.useEffect(() => {
+    let isMounted = true;
+
+    (async () => {
+      if (state.coordinate) {
+        const data = await GeocodingService.reverseGeocoding([
+          state.coordinate?.long,
+          state.coordinate?.lat,
+        ]);
+        if (isMounted) {
+          setUserAddress(data);
+        }
+      }
+    })();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return {
     navigation,
     state,
     detailAddress,
     detailWaste,
+    userAddress,
+    user,
     handleChaneDetailWaste,
     handleChangeDetailAddress,
     handleconfirm,
