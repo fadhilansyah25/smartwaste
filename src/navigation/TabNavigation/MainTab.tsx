@@ -63,6 +63,7 @@ const MainTab = () => {
               'SelectDeliveryServices',
               'DetailsDeliveryService',
               'DeliveryConfirm',
+              'CameraScreen'
             ];
             if (validScreen.includes(routeName as string))
               return {display: 'none'};

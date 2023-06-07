@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import {
   NativeStackScreenProps,
@@ -7,9 +7,13 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {CustomHeader} from '@src/component';
 import {colors} from '@src/const/colors';
-import {TransactionProvider} from '@src/store/context/TransactionContext';
+import {
+  TransactionContext,
+  TransactionProvider,
+} from '@src/store/context/TransactionContext';
 import auth from '@react-native-firebase/auth';
 import {
+  CameraScreen,
   DeliveryConfirmScreen,
   DeliveryDetailsScreen,
   DetailsDeliveryServiceScreen,
@@ -20,6 +24,7 @@ import {
   SelectDeliveryServiceScreen,
   SelectWasteScreen,
 } from '@src/screens/Transaction';
+import geocodingServices from '@src/services/geocodingServices';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
@@ -31,6 +36,7 @@ export type TransactionStackParamaterList = {
   SelectDeliveryServices: undefined;
   DetailsDeliveryService: {delivery_id: string};
   DeliveryConfirm: undefined;
+  CameraScreen: undefined
 };
 
 export type TransactionStackProps =
@@ -201,6 +207,25 @@ const TransactionsStackScreen = () => {
             ),
           }}
         />
+         <TransactionStack.Screen
+          name="CameraScreen"
+          component={CameraScreen}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
+                headerCenter={
+                  <CenterHeaderTitleCustom title="Ambil Gambar" />
+                }
+                elevation={5}
+              />
+            ),
+          }}
+        />
       </TransactionStack.Navigator>
     </TransactionProvider>
   );
@@ -227,6 +252,33 @@ const RightHeader = () => {
 };
 
 const CenterHeader = () => {
+  const {state} = useContext(TransactionContext);
+  const [userAddress, setUserAddress] = React.useState<
+    GeocodeTypes.LocationAddress | undefined
+  >();
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    (async () => {
+      try {
+        if (state.coordinate) {
+          const data = await geocodingServices.reverseGeocoding([
+            state.coordinate.long as number,
+            state.coordinate.lat as number,
+          ]);
+          if (isMounted) {
+            setUserAddress(data);
+          }
+        }
+      } catch (error) {}
+    })();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [state.coordinate]);
+
   return (
     <View style={{marginLeft: 20}}>
       <Text style={{fontSize: 12, fontWeight: '600', color: colors.T500}}>
@@ -234,7 +286,9 @@ const CenterHeader = () => {
         {'  '}
         {auth().currentUser?.displayName}
       </Text>
-      <Text style={{fontSize: 12}}>{auth().currentUser?.displayName}</Text>
+      <Text numberOfLines={1} style={{fontSize: 12, width: 250}}>
+        {userAddress?.display_name}
+      </Text>
     </View>
   );
 };

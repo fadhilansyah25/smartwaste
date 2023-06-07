@@ -33,7 +33,7 @@ export const useDetailsDeliveryScreen = () => {
         detailWaste: detailWaste,
       },
     });
-    navigation.navigate('SelectDeliveryServices');
+    navigation.navigate('CameraScreen');
   };
 
   React.useEffect(() => {
