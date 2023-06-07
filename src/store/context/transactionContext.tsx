@@ -20,12 +20,13 @@ export interface InitialStateType {
     userAddress: string;
     userLatitude: number | undefined;
     userLongitude: number | undefined;
-    deliveryProviderID: string;
-    deliveryServiceProductID: string;
+    deliveryProvider: DeliveryService.DeliveryService | undefined;
+    deliveryServiceProduct:
+      | DeliveryService.delivery_service_product
+      | undefined;
     deliveryCost: number | undefined;
     weight: number | undefined;
-    pickUpDate: Date;
-    pickUpTime: string;
+    pickUpDate: Date | undefined;
   };
 }
 
@@ -41,12 +42,11 @@ const initialState: InitialStateType = {
     userAddress: '',
     userLatitude: undefined,
     userLongitude: undefined,
-    deliveryProviderID: '',
-    deliveryServiceProductID: '',
+    deliveryProvider: undefined,
+    deliveryServiceProduct: undefined,
     deliveryCost: undefined,
     weight: undefined,
-    pickUpDate: new Date(),
-    pickUpTime: '',
+    pickUpDate: undefined,
   },
 };
 

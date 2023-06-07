@@ -14,10 +14,10 @@ declare namespace DeliveryService {
     'delivery_service_delivery_type'
   > & {
     delivery_type_id: number;
-    delivery_service_delivery_service_products: delivery_service_products[];
+    delivery_service_delivery_service_products: delivery_service_product[];
   };
 
-  type delivery_service_products = {
+  type delivery_service_product = {
     id: string;
     service_name: string;
     price_perkilo: number;

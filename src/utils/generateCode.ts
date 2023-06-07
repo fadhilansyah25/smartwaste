@@ -5,5 +5,5 @@ export function generateUniqueCode() {
   const uuid = uuidv4();
   const code = prefix + uuid.substring(0, 6);
 
-  return code;
+  return code.toUpperCase();
 }

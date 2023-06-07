@@ -10,8 +10,6 @@ const SelectDeliveryServiceScreen = () => {
   const {deliveryServiceData, handlePressCardDeliveryService} =
     useSelectDeliveryServiceScreen();
 
-  console.log(deliveryServiceData);
-
   return (
     <SafeAreaView style={style.screenContainer}>
       <ScrollView

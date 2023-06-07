@@ -5,11 +5,12 @@ import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
 import firebaseServices from '@src/services/firebaseServices';
 import GeocodingService from '@src/services/geocodingServices';
-const user = firebaseServices.firebaseCheckCurrentUser;
 
 export const useDetailsDeliveryScreen = () => {
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const {state, dispatch} = React.useContext(TransactionContext);
+  const user = firebaseServices.firebaseCheckCurrentUser;
+
   const [userAddress, setUserAddress] = React.useState<
     GeocodeTypes.LocationAddress | undefined
   >();
@@ -53,7 +54,7 @@ export const useDetailsDeliveryScreen = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [state.coordinate]);
 
   return {
     navigation,

@@ -4,7 +4,7 @@ import {style} from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {colors} from '@src/const/colors';
-import {CustomButton} from '@src/component';
+import {AddressCard, CustomButton} from '@src/component';
 import {useDetailsDeliveryScreen} from './hook';
 
 const DeliveryDetailsScreen = () => {
@@ -40,15 +40,13 @@ const DeliveryDetailsScreen = () => {
                   {/* Pengirim Sampah Header */}
                   <View>
                     <Text style={{fontWeight: '700', color: colors.T600}}>
-                      PENERIMA
+                      PENGIRIM
                     </Text>
                   </View>
-                  <Text style={{color: colors.T500, fontWeight: '600'}}>
-                    {user()?.displayName}
-                  </Text>
-                  <Text style={{color: colors.N500, fontSize: 12}}>
-                    {userAddress?.display_name}
-                  </Text>
+                  <AddressCard
+                    placeName={user()?.displayName as string}
+                    adress={userAddress?.display_name as string}
+                  />
                 </View>
 
                 {/* Address text input */}
@@ -89,12 +87,10 @@ const DeliveryDetailsScreen = () => {
           </View>
 
           <View style={{marginLeft: 24 + 10, rowGap: 8, marginTop: 3}}>
-            <Text style={{color: colors.T500, fontWeight: '600'}}>
-              {state.mitra?.name}
-            </Text>
-            <Text style={{color: colors.N500, fontSize: 12}}>
-              {state.mitra?.address}
-            </Text>
+            <AddressCard
+              placeName={state.mitra?.name as string}
+              adress={state.mitra?.address as string}
+            />
             <Text style={{color: colors.T600}}>{state.mitra?.phoneNumber}</Text>
           </View>
         </View>

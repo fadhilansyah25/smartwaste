@@ -23,14 +23,16 @@ import {formatterIDR} from '@src/utils/formatter';
 
 const DetailsDeliveryServiceScreen = () => {
   const {
-    navigation,
     deliveryType,
     deliveryServiceData,
     deliveryProduct,
     weight,
+    pickupDate,
+    setPickupDate,
     setWeight,
     setDeliveryProduct,
     setDeliveryType,
+    handleConfirm,
   } = useDetailsDeliveryServiceScreen();
 
   const data =
@@ -91,20 +93,22 @@ const DetailsDeliveryServiceScreen = () => {
               <InputDate
                 label="Tanggal Jemput"
                 labelStyle={{fontSize: 12}}
-                initialDate={new Date()}
+                initialDate={pickupDate}
                 minimumDate={today}
                 maximumDate={maximumPickupDate}
                 inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
                 containerStyle={{flex: 1}}
+                onChangeDate={(_, date) => setPickupDate(date as Date)}
               />
               <InputTime
                 label="Jam Jemput"
                 labelStyle={{fontSize: 12}}
                 inputStyle={{paddingVertical: 6, paddingHorizontal: 4}}
-                initialTime={initialTime}
+                initialTime={pickupDate}
                 minimumDate={initialTime}
                 maximumDate={maximumTime}
                 containerStyle={{flex: 1}}
+                onChangeDate={(_, date) => setPickupDate(date as Date)}
               />
             </View>
           )}
@@ -184,9 +188,7 @@ const DetailsDeliveryServiceScreen = () => {
           label="Selanjutnya"
           type="fill"
           activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('DeliveryConfirm');
-          }}
+          onPress={handleConfirm}
         />
       </View>
     </SafeAreaView>

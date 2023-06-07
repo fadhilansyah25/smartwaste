@@ -35,9 +35,20 @@ export const style = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
   },
+  warningText: {
+    color: colors.O900,
+    fontSize: 12,
+    flexWrap: 'wrap',
+    flex: 1,
+  },
   titleText: {
     color: colors.T500,
     fontWeight: '600',
+  },
+  detailText: {
+    fontWeight: '600',
+    color: colors.T500,
+    fontSize: 12,
   },
   bottomNavContainer: {
     position: 'absolute',
