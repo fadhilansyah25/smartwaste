@@ -9,22 +9,14 @@ export const styles = StyleSheet.create({
   button: {
     backgroundColor: 'gray',
   },
-  backButton: {
-    backgroundColor: 'rgba(0,0,0,0.0)',
-    position: 'absolute',
-    justifyContent: 'center',
-    width: '100%',
-    top: 0,
-    padding: 20,
-  },
-  buttonContainer: {
-    backgroundColor: 'rgba(0,0,0,0.2)',
-    position: 'absolute',
+  confirmImageButton: {
+    backgroundColor: '#77c3ec',
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    bottom: 0,
-    padding: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'white',
   },
   buttons: {
     flexDirection: 'row',
@@ -46,5 +38,23 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     aspectRatio: 9 / 16,
+  },
+  buttonContainer: {
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    bottom: 0,
+    padding: 20,
+  },
+  retakeButton: {
+    backgroundColor: '#fff',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#77c3ec',
   },
 });

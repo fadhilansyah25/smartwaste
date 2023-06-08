@@ -7,10 +7,7 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from 'react-native';
-import {
-  Camera,
-  CameraDevice,
-} from 'react-native-vision-camera';
+import {Camera, CameraDevice} from 'react-native-vision-camera';
 import {styles} from './style';
 import {useCameraScreen} from './hook';
 
@@ -56,53 +53,20 @@ const CameraScreen = () => {
               }}
             />
           ) : null}
-
-          <View style={styles.backButton}>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'rgba(0,0,0,0.2)',
-                padding: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 10,
-                borderWidth: 2,
-                borderColor: '#fff',
-                width: 100,
-              }}
-              onPress={() => setShowCamera(true)}>
-              <Text style={{color: 'white', fontWeight: '500'}}>Back</Text>
-            </TouchableOpacity>
-          </View>
           <View style={styles.buttonContainer}>
             <View style={styles.buttons}>
               <TouchableOpacity
-                style={{
-                  backgroundColor: '#fff',
-                  padding: 10,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  borderRadius: 10,
-                  borderWidth: 2,
-                  borderColor: '#77c3ec',
-                }}
+                style={styles.retakeButton}
                 onPress={() => setShowCamera(true)}>
                 <Text style={{color: '#77c3ec', fontWeight: '500'}}>
-                  Retake
+                  Ambil Ulang
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={{
-                  backgroundColor: '#77c3ec',
-                  padding: 10,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  borderRadius: 10,
-                  borderWidth: 2,
-                  borderColor: 'white',
-                }}
+                style={styles.confirmImageButton}
                 onPress={handleUsePhoto}>
                 <Text style={{color: 'white', fontWeight: '500'}}>
-                  Use Photo
+                  Gunakan Gambar
                 </Text>
               </TouchableOpacity>
             </View>
