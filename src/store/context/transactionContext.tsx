@@ -27,6 +27,7 @@ export interface InitialStateType {
     deliveryCost: number | undefined;
     weight: number | undefined;
     pickUpDate: Date | undefined;
+    imageSource: Blob | null
   };
 }
 
@@ -47,6 +48,7 @@ const initialState: InitialStateType = {
     deliveryCost: undefined,
     weight: undefined,
     pickUpDate: undefined,
+    imageSource: null
   },
 };
 
