@@ -37,14 +37,12 @@ class FirebaseServices {
     return firestore().collection('User').add(UserData);
   }
 
-  savePhotoToStorage = async (imageUri: string) => {
+  savePhotoToStorage = async (imageBlob: Blob) => {
     const timestamp = Date.now(); // Dapatkan tanda waktu saat ini
     const uniqueFileName = `${timestamp}.jpg`; // Nama file unik
 
     const imageRef = firebase.storage().ref(`images/${uniqueFileName}`);
-    const response = await fetch(imageUri);
-    const blob = await response.blob();
-    await imageRef.put(blob);
+    await imageRef.put(imageBlob);
 
     const imageUrl = await imageRef.getDownloadURL();
     return imageUrl;
