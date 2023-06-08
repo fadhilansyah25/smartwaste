@@ -1,5 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {firebase} from '@react-native-firebase/storage';
 import {ConfirmCode, AuthParams, FirestoreTypes} from './domain';
 
 class FirebaseServices {
@@ -35,6 +36,19 @@ class FirebaseServices {
   firebaseCreateUser(UserData: FirestoreTypes.CreateUserParams) {
     return firestore().collection('User').add(UserData);
   }
+
+  savePhotoToStorage = async (imageUri: string) => {
+    const timestamp = Date.now(); // Dapatkan tanda waktu saat ini
+    const uniqueFileName = `${timestamp}.jpg`; // Nama file unik
+
+    const imageRef = firebase.storage().ref(`images/${uniqueFileName}`);
+    const response = await fetch(imageUri);
+    const blob = await response.blob();
+    await imageRef.put(blob);
+
+    const imageUrl = await imageRef.getDownloadURL();
+    return imageUrl;
+  };
 }
 
 export default new FirebaseServices();
