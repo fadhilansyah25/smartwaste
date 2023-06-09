@@ -1,6 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
 import {TransactionStackProps} from '@src/navigation/StackNavigation/TransactionsStackScreen';
-import firebaseServices from '@src/services/firebaseServices';
 import {TransactionContext} from '@src/store/context/TransactionContext';
 import {Types} from '@src/store/reducer/TransactionReducer';
 import React from 'react';
