@@ -18,8 +18,6 @@ export interface InitialStateType {
     userId: string;
     userName: string;
     userAddress: string;
-    userLatitude: number | undefined;
-    userLongitude: number | undefined;
     deliveryProvider: DeliveryService.DeliveryService | undefined;
     deliveryServiceProduct:
       | DeliveryService.delivery_service_product
@@ -41,8 +39,6 @@ const initialState: InitialStateType = {
     userId: '',
     userName: '',
     userAddress: '',
-    userLatitude: undefined,
-    userLongitude: undefined,
     deliveryProvider: undefined,
     deliveryServiceProduct: undefined,
     deliveryCost: undefined,
