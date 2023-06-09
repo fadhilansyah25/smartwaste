@@ -15,7 +15,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  _int4: { input: any; output: any; }
+  date: { input: any; output: any; }
   float8: { input: any; output: any; }
   time: { input: any; output: any; }
   uuid: { input: any; output: any; }
@@ -67,19 +67,6 @@ export type String_Comparison_Exp = {
   _similar?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** Boolean expression to compare columns of type "_int4". All fields are combined with logical 'AND'. */
-export type _Int4_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['_int4']['input']>;
-  _gt?: InputMaybe<Scalars['_int4']['input']>;
-  _gte?: InputMaybe<Scalars['_int4']['input']>;
-  _in?: InputMaybe<Array<Scalars['_int4']['input']>>;
-  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
-  _lt?: InputMaybe<Scalars['_int4']['input']>;
-  _lte?: InputMaybe<Scalars['_int4']['input']>;
-  _neq?: InputMaybe<Scalars['_int4']['input']>;
-  _nin?: InputMaybe<Array<Scalars['_int4']['input']>>;
-};
-
 /** ordering argument of a cursor */
 export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
@@ -87,6 +74,19 @@ export enum Cursor_Ordering {
   /** descending ordering of the cursor */
   Desc = 'DESC'
 }
+
+/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+export type Date_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['date']['input']>;
+  _gt?: InputMaybe<Scalars['date']['input']>;
+  _gte?: InputMaybe<Scalars['date']['input']>;
+  _in?: InputMaybe<Array<Scalars['date']['input']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['date']['input']>;
+  _lte?: InputMaybe<Scalars['date']['input']>;
+  _neq?: InputMaybe<Scalars['date']['input']>;
+  _nin?: InputMaybe<Array<Scalars['date']['input']>>;
+};
 
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
 export type Float8_Comparison_Exp = {
@@ -116,10 +116,6 @@ export type Mutation_Root = {
   delete_smart_waste_delivery_type?: Maybe<Smart_Waste_Delivery_Type_Mutation_Response>;
   /** delete single row from the table: "smart_waste.delivery_type" */
   delete_smart_waste_delivery_type_by_pk?: Maybe<Smart_Waste_Delivery_Type>;
-  /** delete data from the table: "smart_waste.deposit_waste" */
-  delete_smart_waste_deposit_waste?: Maybe<Smart_Waste_Deposit_Waste_Mutation_Response>;
-  /** delete single row from the table: "smart_waste.deposit_waste" */
-  delete_smart_waste_deposit_waste_by_pk?: Maybe<Smart_Waste_Deposit_Waste>;
   /** delete data from the table: "smart_waste.mitra" */
   delete_smart_waste_mitra?: Maybe<Smart_Waste_Mitra_Mutation_Response>;
   /** delete single row from the table: "smart_waste.mitra" */
@@ -128,6 +124,14 @@ export type Mutation_Root = {
   delete_smart_waste_mitra_distance?: Maybe<Smart_Waste_Mitra_Distance_Mutation_Response>;
   /** delete single row from the table: "smart_waste.mitra_distance" */
   delete_smart_waste_mitra_distance_by_pk?: Maybe<Smart_Waste_Mitra_Distance>;
+  /** delete data from the table: "smart_waste.transaction_waste" */
+  delete_smart_waste_transaction_waste?: Maybe<Smart_Waste_Transaction_Waste_Mutation_Response>;
+  /** delete single row from the table: "smart_waste.transaction_waste" */
+  delete_smart_waste_transaction_waste_by_pk?: Maybe<Smart_Waste_Transaction_Waste>;
+  /** delete data from the table: "smart_waste.transaction_waste_type" */
+  delete_smart_waste_transaction_waste_type?: Maybe<Smart_Waste_Transaction_Waste_Type_Mutation_Response>;
+  /** delete single row from the table: "smart_waste.transaction_waste_type" */
+  delete_smart_waste_transaction_waste_type_by_pk?: Maybe<Smart_Waste_Transaction_Waste_Type>;
   /** delete data from the table: "smart_waste.waste_type" */
   delete_smart_waste_waste_type?: Maybe<Smart_Waste_Waste_Type_Mutation_Response>;
   /** delete single row from the table: "smart_waste.waste_type" */
@@ -144,10 +148,6 @@ export type Mutation_Root = {
   insert_smart_waste_delivery_type?: Maybe<Smart_Waste_Delivery_Type_Mutation_Response>;
   /** insert a single row into the table: "smart_waste.delivery_type" */
   insert_smart_waste_delivery_type_one?: Maybe<Smart_Waste_Delivery_Type>;
-  /** insert data into the table: "smart_waste.deposit_waste" */
-  insert_smart_waste_deposit_waste?: Maybe<Smart_Waste_Deposit_Waste_Mutation_Response>;
-  /** insert a single row into the table: "smart_waste.deposit_waste" */
-  insert_smart_waste_deposit_waste_one?: Maybe<Smart_Waste_Deposit_Waste>;
   /** insert data into the table: "smart_waste.mitra" */
   insert_smart_waste_mitra?: Maybe<Smart_Waste_Mitra_Mutation_Response>;
   /** insert data into the table: "smart_waste.mitra_distance" */
@@ -156,6 +156,14 @@ export type Mutation_Root = {
   insert_smart_waste_mitra_distance_one?: Maybe<Smart_Waste_Mitra_Distance>;
   /** insert a single row into the table: "smart_waste.mitra" */
   insert_smart_waste_mitra_one?: Maybe<Smart_Waste_Mitra>;
+  /** insert data into the table: "smart_waste.transaction_waste" */
+  insert_smart_waste_transaction_waste?: Maybe<Smart_Waste_Transaction_Waste_Mutation_Response>;
+  /** insert a single row into the table: "smart_waste.transaction_waste" */
+  insert_smart_waste_transaction_waste_one?: Maybe<Smart_Waste_Transaction_Waste>;
+  /** insert data into the table: "smart_waste.transaction_waste_type" */
+  insert_smart_waste_transaction_waste_type?: Maybe<Smart_Waste_Transaction_Waste_Type_Mutation_Response>;
+  /** insert a single row into the table: "smart_waste.transaction_waste_type" */
+  insert_smart_waste_transaction_waste_type_one?: Maybe<Smart_Waste_Transaction_Waste_Type>;
   /** insert data into the table: "smart_waste.waste_type" */
   insert_smart_waste_waste_type?: Maybe<Smart_Waste_Waste_Type_Mutation_Response>;
   /** insert a single row into the table: "smart_waste.waste_type" */
@@ -178,12 +186,6 @@ export type Mutation_Root = {
   update_smart_waste_delivery_type_by_pk?: Maybe<Smart_Waste_Delivery_Type>;
   /** update multiples rows of table: "smart_waste.delivery_type" */
   update_smart_waste_delivery_type_many?: Maybe<Array<Maybe<Smart_Waste_Delivery_Type_Mutation_Response>>>;
-  /** update data of the table: "smart_waste.deposit_waste" */
-  update_smart_waste_deposit_waste?: Maybe<Smart_Waste_Deposit_Waste_Mutation_Response>;
-  /** update single row of the table: "smart_waste.deposit_waste" */
-  update_smart_waste_deposit_waste_by_pk?: Maybe<Smart_Waste_Deposit_Waste>;
-  /** update multiples rows of table: "smart_waste.deposit_waste" */
-  update_smart_waste_deposit_waste_many?: Maybe<Array<Maybe<Smart_Waste_Deposit_Waste_Mutation_Response>>>;
   /** update data of the table: "smart_waste.mitra" */
   update_smart_waste_mitra?: Maybe<Smart_Waste_Mitra_Mutation_Response>;
   /** update single row of the table: "smart_waste.mitra" */
@@ -196,6 +198,18 @@ export type Mutation_Root = {
   update_smart_waste_mitra_distance_many?: Maybe<Array<Maybe<Smart_Waste_Mitra_Distance_Mutation_Response>>>;
   /** update multiples rows of table: "smart_waste.mitra" */
   update_smart_waste_mitra_many?: Maybe<Array<Maybe<Smart_Waste_Mitra_Mutation_Response>>>;
+  /** update data of the table: "smart_waste.transaction_waste" */
+  update_smart_waste_transaction_waste?: Maybe<Smart_Waste_Transaction_Waste_Mutation_Response>;
+  /** update single row of the table: "smart_waste.transaction_waste" */
+  update_smart_waste_transaction_waste_by_pk?: Maybe<Smart_Waste_Transaction_Waste>;
+  /** update multiples rows of table: "smart_waste.transaction_waste" */
+  update_smart_waste_transaction_waste_many?: Maybe<Array<Maybe<Smart_Waste_Transaction_Waste_Mutation_Response>>>;
+  /** update data of the table: "smart_waste.transaction_waste_type" */
+  update_smart_waste_transaction_waste_type?: Maybe<Smart_Waste_Transaction_Waste_Type_Mutation_Response>;
+  /** update single row of the table: "smart_waste.transaction_waste_type" */
+  update_smart_waste_transaction_waste_type_by_pk?: Maybe<Smart_Waste_Transaction_Waste_Type>;
+  /** update multiples rows of table: "smart_waste.transaction_waste_type" */
+  update_smart_waste_transaction_waste_type_many?: Maybe<Array<Maybe<Smart_Waste_Transaction_Waste_Type_Mutation_Response>>>;
   /** update data of the table: "smart_waste.waste_type" */
   update_smart_waste_waste_type?: Maybe<Smart_Waste_Waste_Type_Mutation_Response>;
   /** update single row of the table: "smart_waste.waste_type" */
@@ -242,18 +256,6 @@ export type Mutation_RootDelete_Smart_Waste_Delivery_Type_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootDelete_Smart_Waste_Deposit_WasteArgs = {
-  where: Smart_Waste_Deposit_Waste_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Smart_Waste_Deposit_Waste_By_PkArgs = {
-  id: Scalars['uuid']['input'];
-};
-
-
-/** mutation root */
 export type Mutation_RootDelete_Smart_Waste_MitraArgs = {
   where: Smart_Waste_Mitra_Bool_Exp;
 };
@@ -274,6 +276,30 @@ export type Mutation_RootDelete_Smart_Waste_Mitra_DistanceArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Smart_Waste_Mitra_Distance_By_PkArgs = {
   id: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Smart_Waste_Transaction_WasteArgs = {
+  where: Smart_Waste_Transaction_Waste_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Smart_Waste_Transaction_Waste_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Smart_Waste_Transaction_Waste_TypeArgs = {
+  where: Smart_Waste_Transaction_Waste_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Smart_Waste_Transaction_Waste_Type_By_PkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -332,20 +358,6 @@ export type Mutation_RootInsert_Smart_Waste_Delivery_Type_OneArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_Smart_Waste_Deposit_WasteArgs = {
-  objects: Array<Smart_Waste_Deposit_Waste_Insert_Input>;
-  on_conflict?: InputMaybe<Smart_Waste_Deposit_Waste_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Smart_Waste_Deposit_Waste_OneArgs = {
-  object: Smart_Waste_Deposit_Waste_Insert_Input;
-  on_conflict?: InputMaybe<Smart_Waste_Deposit_Waste_On_Conflict>;
-};
-
-
-/** mutation root */
 export type Mutation_RootInsert_Smart_Waste_MitraArgs = {
   objects: Array<Smart_Waste_Mitra_Insert_Input>;
   on_conflict?: InputMaybe<Smart_Waste_Mitra_On_Conflict>;
@@ -370,6 +382,34 @@ export type Mutation_RootInsert_Smart_Waste_Mitra_Distance_OneArgs = {
 export type Mutation_RootInsert_Smart_Waste_Mitra_OneArgs = {
   object: Smart_Waste_Mitra_Insert_Input;
   on_conflict?: InputMaybe<Smart_Waste_Mitra_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Smart_Waste_Transaction_WasteArgs = {
+  objects: Array<Smart_Waste_Transaction_Waste_Insert_Input>;
+  on_conflict?: InputMaybe<Smart_Waste_Transaction_Waste_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Smart_Waste_Transaction_Waste_OneArgs = {
+  object: Smart_Waste_Transaction_Waste_Insert_Input;
+  on_conflict?: InputMaybe<Smart_Waste_Transaction_Waste_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Smart_Waste_Transaction_Waste_TypeArgs = {
+  objects: Array<Smart_Waste_Transaction_Waste_Type_Insert_Input>;
+  on_conflict?: InputMaybe<Smart_Waste_Transaction_Waste_Type_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Smart_Waste_Transaction_Waste_Type_OneArgs = {
+  object: Smart_Waste_Transaction_Waste_Type_Insert_Input;
+  on_conflict?: InputMaybe<Smart_Waste_Transaction_Waste_Type_On_Conflict>;
 };
 
 
@@ -454,26 +494,6 @@ export type Mutation_RootUpdate_Smart_Waste_Delivery_Type_ManyArgs = {
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Smart_Waste_Deposit_WasteArgs = {
-  _set?: InputMaybe<Smart_Waste_Deposit_Waste_Set_Input>;
-  where: Smart_Waste_Deposit_Waste_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Smart_Waste_Deposit_Waste_By_PkArgs = {
-  _set?: InputMaybe<Smart_Waste_Deposit_Waste_Set_Input>;
-  pk_columns: Smart_Waste_Deposit_Waste_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Smart_Waste_Deposit_Waste_ManyArgs = {
-  updates: Array<Smart_Waste_Deposit_Waste_Updates>;
-};
-
-
-/** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_MitraArgs = {
   _inc?: InputMaybe<Smart_Waste_Mitra_Inc_Input>;
   _set?: InputMaybe<Smart_Waste_Mitra_Set_Input>;
@@ -514,6 +534,50 @@ export type Mutation_RootUpdate_Smart_Waste_Mitra_Distance_ManyArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Smart_Waste_Mitra_ManyArgs = {
   updates: Array<Smart_Waste_Mitra_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_WasteArgs = {
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Inc_Input>;
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Set_Input>;
+  where: Smart_Waste_Transaction_Waste_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_Waste_By_PkArgs = {
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Inc_Input>;
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Set_Input>;
+  pk_columns: Smart_Waste_Transaction_Waste_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_Waste_ManyArgs = {
+  updates: Array<Smart_Waste_Transaction_Waste_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_Waste_TypeArgs = {
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Inc_Input>;
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Set_Input>;
+  where: Smart_Waste_Transaction_Waste_Type_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_Waste_Type_By_PkArgs = {
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Inc_Input>;
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Set_Input>;
+  pk_columns: Smart_Waste_Transaction_Waste_Type_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Smart_Waste_Transaction_Waste_Type_ManyArgs = {
+  updates: Array<Smart_Waste_Transaction_Waste_Type_Updates>;
 };
 
 
@@ -578,12 +642,6 @@ export type Query_Root = {
   smart_waste_delivery_type_aggregate: Smart_Waste_Delivery_Type_Aggregate;
   /** fetch data from the table: "smart_waste.delivery_type" using primary key columns */
   smart_waste_delivery_type_by_pk?: Maybe<Smart_Waste_Delivery_Type>;
-  /** fetch data from the table: "smart_waste.deposit_waste" */
-  smart_waste_deposit_waste: Array<Smart_Waste_Deposit_Waste>;
-  /** fetch aggregated fields from the table: "smart_waste.deposit_waste" */
-  smart_waste_deposit_waste_aggregate: Smart_Waste_Deposit_Waste_Aggregate;
-  /** fetch data from the table: "smart_waste.deposit_waste" using primary key columns */
-  smart_waste_deposit_waste_by_pk?: Maybe<Smart_Waste_Deposit_Waste>;
   /** fetch data from the table: "smart_waste.mitra" */
   smart_waste_mitra: Array<Smart_Waste_Mitra>;
   /** fetch aggregated fields from the table: "smart_waste.mitra" */
@@ -596,6 +654,18 @@ export type Query_Root = {
   smart_waste_mitra_distance_aggregate: Smart_Waste_Mitra_Distance_Aggregate;
   /** fetch data from the table: "smart_waste.mitra_distance" using primary key columns */
   smart_waste_mitra_distance_by_pk?: Maybe<Smart_Waste_Mitra_Distance>;
+  /** fetch data from the table: "smart_waste.transaction_waste" */
+  smart_waste_transaction_waste: Array<Smart_Waste_Transaction_Waste>;
+  /** fetch aggregated fields from the table: "smart_waste.transaction_waste" */
+  smart_waste_transaction_waste_aggregate: Smart_Waste_Transaction_Waste_Aggregate;
+  /** fetch data from the table: "smart_waste.transaction_waste" using primary key columns */
+  smart_waste_transaction_waste_by_pk?: Maybe<Smart_Waste_Transaction_Waste>;
+  /** fetch data from the table: "smart_waste.transaction_waste_type" */
+  smart_waste_transaction_waste_type: Array<Smart_Waste_Transaction_Waste_Type>;
+  /** fetch aggregated fields from the table: "smart_waste.transaction_waste_type" */
+  smart_waste_transaction_waste_type_aggregate: Smart_Waste_Transaction_Waste_Type_Aggregate;
+  /** fetch data from the table: "smart_waste.transaction_waste_type" using primary key columns */
+  smart_waste_transaction_waste_type_by_pk?: Maybe<Smart_Waste_Transaction_Waste_Type>;
   /** fetch data from the table: "smart_waste.waste_type" */
   smart_waste_waste_type: Array<Smart_Waste_Waste_Type>;
   /** fetch aggregated fields from the table: "smart_waste.waste_type" */
@@ -694,29 +764,6 @@ export type Query_RootSmart_Waste_Delivery_Type_By_PkArgs = {
 };
 
 
-export type Query_RootSmart_Waste_Deposit_WasteArgs = {
-  distinct_on?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Order_By>>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-
-export type Query_RootSmart_Waste_Deposit_Waste_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Order_By>>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-
-export type Query_RootSmart_Waste_Deposit_Waste_By_PkArgs = {
-  id: Scalars['uuid']['input'];
-};
-
-
 export type Query_RootSmart_Waste_MitraArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -760,6 +807,52 @@ export type Query_RootSmart_Waste_Mitra_Distance_AggregateArgs = {
 
 export type Query_RootSmart_Waste_Mitra_Distance_By_PkArgs = {
   id: Scalars['String']['input'];
+};
+
+
+export type Query_RootSmart_Waste_Transaction_WasteArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+
+export type Query_RootSmart_Waste_Transaction_Waste_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+
+export type Query_RootSmart_Waste_Transaction_Waste_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Query_RootSmart_Waste_Transaction_Waste_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+
+export type Query_RootSmart_Waste_Transaction_Waste_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+
+export type Query_RootSmart_Waste_Transaction_Waste_Type_By_PkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -1172,6 +1265,13 @@ export type Smart_Waste_Delivery_Service_Product_Mutation_Response = {
   affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Smart_Waste_Delivery_Service_Product>;
+};
+
+/** input type for inserting object relation for remote table "smart_waste.delivery_service_product" */
+export type Smart_Waste_Delivery_Service_Product_Obj_Rel_Insert_Input = {
+  data: Smart_Waste_Delivery_Service_Product_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Smart_Waste_Delivery_Service_Product_On_Conflict>;
 };
 
 /** on_conflict condition type for table "smart_waste.delivery_service_product" */
@@ -1702,138 +1802,6 @@ export type Smart_Waste_Delivery_Type_Variance_Fields = {
   id?: Maybe<Scalars['Float']['output']>;
 };
 
-/** columns and relationships of "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste = {
-  __typename?: 'smart_waste_deposit_waste';
-  id: Scalars['uuid']['output'];
-  waste_type_id: Scalars['_int4']['output'];
-};
-
-/** aggregated selection of "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Aggregate = {
-  __typename?: 'smart_waste_deposit_waste_aggregate';
-  aggregate?: Maybe<Smart_Waste_Deposit_Waste_Aggregate_Fields>;
-  nodes: Array<Smart_Waste_Deposit_Waste>;
-};
-
-/** aggregate fields of "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Aggregate_Fields = {
-  __typename?: 'smart_waste_deposit_waste_aggregate_fields';
-  count: Scalars['Int']['output'];
-  max?: Maybe<Smart_Waste_Deposit_Waste_Max_Fields>;
-  min?: Maybe<Smart_Waste_Deposit_Waste_Min_Fields>;
-};
-
-
-/** aggregate fields of "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** Boolean expression to filter rows from the table "smart_waste.deposit_waste". All fields are combined with a logical 'AND'. */
-export type Smart_Waste_Deposit_Waste_Bool_Exp = {
-  _and?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Bool_Exp>>;
-  _not?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-  _or?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Bool_Exp>>;
-  id?: InputMaybe<Uuid_Comparison_Exp>;
-  waste_type_id?: InputMaybe<_Int4_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "smart_waste.deposit_waste" */
-export enum Smart_Waste_Deposit_Waste_Constraint {
-  /** unique or primary key constraint on columns "id" */
-  DepositWastePkey = 'deposit_waste_pkey'
-}
-
-/** input type for inserting data into table "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Insert_Input = {
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  waste_type_id?: InputMaybe<Scalars['_int4']['input']>;
-};
-
-/** aggregate max on columns */
-export type Smart_Waste_Deposit_Waste_Max_Fields = {
-  __typename?: 'smart_waste_deposit_waste_max_fields';
-  id?: Maybe<Scalars['uuid']['output']>;
-};
-
-/** aggregate min on columns */
-export type Smart_Waste_Deposit_Waste_Min_Fields = {
-  __typename?: 'smart_waste_deposit_waste_min_fields';
-  id?: Maybe<Scalars['uuid']['output']>;
-};
-
-/** response of any mutation on the table "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Mutation_Response = {
-  __typename?: 'smart_waste_deposit_waste_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int']['output'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Smart_Waste_Deposit_Waste>;
-};
-
-/** on_conflict condition type for table "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_On_Conflict = {
-  constraint: Smart_Waste_Deposit_Waste_Constraint;
-  update_columns?: Array<Smart_Waste_Deposit_Waste_Update_Column>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "smart_waste.deposit_waste". */
-export type Smart_Waste_Deposit_Waste_Order_By = {
-  id?: InputMaybe<Order_By>;
-  waste_type_id?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: smart_waste.deposit_waste */
-export type Smart_Waste_Deposit_Waste_Pk_Columns_Input = {
-  id: Scalars['uuid']['input'];
-};
-
-/** select columns of table "smart_waste.deposit_waste" */
-export enum Smart_Waste_Deposit_Waste_Select_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  WasteTypeId = 'waste_type_id'
-}
-
-/** input type for updating data in table "smart_waste.deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Set_Input = {
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  waste_type_id?: InputMaybe<Scalars['_int4']['input']>;
-};
-
-/** Streaming cursor of the table "smart_waste_deposit_waste" */
-export type Smart_Waste_Deposit_Waste_Stream_Cursor_Input = {
-  /** Stream column input with initial value */
-  initial_value: Smart_Waste_Deposit_Waste_Stream_Cursor_Value_Input;
-  /** cursor ordering */
-  ordering?: InputMaybe<Cursor_Ordering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type Smart_Waste_Deposit_Waste_Stream_Cursor_Value_Input = {
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  waste_type_id?: InputMaybe<Scalars['_int4']['input']>;
-};
-
-/** update columns of table "smart_waste.deposit_waste" */
-export enum Smart_Waste_Deposit_Waste_Update_Column {
-  /** column name */
-  Id = 'id',
-  /** column name */
-  WasteTypeId = 'waste_type_id'
-}
-
-export type Smart_Waste_Deposit_Waste_Updates = {
-  /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<Smart_Waste_Deposit_Waste_Set_Input>;
-  /** filter the rows which have to be updated */
-  where: Smart_Waste_Deposit_Waste_Bool_Exp;
-};
-
 /** columns and relationships of "smart_waste.mitra" */
 export type Smart_Waste_Mitra = {
   __typename?: 'smart_waste_mitra';
@@ -2254,6 +2222,13 @@ export type Smart_Waste_Mitra_Mutation_Response = {
   returning: Array<Smart_Waste_Mitra>;
 };
 
+/** input type for inserting object relation for remote table "smart_waste.mitra" */
+export type Smart_Waste_Mitra_Obj_Rel_Insert_Input = {
+  data: Smart_Waste_Mitra_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Smart_Waste_Mitra_On_Conflict>;
+};
+
 /** on_conflict condition type for table "smart_waste.mitra" */
 export type Smart_Waste_Mitra_On_Conflict = {
   constraint: Smart_Waste_Mitra_Constraint;
@@ -2406,6 +2381,737 @@ export type Smart_Waste_Mitra_Variance_Fields = {
   __typename?: 'smart_waste_mitra_variance_fields';
   lat?: Maybe<Scalars['Float']['output']>;
   long?: Maybe<Scalars['Float']['output']>;
+};
+
+/** columns and relationships of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste = {
+  __typename?: 'smart_waste_transaction_waste';
+  delivery_product_id: Scalars['uuid']['output'];
+  delivery_service_id: Scalars['uuid']['output'];
+  delivery_total_cost: Scalars['Int']['output'];
+  detail_address: Scalars['String']['output'];
+  detail_waste: Scalars['String']['output'];
+  id: Scalars['uuid']['output'];
+  image_uri: Scalars['String']['output'];
+  mitra_id: Scalars['uuid']['output'];
+  pickup_date?: Maybe<Scalars['date']['output']>;
+  status: Scalars['String']['output'];
+  /** An object relationship */
+  transaction_waste_delivery_service: Smart_Waste_Delivery_Service;
+  /** An object relationship */
+  transaction_waste_delivery_service_product: Smart_Waste_Delivery_Service_Product;
+  /** An object relationship */
+  transaction_waste_mitra: Smart_Waste_Mitra;
+  /** An array relationship */
+  transaction_waste_transaction_waste_types: Array<Smart_Waste_Transaction_Waste_Type>;
+  /** An aggregate relationship */
+  transaction_waste_transaction_waste_types_aggregate: Smart_Waste_Transaction_Waste_Type_Aggregate;
+  user_address: Scalars['String']['output'];
+  user_id: Scalars['String']['output'];
+  user_lat: Scalars['float8']['output'];
+  user_long: Scalars['float8']['output'];
+  user_name: Scalars['String']['output'];
+  waste_weight: Scalars['Int']['output'];
+};
+
+
+/** columns and relationships of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_WasteTransaction_Waste_Transaction_Waste_TypesArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+
+/** columns and relationships of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_WasteTransaction_Waste_Transaction_Waste_Types_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+/** aggregated selection of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Aggregate = {
+  __typename?: 'smart_waste_transaction_waste_aggregate';
+  aggregate?: Maybe<Smart_Waste_Transaction_Waste_Aggregate_Fields>;
+  nodes: Array<Smart_Waste_Transaction_Waste>;
+};
+
+/** aggregate fields of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Aggregate_Fields = {
+  __typename?: 'smart_waste_transaction_waste_aggregate_fields';
+  avg?: Maybe<Smart_Waste_Transaction_Waste_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Smart_Waste_Transaction_Waste_Max_Fields>;
+  min?: Maybe<Smart_Waste_Transaction_Waste_Min_Fields>;
+  stddev?: Maybe<Smart_Waste_Transaction_Waste_Stddev_Fields>;
+  stddev_pop?: Maybe<Smart_Waste_Transaction_Waste_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Smart_Waste_Transaction_Waste_Stddev_Samp_Fields>;
+  sum?: Maybe<Smart_Waste_Transaction_Waste_Sum_Fields>;
+  var_pop?: Maybe<Smart_Waste_Transaction_Waste_Var_Pop_Fields>;
+  var_samp?: Maybe<Smart_Waste_Transaction_Waste_Var_Samp_Fields>;
+  variance?: Maybe<Smart_Waste_Transaction_Waste_Variance_Fields>;
+};
+
+
+/** aggregate fields of "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Smart_Waste_Transaction_Waste_Avg_Fields = {
+  __typename?: 'smart_waste_transaction_waste_avg_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "smart_waste.transaction_waste". All fields are combined with a logical 'AND'. */
+export type Smart_Waste_Transaction_Waste_Bool_Exp = {
+  _and?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Bool_Exp>>;
+  _not?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+  _or?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Bool_Exp>>;
+  delivery_product_id?: InputMaybe<Uuid_Comparison_Exp>;
+  delivery_service_id?: InputMaybe<Uuid_Comparison_Exp>;
+  delivery_total_cost?: InputMaybe<Int_Comparison_Exp>;
+  detail_address?: InputMaybe<String_Comparison_Exp>;
+  detail_waste?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  image_uri?: InputMaybe<String_Comparison_Exp>;
+  mitra_id?: InputMaybe<Uuid_Comparison_Exp>;
+  pickup_date?: InputMaybe<Date_Comparison_Exp>;
+  status?: InputMaybe<String_Comparison_Exp>;
+  transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Bool_Exp>;
+  transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Bool_Exp>;
+  transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
+  transaction_waste_transaction_waste_types?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+  transaction_waste_transaction_waste_types_aggregate?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Aggregate_Bool_Exp>;
+  user_address?: InputMaybe<String_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
+  user_lat?: InputMaybe<Float8_Comparison_Exp>;
+  user_long?: InputMaybe<Float8_Comparison_Exp>;
+  user_name?: InputMaybe<String_Comparison_Exp>;
+  waste_weight?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "smart_waste.transaction_waste" */
+export enum Smart_Waste_Transaction_Waste_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  TransactionWastePkey = 'transaction_waste_pkey'
+}
+
+/** input type for incrementing numeric columns in table "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Inc_Input = {
+  delivery_total_cost?: InputMaybe<Scalars['Int']['input']>;
+  user_lat?: InputMaybe<Scalars['float8']['input']>;
+  user_long?: InputMaybe<Scalars['float8']['input']>;
+  waste_weight?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Insert_Input = {
+  delivery_product_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_service_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_total_cost?: InputMaybe<Scalars['Int']['input']>;
+  detail_address?: InputMaybe<Scalars['String']['input']>;
+  detail_waste?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  image_uri?: InputMaybe<Scalars['String']['input']>;
+  mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  pickup_date?: InputMaybe<Scalars['date']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
+  transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Obj_Rel_Insert_Input>;
+  transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Obj_Rel_Insert_Input>;
+  transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Obj_Rel_Insert_Input>;
+  transaction_waste_transaction_waste_types?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Arr_Rel_Insert_Input>;
+  user_address?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  user_lat?: InputMaybe<Scalars['float8']['input']>;
+  user_long?: InputMaybe<Scalars['float8']['input']>;
+  user_name?: InputMaybe<Scalars['String']['input']>;
+  waste_weight?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate max on columns */
+export type Smart_Waste_Transaction_Waste_Max_Fields = {
+  __typename?: 'smart_waste_transaction_waste_max_fields';
+  delivery_product_id?: Maybe<Scalars['uuid']['output']>;
+  delivery_service_id?: Maybe<Scalars['uuid']['output']>;
+  delivery_total_cost?: Maybe<Scalars['Int']['output']>;
+  detail_address?: Maybe<Scalars['String']['output']>;
+  detail_waste?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  image_uri?: Maybe<Scalars['String']['output']>;
+  mitra_id?: Maybe<Scalars['uuid']['output']>;
+  pickup_date?: Maybe<Scalars['date']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
+  user_address?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+  user_lat?: Maybe<Scalars['float8']['output']>;
+  user_long?: Maybe<Scalars['float8']['output']>;
+  user_name?: Maybe<Scalars['String']['output']>;
+  waste_weight?: Maybe<Scalars['Int']['output']>;
+};
+
+/** aggregate min on columns */
+export type Smart_Waste_Transaction_Waste_Min_Fields = {
+  __typename?: 'smart_waste_transaction_waste_min_fields';
+  delivery_product_id?: Maybe<Scalars['uuid']['output']>;
+  delivery_service_id?: Maybe<Scalars['uuid']['output']>;
+  delivery_total_cost?: Maybe<Scalars['Int']['output']>;
+  detail_address?: Maybe<Scalars['String']['output']>;
+  detail_waste?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  image_uri?: Maybe<Scalars['String']['output']>;
+  mitra_id?: Maybe<Scalars['uuid']['output']>;
+  pickup_date?: Maybe<Scalars['date']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
+  user_address?: Maybe<Scalars['String']['output']>;
+  user_id?: Maybe<Scalars['String']['output']>;
+  user_lat?: Maybe<Scalars['float8']['output']>;
+  user_long?: Maybe<Scalars['float8']['output']>;
+  user_name?: Maybe<Scalars['String']['output']>;
+  waste_weight?: Maybe<Scalars['Int']['output']>;
+};
+
+/** response of any mutation on the table "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Mutation_Response = {
+  __typename?: 'smart_waste_transaction_waste_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Smart_Waste_Transaction_Waste>;
+};
+
+/** on_conflict condition type for table "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_On_Conflict = {
+  constraint: Smart_Waste_Transaction_Waste_Constraint;
+  update_columns?: Array<Smart_Waste_Transaction_Waste_Update_Column>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "smart_waste.transaction_waste". */
+export type Smart_Waste_Transaction_Waste_Order_By = {
+  delivery_product_id?: InputMaybe<Order_By>;
+  delivery_service_id?: InputMaybe<Order_By>;
+  delivery_total_cost?: InputMaybe<Order_By>;
+  detail_address?: InputMaybe<Order_By>;
+  detail_waste?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image_uri?: InputMaybe<Order_By>;
+  mitra_id?: InputMaybe<Order_By>;
+  pickup_date?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Order_By>;
+  transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Order_By>;
+  transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Order_By>;
+  transaction_waste_transaction_waste_types_aggregate?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Aggregate_Order_By>;
+  user_address?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  user_lat?: InputMaybe<Order_By>;
+  user_long?: InputMaybe<Order_By>;
+  user_name?: InputMaybe<Order_By>;
+  waste_weight?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: smart_waste.transaction_waste */
+export type Smart_Waste_Transaction_Waste_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "smart_waste.transaction_waste" */
+export enum Smart_Waste_Transaction_Waste_Select_Column {
+  /** column name */
+  DeliveryProductId = 'delivery_product_id',
+  /** column name */
+  DeliveryServiceId = 'delivery_service_id',
+  /** column name */
+  DeliveryTotalCost = 'delivery_total_cost',
+  /** column name */
+  DetailAddress = 'detail_address',
+  /** column name */
+  DetailWaste = 'detail_waste',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ImageUri = 'image_uri',
+  /** column name */
+  MitraId = 'mitra_id',
+  /** column name */
+  PickupDate = 'pickup_date',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserAddress = 'user_address',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  UserLat = 'user_lat',
+  /** column name */
+  UserLong = 'user_long',
+  /** column name */
+  UserName = 'user_name',
+  /** column name */
+  WasteWeight = 'waste_weight'
+}
+
+/** input type for updating data in table "smart_waste.transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Set_Input = {
+  delivery_product_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_service_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_total_cost?: InputMaybe<Scalars['Int']['input']>;
+  detail_address?: InputMaybe<Scalars['String']['input']>;
+  detail_waste?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  image_uri?: InputMaybe<Scalars['String']['input']>;
+  mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  pickup_date?: InputMaybe<Scalars['date']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
+  user_address?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  user_lat?: InputMaybe<Scalars['float8']['input']>;
+  user_long?: InputMaybe<Scalars['float8']['input']>;
+  user_name?: InputMaybe<Scalars['String']['input']>;
+  waste_weight?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Smart_Waste_Transaction_Waste_Stddev_Fields = {
+  __typename?: 'smart_waste_transaction_waste_stddev_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Smart_Waste_Transaction_Waste_Stddev_Pop_Fields = {
+  __typename?: 'smart_waste_transaction_waste_stddev_pop_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Smart_Waste_Transaction_Waste_Stddev_Samp_Fields = {
+  __typename?: 'smart_waste_transaction_waste_stddev_samp_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "smart_waste_transaction_waste" */
+export type Smart_Waste_Transaction_Waste_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Smart_Waste_Transaction_Waste_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Smart_Waste_Transaction_Waste_Stream_Cursor_Value_Input = {
+  delivery_product_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_service_id?: InputMaybe<Scalars['uuid']['input']>;
+  delivery_total_cost?: InputMaybe<Scalars['Int']['input']>;
+  detail_address?: InputMaybe<Scalars['String']['input']>;
+  detail_waste?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  image_uri?: InputMaybe<Scalars['String']['input']>;
+  mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  pickup_date?: InputMaybe<Scalars['date']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
+  user_address?: InputMaybe<Scalars['String']['input']>;
+  user_id?: InputMaybe<Scalars['String']['input']>;
+  user_lat?: InputMaybe<Scalars['float8']['input']>;
+  user_long?: InputMaybe<Scalars['float8']['input']>;
+  user_name?: InputMaybe<Scalars['String']['input']>;
+  waste_weight?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Smart_Waste_Transaction_Waste_Sum_Fields = {
+  __typename?: 'smart_waste_transaction_waste_sum_fields';
+  delivery_total_cost?: Maybe<Scalars['Int']['output']>;
+  user_lat?: Maybe<Scalars['float8']['output']>;
+  user_long?: Maybe<Scalars['float8']['output']>;
+  waste_weight?: Maybe<Scalars['Int']['output']>;
+};
+
+/** columns and relationships of "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type = {
+  __typename?: 'smart_waste_transaction_waste_type';
+  id: Scalars['uuid']['output'];
+  transaction_waste_id: Scalars['uuid']['output'];
+  waste_type_id: Scalars['Int']['output'];
+};
+
+/** aggregated selection of "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Aggregate = {
+  __typename?: 'smart_waste_transaction_waste_type_aggregate';
+  aggregate?: Maybe<Smart_Waste_Transaction_Waste_Type_Aggregate_Fields>;
+  nodes: Array<Smart_Waste_Transaction_Waste_Type>;
+};
+
+export type Smart_Waste_Transaction_Waste_Type_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Aggregate_Bool_Exp_Count>;
+};
+
+export type Smart_Waste_Transaction_Waste_Type_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Aggregate_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_aggregate_fields';
+  avg?: Maybe<Smart_Waste_Transaction_Waste_Type_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Smart_Waste_Transaction_Waste_Type_Max_Fields>;
+  min?: Maybe<Smart_Waste_Transaction_Waste_Type_Min_Fields>;
+  stddev?: Maybe<Smart_Waste_Transaction_Waste_Type_Stddev_Fields>;
+  stddev_pop?: Maybe<Smart_Waste_Transaction_Waste_Type_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Smart_Waste_Transaction_Waste_Type_Stddev_Samp_Fields>;
+  sum?: Maybe<Smart_Waste_Transaction_Waste_Type_Sum_Fields>;
+  var_pop?: Maybe<Smart_Waste_Transaction_Waste_Type_Var_Pop_Fields>;
+  var_samp?: Maybe<Smart_Waste_Transaction_Waste_Type_Var_Samp_Fields>;
+  variance?: Maybe<Smart_Waste_Transaction_Waste_Type_Variance_Fields>;
+};
+
+
+/** aggregate fields of "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Aggregate_Order_By = {
+  avg?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Max_Order_By>;
+  min?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Min_Order_By>;
+  stddev?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Sum_Order_By>;
+  var_pop?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Var_Samp_Order_By>;
+  variance?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Arr_Rel_Insert_Input = {
+  data: Array<Smart_Waste_Transaction_Waste_Type_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Smart_Waste_Transaction_Waste_Type_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Smart_Waste_Transaction_Waste_Type_Avg_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_avg_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by avg() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Avg_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "smart_waste.transaction_waste_type". All fields are combined with a logical 'AND'. */
+export type Smart_Waste_Transaction_Waste_Type_Bool_Exp = {
+  _and?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Bool_Exp>>;
+  _not?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+  _or?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Bool_Exp>>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  transaction_waste_id?: InputMaybe<Uuid_Comparison_Exp>;
+  waste_type_id?: InputMaybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "smart_waste.transaction_waste_type" */
+export enum Smart_Waste_Transaction_Waste_Type_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  TransactionWasteTypePkey = 'transaction_waste_type_pkey'
+}
+
+/** input type for incrementing numeric columns in table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Inc_Input = {
+  waste_type_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Insert_Input = {
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  transaction_waste_id?: InputMaybe<Scalars['uuid']['input']>;
+  waste_type_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate max on columns */
+export type Smart_Waste_Transaction_Waste_Type_Max_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_max_fields';
+  id?: Maybe<Scalars['uuid']['output']>;
+  transaction_waste_id?: Maybe<Scalars['uuid']['output']>;
+  waste_type_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by max() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  transaction_waste_id?: InputMaybe<Order_By>;
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Smart_Waste_Transaction_Waste_Type_Min_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_min_fields';
+  id?: Maybe<Scalars['uuid']['output']>;
+  transaction_waste_id?: Maybe<Scalars['uuid']['output']>;
+  waste_type_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by min() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  transaction_waste_id?: InputMaybe<Order_By>;
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Mutation_Response = {
+  __typename?: 'smart_waste_transaction_waste_type_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Smart_Waste_Transaction_Waste_Type>;
+};
+
+/** on_conflict condition type for table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_On_Conflict = {
+  constraint: Smart_Waste_Transaction_Waste_Type_Constraint;
+  update_columns?: Array<Smart_Waste_Transaction_Waste_Type_Update_Column>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "smart_waste.transaction_waste_type". */
+export type Smart_Waste_Transaction_Waste_Type_Order_By = {
+  id?: InputMaybe<Order_By>;
+  transaction_waste_id?: InputMaybe<Order_By>;
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: smart_waste.transaction_waste_type */
+export type Smart_Waste_Transaction_Waste_Type_Pk_Columns_Input = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "smart_waste.transaction_waste_type" */
+export enum Smart_Waste_Transaction_Waste_Type_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  TransactionWasteId = 'transaction_waste_id',
+  /** column name */
+  WasteTypeId = 'waste_type_id'
+}
+
+/** input type for updating data in table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Set_Input = {
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  transaction_waste_id?: InputMaybe<Scalars['uuid']['input']>;
+  waste_type_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_stddev_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Pop_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_stddev_pop_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev_pop() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Pop_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Samp_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_stddev_samp_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev_samp() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Stddev_Samp_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "smart_waste_transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Smart_Waste_Transaction_Waste_Type_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Smart_Waste_Transaction_Waste_Type_Stream_Cursor_Value_Input = {
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  transaction_waste_id?: InputMaybe<Scalars['uuid']['input']>;
+  waste_type_id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Smart_Waste_Transaction_Waste_Type_Sum_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_sum_fields';
+  waste_type_id?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by sum() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Sum_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "smart_waste.transaction_waste_type" */
+export enum Smart_Waste_Transaction_Waste_Type_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  TransactionWasteId = 'transaction_waste_id',
+  /** column name */
+  WasteTypeId = 'waste_type_id'
+}
+
+export type Smart_Waste_Transaction_Waste_Type_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Smart_Waste_Transaction_Waste_Type_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Smart_Waste_Transaction_Waste_Type_Var_Pop_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_var_pop_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by var_pop() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Var_Pop_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Smart_Waste_Transaction_Waste_Type_Var_Samp_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_var_samp_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by var_samp() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Var_Samp_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Smart_Waste_Transaction_Waste_Type_Variance_Fields = {
+  __typename?: 'smart_waste_transaction_waste_type_variance_fields';
+  waste_type_id?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by variance() on columns of table "smart_waste.transaction_waste_type" */
+export type Smart_Waste_Transaction_Waste_Type_Variance_Order_By = {
+  waste_type_id?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "smart_waste.transaction_waste" */
+export enum Smart_Waste_Transaction_Waste_Update_Column {
+  /** column name */
+  DeliveryProductId = 'delivery_product_id',
+  /** column name */
+  DeliveryServiceId = 'delivery_service_id',
+  /** column name */
+  DeliveryTotalCost = 'delivery_total_cost',
+  /** column name */
+  DetailAddress = 'detail_address',
+  /** column name */
+  DetailWaste = 'detail_waste',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  ImageUri = 'image_uri',
+  /** column name */
+  MitraId = 'mitra_id',
+  /** column name */
+  PickupDate = 'pickup_date',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UserAddress = 'user_address',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  UserLat = 'user_lat',
+  /** column name */
+  UserLong = 'user_long',
+  /** column name */
+  UserName = 'user_name',
+  /** column name */
+  WasteWeight = 'waste_weight'
+}
+
+export type Smart_Waste_Transaction_Waste_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Smart_Waste_Transaction_Waste_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Smart_Waste_Transaction_Waste_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Smart_Waste_Transaction_Waste_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Smart_Waste_Transaction_Waste_Var_Pop_Fields = {
+  __typename?: 'smart_waste_transaction_waste_var_pop_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Smart_Waste_Transaction_Waste_Var_Samp_Fields = {
+  __typename?: 'smart_waste_transaction_waste_var_samp_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Smart_Waste_Transaction_Waste_Variance_Fields = {
+  __typename?: 'smart_waste_transaction_waste_variance_fields';
+  delivery_total_cost?: Maybe<Scalars['Float']['output']>;
+  user_lat?: Maybe<Scalars['Float']['output']>;
+  user_long?: Maybe<Scalars['Float']['output']>;
+  waste_weight?: Maybe<Scalars['Float']['output']>;
 };
 
 /** columns and relationships of "smart_waste.waste_type" */
@@ -2635,14 +3341,6 @@ export type Subscription_Root = {
   smart_waste_delivery_type_by_pk?: Maybe<Smart_Waste_Delivery_Type>;
   /** fetch data from the table in a streaming manner: "smart_waste.delivery_type" */
   smart_waste_delivery_type_stream: Array<Smart_Waste_Delivery_Type>;
-  /** fetch data from the table: "smart_waste.deposit_waste" */
-  smart_waste_deposit_waste: Array<Smart_Waste_Deposit_Waste>;
-  /** fetch aggregated fields from the table: "smart_waste.deposit_waste" */
-  smart_waste_deposit_waste_aggregate: Smart_Waste_Deposit_Waste_Aggregate;
-  /** fetch data from the table: "smart_waste.deposit_waste" using primary key columns */
-  smart_waste_deposit_waste_by_pk?: Maybe<Smart_Waste_Deposit_Waste>;
-  /** fetch data from the table in a streaming manner: "smart_waste.deposit_waste" */
-  smart_waste_deposit_waste_stream: Array<Smart_Waste_Deposit_Waste>;
   /** fetch data from the table: "smart_waste.mitra" */
   smart_waste_mitra: Array<Smart_Waste_Mitra>;
   /** fetch aggregated fields from the table: "smart_waste.mitra" */
@@ -2659,6 +3357,22 @@ export type Subscription_Root = {
   smart_waste_mitra_distance_stream: Array<Smart_Waste_Mitra_Distance>;
   /** fetch data from the table in a streaming manner: "smart_waste.mitra" */
   smart_waste_mitra_stream: Array<Smart_Waste_Mitra>;
+  /** fetch data from the table: "smart_waste.transaction_waste" */
+  smart_waste_transaction_waste: Array<Smart_Waste_Transaction_Waste>;
+  /** fetch aggregated fields from the table: "smart_waste.transaction_waste" */
+  smart_waste_transaction_waste_aggregate: Smart_Waste_Transaction_Waste_Aggregate;
+  /** fetch data from the table: "smart_waste.transaction_waste" using primary key columns */
+  smart_waste_transaction_waste_by_pk?: Maybe<Smart_Waste_Transaction_Waste>;
+  /** fetch data from the table in a streaming manner: "smart_waste.transaction_waste" */
+  smart_waste_transaction_waste_stream: Array<Smart_Waste_Transaction_Waste>;
+  /** fetch data from the table: "smart_waste.transaction_waste_type" */
+  smart_waste_transaction_waste_type: Array<Smart_Waste_Transaction_Waste_Type>;
+  /** fetch aggregated fields from the table: "smart_waste.transaction_waste_type" */
+  smart_waste_transaction_waste_type_aggregate: Smart_Waste_Transaction_Waste_Type_Aggregate;
+  /** fetch data from the table: "smart_waste.transaction_waste_type" using primary key columns */
+  smart_waste_transaction_waste_type_by_pk?: Maybe<Smart_Waste_Transaction_Waste_Type>;
+  /** fetch data from the table in a streaming manner: "smart_waste.transaction_waste_type" */
+  smart_waste_transaction_waste_type_stream: Array<Smart_Waste_Transaction_Waste_Type>;
   /** fetch data from the table: "smart_waste.waste_type" */
   smart_waste_waste_type: Array<Smart_Waste_Waste_Type>;
   /** fetch aggregated fields from the table: "smart_waste.waste_type" */
@@ -2780,36 +3494,6 @@ export type Subscription_RootSmart_Waste_Delivery_Type_StreamArgs = {
 };
 
 
-export type Subscription_RootSmart_Waste_Deposit_WasteArgs = {
-  distinct_on?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Order_By>>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-
-export type Subscription_RootSmart_Waste_Deposit_Waste_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<Smart_Waste_Deposit_Waste_Order_By>>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-
-export type Subscription_RootSmart_Waste_Deposit_Waste_By_PkArgs = {
-  id: Scalars['uuid']['input'];
-};
-
-
-export type Subscription_RootSmart_Waste_Deposit_Waste_StreamArgs = {
-  batch_size: Scalars['Int']['input'];
-  cursor: Array<InputMaybe<Smart_Waste_Deposit_Waste_Stream_Cursor_Input>>;
-  where?: InputMaybe<Smart_Waste_Deposit_Waste_Bool_Exp>;
-};
-
-
 export type Subscription_RootSmart_Waste_MitraArgs = {
   distinct_on?: InputMaybe<Array<Smart_Waste_Mitra_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -2867,6 +3551,66 @@ export type Subscription_RootSmart_Waste_Mitra_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Smart_Waste_Mitra_Stream_Cursor_Input>>;
   where?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_WasteArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Smart_Waste_Transaction_Waste_Stream_Cursor_Input>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_TypeArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_Type_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Smart_Waste_Transaction_Waste_Type_Order_By>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_Type_By_PkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type Subscription_RootSmart_Waste_Transaction_Waste_Type_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Smart_Waste_Transaction_Waste_Type_Stream_Cursor_Input>>;
+  where?: InputMaybe<Smart_Waste_Transaction_Waste_Type_Bool_Exp>;
 };
 
 
@@ -2953,6 +3697,34 @@ export type GetMitraByIdQueryVariables = Exact<{
 
 export type GetMitraByIdQuery = { __typename?: 'query_root', smart_waste_mitra: Array<{ __typename?: 'smart_waste_mitra', id: any, lat: any, long: any, name: string, openTime: any, phoneNumber: string, closeTime: any, address: string }> };
 
+export type AddNewTransactionMutationVariables = Exact<{
+  delivery_product_id: Scalars['uuid']['input'];
+  delivery_service_id: Scalars['uuid']['input'];
+  delivery_total_cost: Scalars['Int']['input'];
+  detail_address: Scalars['String']['input'];
+  detail_waste: Scalars['String']['input'];
+  id: Scalars['uuid']['input'];
+  image_uri: Scalars['String']['input'];
+  mitra_id: Scalars['uuid']['input'];
+  pickup_date?: InputMaybe<Scalars['date']['input']>;
+  user_address: Scalars['String']['input'];
+  user_id: Scalars['String']['input'];
+  user_lat: Scalars['float8']['input'];
+  user_long: Scalars['float8']['input'];
+  user_name: Scalars['String']['input'];
+  waste_weight: Scalars['Int']['input'];
+}>;
+
+
+export type AddNewTransactionMutation = { __typename?: 'mutation_root', insert_smart_waste_transaction_waste_one?: { __typename?: 'smart_waste_transaction_waste', id: any } | null };
+
+export type InsertDetailTransactionWasteTypeMutationVariables = Exact<{
+  objects: Array<Smart_Waste_Transaction_Waste_Type_Insert_Input> | Smart_Waste_Transaction_Waste_Type_Insert_Input;
+}>;
+
+
+export type InsertDetailTransactionWasteTypeMutation = { __typename?: 'mutation_root', insert_smart_waste_transaction_waste_type?: { __typename?: 'smart_waste_transaction_waste_type_mutation_response', affected_rows: number } | null };
+
 export type GetAllWastetypeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3020,6 +3792,22 @@ export const GetMitraByIdDocument = gql`
   }
 }
     ` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
+export const AddNewTransactionDocument = gql`
+    mutation AddNewTransaction($delivery_product_id: uuid!, $delivery_service_id: uuid!, $delivery_total_cost: Int!, $detail_address: String!, $detail_waste: String!, $id: uuid!, $image_uri: String!, $mitra_id: uuid!, $pickup_date: date = "", $user_address: String!, $user_id: String!, $user_lat: float8!, $user_long: float8!, $user_name: String!, $waste_weight: Int!) {
+  insert_smart_waste_transaction_waste_one(
+    object: {delivery_product_id: $delivery_product_id, delivery_service_id: $delivery_service_id, delivery_total_cost: $delivery_total_cost, detail_address: $detail_address, detail_waste: $detail_waste, id: $id, image_uri: $image_uri, mitra_id: $mitra_id, pickup_date: $pickup_date, user_address: $user_address, user_id: $user_id, user_lat: $user_lat, user_long: $user_long, user_name: $user_name, waste_weight: $waste_weight}
+  ) {
+    id
+  }
+}
+    ` as unknown as DocumentNode<AddNewTransactionMutation, AddNewTransactionMutationVariables>;
+export const InsertDetailTransactionWasteTypeDocument = gql`
+    mutation InsertDetailTransactionWasteType($objects: [smart_waste_transaction_waste_type_insert_input!]!) {
+  insert_smart_waste_transaction_waste_type(objects: $objects) {
+    affected_rows
+  }
+}
+    ` as unknown as DocumentNode<InsertDetailTransactionWasteTypeMutation, InsertDetailTransactionWasteTypeMutationVariables>;
 export const GetAllWastetypeDocument = gql`
     query GetAllWastetype {
   smart_waste_waste_type {

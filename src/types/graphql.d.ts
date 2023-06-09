@@ -19,6 +19,16 @@ export const GetMitraById: DocumentNode;
 }
     
 
+declare module '*/transactionWaste.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AddNewTransaction: DocumentNode;
+export const InsertDetailTransactionWasteType: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/wasteType.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
