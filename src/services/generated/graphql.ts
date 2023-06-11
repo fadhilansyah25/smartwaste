@@ -3703,7 +3703,6 @@ export type AddNewTransactionMutationVariables = Exact<{
   delivery_total_cost: Scalars['Int']['input'];
   detail_address: Scalars['String']['input'];
   detail_waste: Scalars['String']['input'];
-  id: Scalars['uuid']['input'];
   image_uri: Scalars['String']['input'];
   mitra_id: Scalars['uuid']['input'];
   pickup_date?: InputMaybe<Scalars['date']['input']>;
@@ -3793,9 +3792,9 @@ export const GetMitraByIdDocument = gql`
 }
     ` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
 export const AddNewTransactionDocument = gql`
-    mutation AddNewTransaction($delivery_product_id: uuid!, $delivery_service_id: uuid!, $delivery_total_cost: Int!, $detail_address: String!, $detail_waste: String!, $id: uuid!, $image_uri: String!, $mitra_id: uuid!, $pickup_date: date = "", $user_address: String!, $user_id: String!, $user_lat: float8!, $user_long: float8!, $user_name: String!, $waste_weight: Int!) {
+    mutation AddNewTransaction($delivery_product_id: uuid!, $delivery_service_id: uuid!, $delivery_total_cost: Int!, $detail_address: String!, $detail_waste: String!, $image_uri: String!, $mitra_id: uuid!, $pickup_date: date = "", $user_address: String!, $user_id: String!, $user_lat: float8!, $user_long: float8!, $user_name: String!, $waste_weight: Int!) {
   insert_smart_waste_transaction_waste_one(
-    object: {delivery_product_id: $delivery_product_id, delivery_service_id: $delivery_service_id, delivery_total_cost: $delivery_total_cost, detail_address: $detail_address, detail_waste: $detail_waste, id: $id, image_uri: $image_uri, mitra_id: $mitra_id, pickup_date: $pickup_date, user_address: $user_address, user_id: $user_id, user_lat: $user_lat, user_long: $user_long, user_name: $user_name, waste_weight: $waste_weight}
+    object: {delivery_product_id: $delivery_product_id, delivery_service_id: $delivery_service_id, delivery_total_cost: $delivery_total_cost, detail_address: $detail_address, detail_waste: $detail_waste, image_uri: $image_uri, mitra_id: $mitra_id, pickup_date: $pickup_date, user_address: $user_address, user_id: $user_id, user_lat: $user_lat, user_long: $user_long, user_name: $user_name, waste_weight: $waste_weight}
   ) {
     id
   }

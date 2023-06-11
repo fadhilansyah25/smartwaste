@@ -4,7 +4,6 @@ mutation AddNewTransaction(
   $delivery_total_cost: Int!
   $detail_address: String!
   $detail_waste: String!
-  $id: uuid!
   $image_uri: String!
   $mitra_id: uuid!
   $pickup_date: date = ""
@@ -22,7 +21,6 @@ mutation AddNewTransaction(
       delivery_total_cost: $delivery_total_cost
       detail_address: $detail_address
       detail_waste: $detail_waste
-      id: $id
       image_uri: $image_uri
       mitra_id: $mitra_id
       pickup_date: $pickup_date
