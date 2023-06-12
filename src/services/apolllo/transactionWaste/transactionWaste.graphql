@@ -13,6 +13,7 @@ mutation AddNewTransaction(
   $user_long: float8!
   $user_name: String!
   $waste_weight: Int!
+  $package_code: String!
 ) {
   insert_smart_waste_transaction_waste_one(
     object: {
@@ -30,6 +31,7 @@ mutation AddNewTransaction(
       user_long: $user_long
       user_name: $user_name
       waste_weight: $waste_weight
+      package_code: $package_code
     }
   ) {
     id

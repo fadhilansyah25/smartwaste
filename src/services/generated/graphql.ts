@@ -2394,6 +2394,7 @@ export type Smart_Waste_Transaction_Waste = {
   id: Scalars['uuid']['output'];
   image_uri: Scalars['String']['output'];
   mitra_id: Scalars['uuid']['output'];
+  package_code: Scalars['String']['output'];
   pickup_date?: Maybe<Scalars['date']['output']>;
   status: Scalars['String']['output'];
   /** An object relationship */
@@ -2486,6 +2487,7 @@ export type Smart_Waste_Transaction_Waste_Bool_Exp = {
   id?: InputMaybe<Uuid_Comparison_Exp>;
   image_uri?: InputMaybe<String_Comparison_Exp>;
   mitra_id?: InputMaybe<Uuid_Comparison_Exp>;
+  package_code?: InputMaybe<String_Comparison_Exp>;
   pickup_date?: InputMaybe<Date_Comparison_Exp>;
   status?: InputMaybe<String_Comparison_Exp>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Bool_Exp>;
@@ -2525,6 +2527,7 @@ export type Smart_Waste_Transaction_Waste_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']['input']>;
   image_uri?: InputMaybe<Scalars['String']['input']>;
   mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Obj_Rel_Insert_Input>;
@@ -2550,6 +2553,7 @@ export type Smart_Waste_Transaction_Waste_Max_Fields = {
   id?: Maybe<Scalars['uuid']['output']>;
   image_uri?: Maybe<Scalars['String']['output']>;
   mitra_id?: Maybe<Scalars['uuid']['output']>;
+  package_code?: Maybe<Scalars['String']['output']>;
   pickup_date?: Maybe<Scalars['date']['output']>;
   status?: Maybe<Scalars['String']['output']>;
   user_address?: Maybe<Scalars['String']['output']>;
@@ -2571,6 +2575,7 @@ export type Smart_Waste_Transaction_Waste_Min_Fields = {
   id?: Maybe<Scalars['uuid']['output']>;
   image_uri?: Maybe<Scalars['String']['output']>;
   mitra_id?: Maybe<Scalars['uuid']['output']>;
+  package_code?: Maybe<Scalars['String']['output']>;
   pickup_date?: Maybe<Scalars['date']['output']>;
   status?: Maybe<Scalars['String']['output']>;
   user_address?: Maybe<Scalars['String']['output']>;
@@ -2607,6 +2612,7 @@ export type Smart_Waste_Transaction_Waste_Order_By = {
   id?: InputMaybe<Order_By>;
   image_uri?: InputMaybe<Order_By>;
   mitra_id?: InputMaybe<Order_By>;
+  package_code?: InputMaybe<Order_By>;
   pickup_date?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Order_By>;
@@ -2645,6 +2651,8 @@ export enum Smart_Waste_Transaction_Waste_Select_Column {
   /** column name */
   MitraId = 'mitra_id',
   /** column name */
+  PackageCode = 'package_code',
+  /** column name */
   PickupDate = 'pickup_date',
   /** column name */
   Status = 'status',
@@ -2672,6 +2680,7 @@ export type Smart_Waste_Transaction_Waste_Set_Input = {
   id?: InputMaybe<Scalars['uuid']['input']>;
   image_uri?: InputMaybe<Scalars['String']['input']>;
   mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
   user_address?: InputMaybe<Scalars['String']['input']>;
@@ -2727,6 +2736,7 @@ export type Smart_Waste_Transaction_Waste_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['uuid']['input']>;
   image_uri?: InputMaybe<Scalars['String']['input']>;
   mitra_id?: InputMaybe<Scalars['uuid']['input']>;
+  package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
   user_address?: InputMaybe<Scalars['String']['input']>;
@@ -3060,6 +3070,8 @@ export enum Smart_Waste_Transaction_Waste_Update_Column {
   ImageUri = 'image_uri',
   /** column name */
   MitraId = 'mitra_id',
+  /** column name */
+  PackageCode = 'package_code',
   /** column name */
   PickupDate = 'pickup_date',
   /** column name */
@@ -3712,6 +3724,7 @@ export type AddNewTransactionMutationVariables = Exact<{
   user_long: Scalars['float8']['input'];
   user_name: Scalars['String']['input'];
   waste_weight: Scalars['Int']['input'];
+  package_code: Scalars['String']['input'];
 }>;
 
 
@@ -3792,9 +3805,9 @@ export const GetMitraByIdDocument = gql`
 }
     ` as unknown as DocumentNode<GetMitraByIdQuery, GetMitraByIdQueryVariables>;
 export const AddNewTransactionDocument = gql`
-    mutation AddNewTransaction($delivery_product_id: uuid!, $delivery_service_id: uuid!, $delivery_total_cost: Int!, $detail_address: String!, $detail_waste: String!, $image_uri: String!, $mitra_id: uuid!, $pickup_date: date = "", $user_address: String!, $user_id: String!, $user_lat: float8!, $user_long: float8!, $user_name: String!, $waste_weight: Int!) {
+    mutation AddNewTransaction($delivery_product_id: uuid!, $delivery_service_id: uuid!, $delivery_total_cost: Int!, $detail_address: String!, $detail_waste: String!, $image_uri: String!, $mitra_id: uuid!, $pickup_date: date = "", $user_address: String!, $user_id: String!, $user_lat: float8!, $user_long: float8!, $user_name: String!, $waste_weight: Int!, $package_code: String!) {
   insert_smart_waste_transaction_waste_one(
-    object: {delivery_product_id: $delivery_product_id, delivery_service_id: $delivery_service_id, delivery_total_cost: $delivery_total_cost, detail_address: $detail_address, detail_waste: $detail_waste, image_uri: $image_uri, mitra_id: $mitra_id, pickup_date: $pickup_date, user_address: $user_address, user_id: $user_id, user_lat: $user_lat, user_long: $user_long, user_name: $user_name, waste_weight: $waste_weight}
+    object: {delivery_product_id: $delivery_product_id, delivery_service_id: $delivery_service_id, delivery_total_cost: $delivery_total_cost, detail_address: $detail_address, detail_waste: $detail_waste, image_uri: $image_uri, mitra_id: $mitra_id, pickup_date: $pickup_date, user_address: $user_address, user_id: $user_id, user_lat: $user_lat, user_long: $user_long, user_name: $user_name, waste_weight: $waste_weight, package_code: $package_code}
   ) {
     id
   }
