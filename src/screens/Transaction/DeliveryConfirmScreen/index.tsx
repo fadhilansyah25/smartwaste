@@ -12,9 +12,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {colors} from '@src/const/colors';
 import TruckSvg from '@src/assets/svg/delivery-car.svg';
+import {formatterIDR} from '@src/utils/formatter';
 
 const DeliveryConfirmScreen = () => {
-  const {navigation, userAddress, state, uniqueCode, user} =
+  const {userAddress, state, uniqueCode, user, handleConfirmTransactionWaste} =
     useDeliveryConfirmScreen();
 
   return (
@@ -136,23 +137,28 @@ const DeliveryConfirmScreen = () => {
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={{fontSize: 12}}>Berat Paket Aktual</Text>
                 <Text style={style.detailText}>
-                  {state.transactionData.weight}
+                  {state.transactionData.weight} Kg
                 </Text>
               </View>
               <View
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={{fontSize: 12}}>Harga / Kg</Text>
                 <Text style={style.detailText}>
-                  {state.transactionData.deliveryServiceProduct?.price_perkilo}
+                  {formatterIDR.format(
+                    state.transactionData.deliveryServiceProduct
+                      ?.price_perkilo as number,
+                  )}
                 </Text>
               </View>
               <View
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={style.detailText}>Total</Text>
                 <Text style={style.detailText}>
-                  {(state.transactionData.weight as number) *
-                    (state.transactionData.deliveryServiceProduct
-                      ?.price_perkilo as number)}
+                  {formatterIDR.format(
+                    (state.transactionData.weight as number) *
+                      (state.transactionData.deliveryServiceProduct
+                        ?.price_perkilo as number),
+                  )}
                 </Text>
               </View>
             </View>
@@ -166,9 +172,7 @@ const DeliveryConfirmScreen = () => {
           label="Konfirmasi"
           type="fill"
           activeOpacity={0.8}
-          onPress={() => {
-            navigation.navigate('CameraScreen');
-          }}
+          onPress={handleConfirmTransactionWaste}
         />
       </View>
     </SafeAreaView>
