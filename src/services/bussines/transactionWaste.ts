@@ -7,7 +7,7 @@ const hasura_transactionWaste = new HasuraTransactionWaste();
 export default class TransactionWasteUsecase
   implements TransactionWaste.Usecase
 {
-  async AddNewTransactionWaste(
+  async addNewTransactionWaste(
     variables: Omit<TransactionWaste.InsertParams, 'image_uri'>,
     wasteType: number[],
     image: Blob,
@@ -15,7 +15,7 @@ export default class TransactionWasteUsecase
     try {
       const image_uri = await firebaseServices.savePhotoToStorage(image);
       const transactionID =
-        await hasura_transactionWaste.AddNewTransactionWaste({
+        await hasura_transactionWaste.addNewTransactionWaste({
           ...variables,
           image_uri,
         });
@@ -25,11 +25,21 @@ export default class TransactionWasteUsecase
         transaction_waste_id: transactionID,
       }));
 
-      await hasura_transactionWaste.InsertDetailWasteType({
+      await hasura_transactionWaste.insertDetailWasteType({
         objects: selectedWasteType,
       });
 
       return transactionID;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getTransactionWasteByid(id: string) {
+    try {
+      const res = await hasura_transactionWaste.getTransactionById(id);
+
+      return res;
     } catch (error) {
       throw error;
     }

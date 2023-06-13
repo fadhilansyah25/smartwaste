@@ -2,6 +2,8 @@ import {
   AddNewTransactionMutation,
   AddNewTransactionMutationVariables,
   Exact,
+  GetTransactionByIdQuery,
+  GetTransactionByIdQueryVariables,
   InsertDetailTransactionWasteTypeMutation,
   Smart_Waste_Transaction_Waste_Type_Insert_Input,
 } from '@src/services/generated/graphql';
@@ -18,7 +20,7 @@ export default class HasuraTransactionWaste
 {
   #apolloClient = createApolloClient();
 
-  async AddNewTransactionWaste(variables: TransactionWaste.InsertParams) {
+  async addNewTransactionWaste(variables: TransactionWaste.InsertParams) {
     try {
       const result = await this.#apolloClient.mutate<
         AddNewTransactionMutation,
@@ -35,7 +37,7 @@ export default class HasuraTransactionWaste
     }
   }
 
-  async InsertDetailWasteType(
+  async insertDetailWasteType(
     wasteType: Exact<{
       objects:
         | Smart_Waste_Transaction_Waste_Type_Insert_Input
@@ -46,6 +48,20 @@ export default class HasuraTransactionWaste
       await this.#apolloClient.mutate<InsertDetailTransactionWasteTypeMutation>(
         {mutation: InsertDetailTransactionWasteType, variables: wasteType},
       );
+    } catch (error) {
+      const err = ensureError(error);
+      throw err;
+    }
+  }
+
+  async getTransactionById(id: string) {
+    try {
+      const result = await this.#apolloClient.query<
+        GetTransactionByIdQuery,
+        GetTransactionByIdQueryVariables
+      >({query: InsertDetailTransactionWasteType, variables: {id: id}});
+
+      return result.data;
     } catch (error) {
       const err = ensureError(error);
       throw err;

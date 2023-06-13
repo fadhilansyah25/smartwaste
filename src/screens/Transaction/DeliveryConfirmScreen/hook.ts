@@ -40,7 +40,7 @@ export const useDeliveryConfirmScreen = () => {
 
   const handleConfirmTransactionWaste = async () => {
     try {
-      const res = transactionUsecase.AddNewTransactionWaste(
+      const res = transactionUsecase.addNewTransactionWaste(
         {
           user_id: user()?.uid as string,
           user_address: userAddress?.display_name as string,

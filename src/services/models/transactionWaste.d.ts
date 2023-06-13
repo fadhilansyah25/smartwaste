@@ -1,6 +1,7 @@
 import {
   AddNewTransactionMutation,
   AddNewTransactionMutationVariables,
+  GetTransactionByIdQuery,
   InsertDetailTransactionWasteTypeMutationVariables,
 } from '../generated/graphql';
 
@@ -24,20 +25,24 @@ declare namespace TransactionWaste {
   };
 
   interface Repository {
-    AddNewTransactionWaste(
+    addNewTransactionWaste(
       variables: InsertParams,
     ): Promise<string | undefined>;
 
-    InsertDetailWasteType(
+    insertDetailWasteType(
       wasteType: InsertDetailTransactionWasteTypeMutationVariables,
     ): Promise<void>;
+
+    getTransactionById(id: string): Promise<GetTransactionByIdQuery>;
   }
 
   interface Usecase {
-    AddNewTransactionWaste(
+    addNewTransactionWaste(
       variables: Omit<InsertParams, 'image_uri'>,
       wasteType: number[],
       image: Blob,
     ): Promise<string | undefined>;
+
+    getTransactionWasteByid(id: string): Promise<GetTransactionByIdQuery>;
   }
 }

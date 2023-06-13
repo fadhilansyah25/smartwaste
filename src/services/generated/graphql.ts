@@ -2397,6 +2397,7 @@ export type Smart_Waste_Transaction_Waste = {
   package_code: Scalars['String']['output'];
   pickup_date?: Maybe<Scalars['date']['output']>;
   status: Scalars['String']['output'];
+  transaction_date: Scalars['date']['output'];
   /** An object relationship */
   transaction_waste_delivery_service: Smart_Waste_Delivery_Service;
   /** An object relationship */
@@ -2490,6 +2491,7 @@ export type Smart_Waste_Transaction_Waste_Bool_Exp = {
   package_code?: InputMaybe<String_Comparison_Exp>;
   pickup_date?: InputMaybe<Date_Comparison_Exp>;
   status?: InputMaybe<String_Comparison_Exp>;
+  transaction_date?: InputMaybe<Date_Comparison_Exp>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Bool_Exp>;
   transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Bool_Exp>;
   transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Bool_Exp>;
@@ -2530,6 +2532,7 @@ export type Smart_Waste_Transaction_Waste_Insert_Input = {
   package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
+  transaction_date?: InputMaybe<Scalars['date']['input']>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Obj_Rel_Insert_Input>;
   transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Obj_Rel_Insert_Input>;
   transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Obj_Rel_Insert_Input>;
@@ -2556,6 +2559,7 @@ export type Smart_Waste_Transaction_Waste_Max_Fields = {
   package_code?: Maybe<Scalars['String']['output']>;
   pickup_date?: Maybe<Scalars['date']['output']>;
   status?: Maybe<Scalars['String']['output']>;
+  transaction_date?: Maybe<Scalars['date']['output']>;
   user_address?: Maybe<Scalars['String']['output']>;
   user_id?: Maybe<Scalars['String']['output']>;
   user_lat?: Maybe<Scalars['float8']['output']>;
@@ -2578,6 +2582,7 @@ export type Smart_Waste_Transaction_Waste_Min_Fields = {
   package_code?: Maybe<Scalars['String']['output']>;
   pickup_date?: Maybe<Scalars['date']['output']>;
   status?: Maybe<Scalars['String']['output']>;
+  transaction_date?: Maybe<Scalars['date']['output']>;
   user_address?: Maybe<Scalars['String']['output']>;
   user_id?: Maybe<Scalars['String']['output']>;
   user_lat?: Maybe<Scalars['float8']['output']>;
@@ -2615,6 +2620,7 @@ export type Smart_Waste_Transaction_Waste_Order_By = {
   package_code?: InputMaybe<Order_By>;
   pickup_date?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
+  transaction_date?: InputMaybe<Order_By>;
   transaction_waste_delivery_service?: InputMaybe<Smart_Waste_Delivery_Service_Order_By>;
   transaction_waste_delivery_service_product?: InputMaybe<Smart_Waste_Delivery_Service_Product_Order_By>;
   transaction_waste_mitra?: InputMaybe<Smart_Waste_Mitra_Order_By>;
@@ -2657,6 +2663,8 @@ export enum Smart_Waste_Transaction_Waste_Select_Column {
   /** column name */
   Status = 'status',
   /** column name */
+  TransactionDate = 'transaction_date',
+  /** column name */
   UserAddress = 'user_address',
   /** column name */
   UserId = 'user_id',
@@ -2683,6 +2691,7 @@ export type Smart_Waste_Transaction_Waste_Set_Input = {
   package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
+  transaction_date?: InputMaybe<Scalars['date']['input']>;
   user_address?: InputMaybe<Scalars['String']['input']>;
   user_id?: InputMaybe<Scalars['String']['input']>;
   user_lat?: InputMaybe<Scalars['float8']['input']>;
@@ -2739,6 +2748,7 @@ export type Smart_Waste_Transaction_Waste_Stream_Cursor_Value_Input = {
   package_code?: InputMaybe<Scalars['String']['input']>;
   pickup_date?: InputMaybe<Scalars['date']['input']>;
   status?: InputMaybe<Scalars['String']['input']>;
+  transaction_date?: InputMaybe<Scalars['date']['input']>;
   user_address?: InputMaybe<Scalars['String']['input']>;
   user_id?: InputMaybe<Scalars['String']['input']>;
   user_lat?: InputMaybe<Scalars['float8']['input']>;
@@ -3076,6 +3086,8 @@ export enum Smart_Waste_Transaction_Waste_Update_Column {
   PickupDate = 'pickup_date',
   /** column name */
   Status = 'status',
+  /** column name */
+  TransactionDate = 'transaction_date',
   /** column name */
   UserAddress = 'user_address',
   /** column name */
@@ -3737,6 +3749,13 @@ export type InsertDetailTransactionWasteTypeMutationVariables = Exact<{
 
 export type InsertDetailTransactionWasteTypeMutation = { __typename?: 'mutation_root', insert_smart_waste_transaction_waste_type?: { __typename?: 'smart_waste_transaction_waste_type_mutation_response', affected_rows: number } | null };
 
+export type GetTransactionByIdQueryVariables = Exact<{
+  id: Scalars['uuid']['input'];
+}>;
+
+
+export type GetTransactionByIdQuery = { __typename?: 'query_root', smart_waste_transaction_waste_by_pk?: { __typename?: 'smart_waste_transaction_waste', id: any, detail_waste: string, detail_address: string, delivery_total_cost: number, delivery_service_id: any, delivery_product_id: any, image_uri: string, mitra_id: any, package_code: string, pickup_date?: any | null, status: string, transaction_date: any, user_address: string, user_id: string, user_lat: any, user_long: any, user_name: string, waste_weight: number, transaction_waste_delivery_service: { __typename?: 'smart_waste_delivery_service', delivery_name: string, delivery_type_id: number, id: any, logo_uri?: string | null }, transaction_waste_delivery_service_product: { __typename?: 'smart_waste_delivery_service_product', delivery_service_id: any, estimate_day: string, id: any, price_perkilo: number, service_name: string }, transaction_waste_mitra: { __typename?: 'smart_waste_mitra', address: string, closeTime: any, id: any, lat: any, long: any, name: string, openTime: any, phoneNumber: string }, transaction_waste_transaction_waste_types: Array<{ __typename?: 'smart_waste_transaction_waste_type', id: any, transaction_waste_id: any, waste_type_id: number }> } | null };
+
 export type GetAllWastetypeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3820,6 +3839,58 @@ export const InsertDetailTransactionWasteTypeDocument = gql`
   }
 }
     ` as unknown as DocumentNode<InsertDetailTransactionWasteTypeMutation, InsertDetailTransactionWasteTypeMutationVariables>;
+export const GetTransactionByIdDocument = gql`
+    query GetTransactionById($id: uuid!) {
+  smart_waste_transaction_waste_by_pk(id: $id) {
+    id
+    detail_waste
+    detail_address
+    delivery_total_cost
+    delivery_service_id
+    delivery_product_id
+    image_uri
+    mitra_id
+    package_code
+    pickup_date
+    status
+    transaction_date
+    user_address
+    user_id
+    user_lat
+    user_long
+    user_name
+    waste_weight
+    transaction_waste_delivery_service {
+      delivery_name
+      delivery_type_id
+      id
+      logo_uri
+    }
+    transaction_waste_delivery_service_product {
+      delivery_service_id
+      estimate_day
+      id
+      price_perkilo
+      service_name
+    }
+    transaction_waste_mitra {
+      address
+      closeTime
+      id
+      lat
+      long
+      name
+      openTime
+      phoneNumber
+    }
+    transaction_waste_transaction_waste_types {
+      id
+      transaction_waste_id
+      waste_type_id
+    }
+  }
+}
+    ` as unknown as DocumentNode<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>;
 export const GetAllWastetypeDocument = gql`
     query GetAllWastetype {
   smart_waste_waste_type {

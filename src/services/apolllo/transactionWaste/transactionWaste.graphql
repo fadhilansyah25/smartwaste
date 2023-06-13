@@ -45,3 +45,54 @@ mutation InsertDetailTransactionWasteType(
     affected_rows
   }
 }
+
+query GetTransactionById($id: uuid!) {
+  smart_waste_transaction_waste_by_pk(id: $id) {
+    id
+    detail_waste
+    detail_address
+    delivery_total_cost
+    delivery_service_id
+    delivery_product_id
+    image_uri
+    mitra_id
+    package_code
+    pickup_date
+    status
+    transaction_date
+    user_address
+    user_id
+    user_lat
+    user_long
+    user_name
+    waste_weight
+    transaction_waste_delivery_service {
+      delivery_name
+      delivery_type_id
+      id
+      logo_uri
+    }
+    transaction_waste_delivery_service_product {
+      delivery_service_id
+      estimate_day
+      id
+      price_perkilo
+      service_name
+    }
+    transaction_waste_mitra {
+      address
+      closeTime
+      id
+      lat
+      long
+      name
+      openTime
+      phoneNumber
+    }
+    transaction_waste_transaction_waste_types {
+      id
+      transaction_waste_id
+      waste_type_id
+    }
+  }
+}

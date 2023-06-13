@@ -24,6 +24,7 @@ declare module '*/transactionWaste.graphql' {
   const defaultDocument: DocumentNode;
   export const AddNewTransaction: DocumentNode;
 export const InsertDetailTransactionWasteType: DocumentNode;
+export const GetTransactionById: DocumentNode;
 
   export default defaultDocument;
 }
