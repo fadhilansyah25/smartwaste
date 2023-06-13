@@ -37,6 +37,10 @@ class FirebaseServices {
     return firestore().collection('User').add(UserData);
   }
 
+  firebaseLogout() {
+    auth().signOut();
+  }
+
   savePhotoToStorage = async (imageBlob: Blob) => {
     const timestamp = Date.now(); // Dapatkan tanda waktu saat ini
     const uniqueFileName = `${timestamp}.jpg`; // Nama file unik
