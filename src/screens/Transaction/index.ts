@@ -8,6 +8,7 @@ import SelectDeliveryServiceScreen from './SelectDeliveryServiceScreen';
 import DetailsDeliveryServiceScreen from './DetailsDeliveryServiceScreen';
 import DeliveryConfirmScreen from './DeliveryConfirmScreen';
 import CameraScreen from './CameraScreen';
+import SuccessTransactionScreen from './SuccessTransactionScreen';
 
 export {
   DeliveryDetailsScreen,
@@ -19,5 +20,6 @@ export {
   SelectDeliveryServiceScreen,
   DetailsDeliveryServiceScreen,
   DeliveryConfirmScreen,
-  CameraScreen
+  CameraScreen,
+  SuccessTransactionScreen,
 };

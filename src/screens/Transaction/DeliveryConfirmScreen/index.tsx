@@ -84,7 +84,7 @@ const DeliveryConfirmScreen = () => {
               placeName={state.mitra?.name as string}
               adress={state.mitra?.address as string}
             />
-            <Text style={{color: colors.T600}}>087774502637</Text>
+            <Text style={{color: colors.T600}}>{state.mitra?.phoneNumber}</Text>
           </View>
         </View>
 

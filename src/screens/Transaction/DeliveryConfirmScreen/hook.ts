@@ -40,7 +40,7 @@ export const useDeliveryConfirmScreen = () => {
 
   const handleConfirmTransactionWaste = async () => {
     try {
-      const res = transactionUsecase.addNewTransactionWaste(
+      const res = await transactionUsecase.addNewTransactionWaste(
         {
           user_id: user()?.uid as string,
           user_address: userAddress?.display_name as string,
@@ -69,7 +69,9 @@ export const useDeliveryConfirmScreen = () => {
         state.transactionData.imageSource as Blob,
       );
 
-      await res.then(res => console.log(res));
+      navigation.navigate('SuccessTransaction', {
+        transactionID: res.id,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -77,7 +79,6 @@ export const useDeliveryConfirmScreen = () => {
 
   return {
     state,
-    navigation,
     userAddress,
     uniqueCode,
     user,

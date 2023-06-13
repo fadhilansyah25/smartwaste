@@ -14,8 +14,8 @@ const SplashScreen = () => {
     let isMounted = true;
     let timeOut = setTimeout(() => {
       setAnimating(false);
-      const user = firebaseServices.firebaseCheckCurrentUser;
-      navigation.replace(!user ? 'Auth' : 'Main');
+      const user = firebaseServices.firebaseCheckCurrentUser();
+      navigation.replace(user ? 'Main' : 'Auth');
     }, 2000);
 
     return () => {
