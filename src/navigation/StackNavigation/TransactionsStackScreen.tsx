@@ -23,6 +23,7 @@ import {
   SearchMitraScreen,
   SelectDeliveryServiceScreen,
   SelectWasteScreen,
+  SuccessTransactionScreen,
 } from '@src/screens/Transaction';
 import geocodingServices from '@src/services/geocodingServices';
 
@@ -36,7 +37,8 @@ export type TransactionStackParamaterList = {
   SelectDeliveryServices: undefined;
   DetailsDeliveryService: {delivery_id: string};
   DeliveryConfirm: undefined;
-  CameraScreen: undefined
+  CameraScreen: undefined;
+  SuccessTransaction: {transactionID: string | undefined};
 };
 
 export type TransactionStackProps =
@@ -207,7 +209,7 @@ const TransactionsStackScreen = () => {
             ),
           }}
         />
-         <TransactionStack.Screen
+        <TransactionStack.Screen
           name="CameraScreen"
           component={CameraScreen}
           options={{
@@ -218,8 +220,26 @@ const TransactionsStackScreen = () => {
                 headerProps={props}
                 backButton
                 logo={false}
+                headerCenter={<CenterHeaderTitleCustom title="Ambil Gambar" />}
+                elevation={5}
+              />
+            ),
+          }}
+        />
+        <TransactionStack.Screen
+          name="SuccessTransaction"
+          component={SuccessTransactionScreen}
+          initialParams={{transactionID: ''}}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                backButton
+                logo={false}
                 headerCenter={
-                  <CenterHeaderTitleCustom title="Ambil Gambar" />
+                  <CenterHeaderTitleCustom title="Detail Sukses Transaksi" />
                 }
                 elevation={5}
               />

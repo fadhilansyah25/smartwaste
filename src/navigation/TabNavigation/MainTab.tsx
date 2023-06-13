@@ -5,10 +5,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import HomeStackScreen from '../StackNavigation/HomeStackScreen';
 import TransactionsStackScreen from '../StackNavigation/TransactionsStackScreen';
+import ProfileStackScreen from '../StackNavigation/ProfileStackScreen';
+import PointStackScreen from '../StackNavigation/PointStackScreen';
 
 export type RootParamaterList = {
   HomeStack: undefined;
   TransactionsStack: undefined;
+  ProfileStack: undefined;
+  PoinStack: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootParamaterList>();
@@ -63,7 +67,8 @@ const MainTab = () => {
               'SelectDeliveryServices',
               'DetailsDeliveryService',
               'DeliveryConfirm',
-              'CameraScreen'
+              'CameraScreen',
+              'SuccessTransaction',
             ];
             if (validScreen.includes(routeName as string))
               return {display: 'none'};
@@ -71,6 +76,8 @@ const MainTab = () => {
           })(route),
         })}
       />
+      <Tab.Screen name="PoinStack" component={PointStackScreen} />
+      <Tab.Screen name="ProfileStack" component={ProfileStackScreen} />
     </Tab.Navigator>
   );
 };
