@@ -25,9 +25,7 @@ declare namespace TransactionWaste {
   };
 
   interface Repository {
-    addNewTransactionWaste(
-      variables: InsertParams,
-    ): Promise<string | undefined>;
+    addNewTransactionWaste(variables: InsertParams): Promise<{id: string}>;
 
     insertDetailWasteType(
       wasteType: InsertDetailTransactionWasteTypeMutationVariables,
@@ -41,8 +39,10 @@ declare namespace TransactionWaste {
       variables: Omit<InsertParams, 'image_uri'>,
       wasteType: number[],
       image: Blob,
-    ): Promise<string | undefined>;
+    ): Promise<{id: string}>;
 
-    getTransactionWasteByid(id: string): Promise<GetTransactionByIdQuery>;
+    getTransactionWasteByid(
+      id: string,
+    ): Promise<GetTransactionByIdQuery['smart_waste_transaction_waste_by_pk']>;
   }
 }

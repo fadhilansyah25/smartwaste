@@ -14,22 +14,21 @@ export default class TransactionWasteUsecase
   ) {
     try {
       const image_uri = await firebaseServices.savePhotoToStorage(image);
-      const transactionID =
-        await hasura_transactionWaste.addNewTransactionWaste({
-          ...variables,
-          image_uri,
-        });
+      const res = await hasura_transactionWaste.addNewTransactionWaste({
+        ...variables,
+        image_uri,
+      });
 
       const selectedWasteType = wasteType.map(item => ({
         waste_type_id: item,
-        transaction_waste_id: transactionID,
+        transaction_waste_id: res.id,
       }));
 
       await hasura_transactionWaste.insertDetailWasteType({
         objects: selectedWasteType,
       });
 
-      return transactionID;
+      return res;
     } catch (error) {
       throw error;
     }
@@ -39,7 +38,7 @@ export default class TransactionWasteUsecase
     try {
       const res = await hasura_transactionWaste.getTransactionById(id);
 
-      return res;
+      return res.smart_waste_transaction_waste_by_pk;
     } catch (error) {
       throw error;
     }

@@ -11,6 +11,7 @@ import createApolloClient from '../apollo';
 import {
   AddNewTransaction,
   InsertDetailTransactionWasteType,
+  GetTransactionById,
 } from './transactionWaste.graphql';
 import {ensureError} from '@src/services/utils/serviceUtils';
 import {TransactionWaste} from '@src/services/models/transactionWaste';
@@ -30,7 +31,7 @@ export default class HasuraTransactionWaste
         variables: variables,
       });
 
-      return result.data?.insert_smart_waste_transaction_waste_one?.id;
+      return {id: result.data?.insert_smart_waste_transaction_waste_one?.id};
     } catch (error) {
       const err = ensureError(error);
       throw err;
@@ -59,7 +60,7 @@ export default class HasuraTransactionWaste
       const result = await this.#apolloClient.query<
         GetTransactionByIdQuery,
         GetTransactionByIdQueryVariables
-      >({query: InsertDetailTransactionWasteType, variables: {id: id}});
+      >({query: GetTransactionById, variables: {id}});
 
       return result.data;
     } catch (error) {
