@@ -1,13 +1,15 @@
+import {colors} from '@src/const/colors';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 interface Props {
   label: string;
+  size?: number;
 }
 
-const AvatarBadge = ({label}: Props) => {
+const AvatarBadge = ({label, size = 40}: Props) => {
   return (
-    <View style={style.avatarBagde}>
+    <View style={[style.avatarBagde, {height: size, width: size}]}>
       <Text style={{textAlign: 'center'}}>
         {label.match(/\b(\w)/g)?.join('')}
       </Text>
@@ -19,10 +21,8 @@ export default AvatarBadge;
 
 const style = StyleSheet.create({
   avatarBagde: {
-    height: 40,
-    width: 40,
     borderRadius: 40,
-    backgroundColor: 'gray',
+    backgroundColor: colors.N300,
     justifyContent: 'center',
     alignItems: 'center',
   },
