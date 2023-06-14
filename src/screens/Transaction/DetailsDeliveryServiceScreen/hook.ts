@@ -11,7 +11,7 @@ import {Types} from '@src/store/reducer/TransactionReducer';
 
 export const useDetailsDeliveryServiceScreen = () => {
   const deliveryServiceUsecase = new DeliveryServiceUsecase();
-  const {state, dispatch} = useContext(TransactionContext);
+  const {dispatch} = useContext(TransactionContext);
   const navigation = useNavigation<TransactionStackProps['navigation']>();
   const route =
     useRoute<
@@ -48,7 +48,7 @@ export const useDetailsDeliveryServiceScreen = () => {
     return () => {
       isMounted = false;
     };
-  });
+  }, []);
 
   const handleConfirm = () => {
     dispatch({

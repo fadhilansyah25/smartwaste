@@ -31,7 +31,7 @@ export const useSelectDeliveryServiceScreen = () => {
     return () => {
       isMounted = false;
     };
-  });
+  }, []);
 
   return {
     deliveryServiceData,

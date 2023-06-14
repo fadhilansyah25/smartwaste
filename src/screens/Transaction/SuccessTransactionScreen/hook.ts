@@ -1,12 +1,21 @@
 import React from 'react';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
-import {TransactionStackParamaterList} from '@src/navigation/StackNavigation/TransactionsStackScreen';
+import {
+  RouteProp,
+  useNavigation,
+  useRoute,
+  CommonActions,
+} from '@react-navigation/native';
+import {
+  TransactionStackParamaterList,
+  TransactionStackProps,
+} from '@src/navigation/StackNavigation/TransactionsStackScreen';
 import TransactionWasteUsecase from '@src/services/bussines/transactionWaste';
 import {GetTransactionByIdQuery} from '@src/services/generated/graphql';
 import {HomeStackProps} from '@src/navigation/StackNavigation/HomeStackScreen';
 
 export const useSuccesTransactionScreen = () => {
   const navigation = useNavigation<HomeStackProps['navigation']>();
+  const stackNavigation = useNavigation<TransactionStackProps['navigation']>();
   const route =
     useRoute<RouteProp<TransactionStackParamaterList, 'SuccessTransaction'>>();
   const transactionId = route.params.transactionID;
@@ -39,6 +48,12 @@ export const useSuccesTransactionScreen = () => {
   }, [transactionId]);
 
   const handleBackToMenu = () => {
+    stackNavigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{name: 'SearchMitra'}], // Replace 'Home' with the name of your default screen in the tab stack
+      }),
+    );
     navigation.navigate('Home');
   };
 
