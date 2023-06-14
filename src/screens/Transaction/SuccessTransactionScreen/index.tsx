@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
   ActivityIndicator,
+  BackHandler,
 } from 'react-native';
 import {style} from './style';
 import {
@@ -22,11 +23,24 @@ import TruckSvg from '@src/assets/svg/delivery-car.svg';
 import {formatterIDR} from '@src/utils/formatter';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
-
 dayjs.locale('id');
+import {useFocusEffect} from '@react-navigation/native';
 
 const SuccessTransactionScreen = () => {
   const {transactionData, handleBackToMenu} = useSuccesTransactionScreen();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, []),
+  );
 
   return (
     <SafeAreaView style={style.screenContainer}>

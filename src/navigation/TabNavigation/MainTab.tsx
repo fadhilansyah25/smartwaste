@@ -7,6 +7,7 @@ import HomeStackScreen from '../StackNavigation/HomeStackScreen';
 import TransactionsStackScreen from '../StackNavigation/TransactionsStackScreen';
 import ProfileStackScreen from '../StackNavigation/ProfileStackScreen';
 import PointStackScreen from '../StackNavigation/PointStackScreen';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type RootParamaterList = {
   HomeStack: undefined;
@@ -15,6 +16,7 @@ export type RootParamaterList = {
   PoinStack: undefined;
 };
 
+export type TabProps = NativeStackScreenProps<RootParamaterList>;
 const Tab = createBottomTabNavigator<RootParamaterList>();
 
 const MainTab = () => {
