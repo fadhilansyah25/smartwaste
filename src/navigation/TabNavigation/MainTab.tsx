@@ -4,14 +4,17 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '@src/const/colors';
 import HomeStackScreen from '../StackNavigation/HomeStackScreen';
-import TransactionsStackScreen from '../StackNavigation/TransactionsStackScreen';
+import TransactionsStackScreen, {
+  TransactionStackParamaterList,
+} from '../StackNavigation/TransactionsStackScreen';
 import ProfileStackScreen from '../StackNavigation/ProfileStackScreen';
 import PointStackScreen from '../StackNavigation/PointStackScreen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {NavigatorScreenParams} from '@react-navigation/native';
 
 export type RootParamaterList = {
   HomeStack: undefined;
-  TransactionsStack: undefined;
+  TransactionsStack: NavigatorScreenParams<TransactionStackParamaterList>;
   ProfileStack: undefined;
   PoinStack: undefined;
 };
