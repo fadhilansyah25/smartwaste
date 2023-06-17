@@ -16,7 +16,11 @@ const MenuButtonContainer = () => {
         {/* Button Jemput Sampah */}
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => navigation.navigate('TransactionsStack')}>
+          onPress={() =>
+            navigation.navigate('TransactionsStack', {
+              screen: 'SearchMitra',
+            })
+          }>
           <View style={{alignItems: 'center', gap: 8}}>
             <View
               style={{
@@ -30,28 +34,40 @@ const MenuButtonContainer = () => {
         </TouchableOpacity>
 
         {/* Button Kirim Sampah */}
-        <View style={{alignItems: 'center', gap: 8}}>
-          <View
-            style={{
-              ...style.iconContainer,
-              backgroundColor: 'rgba(189, 0, 255, 0.19)',
-            }}>
-            <BoxSvg />
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() =>
+            navigation.navigate('TransactionsStack', {
+              screen: 'SearchMitra',
+            })
+          }>
+          <View style={{alignItems: 'center', gap: 8}}>
+            <View
+              style={{
+                ...style.iconContainer,
+                backgroundColor: 'rgba(189, 0, 255, 0.19)',
+              }}>
+              <BoxSvg />
+            </View>
+            <Text style={{fontSize: 12, fontWeight: '700'}}>Kirim Sampah</Text>
           </View>
-          <Text style={{fontSize: 12, fontWeight: '700'}}>Kirim Sampah</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* Button Poin Sampah */}
-        <View style={{alignItems: 'center', gap: 8}}>
-          <View
-            style={{
-              ...style.iconContainer,
-              backgroundColor: 'rgba(44, 90, 252, 0.27)',
-            }}>
-            <GiftSvg />
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => navigation.navigate('PoinStack')}>
+          <View style={{alignItems: 'center', gap: 8}}>
+            <View
+              style={{
+                ...style.iconContainer,
+                backgroundColor: 'rgba(44, 90, 252, 0.27)',
+              }}>
+              <GiftSvg />
+            </View>
+            <Text style={{fontSize: 12, fontWeight: '700'}}>Redeem Poin</Text>
           </View>
-          <Text style={{fontSize: 12, fontWeight: '700'}}>Redeem Poin</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
