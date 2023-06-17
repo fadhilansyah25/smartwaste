@@ -10,7 +10,7 @@ export const DeliveryServiceCard = ({
   handlePress?: () => void;
   serviceName?: string;
   startingPrice?: string | number;
-  serviceLogo?: string | ImageProps['source'];
+  serviceLogo?: string | ImageProps['source'] | null;
 }) => {
   return (
     <TouchableOpacity
@@ -27,14 +27,14 @@ export const DeliveryServiceCard = ({
             style={style.imageStyle}
           />
         ) : null}
-        {startingPrice && (
+        {startingPrice ? (
           <Text style={{fontSize: 10}}>
             Mulai dari{'  '}
             <Text style={{fontSize: 12, fontWeight: '600'}}>
               {startingPrice}
             </Text>
           </Text>
-        )}
+        ) : null}
       </View>
     </TouchableOpacity>
   );

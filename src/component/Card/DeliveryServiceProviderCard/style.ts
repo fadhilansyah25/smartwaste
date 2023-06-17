@@ -13,9 +13,9 @@ export const style = StyleSheet.create({
     backgroundColor: colors.N100,
   },
   imageStyle: {
-    width: '100%',
+    width: 100,
     height: '100%',
-    flex: 1,
+    // flex: 1,
     resizeMode: 'contain',
     backgroundColor: colors.white,
   },
