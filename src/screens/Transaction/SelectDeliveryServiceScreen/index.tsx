@@ -39,6 +39,7 @@ const SelectDeliveryServiceScreen = () => {
                   key={item.id}
                   serviceName={item.delivery_name}
                   handlePress={() => handlePressCardDeliveryService(item.id)}
+                  serviceLogo={item.logo_uri}
                 />
               );
             }
@@ -56,6 +57,7 @@ const SelectDeliveryServiceScreen = () => {
                   key={item.id}
                   serviceName={item.delivery_name}
                   handlePress={() => handlePressCardDeliveryService(item.id)}
+                  serviceLogo={item.logo_uri}
                 />
               );
             }
@@ -70,6 +72,7 @@ const SelectDeliveryServiceScreen = () => {
                   key={item.id}
                   serviceName={item.delivery_name}
                   handlePress={() => handlePressCardDeliveryService(item.id)}
+                  serviceLogo={item.logo_uri}
                 />
               );
             }

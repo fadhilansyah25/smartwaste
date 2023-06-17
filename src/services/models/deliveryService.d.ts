@@ -2,7 +2,7 @@ declare namespace DeliveryService {
   export type DeliveryService = {
     id: string;
     delivery_name: string;
-    logo_uri: null;
+    logo_uri: string | null;
     delivery_service_delivery_type: {
       id: number;
       type_name: string;
