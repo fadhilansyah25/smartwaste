@@ -24,8 +24,10 @@ import {
   SelectDeliveryServiceScreen,
   SelectWasteScreen,
   SuccessTransactionScreen,
+  TransactionHistoryScreen,
 } from '@src/screens/Transaction';
 import geocodingServices from '@src/services/geocodingServices';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export type TransactionStackParamaterList = {
   SearchMitra: undefined;
@@ -39,6 +41,7 @@ export type TransactionStackParamaterList = {
   DeliveryConfirm: undefined;
   CameraScreen: undefined;
   SuccessTransaction: {transactionID: string | undefined};
+  TransactionHistory: undefined;
 };
 
 export type TransactionStackProps =
@@ -51,8 +54,22 @@ const TransactionsStackScreen = () => {
   return (
     <TransactionProvider>
       <TransactionStack.Navigator
-        initialRouteName="SearchMitra"
+        initialRouteName="TransactionHistory"
         screenOptions={{headerShown: false}}>
+        <TransactionStack.Screen
+          name="TransactionHistory"
+          component={TransactionHistoryScreen}
+          options={{
+            headerShown: true,
+            header: props => (
+              <CustomHeader
+                headerProps={props}
+                headerRight={<RightHeaderIcon />}
+                elevation={2}
+              />
+            ),
+          }}
+        />
         <TransactionStack.Screen
           name="SearchMitra"
           component={SearchMitraScreen}
@@ -248,6 +265,16 @@ const TransactionsStackScreen = () => {
         />
       </TransactionStack.Navigator>
     </TransactionProvider>
+  );
+};
+
+const RightHeaderIcon = () => {
+  return (
+    <MaterialIcons
+      style={{flex: 1, textAlign: 'right'}}
+      name="headset-mic"
+      color={colors.T600}
+      size={24}></MaterialIcons>
   );
 };
 

@@ -26,6 +26,7 @@ const MainTab = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
+      detachInactiveScreens={true}
       screenOptions={({route}) => ({
         tabBarIcon: ({
           focused,
@@ -60,6 +61,9 @@ const MainTab = () => {
       <Tab.Screen
         name="TransactionsStack"
         component={TransactionsStackScreen}
+        listeners={({navigation, route}) => ({
+          tabPress: () => navigation.navigate('TransactionHistory'),
+        })}
         options={({route}) => ({
           tabBarStyle: (route => {
             const routeName = getFocusedRouteNameFromRoute(route);
