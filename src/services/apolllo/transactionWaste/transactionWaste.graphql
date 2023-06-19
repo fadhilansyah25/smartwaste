@@ -96,3 +96,24 @@ query GetTransactionById($id: uuid!) {
     }
   }
 }
+
+subscription GetTransactionByUserId($user_id: String!) {
+  smart_waste_transaction_waste(where: {user_id: {_eq: $user_id}}) {
+    id
+    user_id
+    user_name
+    waste_weight
+    transaction_date
+    status
+    package_code
+    transaction_waste_mitra {
+      id
+      name
+    }
+    transaction_waste_delivery_service {
+      delivery_name
+      id
+      logo_uri
+    }
+  }
+}

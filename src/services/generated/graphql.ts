@@ -3756,6 +3756,13 @@ export type GetTransactionByIdQueryVariables = Exact<{
 
 export type GetTransactionByIdQuery = { __typename?: 'query_root', smart_waste_transaction_waste_by_pk?: { __typename?: 'smart_waste_transaction_waste', id: any, detail_waste: string, detail_address: string, delivery_total_cost: number, delivery_service_id: any, delivery_product_id: any, image_uri: string, mitra_id: any, package_code: string, pickup_date?: any | null, status: string, transaction_date: any, user_address: string, user_id: string, user_lat: any, user_long: any, user_name: string, waste_weight: number, transaction_waste_delivery_service: { __typename?: 'smart_waste_delivery_service', delivery_name: string, delivery_type_id: number, id: any, logo_uri?: string | null }, transaction_waste_delivery_service_product: { __typename?: 'smart_waste_delivery_service_product', delivery_service_id: any, estimate_day: string, id: any, price_perkilo: number, service_name: string }, transaction_waste_mitra: { __typename?: 'smart_waste_mitra', address: string, closeTime: any, id: any, lat: any, long: any, name: string, openTime: any, phoneNumber: string }, transaction_waste_transaction_waste_types: Array<{ __typename?: 'smart_waste_transaction_waste_type', id: any, transaction_waste_id: any, waste_type_id: number }> } | null };
 
+export type GetTransactionByUserIdSubscriptionVariables = Exact<{
+  user_id: Scalars['String']['input'];
+}>;
+
+
+export type GetTransactionByUserIdSubscription = { __typename?: 'subscription_root', smart_waste_transaction_waste: Array<{ __typename?: 'smart_waste_transaction_waste', id: any, user_id: string, user_name: string, waste_weight: number, transaction_date: any, status: string, package_code: string, transaction_waste_mitra: { __typename?: 'smart_waste_mitra', id: any, name: string }, transaction_waste_delivery_service: { __typename?: 'smart_waste_delivery_service', delivery_name: string, id: any, logo_uri?: string | null } }> };
+
 export type GetAllWastetypeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3891,6 +3898,28 @@ export const GetTransactionByIdDocument = gql`
   }
 }
     ` as unknown as DocumentNode<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>;
+export const GetTransactionByUserIdDocument = gql`
+    subscription GetTransactionByUserId($user_id: String!) {
+  smart_waste_transaction_waste(where: {user_id: {_eq: $user_id}}) {
+    id
+    user_id
+    user_name
+    waste_weight
+    transaction_date
+    status
+    package_code
+    transaction_waste_mitra {
+      id
+      name
+    }
+    transaction_waste_delivery_service {
+      delivery_name
+      id
+      logo_uri
+    }
+  }
+}
+    ` as unknown as DocumentNode<GetTransactionByUserIdSubscription, GetTransactionByUserIdSubscriptionVariables>;
 export const GetAllWastetypeDocument = gql`
     query GetAllWastetype {
   smart_waste_waste_type {

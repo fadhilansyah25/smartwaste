@@ -2,6 +2,7 @@ import {
   AddNewTransactionMutation,
   AddNewTransactionMutationVariables,
   GetTransactionByIdQuery,
+  GetTransactionByUserIdQuery,
   InsertDetailTransactionWasteTypeMutationVariables,
 } from '../generated/graphql';
 
@@ -32,6 +33,8 @@ declare namespace TransactionWaste {
     ): Promise<void>;
 
     getTransactionById(id: string): Promise<GetTransactionByIdQuery>;
+
+    // getTransactionByUserId(id: string): Promise<GetTransactionByUserIdQuery>;
   }
 
   interface Usecase {
@@ -44,5 +47,7 @@ declare namespace TransactionWaste {
     getTransactionWasteByid(
       id: string,
     ): Promise<GetTransactionByIdQuery['smart_waste_transaction_waste_by_pk']>;
+
+    // getTransactionByUserId(id: string): Promise<GetTransactionByUserIdQuery>;
   }
 }
