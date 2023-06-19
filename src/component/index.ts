@@ -19,6 +19,7 @@ import DeliveryTypeCard from './Card/DeliveryTypeCard';
 import InputTime from './InputTime';
 import UniqueCodeCard from './Card/UniqueCodeCard';
 import AddressCard from './Card/AddressCard';
+import TransactionHistoryCard from './Card/TransactionHistoryCard';
 
 export {
   AvatarBadge,
@@ -29,6 +30,7 @@ export {
   DeliveryServiceCard,
   DeliveryTypeCard,
   GuideCard,
+  TransactionHistoryCard,
   TutorialCard,
   UniqueCodeCard,
   GreetingsBar,
