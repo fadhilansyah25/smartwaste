@@ -62,9 +62,13 @@ const MainTab = () => {
         name="TransactionsStack"
         component={TransactionsStackScreen}
         listeners={({navigation, route}) => ({
-          tabPress: () => navigation.navigate('TransactionHistory'),
+          tabPress: () =>
+            navigation.navigate('TransactionsStack', {
+              screen: 'TransactionHistory',
+            }),
         })}
         options={({route}) => ({
+          unmountOnBlur: true,
           tabBarStyle: (route => {
             const routeName = getFocusedRouteNameFromRoute(route);
             const validScreen = [

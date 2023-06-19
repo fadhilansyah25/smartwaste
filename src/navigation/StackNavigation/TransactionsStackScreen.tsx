@@ -261,6 +261,7 @@ const TransactionsStackScreen = () => {
                 elevation={5}
               />
             ),
+            freezeOnBlur: false,
           }}
         />
       </TransactionStack.Navigator>
