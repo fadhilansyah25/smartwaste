@@ -10,9 +10,11 @@ interface Props {
 const AvatarBadge = ({label, size = 40}: Props) => {
   return (
     <View style={[style.avatarBagde, {height: size, width: size}]}>
-      <Text style={{textAlign: 'center'}}>
-        {label.match(/\b(\w)/g)?.join('')}
-      </Text>
+      {label ? (
+        <Text style={{textAlign: 'center'}}>
+          {label.match(/\b(\w)/g)?.join('')}
+        </Text>
+      ) : null}
     </View>
   );
 };
