@@ -20,6 +20,8 @@ import InputTime from './InputTime';
 import UniqueCodeCard from './Card/UniqueCodeCard';
 import AddressCard from './Card/AddressCard';
 import TransactionHistoryCard from './Card/TransactionHistoryCard';
+import FilterButtonBadge from './FilterButtonBadge';
+import PointTransactionHistoryCard from './Card/PointTransactionHistoryCard';
 
 export {
   AvatarBadge,
@@ -44,4 +46,6 @@ export {
   MenuButtonContainer,
   SelectListDropDown,
   VerCodeField,
+  FilterButtonBadge,
+  PointTransactionHistoryCard,
 };
