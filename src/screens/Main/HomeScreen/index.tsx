@@ -31,7 +31,11 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled">
         {/* Greetings bar and avatar */}
-        <GreetingsBar displayName={user()?.displayName as string} />
+        <GreetingsBar
+          displayName={
+            user()?.displayName?.split(' ').slice(0, 2).join(' ') as string
+          }
+        />
 
         {/* Main Banner */}
         <MainBanner />
